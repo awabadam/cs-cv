@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import SitePreview from "@/components/SitePreview";
 
 const studies: Record<
   string,
@@ -185,24 +186,7 @@ export default async function CaseStudyPage({
         {/* Live site preview */}
         {study.url && (
           study.iframeable !== false ? (
-            <div className="w-full h-[60vh] min-h-[400px] mb-8 border border-rule-light overflow-hidden relative">
-              <iframe
-                src={study.url}
-                className="border-none origin-top-left"
-                style={{ width: "143%", height: "143%", transform: "scale(0.7)" }}
-                title={`${study.subtitle} — live site`}
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
-              />
-              <a
-                href={study.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute top-3 right-3 section-label text-[0.6rem] bg-paper-page/90 backdrop-blur-sm px-3 py-1.5 border border-rule-faint hover:text-accent transition-colors"
-              >
-                Open live site &nearr;
-              </a>
-            </div>
+            <SitePreview url={study.url} title={`${study.subtitle} — live site`} />
           ) : (
             <a
               href={study.url}
