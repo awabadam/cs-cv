@@ -171,7 +171,7 @@ function RiverObjects() {
 
 export default function ObjectRiver() {
   return (
-    <div className="w-full h-full" style={{ background: "var(--paper-edge)" }}>
+    <div className="w-full h-full overflow-hidden" style={{ background: "var(--paper-edge)", position: "absolute", inset: 0 }}>
       <Canvas
         camera={{ position: [0, 0, 4.5], fov: 55 }}
         gl={{ antialias: true, alpha: true }}

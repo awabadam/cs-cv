@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { caseStudies } from "@/data/content";
+import ReactiveTitle from "@/components/ReactiveTitle";
 
 interface CaseStudiesPageProps {
   isActive: boolean;
@@ -15,14 +16,15 @@ export default function CaseStudiesPage({ isActive, style }: CaseStudiesPageProp
       <div className="flex flex-col md:flex-row h-auto md:h-full">
         <div className="w-full md:w-[30%] flex-none md:flex-col flex flex-col justify-between md:border-r border-rule-light px-4 md:px-8 py-4 md:pt-8 md:pb-14 md:max-h-none">
           <div>
-            <div className="section-label text-ink-lighter mb-1">Selected</div>
-            <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.5rem] sm:text-[2.5rem] md:text-[5rem] lg:text-[6.5rem] leading-[0.82] mb-6">
-              Case<br/><span className="text-accent">Stud</span><br/>ies
-            </h2>
+            <div data-anim="fade" data-anim-d="1" className="section-label text-ink-lighter mb-1">Selected</div>
+            <ReactiveTitle
+              lines={[{ text: "Case" }, { text: "Stud", accent: true }, { text: "ies" }]}
+              className="text-[1.5rem] sm:text-[2.5rem] md:text-[5rem] lg:text-[6.5rem] leading-[0.82] mb-6"
+            />
           </div>
           <div>
             <hr className="rule-thick mb-3" />
-            <p className="justify-editorial text-ink-light leading-[1.7] text-[0.9rem]">
+            <p data-anim="slide-up" data-anim-d="2" className="justify-editorial text-ink-light leading-[1.7] text-[0.9rem]">
               A collection of projects that demonstrate process, thinking,
               and craft. Each traces a problem from brief to resolution.
             </p>

@@ -1,5 +1,6 @@
 import React from "react";
 import { expertise } from "@/data/content";
+import ReactiveTitle from "@/components/ReactiveTitle";
 
 interface ExpertisePageProps {
   isActive: boolean;
@@ -34,13 +35,14 @@ export default function ExpertisePage({ isActive, style }: ExpertisePageProps) {
     <section className="paper-page" data-active={isActive} style={style}>
       <div className="flex flex-col md:flex-row h-auto md:h-full">
         <div className="w-full md:w-[38%] flex-none md:flex-col flex flex-col md:border-r border-rule-light px-4 md:px-10 py-4 md:pt-8 md:pb-14 md:max-h-none">
-          <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.5rem] sm:text-[2.5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.82] mb-4 md:mb-8">
-            Exper<br/><span className="text-accent">tise</span>
-          </h2>
+          <ReactiveTitle
+            lines={[{ text: "Exper" }, { text: "tise", accent: true }]}
+            className="text-[1.5rem] sm:text-[2.5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.82] mb-4 md:mb-8"
+          />
 
           <div className="flex-1" />
 
-          <div className="mb-6">
+          <div data-anim="slide-up" data-anim-d="2" className="mb-6">
             <div className="section-label text-ink-lighter mb-1">Education</div>
             <hr className="rule-thick mb-3" />
             <p className="font-headline font-bold text-[1.2rem] leading-tight">B.A. Graphic Design</p>
@@ -48,7 +50,7 @@ export default function ExpertisePage({ isActive, style }: ExpertisePageProps) {
             <p className="dateline text-ink-lighter">2014 – 2018</p>
           </div>
 
-          <div>
+          <div data-anim="slide-up" data-anim-d="3">
             <div className="section-label text-ink-lighter mb-1">Languages</div>
             <hr className="rule-thick mb-3" />
             {[

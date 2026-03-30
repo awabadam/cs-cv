@@ -20,7 +20,7 @@ export default function PageNav({ currentPage, goToPage, pageLabels, PAGE_COUNT 
       <MagneticButton>
         <button
           onClick={() => goToPage(Math.max(currentPage - 1, 0))}
-          className="text-ink-lighter hover:text-ink border-none bg-transparent cursor-pointer dateline transition-colors text-sm px-2 py-1"
+          className="text-ink-lighter hover:text-ink border-none bg-transparent cursor-pointer font-headline font-bold transition-colors text-base px-2 py-1"
           aria-label="Previous page"
         >
           &larr;
@@ -35,7 +35,7 @@ export default function PageNav({ currentPage, goToPage, pageLabels, PAGE_COUNT 
               className="border-none cursor-pointer transition-all duration-300 bg-transparent relative"
               aria-label={`Go to ${label}`}
             >
-              <span className={`hidden md:inline section-label text-[0.6rem] px-1.5 py-0.5 transition-colors ${
+              <span className={`hidden md:inline font-headline text-[0.7rem] font-bold tracking-[0.1em] uppercase px-2 py-0.5 transition-colors ${
                 currentPage === i ? "text-ink" : "text-ink-lighter hover:text-ink"
               }`}>
                 {label}
@@ -56,7 +56,7 @@ export default function PageNav({ currentPage, goToPage, pageLabels, PAGE_COUNT 
       <MagneticButton>
         <button
           onClick={() => goToPage(Math.min(currentPage + 1, PAGE_COUNT - 1))}
-          className="text-ink-lighter hover:text-ink border-none bg-transparent cursor-pointer dateline transition-colors text-sm px-2 py-1"
+          className="text-ink-lighter hover:text-ink border-none bg-transparent cursor-pointer font-headline font-bold transition-colors text-base px-2 py-1"
           aria-label="Next page"
         >
           &rarr;
@@ -66,7 +66,7 @@ export default function PageNav({ currentPage, goToPage, pageLabels, PAGE_COUNT 
       </div>
 
       {/* Right — page number */}
-      <span className="dateline text-ink-lighter text-[0.7rem] text-right">
+      <span className="font-headline font-bold text-ink-lighter text-[0.75rem] text-right tracking-wider">
         {currentPage + 1} / {PAGE_COUNT}
       </span>
     </nav>

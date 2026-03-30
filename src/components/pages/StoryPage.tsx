@@ -11,7 +11,7 @@ export default function StoryPage({ isActive, style }: StoryPageProps) {
       <div className="flex flex-col md:flex-row h-auto md:h-full">
         <div className="flex-none md:flex-1 flex flex-col justify-between px-4 md:px-8 py-4 md:pt-10 md:pb-4 md:border-r border-rule-light md:max-h-none">
           <div>
-            <div className="section-label text-ink-lighter mb-1">The Journey</div>
+            <div data-anim="fade" data-anim-d="1" className="section-label text-ink-lighter mb-1">The Journey</div>
             <hr className="rule-thick mb-6" />
             <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.5rem] sm:text-[2.2rem] md:text-[4rem] lg:text-[5rem] leading-[0.85] mb-6">
               Khar<br/>toum<br/>
@@ -52,7 +52,7 @@ export default function StoryPage({ isActive, style }: StoryPageProps) {
             <span>&mdash;&mdash;&mdash;</span>
             <span>Istanbul, 2025</span>
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 flex-1">
+          <div data-anim="slide-up" data-anim-d="3" className="grid grid-cols-1 md:grid-cols-2 gap-x-6 flex-1">
             <div className="md:border-r border-rule-light md:pr-6">
               <p className="drop-cap justify-editorial text-ink-light leading-[1.8]">
                 It started in Khartoum&thinsp;&mdash;&thinsp;designing logos
@@ -73,7 +73,7 @@ export default function StoryPage({ isActive, style }: StoryPageProps) {
               </p>
             </div>
           </div>
-          <div className="mt-auto pt-5">
+          <div data-anim="fade" data-anim-d="4" className="mt-auto pt-5">
             <hr className="rule-thick mb-4" />
             <p className="font-headline text-[1.4rem] italic text-center leading-[1.35] text-ink-light mb-4">
               &ldquo;I don&rsquo;t stop when it&rsquo;s done. I stop when it&rsquo;s right.&rdquo;

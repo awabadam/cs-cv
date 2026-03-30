@@ -1,5 +1,6 @@
 import React from "react";
 import { socialLinks } from "@/data/content";
+import ReactiveTitle from "@/components/ReactiveTitle";
 
 interface ContactPageProps {
   isActive: boolean;
@@ -14,9 +15,10 @@ export default function ContactPage({ isActive, style }: ContactPageProps) {
           <div>
             <div className="section-label text-ink-lighter mb-1">Enquiries</div>
             <hr className="rule-thick mb-6" />
-            <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.5rem] sm:text-[2.5rem] md:text-[5.5rem] lg:text-[7rem] leading-[0.82] mb-6">
-              Let&apos;s<br/><span className="text-accent">Build</span><br/>Some<br/>thing
-            </h2>
+            <ReactiveTitle
+              lines={[{ text: "Let's" }, { text: "Build", accent: true }, { text: "Some" }, { text: "thing" }]}
+              className="text-[1.5rem] sm:text-[2.5rem] md:text-[5.5rem] lg:text-[7rem] leading-[0.82] mb-6"
+            />
           </div>
           <div>
             <p className="justify-editorial text-ink-light leading-[1.7] text-[0.9rem] mb-4">
@@ -29,7 +31,7 @@ export default function ContactPage({ isActive, style }: ContactPageProps) {
         </div>
 
         <div className="flex-1 flex flex-col px-4 md:px-8 pt-4 md:pt-10 pb-14 overflow-y-auto">
-          <div className="section-label text-accent mb-1 tracking-[0.3em]">Contact</div>
+          <div data-anim="fade" data-anim-d="1" className="section-label text-accent mb-1 tracking-[0.3em]">Contact</div>
           <hr className="rule-thick mb-5" />
 
           <dl className="space-y-4 font-serif text-[0.95rem] mb-8">
@@ -63,7 +65,7 @@ export default function ContactPage({ isActive, style }: ContactPageProps) {
             </div>
           </dl>
 
-          <div className="section-label text-accent mb-1 tracking-[0.3em]">Elsewhere</div>
+          <div data-anim="fade" data-anim-d="3" className="section-label text-accent mb-1 tracking-[0.3em]">Elsewhere</div>
           <hr className="rule-thick mb-5" />
 
           {socialLinks.map((link, i) => (

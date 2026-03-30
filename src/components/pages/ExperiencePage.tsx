@@ -1,5 +1,6 @@
 import React from "react";
 import { experience } from "@/data/content";
+import ReactiveTitle from "@/components/ReactiveTitle";
 
 interface ExperiencePageProps {
   isActive: boolean;
@@ -34,9 +35,10 @@ export default function ExperiencePage({ isActive, style }: ExperiencePageProps)
     <section className="paper-page" data-active={isActive} style={style}>
       <div className="flex flex-col md:flex-row h-auto md:h-full">
         <div className="flex-none md:flex-1 flex flex-col justify-center items-center px-4 md:px-8 py-4 md:py-0 md:border-r border-rule-light md:max-h-none">
-          <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.5rem] sm:text-[2.5rem] md:text-[7rem] lg:text-[9rem] text-center leading-[0.82] tracking-[0.05em]">
-            Pro<br className="hidden md:block"/>fess<br className="hidden md:block"/>ional<br/><span className="text-accent">Expe<br className="hidden md:block"/>rience</span>
-          </h2>
+          <ReactiveTitle
+            lines={[{ text: "Professional" }, { text: "Experience", accent: true }]}
+            className="text-[1.5rem] sm:text-[2.5rem] md:text-[7rem] lg:text-[9rem] text-center leading-[0.82] tracking-[0.05em]"
+          />
         </div>
 
         <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-8 overflow-y-auto px-4 md:px-6 pt-4 md:pt-6 pb-4" style={{ height: '100%' }}>

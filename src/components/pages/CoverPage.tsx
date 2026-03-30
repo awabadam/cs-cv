@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from "react";
+import ReactiveTitle from "@/components/ReactiveTitle";
 
 const ObjectRiver = lazy(() => import("@/components/ObjectRiver"));
 
@@ -18,15 +19,14 @@ export default function CoverPage({ isActive, style, today }: CoverPageProps) {
             <span>{today}</span>
           </div>
           <hr className="rule-thin mb-[3px]" />
-          <hr className="rule-thick mb-8" />
+          <hr className="rule-thick mb-4" />
 
-          <h1 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.8rem] sm:text-[3rem] md:text-[7rem] lg:text-[9rem] mb-2">
-            Awab
-            <br />
-            Elkhalil
-          </h1>
+          <ReactiveTitle
+            lines={[{ text: "Awab" }, { text: "Elkhalil" }]}
+            className="text-[1.8rem] sm:text-[3rem] md:text-[7rem] lg:text-[9rem] mb-2"
+          />
 
-          <div data-anim="slide-up" data-anim-d="2" className="byline my-5">
+          <div data-anim="slide-up" data-anim-d="2" className="byline my-3">
             Digital Artisan &mdash; Istanbul, T&uuml;rkiye
           </div>
 
@@ -35,7 +35,7 @@ export default function CoverPage({ isActive, style, today }: CoverPageProps) {
             Five&nbsp;years. Every&nbsp;pixel.
           </h2>
 
-          <p data-anim="slide-up" data-anim-d="4" className="justify-editorial text-ink-light leading-[1.75] mb-6 text-[0.95rem]">
+          <p data-anim="slide-up" data-anim-d="4" className="justify-editorial text-ink-light leading-[1.7] mb-4 text-[0.9rem]">
             I am a digital artisan. I hack, I play, I mold projects until
             they hit their targets&thinsp;&mdash;&thinsp;or until the work
             speaks for itself. A decade of graphic design,
@@ -44,7 +44,7 @@ export default function CoverPage({ isActive, style, today }: CoverPageProps) {
             work lives at the intersection of craft and obsession.
           </p>
 
-          <p data-anim="fade" data-anim-d="5" className="pull-quote mb-6">
+          <p data-anim="fade" data-anim-d="5" className="pull-quote mb-4">
             Every project is a system waiting to be understood,<br />
             then shaped until it works on its own terms.&ensp;&rdquo;
           </p>
