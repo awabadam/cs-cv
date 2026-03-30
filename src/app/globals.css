@@ -96,6 +96,24 @@ html, body {
   will-change: transform;
 }
 
+/* ══ Page entrance animations ══ */
+.paper-page [data-animate] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.paper-page[data-active="true"] [data-animate] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.paper-page[data-active="true"] [data-animate="1"] { transition-delay: 0.05s; }
+.paper-page[data-active="true"] [data-animate="2"] { transition-delay: 0.15s; }
+.paper-page[data-active="true"] [data-animate="3"] { transition-delay: 0.25s; }
+.paper-page[data-active="true"] [data-animate="4"] { transition-delay: 0.35s; }
+.paper-page[data-active="true"] [data-animate="5"] { transition-delay: 0.45s; }
+
 /* ══ Layout: paper page ══ */
 .paper-page {
   flex: 0 0 100vw;

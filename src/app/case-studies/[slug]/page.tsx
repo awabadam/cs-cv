@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 const studies: Record<
@@ -209,9 +210,13 @@ export default async function CaseStudyPage({
               rel="noopener noreferrer"
               className="block w-full h-[50vh] min-h-[360px] mb-8 border border-rule-light overflow-hidden relative group"
             >
-              <div className="img-placeholder w-full h-full">
-                screenshot of {study.subtitle}
-              </div>
+              <Image
+                src="/images/case-studies/saphiredent.jpg"
+                alt={`${study.subtitle} website screenshot`}
+                fill
+                className="object-cover object-top"
+                sizes="100vw"
+              />
               <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/5 transition-colors flex items-center justify-center">
                 <span className="section-label text-[0.75rem] bg-paper-page/90 backdrop-blur-sm px-5 py-2.5 border border-rule-faint opacity-0 group-hover:opacity-100 transition-opacity tracking-[0.2em]">
                   Visit live site &nearr;

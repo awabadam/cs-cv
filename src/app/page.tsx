@@ -125,11 +125,10 @@ const caseStudies = [
 
 const socialLinks = [
   { label: "Instagram", url: "https://instagram.com/awabeladam", display: "@awabeladam" },
-  { label: "GitHub", url: "https://github.com/awabeladam", display: "awabeladam" },
-  { label: "Behance", url: "https://behance.net/awabelkhalil", display: "awabelkhalil" },
+  { label: "GitHub", url: "https://github.com/awabadam", display: "awabadam" },
+  { label: "Behance", url: "https://www.behance.net/awab-elkhalil", display: "awab-elkhalil" },
   { label: "500px", url: "https://500px.com/p/AwabAdam", display: "AwabAdam" },
   { label: "Facebook", url: "https://facebook.com/awabeladam", display: "awabeladam" },
-  { label: "Linktree", url: "https://linktr.ee/awabelkhalil", display: "awabelkhalil" },
 ];
 
 const pageLabels = ["Cover", "Story", "Experience", "Expertise", "Work", "Contact"];
@@ -239,7 +238,7 @@ function HorizontalCV() {
         >
 
         {/* ═══ PAGE 1 — COVER ═══ */}
-        <section className="paper-page">
+        <section className="paper-page" data-active={currentPage === 0}>
           <div className="cover-split">
             {/* Left half — text */}
             <div className="cover-left">
@@ -250,22 +249,22 @@ function HorizontalCV() {
               <hr className="rule-thin mb-[3px]" />
               <hr className="rule-thick mb-8" />
 
-              <h1 className="masthead-title text-[2.8rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] mb-2">
+              <h1 data-animate="1" className="masthead-title text-[2.8rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] mb-2">
                 Awab
                 <br />
                 Elkhalil
               </h1>
 
-              <div className="byline my-5">
+              <div data-animate="2" className="byline my-5">
                 Digital Artisan &mdash; Istanbul, Türkiye
               </div>
 
-              <h2 className="font-quote text-[1.15rem] leading-[1.45] font-normal mb-5 text-ink-light italic">
+              <h2 data-animate="3" className="font-quote text-[1.15rem] leading-[1.45] font-normal mb-5 text-ink-light italic">
                 One designer. Two brands.<br />
                 Five&nbsp;years. Every&nbsp;pixel.
               </h2>
 
-              <p className="justify-editorial text-ink-light leading-[1.75] mb-6 text-[0.95rem]">
+              <p data-animate="4" className="justify-editorial text-ink-light leading-[1.75] mb-6 text-[0.95rem]">
                 I am a digital artisan. I hack, I play, I mold projects until
                 they hit their targets&thinsp;&mdash;&thinsp;or until the work
                 speaks for itself. A decade of graphic design,
@@ -274,7 +273,7 @@ function HorizontalCV() {
                 work lives at the intersection of craft and obsession.
               </p>
 
-              <p className="pull-quote mb-6">
+              <p data-animate="5" className="pull-quote mb-6">
                 Every project is a system waiting to be understood,<br />
                 then shaped until it works on its own terms.&ensp;&rdquo;
               </p>
@@ -298,7 +297,7 @@ function HorizontalCV() {
         </section>
 
         {/* ═══ PAGE 2 — THE JOURNEY ═══ */}
-        <section className="paper-page">
+        <section className="paper-page" data-active={currentPage === 1}>
           <div className="flex flex-col md:flex-row h-full">
             {/* Left — large title + timeline */}
             <div className="flex-none md:flex-1 flex flex-col justify-between px-6 md:px-8 py-6 md:pt-10 md:pb-4 md:border-r border-rule-light">
@@ -306,7 +305,7 @@ function HorizontalCV() {
                 <div className="section-label text-ink-lighter mb-1">The Journey</div>
                 <hr className="rule-thick mb-6" />
 
-                <h2 className="masthead-title text-[2.2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5rem] leading-[0.85] mb-6">
+                <h2 data-animate="1" className="masthead-title text-[2.2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5rem] leading-[0.85] mb-6">
                   Khar<br/>toum<br/>
                   <span className="text-accent">to</span><br/>
                   Istan<br/>bul
@@ -341,7 +340,7 @@ function HorizontalCV() {
             {/* Right — stacked editorial blocks */}
             <div className="flex-1 flex flex-col px-6 md:px-8 pt-6 md:pt-10 pb-4 overflow-y-auto">
               {/* Top — full-width image */}
-              <div className="img-placeholder w-full h-[14rem] md:h-[28rem] mb-2">
+              <div data-animate="2" className="img-placeholder w-full h-[14rem] md:h-[28rem] mb-2">
                 collage: sudan work &rarr; istanbul work
               </div>
               <p className="dateline text-ink-lighter text-[0.6rem] mb-5 flex justify-between">
@@ -387,11 +386,11 @@ function HorizontalCV() {
         </section>
 
         {/* ═══ PAGE 3 — EXPERIENCE (columns) ═══ */}
-        <section className="paper-page">
+        <section className="paper-page" data-active={currentPage === 2}>
           <div className="flex flex-col md:flex-row h-full">
             {/* Left half — section title */}
             <div className="flex-none md:flex-1 flex flex-col justify-center items-center px-6 md:px-8 py-6 md:py-0 md:border-r border-rule-light">
-              <h2 className="masthead-title text-[2.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] text-center leading-[0.82] tracking-[0.05em]">
+              <h2 data-animate="1" className="masthead-title text-[2.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] text-center leading-[0.82] tracking-[0.05em]">
                 Pro<br className="hidden md:block"/>fess<br className="hidden md:block"/>ional<br/><span className="text-accent">Expe<br className="hidden md:block"/>rience</span>
               </h2>
             </div>
@@ -448,11 +447,11 @@ function HorizontalCV() {
         </section>
 
         {/* ═══ PAGE 4 — EXPERTISE & EDUCATION ═══ */}
-        <section className="paper-page">
+        <section className="paper-page" data-active={currentPage === 3}>
           <div className="flex flex-col md:flex-row h-full">
             {/* Left — big title + education + languages */}
             <div className="w-full md:w-[38%] flex-none md:flex-col flex flex-col md:border-r border-rule-light px-6 md:px-10 py-6 md:pt-8 md:pb-14">
-              <h2 className="masthead-title text-[2.5rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.82] mb-4 md:mb-8">
+              <h2 data-animate="1" className="masthead-title text-[2.5rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.82] mb-4 md:mb-8">
                 Exper<br/><span className="text-accent">tise</span>
               </h2>
 
@@ -535,13 +534,13 @@ function HorizontalCV() {
         </section>
 
         {/* ═══ PAGE 5 — SELECTED WORK ═══ */}
-        <section className="paper-page">
+        <section className="paper-page" data-active={currentPage === 4}>
           <div className="flex flex-col md:flex-row h-full">
             {/* Left — title */}
             <div className="w-full md:w-[30%] flex-none md:flex-col flex flex-col justify-between md:border-r border-rule-light px-6 md:px-8 py-6 md:pt-8 md:pb-14">
               <div>
                 <div className="section-label text-ink-lighter mb-1">Selected</div>
-                <h2 className="masthead-title text-[4rem] md:text-[5rem] lg:text-[6.5rem] leading-[0.82] mb-6">
+                <h2 data-animate="1" className="masthead-title text-[4rem] md:text-[5rem] lg:text-[6.5rem] leading-[0.82] mb-6">
                   Case<br/><span className="text-accent">Stud</span><br/>ies
                 </h2>
               </div>
@@ -634,14 +633,14 @@ function HorizontalCV() {
         </section>
 
         {/* ═══ PAGE 6 — CONTACT ═══ */}
-        <section className="paper-page">
+        <section className="paper-page" data-active={currentPage === 5}>
           <div className="flex flex-col md:flex-row h-full">
             {/* Left — large title */}
             <div className="flex-none md:flex-1 flex flex-col justify-between px-6 md:px-8 py-6 md:pt-10 md:pb-14 md:border-r border-rule-light">
               <div>
                 <div className="section-label text-ink-lighter mb-1">Enquiries</div>
                 <hr className="rule-thick mb-6" />
-                <h2 className="masthead-title text-[4rem] md:text-[5.5rem] lg:text-[7rem] leading-[0.82] mb-6">
+                <h2 data-animate="1" className="masthead-title text-[4rem] md:text-[5.5rem] lg:text-[7rem] leading-[0.82] mb-6">
                   Let&apos;s<br/><span className="text-accent">Build</span><br/>Some<br/>thing
                 </h2>
               </div>
