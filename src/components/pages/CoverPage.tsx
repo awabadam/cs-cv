@@ -1,4 +1,6 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
+
+const ObjectRiver = lazy(() => import("@/components/ObjectRiver"));
 
 interface CoverPageProps {
   isActive: boolean;
@@ -56,9 +58,11 @@ export default function CoverPage({ isActive, style, today }: CoverPageProps) {
         </div>
 
         <div className="cover-right">
-          <div data-anim="reveal" data-anim-d="3" className="img-placeholder w-full h-full">
-            portrait photograph
-          </div>
+          <Suspense fallback={
+            <div className="img-placeholder w-full h-full">loading scene</div>
+          }>
+            <ObjectRiver />
+          </Suspense>
         </div>
       </div>
     </section>
