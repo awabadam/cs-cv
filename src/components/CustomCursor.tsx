@@ -3,15 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
   const [visible, setVisible] = useState(false);
   const [hovering, setHovering] = useState(false);
+  const [cardHover, setCardHover] = useState(false);
   const pos = useRef({ x: 0, y: 0 });
   const target = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    // Only on desktop with fine pointer
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
     setVisible(true);
@@ -21,10 +21,12 @@ export default function CustomCursor() {
       target.current = { x: e.clientX, y: e.clientY };
 
       const el = e.target as HTMLElement;
-      const isInteractive = el.closest(
-        "a, button, [role='button'], .group, input, textarea, select"
+      const isCard = !!el.closest(".group");
+      const isInteractive = !!el.closest(
+        "a, button, [role='button'], input, textarea, select"
       );
-      setHovering(!!isInteractive);
+      setCardHover(isCard);
+      setHovering(isInteractive || isCard);
     };
 
     const onLeave = () => setVisible(false);
@@ -35,11 +37,11 @@ export default function CustomCursor() {
       pos.current.x += (target.current.x - pos.current.x) * 0.15;
       pos.current.y += (target.current.y - pos.current.y) * 0.15;
 
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${pos.current.x - 4}px, ${pos.current.y - 4}px)`;
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate(${pos.current.x}px, ${pos.current.y}px) rotate(${hovering ? 45 : 0}deg) scale(${hovering ? 1.3 : 1})`;
       }
-      if (ringRef.current) {
-        ringRef.current.style.transform = `translate(${pos.current.x - 16}px, ${pos.current.y - 16}px) scale(${hovering ? 1.5 : 1})`;
+      if (labelRef.current) {
+        labelRef.current.style.transform = `translate(${pos.current.x}px, ${pos.current.y + 20}px)`;
       }
       raf = requestAnimationFrame(animate);
     };
@@ -62,28 +64,47 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Dot */}
+      {/* Crosshair */}
       <div
-        ref={dotRef}
-        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none"
+        ref={cursorRef}
+        className="fixed top-0 left-0 pointer-events-none"
         style={{
           zIndex: 9998,
-          background: "var(--ink)",
           mixBlendMode: "difference",
-          transition: "width 0.2s, height 0.2s",
+          marginLeft: -12,
+          marginTop: -12,
+          transition: "rotate 0.3s cubic-bezier(0.22, 1, 0.36, 1), scale 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
         }}
-      />
-      {/* Ring */}
-      <div
-        ref={ringRef}
-        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line x1="12" y1="0" x2="12" y2="24" stroke="white" strokeWidth="1" />
+          <line x1="0" y1="12" x2="24" y2="12" stroke="white" strokeWidth="1" />
+          {/* Small center dot for precision */}
+          <circle cx="12" cy="12" r="1.5" fill="white" />
+        </svg>
+      </div>
+
+      {/* "VIEW" label for card hovers */}
+      <span
+        ref={labelRef}
+        className="fixed top-0 left-0 pointer-events-none section-label text-[0.55rem] tracking-[0.3em]"
         style={{
-          zIndex: 9997,
-          border: "1px solid var(--ink)",
-          opacity: hovering ? 0.5 : 0.2,
-          transition: "opacity 0.3s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
+          zIndex: 9998,
+          mixBlendMode: "difference",
+          color: "white",
+          opacity: cardHover ? 1 : 0,
+          transition: "opacity 0.2s ease",
+          marginLeft: -10,
         }}
-      />
+      >
+        View
+      </span>
     </>
   );
 }

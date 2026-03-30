@@ -137,6 +137,34 @@ const socialLinks = [
 const pageLabels = ["Cover", "Story", "Experience", "Expertise", "Work", "Contact"];
 const PAGE_COUNT = pageLabels.length;
 
+/* ── Magnetic button wrapper ── */
+function MagneticButton({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const onMove = (e: React.MouseEvent) => {
+    if (!ref.current || !window.matchMedia("(pointer: fine)").matches) return;
+    const rect = ref.current.getBoundingClientRect();
+    const dx = e.clientX - (rect.left + rect.width / 2);
+    const dy = e.clientY - (rect.top + rect.height / 2);
+    ref.current.style.transform = `translate(${dx * 0.35}px, ${dy * 0.35}px)`;
+  };
+
+  const onLeave = () => {
+    if (ref.current) ref.current.style.transform = "translate(0, 0)";
+  };
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      style={{ transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)" }}
+    >
+      {children}
+    </div>
+  );
+}
+
 /* ── PAGE ── */
 
 export default function Page() {
@@ -253,6 +281,13 @@ function HorizontalCV() {
       <LoadingScreen />
       <CustomCursor />
       <InkParticles ref={particlesRef} />
+
+      {/* Scroll progress bar */}
+      <div className="fixed top-0 left-0 h-[1px] bg-ink z-[51]" style={{
+        width: `${(currentPage / (PAGE_COUNT - 1)) * 100}%`,
+        transition: "width 1.1s cubic-bezier(0.16, 1, 0.3, 1)",
+      }} />
+
       <div ref={wrapperRef} className="page-scroller">
         <div
           className="page-track"
@@ -592,7 +627,20 @@ function HorizontalCV() {
                   <Link
                     key={study.slug}
                     href={`/case-studies/${study.slug}`}
-                    className={`border-none group relative overflow-hidden ${borders} transition-colors duration-500 hover:bg-paper-edge/40`}
+                    className={`border-none group relative overflow-hidden ${borders} transition-all duration-500 hover:bg-paper-edge/40`}
+                    style={{ perspective: "800px" }}
+                    onMouseMove={(e) => {
+                      if (!window.matchMedia("(pointer: fine)").matches) return;
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      const x = (e.clientX - rect.left) / rect.width - 0.5;
+                      const y = (e.clientY - rect.top) / rect.height - 0.5;
+                      e.currentTarget.style.transform = `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+                      e.currentTarget.style.boxShadow = `${-x * 8}px ${y * 8}px 24px rgba(20,20,10,0.1)`;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "";
+                      e.currentTarget.style.boxShadow = "";
+                    }}
                   >
                     {/* Background number */}
                     <span
@@ -763,43 +811,52 @@ function HorizontalCV() {
       </div>
 
       {/* Page indicator */}
-      <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 md:gap-4 bg-paper-page/90 backdrop-blur-sm px-3 md:px-5 py-2 md:py-2.5 border border-rule-faint" style={{ boxShadow: '0 2px 8px rgba(20,20,10,0.08)' }}>
-        <button
-          onClick={() => goToPage(Math.max(currentPage - 1, 0))}
-          className="text-ink-lighter hover:text-ink border-none bg-transparent cursor-pointer dateline transition-colors text-sm"
-          aria-label="Previous page"
-        >
-          &larr;
-        </button>
+      <nav className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center gap-2 md:gap-4 bg-paper-page/95 backdrop-blur-sm px-3 md:px-5 py-2.5 md:py-3 border-t border-rule-faint">
+        <MagneticButton>
+          <button
+            onClick={() => goToPage(Math.max(currentPage - 1, 0))}
+            className="text-ink-lighter hover:text-ink border-none bg-transparent cursor-pointer dateline transition-colors text-sm px-2 py-1"
+            aria-label="Previous page"
+          >
+            &larr;
+          </button>
+        </MagneticButton>
 
         <div className="flex items-center gap-1.5 md:gap-2">
           {pageLabels.map((label, i) => (
-            <button
-              key={i}
-              onClick={() => goToPage(i)}
-              className={`border-none cursor-pointer transition-all duration-300 ${
-                currentPage === i
-                  ? "bg-ink text-paper-page"
-                  : "bg-transparent text-ink-lighter hover:text-ink"
-              }`}
-              aria-label={`Go to ${label}`}
-            >
-              {/* Label on desktop, dot on mobile */}
-              <span className="hidden md:inline section-label text-[0.6rem] px-1.5 py-0.5">{label}</span>
-              <span className={`md:hidden block rounded-full transition-all ${
-                currentPage === i ? "w-4 h-1.5 bg-ink" : "w-1.5 h-1.5 bg-rule-light"
-              }`} />
-            </button>
+            <MagneticButton key={i}>
+              <button
+                onClick={() => goToPage(i)}
+                className="border-none cursor-pointer transition-all duration-300 bg-transparent relative"
+                aria-label={`Go to ${label}`}
+              >
+                <span className={`hidden md:inline section-label text-[0.6rem] px-1.5 py-0.5 transition-colors ${
+                  currentPage === i ? "text-ink" : "text-ink-lighter hover:text-ink"
+                }`}>
+                  {label}
+                </span>
+                {/* Active underline */}
+                <span className={`hidden md:block absolute bottom-0 left-1/2 h-[1px] bg-ink transition-all duration-500 cubic-bezier(0.22, 1, 0.36, 1) ${
+                  currentPage === i ? "w-full -translate-x-1/2" : "w-0 -translate-x-1/2"
+                }`} />
+                {/* Mobile dot */}
+                <span className={`md:hidden block rounded-full transition-all ${
+                  currentPage === i ? "w-4 h-1.5 bg-ink" : "w-1.5 h-1.5 bg-rule-light"
+                }`} />
+              </button>
+            </MagneticButton>
           ))}
         </div>
 
-        <button
-          onClick={() => goToPage(Math.min(currentPage + 1, PAGE_COUNT - 1))}
-          className="text-ink-lighter hover:text-ink border-none bg-transparent cursor-pointer dateline transition-colors text-sm"
-          aria-label="Next page"
-        >
-          &rarr;
-        </button>
+        <MagneticButton>
+          <button
+            onClick={() => goToPage(Math.min(currentPage + 1, PAGE_COUNT - 1))}
+            className="text-ink-lighter hover:text-ink border-none bg-transparent cursor-pointer dateline transition-colors text-sm px-2 py-1"
+            aria-label="Next page"
+          >
+            &rarr;
+          </button>
+        </MagneticButton>
       </nav>
     </>
   );

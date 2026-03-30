@@ -367,17 +367,55 @@ a:hover {
 .page-inner::-webkit-scrollbar-track { background: transparent; }
 .page-inner::-webkit-scrollbar-thumb { background: var(--rule-light); border-radius: 2px; }
 
-/* ══ Paper texture ══ */
+/* ══ Animated grain texture ══ */
 body::after {
   content: '';
   position: fixed;
-  inset: 0;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
   pointer-events: none;
-  opacity: 0.022;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
-  background-size: 256px 256px;
+  background-size: 512px 512px;
+  animation: grain 0.8s steps(6) infinite;
   z-index: 0;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-2%, -3%); }
+  30% { transform: translate(3%, 2%); }
+  50% { transform: translate(-1%, 4%); }
+  70% { transform: translate(2%, -2%); }
+  90% { transform: translate(-3%, 1%); }
+}
+
+/* ══ Draw-on rules ══ */
+.paper-page .rule-thick,
+.paper-page .rule-thin {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.paper-page[data-active="true"] .rule-thick,
+.paper-page[data-active="true"] .rule-thin {
+  transform: scaleX(1);
+}
+
+.paper-page[data-active="true"] .rule-thick { transition-delay: 0.1s; }
+.paper-page[data-active="true"] .rule-thin { transition-delay: 0.2s; }
+
+/* ══ Fleuron pulse ══ */
+.paper-page[data-active="true"] .rule-ornament::after {
+  animation: fleuron-pulse 3s ease-in-out infinite;
+}
+
+@keyframes fleuron-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.65; }
 }
 
 /* ══ Bento grid ══ */
