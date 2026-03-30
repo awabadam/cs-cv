@@ -6,164 +6,8 @@ import Link from "next/link";
 import LoadingScreen from "@/components/LoadingScreen";
 import CustomCursor from "@/components/CustomCursor";
 import InkParticles, { type InkParticlesHandle } from "@/components/InkParticles";
-
-/* ── DATA ── */
-
-const experience = [
-  {
-    role: "Web Developer & Lead Designer",
-    company: "Saphire Dent & Estetik World",
-    location: "Istanbul, Türkiye",
-    period: "2025 – Present",
-    description:
-      "Now focused on the web — architecting and developing the main website and high-conversion landing pages. Working directly with management on cross-brand digital strategy. Integrated Google Ads and Analytics to drive measurable campaign ROI.",
-  },
-  {
-    role: "Lead Graphic Designer & Media Team Lead",
-    company: "Saphire Dent & Estetik World",
-    location: "Istanbul, Türkiye",
-    period: "2020 – 2025",
-    description:
-      "Joined as the sole designer for two brands under one company. Designed both logos, art directed all social media, created ad campaigns, and edited before-and-after patient photography. Built and led a design team of three.",
-  },
-  {
-    role: "Co-Founder",
-    company: "Sequence Media Productions",
-    location: "Khartoum, Sudan",
-    period: "2019 – 2020",
-    description:
-      "Co-founded a media production studio with friends, all while holding full-time positions elsewhere. Oversaw creative direction and client strategy. Left amicably to pursue design over media production — a clearer path.",
-  },
-  {
-    role: "Lead Graphic Designer",
-    company: "Tenchologya",
-    location: "Khartoum, Sudan",
-    period: "2019 – 2020",
-    description:
-      "Led a team of designers and a motion artist across multi-sector branding and advertising projects for tech, FMCG, and services clients.",
-  },
-  {
-    role: "Graphic Designer",
-    company: "Boost Sudan",
-    location: "Khartoum, Sudan",
-    period: "2018 – 2019",
-    description:
-      "Produced branding and digital campaign assets across diverse client engagements.",
-  },
-  {
-    role: "Graphic Designer",
-    company: "icare-net",
-    location: "Sudan",
-    period: "2016 – 2018",
-    description:
-      "First professional role. Designed logos, event branding, product graphics, and print materials. First introduction to web design — where the curiosity began.",
-  },
-];
-
-const expertise = {
-  design: [
-    "Brand Identity Systems",
-    "Editorial & Publication Design",
-    "Typography & Type Setting",
-    "UI/UX & Digital Product Design",
-    "Motion Graphics & Animation",
-    "Art Direction & Photography",
-    "Packaging & Print Production",
-  ],
-  technical: [
-    "Next.js & React",
-    "Three.js & WebGL",
-    "Tailwind CSS",
-    "AI Integration & Chatbots",
-    "VPS, Docker & Nginx",
-    "Google Ads & Analytics",
-    "Adobe Creative Suite",
-    "Figma & Prototyping",
-    "Blender 3D",
-  ],
-};
-
-const caseStudies = [
-  {
-    slug: "saphire-dent",
-    number: "I",
-    headline: "Building a Dental Empire's Entire Visual World",
-    subtitle: "Saphire Dent & Estetik World",
-    description:
-      "Five years as the sole-then-lead designer for two dental tourism brands. Logos, identity systems, social media, ad campaigns, websites, and a design team — built from nothing.",
-    category: "Brand Identity & Web",
-    year: "2020 – 2025",
-  },
-  {
-    slug: "jouvence",
-    number: "II",
-    headline: "Luxury Aesthetics, Translated to Screen",
-    subtitle: "Jouvence Medical Aesthetic",
-    description:
-      "A premium medical aesthetics clinic needed a website that matched the exclusivity of its service. Multilingual, conversion-focused, built with Next.js — luxury minimalism for an international clientele.",
-    category: "Web Design & Development",
-    year: "2024",
-  },
-  {
-    slug: "esteexpert",
-    number: "III",
-    headline: "Trust Through Design",
-    subtitle: "EsteExpert Clinic",
-    description:
-      "A medical aesthetics clinic website designed to convert hesitant international patients into booked consultations. Every design decision served one goal: build trust fast.",
-    category: "Web Design & Development",
-    year: "2024",
-  },
-  {
-    slug: "awab-design",
-    number: "IV",
-    headline: "Designing the Designer's Own Platform",
-    subtitle: "awab.design",
-    description:
-      "A personal portfolio and service platform built with Next.js, React, WebGL, and AI-driven features. 50+ websites documented, conversion-focused, and a showcase of the full stack.",
-    category: "Portfolio & Web Development",
-    year: "2024",
-  },
-];
-
-const socialLinks = [
-  { label: "Instagram", url: "https://instagram.com/awabeladam", display: "@awabeladam" },
-  { label: "GitHub", url: "https://github.com/awabadam", display: "awabadam" },
-  { label: "Behance", url: "https://www.behance.net/awab-elkhalil", display: "awab-elkhalil" },
-  { label: "500px", url: "https://500px.com/p/AwabAdam", display: "AwabAdam" },
-  { label: "Facebook", url: "https://facebook.com/awabeladam", display: "awabeladam" },
-];
-
-const pageLabels = ["Cover", "Story", "Experience", "Expertise", "Work", "Contact"];
-const PAGE_COUNT = pageLabels.length;
-
-/* ── Magnetic button wrapper ── */
-function MagneticButton({ children }: { children: React.ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const onMove = (e: React.MouseEvent) => {
-    if (!ref.current || !window.matchMedia("(pointer: fine)").matches) return;
-    const rect = ref.current.getBoundingClientRect();
-    const dx = e.clientX - (rect.left + rect.width / 2);
-    const dy = e.clientY - (rect.top + rect.height / 2);
-    ref.current.style.transform = `translate(${dx * 0.35}px, ${dy * 0.35}px)`;
-  };
-
-  const onLeave = () => {
-    if (ref.current) ref.current.style.transform = "translate(0, 0)";
-  };
-
-  return (
-    <div
-      ref={ref}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      style={{ transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)" }}
-    >
-      {children}
-    </div>
-  );
-}
+import PageNav from "@/components/PageNav";
+import { experience, expertise, caseStudies, socialLinks, pageLabels, PAGE_COUNT } from "@/data/content";
 
 /* ── PAGE ── */
 
@@ -313,7 +157,7 @@ function HorizontalCV() {
               </h1>
 
               <div data-anim="slide-up" data-anim-d="2" className="byline my-5">
-                Digital Artisan &mdash; Istanbul, Türkiye
+                Digital Artisan &mdash; Istanbul, T&uuml;rkiye
               </div>
 
               <h2 data-anim="slide-up" data-anim-d="3" className="font-quote text-[1.15rem] leading-[1.45] font-normal mb-5 text-ink-light italic">
@@ -796,7 +640,7 @@ function HorizontalCV() {
                   This document was typeset in Playfair Display and
                   Cormorant&nbsp;Garamond. Designed and developed by Awab
                   Elkhalil using Next.js and Tailwind&nbsp;CSS. Set in
-                  Istanbul, Türkiye.
+                  Istanbul, T&uuml;rkiye.
                 </p>
                 <div className="flex justify-between items-center text-ink-lighter dateline text-[0.7rem]">
                   <span>&copy; {new Date().getFullYear()} Awab Elkhalil</span>
@@ -811,65 +655,7 @@ function HorizontalCV() {
       </div>
 
       {/* Page indicator */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 grid items-center bg-paper-page/95 backdrop-blur-sm px-4 md:px-6 py-2.5 md:py-3 border-t border-rule-faint" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
-        {/* Left spacer */}
-        <div />
-
-        {/* Center — arrows + labels */}
-        <div className="flex items-center gap-2 md:gap-4 justify-center">
-        <MagneticButton>
-          <button
-            onClick={() => goToPage(Math.max(currentPage - 1, 0))}
-            className="text-ink-lighter hover:text-ink border-none bg-transparent cursor-pointer dateline transition-colors text-sm px-2 py-1"
-            aria-label="Previous page"
-          >
-            &larr;
-          </button>
-        </MagneticButton>
-
-        <div className="flex items-center gap-1.5 md:gap-2">
-          {pageLabels.map((label, i) => (
-            <MagneticButton key={i}>
-              <button
-                onClick={() => goToPage(i)}
-                className="border-none cursor-pointer transition-all duration-300 bg-transparent relative"
-                aria-label={`Go to ${label}`}
-              >
-                <span className={`hidden md:inline section-label text-[0.6rem] px-1.5 py-0.5 transition-colors ${
-                  currentPage === i ? "text-ink" : "text-ink-lighter hover:text-ink"
-                }`}>
-                  {label}
-                </span>
-                {/* Active underline */}
-                <span className={`hidden md:block absolute bottom-0 left-1/2 h-[1px] bg-ink transition-all duration-500 cubic-bezier(0.22, 1, 0.36, 1) ${
-                  currentPage === i ? "w-full -translate-x-1/2" : "w-0 -translate-x-1/2"
-                }`} />
-                {/* Mobile dot */}
-                <span className={`md:hidden block rounded-full transition-all ${
-                  currentPage === i ? "w-4 h-1.5 bg-ink" : "w-1.5 h-1.5 bg-rule-light"
-                }`} />
-              </button>
-            </MagneticButton>
-          ))}
-        </div>
-
-        <MagneticButton>
-          <button
-            onClick={() => goToPage(Math.min(currentPage + 1, PAGE_COUNT - 1))}
-            className="text-ink-lighter hover:text-ink border-none bg-transparent cursor-pointer dateline transition-colors text-sm px-2 py-1"
-            aria-label="Next page"
-          >
-            &rarr;
-          </button>
-        </MagneticButton>
-
-        </div>
-
-        {/* Right — page number */}
-        <span className="dateline text-ink-lighter text-[0.7rem] text-right">
-          {currentPage + 1} / {PAGE_COUNT}
-        </span>
-      </nav>
+      <PageNav currentPage={currentPage} goToPage={goToPage} pageLabels={pageLabels} PAGE_COUNT={PAGE_COUNT} />
     </>
   );
 }
