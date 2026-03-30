@@ -299,7 +299,7 @@ function HorizontalCV() {
           <div className="cover-split">
             {/* Left half — text */}
             <div className="cover-left">
-              <div className="flex justify-between items-center text-ink-lighter dateline mb-3">
+              <div className="flex justify-between items-center text-ink-lighter dateline mb-3 hover:text-ink transition-colors duration-500">
                 <span>Vol. IX, No. 1</span>
                 <span>{today}</span>
               </div>
@@ -457,12 +457,13 @@ function HorizontalCV() {
               {/* Column 1 */}
               <div className="md:border-r border-rule-light md:pr-8">
                 {experience.slice(0, 3).map((job, i) => (
-                  <div key={i} data-anim="slide-up" data-anim-d={String(i + 2)} className="mb-5 group pl-0 border-l-2 border-transparent hover:border-accent hover:pl-3 transition-all duration-300">
+                  <div key={i} data-anim="slide-up" data-anim-d={String(i + 2)} className="mb-5 group relative pl-4">
+                    <span className="absolute left-0 top-0 bottom-0 w-[2px] bg-accent scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" style={{ transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }} />
                     <div className="flex justify-between items-baseline gap-x-3 mb-[2px]">
-                      <h3 className="font-headline text-[1rem] font-bold leading-tight tracking-[-0.005em] group-hover:text-accent transition-colors">
+                      <h3 className="font-headline text-[1rem] font-bold leading-tight tracking-[-0.005em] group-hover:text-accent transition-colors duration-300">
                         {job.role}
                       </h3>
-                      <span className="dateline text-ink-lighter whitespace-nowrap group-hover:translate-x-1 transition-transform">
+                      <span className="dateline text-ink-lighter whitespace-nowrap">
                         {job.period}
                       </span>
                     </div>
@@ -479,12 +480,13 @@ function HorizontalCV() {
               {/* Column 2 */}
               <div>
                 {experience.slice(3).map((job, i) => (
-                  <div key={i} data-anim="slide-up" data-anim-d={String(i + 2)} className="mb-5 group pl-0 border-l-2 border-transparent hover:border-accent hover:pl-3 transition-all duration-300">
+                  <div key={i} data-anim="slide-up" data-anim-d={String(i + 2)} className="mb-5 group relative pl-4">
+                    <span className="absolute left-0 top-0 bottom-0 w-[2px] bg-accent scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" style={{ transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }} />
                     <div className="flex justify-between items-baseline gap-x-3 mb-[2px]">
-                      <h3 className="font-headline text-[1rem] font-bold leading-tight tracking-[-0.005em] group-hover:text-accent transition-colors">
+                      <h3 className="font-headline text-[1rem] font-bold leading-tight tracking-[-0.005em] group-hover:text-accent transition-colors duration-300">
                         {job.role}
                       </h3>
-                      <span className="dateline text-ink-lighter whitespace-nowrap group-hover:translate-x-1 transition-transform">
+                      <span className="dateline text-ink-lighter whitespace-nowrap">
                         {job.period}
                       </span>
                     </div>
@@ -629,7 +631,7 @@ function HorizontalCV() {
                     href={`/case-studies/${study.slug}`}
                     data-anim="scale-in"
                     data-anim-d={String(i < 2 ? i + 2 : i + 1)}
-                    className={`border-none group relative overflow-hidden ${borders} transition-all duration-500 hover:bg-paper-edge/40`}
+                    className={`border-none group relative overflow-hidden ${borders} transition-all duration-500`}
                     style={{ perspective: "800px" }}
                     onMouseMove={(e) => {
                       if (!window.matchMedia("(pointer: fine)").matches) return;
@@ -637,7 +639,7 @@ function HorizontalCV() {
                       const x = (e.clientX - rect.left) / rect.width - 0.5;
                       const y = (e.clientY - rect.top) / rect.height - 0.5;
                       e.currentTarget.style.transform = `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
-                      e.currentTarget.style.boxShadow = `${-x * 8}px ${y * 8}px 24px rgba(20,20,10,0.1)`;
+                      e.currentTarget.style.boxShadow = `${-x * 8}px ${y * 8}px 24px rgba(20,20,10,0.1), inset 0 0 40px rgba(107,16,16,0.04)`;
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = "";
@@ -777,10 +779,10 @@ function HorizontalCV() {
                   style={{ transitionDelay: `${0.4 + i * 0.08}s` }}
                   className="group flex items-start gap-3 py-3 border-b border-rule-faint border-none"
                 >
-                  <span className="font-headline text-[1.8rem] font-bold leading-none text-paper-edge group-hover:text-accent group-hover:-translate-y-0.5 group-hover:scale-110 transition-all duration-300">
+                  <span className="font-headline text-[1.8rem] font-bold leading-none text-paper-edge group-hover:text-accent group-hover:-translate-y-0.5 group-hover:scale-105 transition-all duration-500" style={{ transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <div className="pt-0.5 group-hover:translate-x-1 transition-transform duration-300">
+                  <div className="pt-0.5 group-hover:translate-x-1 transition-transform duration-500" style={{ transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }}>
                     <p className="font-headline font-bold text-[0.95rem] leading-tight group-hover:text-accent transition-colors">
                       {link.label}
                     </p>

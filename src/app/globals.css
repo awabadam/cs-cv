@@ -439,19 +439,13 @@ body::after {
   50% { opacity: 0.75; }
 }
 
-/* ══ Global hover refinements ══ */
-a {
-  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+/* ══ Pull quote hover ══ */
+.pull-quote:hover::before {
+  transform: scale(1.15);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-a:hover {
-  transform: translateX(2px);
-}
-
-.section-label {
-  transition: letter-spacing 0.4s ease, color 0.3s;
-}
-.section-label:hover {
-  letter-spacing: 0.25em;
+.pull-quote::before {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ══ Bento grid ══ */
