@@ -9,7 +9,8 @@ const COLORS = ["#141414", "#3d3d3d", "#7d7a6f", "#c9c3b4", "#4a4a4a", "#1a1a1a"
 
 interface FloatingObject {
   position: THREE.Vector3;
-  basePosition: THREE.Vector3;
+  flowPosition: THREE.Vector3;
+  displacement: THREE.Vector3;
   rotation: THREE.Euler;
   speed: number;
   rotSpeed: THREE.Vector3;
@@ -36,7 +37,8 @@ function RiverObjects() {
       );
       return {
         position: pos.clone(),
-        basePosition: pos.clone(),
+        flowPosition: pos.clone(),
+        displacement: new THREE.Vector3(0, 0, 0),
         rotation: new THREE.Euler(
           Math.random() * Math.PI * 2,
           Math.random() * Math.PI * 2,
@@ -69,29 +71,29 @@ function RiverObjects() {
     );
 
     objects.forEach((obj) => {
-      // Flow from top-right to bottom-left
-      obj.position.x -= obj.speed * 0.007;
-      obj.position.y -= obj.speed * 0.005;
+      // Update flow position (the "real" path)
+      obj.flowPosition.x -= obj.speed * 0.007;
+      obj.flowPosition.y -= obj.speed * 0.005;
 
-      // Swirl motion
-      obj.position.x += Math.sin(time * 0.35 + obj.offset) * 0.004;
-      obj.position.y += Math.cos(time * 0.3 + obj.offset) * 0.003;
-      obj.position.z += Math.sin(time * 0.2 + obj.offset * 2) * 0.002;
+      // Swirl on flow path
+      obj.flowPosition.x += Math.sin(time * 0.35 + obj.offset) * 0.004;
+      obj.flowPosition.y += Math.cos(time * 0.3 + obj.offset) * 0.003;
+      obj.flowPosition.z += Math.sin(time * 0.2 + obj.offset * 2) * 0.002;
 
-      // Mouse repulsion — objects push away from cursor
-      const dx = obj.position.x - mouseWorld.current.x;
-      const dy = obj.position.y - mouseWorld.current.y;
+      // Mouse repulsion — push displacement, not position
+      const dx = (obj.flowPosition.x + obj.displacement.x) - mouseWorld.current.x;
+      const dy = (obj.flowPosition.y + obj.displacement.y) - mouseWorld.current.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       const repelRadius = 2.5;
 
       if (dist < repelRadius) {
-        const force = (1 - dist / repelRadius) * 0.15;
+        const force = (1 - dist / repelRadius) * 0.2;
         const angle = Math.atan2(dy, dx);
-        obj.position.x += Math.cos(angle) * force;
-        obj.position.y += Math.sin(angle) * force;
-        obj.position.z += (Math.random() - 0.5) * force * 0.3;
+        obj.displacement.x += Math.cos(angle) * force;
+        obj.displacement.y += Math.sin(angle) * force;
+        obj.displacement.z += (Math.random() - 0.5) * force * 0.3;
 
-        // Speed up rotation when near cursor
+        // Faster rotation near cursor
         obj.rotation.x += obj.rotSpeed.x * 3;
         obj.rotation.y += obj.rotSpeed.y * 3;
         obj.rotation.z += obj.rotSpeed.z * 3;
@@ -101,11 +103,22 @@ function RiverObjects() {
         obj.rotation.z += obj.rotSpeed.z;
       }
 
+      // Displacement lerps back to zero (spring return)
+      obj.displacement.x *= 0.94;
+      obj.displacement.y *= 0.94;
+      obj.displacement.z *= 0.94;
+
+      // Final position = flow + displacement
+      obj.position.x = obj.flowPosition.x + obj.displacement.x;
+      obj.position.y = obj.flowPosition.y + obj.displacement.y;
+      obj.position.z = obj.flowPosition.z + obj.displacement.z;
+
       // Respawn when off screen
-      if (obj.position.x < -7 || obj.position.y < -6) {
-        obj.position.x = 6 + Math.random() * 3;
-        obj.position.y = 5 + Math.random() * 3;
-        obj.position.z = (Math.random() - 0.5) * 5;
+      if (obj.flowPosition.x < -7 || obj.flowPosition.y < -6) {
+        obj.flowPosition.x = 6 + Math.random() * 3;
+        obj.flowPosition.y = 5 + Math.random() * 3;
+        obj.flowPosition.z = (Math.random() - 0.5) * 5;
+        obj.displacement.set(0, 0, 0);
       }
     });
 
