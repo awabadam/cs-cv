@@ -23,7 +23,7 @@
   --rule: #141414;
   --rule-light: #c9c3b4;
   --rule-faint: #ddd8cb;
-  --accent: #6b1010;
+  --accent: #4a4a4a;
   --shadow: rgba(20, 20, 10, 0.12);
   --shadow-deep: rgba(20, 20, 10, 0.22);
 
@@ -309,23 +309,24 @@ html, body {
 .pull-quote {
   font-family: var(--f-masthead);
   font-style: italic;
-  font-size: 1.6em;
-  line-height: 1.3;
+  font-size: 1.4em;
+  line-height: 1.35;
   color: var(--ink);
-  padding: 0;
-  margin: 0;
+  text-align: center;
   position: relative;
-  padding-left: 1.4em;
+  padding: 1.5em 1.5em;
+  margin: 1em 0;
+  border-top: 0.5px solid var(--rule-light);
+  border-bottom: 0.5px solid var(--rule-light);
 }
 .pull-quote::before {
   content: '\201C';
-  position: absolute;
-  left: 0;
-  top: -0.15em;
-  font-size: 2.5em;
-  line-height: 1;
+  display: block;
+  font-size: 3em;
+  line-height: 0.6;
   color: var(--accent);
   font-style: normal;
+  margin-bottom: 0.2em;
 }
 
 .byline {
@@ -340,9 +341,8 @@ html, body {
 
 .folio {
   position: absolute;
-  bottom: 3.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0.7rem;
+  right: 1.2rem;
   font-family: var(--f-sc);
   letter-spacing: 0.1em;
   font-size: 0.7em;
@@ -440,12 +440,12 @@ body::after {
 }
 
 /* ══ Pull quote hover ══ */
-.pull-quote:hover::before {
-  transform: scale(1.15);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
 .pull-quote::before {
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  display: inline-block;
+}
+.pull-quote:hover::before {
+  transform: scale(1.15);
 }
 
 /* ══ Bento grid ══ */
@@ -496,20 +496,35 @@ body::after {
   }
 
   /* Typography scaling */
+  .masthead-title {
+    font-size: 1.5rem !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  .section-label {
+    letter-spacing: 0.08em;
+  }
+
   .pull-quote {
     font-size: 1em;
-    padding-left: 0.8em;
+    padding: 0.8em;
   }
   .pull-quote::before {
     font-size: 2em;
   }
   .drop-cap::first-letter {
-    font-size: 3em;
+    font-size: 2.5em;
+  }
+
+  /* Bento number sizing */
+  .bento-num {
+    font-size: 4rem !important;
   }
 
   /* Folio */
   .folio {
-    bottom: 4rem;
+    bottom: 3.5rem;
+    right: 1rem;
   }
 
   /* Bento grid — stack */

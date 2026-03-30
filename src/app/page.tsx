@@ -306,7 +306,7 @@ function HorizontalCV() {
               <hr className="rule-thin mb-[3px]" />
               <hr className="rule-thick mb-8" />
 
-              <h1 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[2.8rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] mb-2">
+              <h1 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.8rem] sm:text-[3rem] md:text-[7rem] lg:text-[9rem] mb-2">
                 Awab
                 <br />
                 Elkhalil
@@ -350,19 +350,18 @@ function HorizontalCV() {
               </div>
             </div>
           </div>
-          <span className="folio">1</span>
         </section>
 
         {/* ═══ PAGE 2 — THE JOURNEY ═══ */}
         <section className="paper-page" data-active={currentPage === 1} style={getPageStyle(1)}>
           <div className="flex flex-col md:flex-row h-full">
             {/* Left — large title + timeline */}
-            <div className="flex-none md:flex-1 flex flex-col justify-between px-6 md:px-8 py-6 md:pt-10 md:pb-4 md:border-r border-rule-light">
+            <div className="flex-none md:flex-1 flex flex-col justify-between px-4 md:px-8 py-4 md:pt-10 md:pb-4 md:border-r border-rule-light max-h-[35vh] md:max-h-none overflow-hidden md:overflow-visible">
               <div>
                 <div className="section-label text-ink-lighter mb-1">The Journey</div>
                 <hr className="rule-thick mb-6" />
 
-                <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[2.2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5rem] leading-[0.85] mb-6">
+                <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.5rem] sm:text-[2.2rem] md:text-[4rem] lg:text-[5rem] leading-[0.85] mb-6">
                   Khar<br/>toum<br/>
                   <span className="text-accent">to</span><br/>
                   Istan<br/>bul
@@ -395,7 +394,7 @@ function HorizontalCV() {
             </div>
 
             {/* Right — stacked editorial blocks */}
-            <div className="flex-1 flex flex-col px-6 md:px-8 pt-6 md:pt-10 pb-4 overflow-y-auto">
+            <div className="flex-1 flex flex-col px-4 md:px-8 pt-4 md:pt-10 pb-4 overflow-y-auto">
               {/* Top — full-width image */}
               <div data-anim="slide-up" data-anim-d="2" className="img-placeholder w-full h-[14rem] md:h-[28rem] mb-2">
                 collage: sudan work &rarr; istanbul work
@@ -439,21 +438,20 @@ function HorizontalCV() {
               </div>
             </div>
           </div>
-          <span className="folio">2</span>
         </section>
 
         {/* ═══ PAGE 3 — EXPERIENCE (columns) ═══ */}
         <section className="paper-page" data-active={currentPage === 2} style={getPageStyle(2)}>
           <div className="flex flex-col md:flex-row h-full">
             {/* Left half — section title */}
-            <div className="flex-none md:flex-1 flex flex-col justify-center items-center px-6 md:px-8 py-6 md:py-0 md:border-r border-rule-light">
-              <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[2.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] text-center leading-[0.82] tracking-[0.05em]">
+            <div className="flex-none md:flex-1 flex flex-col justify-center items-center px-4 md:px-8 py-4 md:py-0 md:border-r border-rule-light max-h-[20vh] md:max-h-none overflow-hidden md:overflow-visible">
+              <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.5rem] sm:text-[2.5rem] md:text-[7rem] lg:text-[9rem] text-center leading-[0.82] tracking-[0.05em]">
                 Pro<br className="hidden md:block"/>fess<br className="hidden md:block"/>ional<br/><span className="text-accent">Expe<br className="hidden md:block"/>rience</span>
               </h2>
             </div>
 
             {/* Right half — content in columns */}
-            <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-8 overflow-y-auto" style={{ height: '100%', padding: '1.5rem 1.25rem 1rem' }}>
+            <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-8 overflow-y-auto px-4 md:px-6 pt-4 md:pt-6 pb-4" style={{ height: '100%' }}>
               {/* Column 1 */}
               <div className="md:border-r border-rule-light md:pr-8">
                 {experience.slice(0, 3).map((job, i) => (
@@ -502,15 +500,14 @@ function HorizontalCV() {
               </div>
             </div>
           </div>
-          <span className="folio">3</span>
         </section>
 
         {/* ═══ PAGE 4 — EXPERTISE & EDUCATION ═══ */}
         <section className="paper-page" data-active={currentPage === 3} style={getPageStyle(3)}>
           <div className="flex flex-col md:flex-row h-full">
             {/* Left — big title + education + languages */}
-            <div className="w-full md:w-[38%] flex-none md:flex-col flex flex-col md:border-r border-rule-light px-6 md:px-10 py-6 md:pt-8 md:pb-14">
-              <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[2.5rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.82] mb-4 md:mb-8">
+            <div className="w-full md:w-[38%] flex-none md:flex-col flex flex-col md:border-r border-rule-light px-4 md:px-10 py-4 md:pt-8 md:pb-14 max-h-[30vh] md:max-h-none overflow-hidden md:overflow-visible">
+              <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.5rem] sm:text-[2.5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.82] mb-4 md:mb-8">
                 Exper<br/><span className="text-accent">tise</span>
               </h2>
 
@@ -545,14 +542,14 @@ function HorizontalCV() {
             {/* Right — two columns of skills, magazine index style */}
             <div className="w-full md:w-[62%] grid grid-cols-1 md:grid-cols-2 h-full overflow-y-auto">
               {/* Design column */}
-              <div className="border-r border-rule-light px-8 pt-8 pb-14 overflow-y-auto">
+              <div className="md:border-r border-rule-light px-4 md:px-8 pt-4 md:pt-8 pb-6 md:pb-14 overflow-y-auto">
                 <div className="section-label text-accent mb-1 tracking-[0.3em]">Design</div>
                 <hr className="rule-thick mb-5" />
                 {expertise.design.map((item, i) => (
                   <div key={i} className="group mb-0">
                     <div className="flex items-start gap-4 py-4 border-b border-rule-faint">
                       <span
-                        className="font-headline text-[2.5rem] font-bold leading-none text-paper-edge group-hover:text-accent transition-colors"
+                        className="font-headline text-[1.5rem] md:text-[2.5rem] font-bold leading-none text-paper-edge group-hover:text-accent transition-colors"
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
@@ -567,14 +564,14 @@ function HorizontalCV() {
               </div>
 
               {/* Technical column */}
-              <div className="px-8 pt-8 pb-14 overflow-y-auto">
+              <div className="px-4 md:px-8 pt-4 md:pt-8 pb-6 md:pb-14 overflow-y-auto">
                 <div className="section-label text-accent mb-1 tracking-[0.3em]">Technical</div>
                 <hr className="rule-thick mb-5" />
                 {expertise.technical.map((item, i) => (
                   <div key={i} className="group mb-0">
                     <div className="flex items-start gap-4 py-4 border-b border-rule-faint">
                       <span
-                        className="font-headline text-[2.5rem] font-bold leading-none text-paper-edge group-hover:text-accent transition-colors"
+                        className="font-headline text-[1.5rem] md:text-[2.5rem] font-bold leading-none text-paper-edge group-hover:text-accent transition-colors"
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
@@ -589,17 +586,16 @@ function HorizontalCV() {
               </div>
             </div>
           </div>
-          <span className="folio">4</span>
         </section>
 
         {/* ═══ PAGE 5 — SELECTED WORK ═══ */}
         <section className="paper-page" data-active={currentPage === 4} style={getPageStyle(4)}>
           <div className="flex flex-col md:flex-row h-full">
             {/* Left — title */}
-            <div className="w-full md:w-[30%] flex-none md:flex-col flex flex-col justify-between md:border-r border-rule-light px-6 md:px-8 py-6 md:pt-8 md:pb-14">
+            <div className="w-full md:w-[30%] flex-none md:flex-col flex flex-col justify-between md:border-r border-rule-light px-4 md:px-8 py-4 md:pt-8 md:pb-14 max-h-[25vh] md:max-h-none overflow-hidden md:overflow-visible">
               <div>
                 <div className="section-label text-ink-lighter mb-1">Selected</div>
-                <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[4rem] md:text-[5rem] lg:text-[6.5rem] leading-[0.82] mb-6">
+                <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.5rem] sm:text-[2.5rem] md:text-[5rem] lg:text-[6.5rem] leading-[0.82] mb-6">
                   Case<br/><span className="text-accent">Stud</span><br/>ies
                 </h2>
               </div>
@@ -648,7 +644,7 @@ function HorizontalCV() {
                   >
                     {/* Background number */}
                     <span
-                      className={`absolute font-headline font-bold leading-none text-paper-edge transition-all duration-500 group-hover:text-rule-light group-hover:scale-110 bento-float-${i + 1}`}
+                      className={`absolute font-headline font-bold leading-none text-paper-edge transition-all duration-500 group-hover:text-rule-light group-hover:scale-110 bento-float-${i + 1} bento-num`}
                       style={{
                         fontSize: isLarge ? "12rem" : "8rem",
                         right: i % 2 === 0 ? "-0.5rem" : "auto",
@@ -660,7 +656,7 @@ function HorizontalCV() {
                     </span>
 
                     {/* Content */}
-                    <div className={`relative z-10 flex flex-col h-full ${isLarge ? "px-8 pt-7 pb-8" : "px-6 pt-6 pb-7"}`}>
+                    <div className={`relative z-10 flex flex-col h-full ${isLarge ? "px-4 md:px-8 pt-5 md:pt-7 pb-6 md:pb-8" : "px-3 md:px-6 pt-4 md:pt-6 pb-5 md:pb-7"}`}>
                       {/* Top: category tag */}
                       <div className="flex items-center gap-2 mb-auto">
                         <span className="section-label text-accent text-[0.5rem] tracking-[0.3em]">
@@ -703,18 +699,17 @@ function HorizontalCV() {
               })}
             </div>
           </div>
-          <span className="folio">5</span>
         </section>
 
         {/* ═══ PAGE 6 — CONTACT ═══ */}
         <section className="paper-page" data-active={currentPage === 5} style={getPageStyle(5)}>
           <div className="flex flex-col md:flex-row h-full">
             {/* Left — large title */}
-            <div className="flex-none md:flex-1 flex flex-col justify-between px-6 md:px-8 py-6 md:pt-10 md:pb-14 md:border-r border-rule-light">
+            <div className="flex-none md:flex-1 flex flex-col justify-between px-4 md:px-8 py-4 md:pt-10 md:pb-14 md:border-r border-rule-light max-h-[25vh] md:max-h-none overflow-hidden md:overflow-visible">
               <div>
                 <div className="section-label text-ink-lighter mb-1">Enquiries</div>
                 <hr className="rule-thick mb-6" />
-                <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[4rem] md:text-[5.5rem] lg:text-[7rem] leading-[0.82] mb-6">
+                <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.5rem] sm:text-[2.5rem] md:text-[5.5rem] lg:text-[7rem] leading-[0.82] mb-6">
                   Let&apos;s<br/><span className="text-accent">Build</span><br/>Some<br/>thing
                 </h2>
               </div>
@@ -729,7 +724,7 @@ function HorizontalCV() {
             </div>
 
             {/* Right — contact + social + colophon */}
-            <div className="flex-1 flex flex-col px-6 md:px-8 pt-6 md:pt-10 pb-14 overflow-y-auto">
+            <div className="flex-1 flex flex-col px-4 md:px-8 pt-4 md:pt-10 pb-14 overflow-y-auto">
               {/* Primary contact */}
               <div className="section-label text-accent mb-1 tracking-[0.3em]">Contact</div>
               <hr className="rule-thick mb-5" />
@@ -779,7 +774,7 @@ function HorizontalCV() {
                   style={{ transitionDelay: `${0.4 + i * 0.08}s` }}
                   className="group flex items-start gap-3 py-3 border-b border-rule-faint border-none"
                 >
-                  <span className="font-headline text-[1.8rem] font-bold leading-none text-paper-edge group-hover:text-accent group-hover:-translate-y-0.5 group-hover:scale-105 transition-all duration-500" style={{ transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }}>
+                  <span className="font-headline text-[1.2rem] md:text-[1.8rem] font-bold leading-none text-paper-edge group-hover:text-accent group-hover:-translate-y-0.5 group-hover:scale-105 transition-all duration-500" style={{ transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="pt-0.5 group-hover:translate-x-1 transition-transform duration-500" style={{ transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }}>
@@ -810,14 +805,18 @@ function HorizontalCV() {
               </div>
             </div>
           </div>
-          <span className="folio">6</span>
         </section>
 
         </div>
       </div>
 
       {/* Page indicator */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center gap-2 md:gap-4 bg-paper-page/95 backdrop-blur-sm px-3 md:px-5 py-2.5 md:py-3 border-t border-rule-faint">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 grid items-center bg-paper-page/95 backdrop-blur-sm px-4 md:px-6 py-2.5 md:py-3 border-t border-rule-faint" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
+        {/* Left spacer */}
+        <div />
+
+        {/* Center — arrows + labels */}
+        <div className="flex items-center gap-2 md:gap-4 justify-center">
         <MagneticButton>
           <button
             onClick={() => goToPage(Math.max(currentPage - 1, 0))}
@@ -863,6 +862,13 @@ function HorizontalCV() {
             &rarr;
           </button>
         </MagneticButton>
+
+        </div>
+
+        {/* Right — page number */}
+        <span className="dateline text-ink-lighter text-[0.7rem] text-right">
+          {currentPage + 1} / {PAGE_COUNT}
+        </span>
       </nav>
     </>
   );
