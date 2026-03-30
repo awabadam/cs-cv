@@ -123,6 +123,15 @@ const caseStudies = [
   },
 ];
 
+const socialLinks = [
+  { label: "Instagram", url: "https://instagram.com/awabeladam", display: "@awabeladam" },
+  { label: "GitHub", url: "https://github.com/awabeladam", display: "awabeladam" },
+  { label: "Behance", url: "https://behance.net/awabelkhalil", display: "awabelkhalil" },
+  { label: "500px", url: "https://500px.com/p/AwabAdam", display: "AwabAdam" },
+  { label: "Facebook", url: "https://facebook.com/awabeladam", display: "awabeladam" },
+  { label: "Linktree", url: "https://linktr.ee/awabelkhalil", display: "awabelkhalil" },
+];
+
 const pageLabels = ["Cover", "Story", "Experience", "Expertise", "Work", "Contact"];
 const PAGE_COUNT = pageLabels.length;
 
@@ -241,7 +250,7 @@ function HorizontalCV() {
               <hr className="rule-thin mb-[3px]" />
               <hr className="rule-thick mb-8" />
 
-              <h1 className="masthead-title text-[5rem] md:text-[7rem] lg:text-[9rem] mb-2">
+              <h1 className="masthead-title text-[2.8rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] mb-2">
                 Awab
                 <br />
                 Elkhalil
@@ -290,14 +299,14 @@ function HorizontalCV() {
 
         {/* ═══ PAGE 2 — THE JOURNEY ═══ */}
         <section className="paper-page">
-          <div className="flex h-full">
+          <div className="flex flex-col md:flex-row h-full">
             {/* Left — large title + timeline */}
-            <div className="flex-1 flex flex-col justify-between px-8 pt-10 pb-4 border-r border-rule-light">
+            <div className="flex-none md:flex-1 flex flex-col justify-between px-6 md:px-8 py-6 md:pt-10 md:pb-4 md:border-r border-rule-light">
               <div>
                 <div className="section-label text-ink-lighter mb-1">The Journey</div>
                 <hr className="rule-thick mb-6" />
 
-                <h2 className="masthead-title text-[3rem] md:text-[4rem] lg:text-[5rem] leading-[0.85] mb-6">
+                <h2 className="masthead-title text-[2.2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5rem] leading-[0.85] mb-6">
                   Khar<br/>toum<br/>
                   <span className="text-accent">to</span><br/>
                   Istan<br/>bul
@@ -330,9 +339,9 @@ function HorizontalCV() {
             </div>
 
             {/* Right — stacked editorial blocks */}
-            <div className="flex-1 flex flex-col px-8 pt-10 pb-4 overflow-y-auto">
+            <div className="flex-1 flex flex-col px-6 md:px-8 pt-6 md:pt-10 pb-4 overflow-y-auto">
               {/* Top — full-width image */}
-              <div className="img-placeholder w-full h-[28rem] mb-2">
+              <div className="img-placeholder w-full h-[14rem] md:h-[28rem] mb-2">
                 collage: sudan work &rarr; istanbul work
               </div>
               <p className="dateline text-ink-lighter text-[0.6rem] mb-5 flex justify-between">
@@ -342,8 +351,8 @@ function HorizontalCV() {
               </p>
 
               {/* Middle — text in two columns */}
-              <div className="grid grid-cols-2 gap-x-6 flex-1">
-                <div className="border-r border-rule-light pr-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 flex-1">
+                <div className="md:border-r border-rule-light md:pr-6">
                   <p className="drop-cap justify-editorial text-ink-light leading-[1.8]">
                     It started in Khartoum&thinsp;&mdash;&thinsp;designing logos
                     and event materials at icare-net, where I first touched web
@@ -379,18 +388,18 @@ function HorizontalCV() {
 
         {/* ═══ PAGE 3 — EXPERIENCE (columns) ═══ */}
         <section className="paper-page">
-          <div className="flex h-full">
+          <div className="flex flex-col md:flex-row h-full">
             {/* Left half — section title */}
-            <div className="flex-1 flex flex-col justify-center items-center px-8 border-r border-rule-light">
-              <h2 className="masthead-title text-[5rem] md:text-[7rem] lg:text-[9rem] text-center leading-[0.82] tracking-[0.05em]">
-                Pro<br/>fess<br/>ional<br/><span className="text-accent">Expe<br/>rience</span>
+            <div className="flex-none md:flex-1 flex flex-col justify-center items-center px-6 md:px-8 py-6 md:py-0 md:border-r border-rule-light">
+              <h2 className="masthead-title text-[2.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] text-center leading-[0.82] tracking-[0.05em]">
+                Pro<br className="hidden md:block"/>fess<br className="hidden md:block"/>ional<br/><span className="text-accent">Expe<br className="hidden md:block"/>rience</span>
               </h2>
             </div>
 
             {/* Right half — content in columns */}
-            <div className="flex-1 grid grid-cols-2 gap-x-8 overflow-y-auto" style={{ height: '100%', padding: '2.5rem 2rem 1rem' }}>
+            <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-8 overflow-y-auto" style={{ height: '100%', padding: '1.5rem 1.25rem 1rem' }}>
               {/* Column 1 */}
-              <div className="border-r border-rule-light pr-8">
+              <div className="md:border-r border-rule-light md:pr-8">
                 {experience.slice(0, 3).map((job, i) => (
                   <div key={i} className="mb-5">
                     <div className="flex justify-between items-baseline gap-x-3 mb-[2px]">
@@ -440,10 +449,10 @@ function HorizontalCV() {
 
         {/* ═══ PAGE 4 — EXPERTISE & EDUCATION ═══ */}
         <section className="paper-page">
-          <div className="flex h-full">
+          <div className="flex flex-col md:flex-row h-full">
             {/* Left — big title + education + languages */}
-            <div className="w-[38%] flex flex-col border-r border-rule-light px-10 pt-8 pb-14">
-              <h2 className="masthead-title text-[4.5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.82] mb-8">
+            <div className="w-full md:w-[38%] flex-none md:flex-col flex flex-col md:border-r border-rule-light px-6 md:px-10 py-6 md:pt-8 md:pb-14">
+              <h2 className="masthead-title text-[2.5rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.82] mb-4 md:mb-8">
                 Exper<br/><span className="text-accent">tise</span>
               </h2>
 
@@ -476,7 +485,7 @@ function HorizontalCV() {
             </div>
 
             {/* Right — two columns of skills, magazine index style */}
-            <div className="w-[62%] grid grid-cols-2 h-full">
+            <div className="w-full md:w-[62%] grid grid-cols-1 md:grid-cols-2 h-full overflow-y-auto">
               {/* Design column */}
               <div className="border-r border-rule-light px-8 pt-8 pb-14 overflow-y-auto">
                 <div className="section-label text-accent mb-1 tracking-[0.3em]">Design</div>
@@ -527,9 +536,9 @@ function HorizontalCV() {
 
         {/* ═══ PAGE 5 — SELECTED WORK ═══ */}
         <section className="paper-page">
-          <div className="flex h-full">
+          <div className="flex flex-col md:flex-row h-full">
             {/* Left — title */}
-            <div className="w-[30%] flex flex-col justify-between border-r border-rule-light px-8 pt-8 pb-14">
+            <div className="w-full md:w-[30%] flex-none md:flex-col flex flex-col justify-between md:border-r border-rule-light px-6 md:px-8 py-6 md:pt-8 md:pb-14">
               <div>
                 <div className="section-label text-ink-lighter mb-1">Selected</div>
                 <h2 className="masthead-title text-[4rem] md:text-[5rem] lg:text-[6.5rem] leading-[0.82] mb-6">
@@ -548,7 +557,7 @@ function HorizontalCV() {
 
             {/* Right — three case studies side by side */}
             {/* Bento grid — diagonal */}
-            <div className="w-[70%] grid h-full gap-0" style={{ gridTemplateColumns: "1.2fr 1fr", gridTemplateRows: "1.1fr 0.9fr" }}>
+            <div className="w-full md:w-[70%] bento-grid">
               {caseStudies.map((study, i) => {
                 const isLarge = i === 0 || i === 3;
                 const borders = [
@@ -626,74 +635,103 @@ function HorizontalCV() {
 
         {/* ═══ PAGE 6 — CONTACT ═══ */}
         <section className="paper-page">
-          <div className="page-inner-single">
-            <div className="w-full max-w-lg">
-              <div className="section-label text-ink-lighter mb-1">
-                Enquiries
+          <div className="flex flex-col md:flex-row h-full">
+            {/* Left — large title */}
+            <div className="flex-none md:flex-1 flex flex-col justify-between px-6 md:px-8 py-6 md:pt-10 md:pb-14 md:border-r border-rule-light">
+              <div>
+                <div className="section-label text-ink-lighter mb-1">Enquiries</div>
+                <hr className="rule-thick mb-6" />
+                <h2 className="masthead-title text-[4rem] md:text-[5.5rem] lg:text-[7rem] leading-[0.82] mb-6">
+                  Let&apos;s<br/><span className="text-accent">Build</span><br/>Some<br/>thing
+                </h2>
               </div>
+              <div>
+                <p className="justify-editorial text-ink-light leading-[1.7] text-[0.9rem] mb-4">
+                  Open to commissions, collaborations, and full-time
+                  opportunities. If you need someone who obsesses over the
+                  details until the work is right&thinsp;&mdash;&thinsp;let&rsquo;s talk.
+                </p>
+                <hr className="rule-ornament" />
+              </div>
+            </div>
+
+            {/* Right — contact + social + colophon */}
+            <div className="flex-1 flex flex-col px-6 md:px-8 pt-6 md:pt-10 pb-14 overflow-y-auto">
+              {/* Primary contact */}
+              <div className="section-label text-accent mb-1 tracking-[0.3em]">Contact</div>
               <hr className="rule-thick mb-5" />
 
-              <h3 className="font-headline text-[2.5rem] font-bold leading-[1.1] mb-4 tracking-[-0.01em]">
-                Let&apos;s build
-                <br />
-                something.
-              </h3>
-
-              <p className="text-ink-light font-serif leading-[1.7] mb-8 text-[0.95rem]">
-                Open to commissions, collaborations, and full-time opportunities.
-                If you need someone who obsesses over the details until the work
-                is right&thinsp;&mdash;&thinsp;let&rsquo;s talk.
-              </p>
-
-              <dl className="space-y-5 font-serif text-[0.95rem] mb-10">
+              <dl className="space-y-4 font-serif text-[0.95rem] mb-8">
                 <div>
-                  <dt className="dateline text-ink-lighter text-[0.7rem]">Email</dt>
+                  <dt className="dateline text-ink-lighter text-[0.68rem]">Email</dt>
                   <dd>
-                    <a href="mailto:awabe.adam@gmail.com" className="text-lg">
+                    <a href="mailto:awabe.adam@gmail.com" className="text-[1.05rem]">
                       awabe.adam@gmail.com
                     </a>
                   </dd>
                 </div>
                 <div>
-                  <dt className="dateline text-ink-lighter text-[0.7rem]">Telephone</dt>
-                  <dd className="text-lg">+90 554 175 9945</dd>
+                  <dt className="dateline text-ink-lighter text-[0.68rem]">Telephone</dt>
+                  <dd className="text-[1.05rem]">+90 554 175 9945</dd>
                 </div>
                 <div>
-                  <dt className="dateline text-ink-lighter text-[0.7rem]">LinkedIn</dt>
+                  <dt className="dateline text-ink-lighter text-[0.68rem]">LinkedIn</dt>
                   <dd>
-                    <a href="https://www.linkedin.com/in/awab-adam" target="_blank" rel="noopener noreferrer" className="text-lg">
+                    <a href="https://www.linkedin.com/in/awab-adam" target="_blank" rel="noopener noreferrer" className="text-[1.05rem]">
                       linkedin.com/in/awab-adam
                     </a>
                   </dd>
                 </div>
                 <div>
-                  <dt className="dateline text-ink-lighter text-[0.7rem]">Portfolio</dt>
+                  <dt className="dateline text-ink-lighter text-[0.68rem]">Portfolio</dt>
                   <dd>
-                    <a href="https://awab.design" target="_blank" rel="noopener noreferrer" className="text-lg">
+                    <a href="https://awab.design" target="_blank" rel="noopener noreferrer" className="text-[1.05rem]">
                       awab.design
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="dateline text-ink-lighter text-[0.7rem]">Links</dt>
-                  <dd>
-                    <a href="https://linktr.ee/awabelkhalil" target="_blank" rel="noopener noreferrer" className="text-lg">
-                      linktr.ee/awabelkhalil
                     </a>
                   </dd>
                 </div>
               </dl>
 
-              <hr className="rule-thick mb-[3px]" />
-              <hr className="rule-thin mb-3" />
-              <p className="text-ink-lighter text-[0.7rem] leading-[1.6] justify-editorial mb-2">
-                This document was typeset in Playfair Display and EB&nbsp;Garamond.
-                Designed and developed by Awab Elkhalil using Next.js and
-                Tailwind&nbsp;CSS. Set in Istanbul, Türkiye.
-              </p>
-              <div className="flex justify-between items-center text-ink-lighter dateline text-[0.7rem]">
-                <span>&copy; {new Date().getFullYear()} Awab Elkhalil</span>
-                <span>All rights reserved</span>
+              {/* Social links — numbered index */}
+              <div className="section-label text-accent mb-1 tracking-[0.3em]">Elsewhere</div>
+              <hr className="rule-thick mb-5" />
+
+              {socialLinks.map((link, i) => (
+                <a
+                  key={link.label}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-3 py-3 border-b border-rule-faint border-none"
+                >
+                  <span className="font-headline text-[1.8rem] font-bold leading-none text-paper-edge group-hover:text-accent transition-colors">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="pt-0.5">
+                    <p className="font-headline font-bold text-[0.95rem] leading-tight group-hover:text-accent transition-colors">
+                      {link.label}
+                    </p>
+                    <p className="dateline text-ink-lighter text-[0.6rem]">
+                      {link.display}
+                    </p>
+                  </div>
+                </a>
+              ))}
+
+              {/* Colophon */}
+              <div className="mt-auto pt-6">
+                <hr className="rule-thick mb-[3px]" />
+                <hr className="rule-thin mb-3" />
+                <p className="text-ink-lighter text-[0.7rem] leading-[1.6] justify-editorial mb-2">
+                  This document was typeset in Playfair Display and
+                  Cormorant&nbsp;Garamond. Designed and developed by Awab
+                  Elkhalil using Next.js and Tailwind&nbsp;CSS. Set in
+                  Istanbul, Türkiye.
+                </p>
+                <div className="flex justify-between items-center text-ink-lighter dateline text-[0.7rem]">
+                  <span>&copy; {new Date().getFullYear()} Awab Elkhalil</span>
+                  <span>All rights reserved</span>
+                </div>
               </div>
             </div>
           </div>
@@ -704,7 +742,7 @@ function HorizontalCV() {
       </div>
 
       {/* Page indicator */}
-      <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4 bg-paper-page/90 backdrop-blur-sm px-5 py-2.5 border border-rule-faint" style={{ boxShadow: '0 2px 8px rgba(20,20,10,0.08)' }}>
+      <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 md:gap-4 bg-paper-page/90 backdrop-blur-sm px-3 md:px-5 py-2 md:py-2.5 border border-rule-faint" style={{ boxShadow: '0 2px 8px rgba(20,20,10,0.08)' }}>
         <button
           onClick={() => goToPage(Math.max(currentPage - 1, 0))}
           className="text-ink-lighter hover:text-ink border-none bg-transparent cursor-pointer dateline transition-colors text-sm"
@@ -713,19 +751,23 @@ function HorizontalCV() {
           &larr;
         </button>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 md:gap-2">
           {pageLabels.map((label, i) => (
             <button
               key={i}
               onClick={() => goToPage(i)}
-              className={`border-none cursor-pointer transition-all duration-300 section-label text-[0.6rem] px-1.5 py-0.5 ${
+              className={`border-none cursor-pointer transition-all duration-300 ${
                 currentPage === i
                   ? "bg-ink text-paper-page"
                   : "bg-transparent text-ink-lighter hover:text-ink"
               }`}
               aria-label={`Go to ${label}`}
             >
-              {label}
+              {/* Label on desktop, dot on mobile */}
+              <span className="hidden md:inline section-label text-[0.6rem] px-1.5 py-0.5">{label}</span>
+              <span className={`md:hidden block rounded-full transition-all ${
+                currentPage === i ? "w-4 h-1.5 bg-ink" : "w-1.5 h-1.5 bg-rule-light"
+              }`} />
             </button>
           ))}
         </div>

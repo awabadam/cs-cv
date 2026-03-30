@@ -131,21 +131,7 @@ html, body {
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
-  .cover-split {
-    flex-direction: column;
-  }
-  .cover-left {
-    flex: none;
-    padding: 2rem 1.5rem;
-    border-right: none;
-    border-bottom: 1px solid var(--rule-light);
-  }
-  .cover-right {
-    flex: 1;
-    min-height: 40vh;
-  }
-}
+/* Cover mobile override moved to consolidated block below */
 
 /* ══ Layout: inner content with columns ══ */
 .page-inner {
@@ -328,15 +314,74 @@ body::after {
   z-index: 0;
 }
 
+/* ══ Bento grid ══ */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: 1.1fr 0.9fr;
+  height: 100%;
+  gap: 0;
+}
+
 /* ══ Mobile ══ */
 @media (max-width: 768px) {
+  /* Base overrides */
+  .paper-page {
+    overflow-y: auto;
+    padding-bottom: 4rem;
+  }
+
+  .masthead-title {
+    font-size: 2.8rem !important;
+    letter-spacing: 0.02em !important;
+  }
+
   .page-inner {
     padding: 1.5rem 1.25rem 3rem;
     column-width: 280px;
     column-gap: 1.5rem;
   }
+
   .page-inner-single {
     padding: 1.5rem 1.25rem 3rem;
+  }
+
+  /* Cover */
+  .cover-split {
+    flex-direction: column;
+  }
+  .cover-left {
+    flex: none;
+    padding: 2rem 1.5rem;
+    border-right: none;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .cover-right {
+    flex: 1;
+    min-height: 40vh;
+  }
+
+  /* Typography scaling */
+  .pull-quote {
+    font-size: 1em;
+    padding-left: 0.8em;
+  }
+  .pull-quote::before {
+    font-size: 2em;
+  }
+  .drop-cap::first-letter {
+    font-size: 3em;
+  }
+
+  /* Folio */
+  .folio {
+    bottom: 4rem;
+  }
+
+  /* Bento grid — stack */
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
 }
 

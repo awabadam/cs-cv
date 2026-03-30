@@ -222,9 +222,9 @@ export default async function CaseStudyPage({
         )}
 
         {/* Title block */}
-        <div className="flex gap-8 items-end">
+        <div className="flex gap-4 md:gap-8 items-end">
           <span
-            className="font-headline text-[8rem] font-bold leading-none text-paper-edge"
+            className="font-headline text-[4rem] md:text-[8rem] font-bold leading-none text-paper-edge"
             style={{ marginBottom: "-0.1em" }}
           >
             {study.number}
@@ -248,7 +248,7 @@ export default async function CaseStudyPage({
       {/* Content area */}
       <div className="max-w-[1200px] mx-auto">
         {/* Role + Lede — two column */}
-        <div className="grid grid-cols-[1fr_2fr] gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 md:gap-12 mb-12">
           <div>
             <div className="section-label text-ink-lighter mb-1">Role</div>
             <hr className="rule-thick mb-3" />
