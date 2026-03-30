@@ -335,9 +335,9 @@ function HorizontalCV() {
                 then shaped until it works on its own terms.&ensp;&rdquo;
               </p>
 
-              <hr className="rule-ornament mb-4" />
+              <hr data-anim="fade" data-anim-d="6" className="rule-ornament mb-4" />
 
-              <div className="flex justify-between text-ink-lighter dateline text-[0.72rem]">
+              <div data-anim="fade" data-anim-d="6" className="flex justify-between text-ink-lighter dateline text-[0.72rem]">
                 <span>Arabic &bull; English &bull; Turkish</span>
                 <span>Istanbul Edition</span>
               </div>
@@ -345,7 +345,7 @@ function HorizontalCV() {
 
             {/* Right half — full-height portrait */}
             <div className="cover-right">
-              <div className="img-placeholder w-full h-full">
+              <div data-anim="reveal" data-anim-d="3" className="img-placeholder w-full h-full">
                 portrait photograph
               </div>
             </div>
@@ -371,22 +371,22 @@ function HorizontalCV() {
 
               {/* Timeline markers */}
               <div className="space-y-3 mb-4">
-                <div className="flex items-center gap-3">
+                <div data-anim="slide-up" data-anim-d="2" className="flex items-center gap-3">
                   <span className="dateline text-ink-lighter w-12">2016</span>
                   <hr className="rule-light flex-1" />
                   <span className="text-ink-light text-[0.85rem]">First design role</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div data-anim="slide-up" data-anim-d="3" className="flex items-center gap-3">
                   <span className="dateline text-ink-lighter w-12">2019</span>
                   <hr className="rule-light flex-1" />
                   <span className="text-ink-light text-[0.85rem]">Co-founded Sequence</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div data-anim="slide-up" data-anim-d="4" className="flex items-center gap-3">
                   <span className="dateline text-accent w-12 font-bold">2020</span>
                   <hr className="rule-thick flex-1" />
                   <span className="text-ink font-bold text-[0.85rem]">Moved to Istanbul</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div data-anim="slide-up" data-anim-d="5" className="flex items-center gap-3">
                   <span className="dateline text-ink-lighter w-12">2025</span>
                   <hr className="rule-light flex-1" />
                   <span className="text-ink-light text-[0.85rem]">Shifted to web dev</span>
@@ -457,16 +457,16 @@ function HorizontalCV() {
               {/* Column 1 */}
               <div className="md:border-r border-rule-light md:pr-8">
                 {experience.slice(0, 3).map((job, i) => (
-                  <div key={i} className="mb-5">
+                  <div key={i} data-anim="slide-up" data-anim-d={String(i + 2)} className="mb-5 group pl-0 border-l-2 border-transparent hover:border-accent hover:pl-3 transition-all duration-300">
                     <div className="flex justify-between items-baseline gap-x-3 mb-[2px]">
-                      <h3 className="font-headline text-[1rem] font-bold leading-tight tracking-[-0.005em]">
+                      <h3 className="font-headline text-[1rem] font-bold leading-tight tracking-[-0.005em] group-hover:text-accent transition-colors">
                         {job.role}
                       </h3>
-                      <span className="dateline text-ink-lighter whitespace-nowrap">
+                      <span className="dateline text-ink-lighter whitespace-nowrap group-hover:translate-x-1 transition-transform">
                         {job.period}
                       </span>
                     </div>
-                    <p className="text-ink-lighter font-serif text-[0.8rem] mb-2 tracking-wide">
+                    <p className="text-ink-lighter font-serif text-[0.8rem] mb-2 tracking-wide opacity-70 group-hover:opacity-100 transition-opacity">
                       {job.company}&ensp;&middot;&ensp;{job.location}
                     </p>
                     <p className="justify-editorial text-ink-light leading-[1.6] text-[0.9rem]">
@@ -479,16 +479,16 @@ function HorizontalCV() {
               {/* Column 2 */}
               <div>
                 {experience.slice(3).map((job, i) => (
-                  <div key={i} className="mb-5">
+                  <div key={i} data-anim="slide-up" data-anim-d={String(i + 2)} className="mb-5 group pl-0 border-l-2 border-transparent hover:border-accent hover:pl-3 transition-all duration-300">
                     <div className="flex justify-between items-baseline gap-x-3 mb-[2px]">
-                      <h3 className="font-headline text-[1rem] font-bold leading-tight tracking-[-0.005em]">
+                      <h3 className="font-headline text-[1rem] font-bold leading-tight tracking-[-0.005em] group-hover:text-accent transition-colors">
                         {job.role}
                       </h3>
-                      <span className="dateline text-ink-lighter whitespace-nowrap">
+                      <span className="dateline text-ink-lighter whitespace-nowrap group-hover:translate-x-1 transition-transform">
                         {job.period}
                       </span>
                     </div>
-                    <p className="text-ink-lighter font-serif text-[0.8rem] mb-2 tracking-wide">
+                    <p className="text-ink-lighter font-serif text-[0.8rem] mb-2 tracking-wide opacity-70 group-hover:opacity-100 transition-opacity">
                       {job.company}&ensp;&middot;&ensp;{job.location}
                     </p>
                     <p className="justify-editorial text-ink-light leading-[1.6] text-[0.9rem]">
@@ -627,6 +627,8 @@ function HorizontalCV() {
                   <Link
                     key={study.slug}
                     href={`/case-studies/${study.slug}`}
+                    data-anim="scale-in"
+                    data-anim-d={String(i < 2 ? i + 2 : i + 1)}
                     className={`border-none group relative overflow-hidden ${borders} transition-all duration-500 hover:bg-paper-edge/40`}
                     style={{ perspective: "800px" }}
                     onMouseMove={(e) => {
@@ -644,7 +646,7 @@ function HorizontalCV() {
                   >
                     {/* Background number */}
                     <span
-                      className="absolute font-headline font-bold leading-none text-paper-edge transition-all duration-500 group-hover:text-rule-light group-hover:scale-110"
+                      className={`absolute font-headline font-bold leading-none text-paper-edge transition-all duration-500 group-hover:text-rule-light group-hover:scale-110 bento-float-${i + 1}`}
                       style={{
                         fontSize: isLarge ? "12rem" : "8rem",
                         right: i % 2 === 0 ? "-0.5rem" : "auto",
@@ -731,7 +733,7 @@ function HorizontalCV() {
               <hr className="rule-thick mb-5" />
 
               <dl className="space-y-4 font-serif text-[0.95rem] mb-8">
-                <div>
+                <div data-anim="slide-up" data-anim-d="2">
                   <dt className="dateline text-ink-lighter text-[0.68rem]">Email</dt>
                   <dd>
                     <a href="mailto:awabe.adam@gmail.com" className="text-[1.05rem]">
@@ -739,11 +741,11 @@ function HorizontalCV() {
                     </a>
                   </dd>
                 </div>
-                <div>
+                <div data-anim="slide-up" data-anim-d="3">
                   <dt className="dateline text-ink-lighter text-[0.68rem]">Telephone</dt>
                   <dd className="text-[1.05rem]">+90 554 175 9945</dd>
                 </div>
-                <div>
+                <div data-anim="slide-up" data-anim-d="4">
                   <dt className="dateline text-ink-lighter text-[0.68rem]">LinkedIn</dt>
                   <dd>
                     <a href="https://www.linkedin.com/in/awab-adam" target="_blank" rel="noopener noreferrer" className="text-[1.05rem]">
@@ -751,7 +753,7 @@ function HorizontalCV() {
                     </a>
                   </dd>
                 </div>
-                <div>
+                <div data-anim="slide-up" data-anim-d="5">
                   <dt className="dateline text-ink-lighter text-[0.68rem]">Portfolio</dt>
                   <dd>
                     <a href="https://awab.design" target="_blank" rel="noopener noreferrer" className="text-[1.05rem]">
@@ -771,12 +773,14 @@ function HorizontalCV() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-anim="slide-up"
+                  style={{ transitionDelay: `${0.4 + i * 0.08}s` }}
                   className="group flex items-start gap-3 py-3 border-b border-rule-faint border-none"
                 >
-                  <span className="font-headline text-[1.8rem] font-bold leading-none text-paper-edge group-hover:text-accent transition-colors">
+                  <span className="font-headline text-[1.8rem] font-bold leading-none text-paper-edge group-hover:text-accent group-hover:-translate-y-0.5 group-hover:scale-110 transition-all duration-300">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <div className="pt-0.5">
+                  <div className="pt-0.5 group-hover:translate-x-1 transition-transform duration-300">
                     <p className="font-headline font-bold text-[0.95rem] leading-tight group-hover:text-accent transition-colors">
                       {link.label}
                     </p>
@@ -788,7 +792,7 @@ function HorizontalCV() {
               ))}
 
               {/* Colophon */}
-              <div className="mt-auto pt-6">
+              <div data-anim="fade" data-anim-d="6" className="mt-auto pt-6">
                 <hr className="rule-thick mb-[3px]" />
                 <hr className="rule-thin mb-3" />
                 <p className="text-ink-lighter text-[0.7rem] leading-[1.6] justify-editorial mb-2">

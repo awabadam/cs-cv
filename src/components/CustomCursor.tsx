@@ -5,16 +5,21 @@ import { useEffect, useRef, useState } from "react";
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLSpanElement>(null);
-  const [visible, setVisible] = useState(false);
-  const [hovering, setHovering] = useState(false);
-  const [cardHover, setCardHover] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
   const pos = useRef({ x: 0, y: 0 });
   const target = useRef({ x: 0, y: 0 });
+  const rotation = useRef(0);
+  const targetRotation = useRef(0);
+  const scale = useRef(1);
+  const targetScale = useRef(1);
+  const labelOpacity = useRef(0);
+  const targetLabelOpacity = useRef(0);
 
   useEffect(() => {
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
-    setVisible(true);
+    setMounted(true);
     document.body.classList.add("custom-cursor-active");
 
     const onMove = (e: MouseEvent) => {
@@ -25,24 +30,36 @@ export default function CustomCursor() {
       const isInteractive = !!el.closest(
         "a, button, [role='button'], input, textarea, select"
       );
-      setCardHover(isCard);
-      setHovering(isInteractive || isCard);
+
+      targetRotation.current = isInteractive || isCard ? 45 : 0;
+      targetScale.current = isInteractive || isCard ? 1.3 : 1;
+      targetLabelOpacity.current = isCard ? 1 : 0;
     };
 
-    const onLeave = () => setVisible(false);
-    const onEnter = () => setVisible(true);
+    let visible = true;
+    const onLeave = () => { visible = false; };
+    const onEnter = () => { visible = true; };
 
     let raf: number;
     const animate = () => {
+      // Smooth position
       pos.current.x += (target.current.x - pos.current.x) * 0.15;
       pos.current.y += (target.current.y - pos.current.y) * 0.15;
 
+      // Smooth rotation & scale
+      rotation.current += (targetRotation.current - rotation.current) * 0.12;
+      scale.current += (targetScale.current - scale.current) * 0.12;
+      labelOpacity.current += (targetLabelOpacity.current - labelOpacity.current) * 0.1;
+
       if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate(${pos.current.x}px, ${pos.current.y}px) rotate(${hovering ? 45 : 0}deg) scale(${hovering ? 1.3 : 1})`;
+        cursorRef.current.style.transform = `translate(${pos.current.x - 12}px, ${pos.current.y - 12}px) rotate(${rotation.current}deg) scale(${scale.current})`;
+        cursorRef.current.style.opacity = visible ? "1" : "0";
       }
       if (labelRef.current) {
-        labelRef.current.style.transform = `translate(${pos.current.x}px, ${pos.current.y + 20}px)`;
+        labelRef.current.style.transform = `translate(${pos.current.x - 10}px, ${pos.current.y + 18}px)`;
+        labelRef.current.style.opacity = String(labelOpacity.current);
       }
+
       raf = requestAnimationFrame(animate);
     };
     raf = requestAnimationFrame(animate);
@@ -58,50 +75,28 @@ export default function CustomCursor() {
       document.removeEventListener("mouseenter", onEnter);
       document.body.classList.remove("custom-cursor-active");
     };
-  }, [hovering]);
+  }, []);
 
-  if (!visible) return null;
+  if (!mounted) return null;
 
   return (
     <>
-      {/* Crosshair */}
       <div
         ref={cursorRef}
         className="fixed top-0 left-0 pointer-events-none"
-        style={{
-          zIndex: 9998,
-          mixBlendMode: "difference",
-          marginLeft: -12,
-          marginTop: -12,
-          transition: "rotate 0.3s cubic-bezier(0.22, 1, 0.36, 1), scale 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
-        }}
+        style={{ zIndex: 9998, mixBlendMode: "difference" }}
       >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <line x1="12" y1="0" x2="12" y2="24" stroke="white" strokeWidth="1" />
-          <line x1="0" y1="12" x2="24" y2="12" stroke="white" strokeWidth="1" />
-          {/* Small center dot for precision */}
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <line x1="12" y1="1" x2="12" y2="23" stroke="white" strokeWidth="1" />
+          <line x1="1" y1="12" x2="23" y2="12" stroke="white" strokeWidth="1" />
           <circle cx="12" cy="12" r="1.5" fill="white" />
         </svg>
       </div>
 
-      {/* "VIEW" label for card hovers */}
       <span
         ref={labelRef}
-        className="fixed top-0 left-0 pointer-events-none section-label text-[0.55rem] tracking-[0.3em]"
-        style={{
-          zIndex: 9998,
-          mixBlendMode: "difference",
-          color: "white",
-          opacity: cardHover ? 1 : 0,
-          transition: "opacity 0.2s ease",
-          marginLeft: -10,
-        }}
+        className="fixed top-0 left-0 pointer-events-none section-label text-[0.5rem] tracking-[0.3em]"
+        style={{ zIndex: 9998, mixBlendMode: "difference", color: "white" }}
       >
         View
       </span>

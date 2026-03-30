@@ -418,6 +418,42 @@ body::after {
   50% { opacity: 0.65; }
 }
 
+/* ══ Floating numbers (case study cards) ══ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.paper-page[data-active="true"] .bento-float-1 { animation: float 4s ease-in-out infinite; }
+.paper-page[data-active="true"] .bento-float-2 { animation: float 4s ease-in-out 1s infinite; }
+.paper-page[data-active="true"] .bento-float-3 { animation: float 4s ease-in-out 2s infinite; }
+.paper-page[data-active="true"] .bento-float-4 { animation: float 4s ease-in-out 3s infinite; }
+
+/* ══ Folio breathing ══ */
+.paper-page[data-active="true"] .folio {
+  animation: folio-breathe 4s ease-in-out infinite;
+}
+
+@keyframes folio-breathe {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.75; }
+}
+
+/* ══ Global hover refinements ══ */
+a {
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+a:hover {
+  transform: translateX(2px);
+}
+
+.section-label {
+  transition: letter-spacing 0.4s ease, color 0.3s;
+}
+.section-label:hover {
+  letter-spacing: 0.25em;
+}
+
 /* ══ Bento grid ══ */
 .bento-grid {
   display: grid;

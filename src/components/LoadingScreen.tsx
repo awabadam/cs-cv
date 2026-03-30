@@ -7,6 +7,13 @@ export default function LoadingScreen() {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
+    // Skip loading screen when navigating back from case study
+    if (window.location.search.includes("page=")) {
+      setLoaded(true);
+      setHidden(true);
+      return;
+    }
+
     const start = Date.now();
     document.fonts.ready.then(() => {
       const elapsed = Date.now() - start;
