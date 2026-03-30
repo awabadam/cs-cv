@@ -7,7 +7,20 @@ const fontUrl =
 export const metadata: Metadata = {
   title: "Awab Elkhalil — Designer & Developer",
   description:
-    "Portfolio and CV of Awab Elkhalil, designer and developer creating data-driven website solutions for dental and tourism agencies.",
+    "Portfolio and CV of Awab Elkhalil, digital artisan creating data-driven website solutions. Based in Istanbul.",
+  openGraph: {
+    title: "Awab Elkhalil — Designer & Developer",
+    description:
+      "Digital artisan. One designer. Two brands. Five years. Every pixel.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Awab Elkhalil — Designer & Developer",
+    description:
+      "Digital artisan. One designer. Two brands. Five years. Every pixel.",
+  },
 };
 
 export default function RootLayout({
