@@ -41,7 +41,7 @@ export default function PageNav({ currentPage, goToPage, pageLabels, PAGE_COUNT 
                 {label}
               </span>
               {/* Active underline */}
-              <span className={`hidden md:block absolute bottom-0 left-1/2 h-[1px] bg-ink transition-all duration-500 cubic-bezier(0.22, 1, 0.36, 1) ${
+              <span className={`hidden md:block absolute bottom-0 left-1/2 h-[1px] bg-ink transition-all duration-700 ease ${
                 currentPage === i ? "w-full -translate-x-1/2" : "w-0 -translate-x-1/2"
               }`} />
               {/* Mobile dot */}

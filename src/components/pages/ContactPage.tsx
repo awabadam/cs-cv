@@ -78,10 +78,10 @@ export default function ContactPage({ isActive, style }: ContactPageProps) {
               style={{ transitionDelay: `${0.4 + i * 0.08}s` }}
               className="group flex items-start gap-3 py-3 border-b border-rule-faint border-none"
             >
-              <span className="font-headline text-[1.2rem] md:text-[1.8rem] font-bold leading-none text-paper-edge group-hover:text-accent group-hover:-translate-y-0.5 group-hover:scale-105 transition-all duration-500" style={{ transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }}>
+              <span className="font-headline text-[1.2rem] md:text-[1.8rem] font-bold leading-none text-paper-edge group-hover:text-accent group-hover:-translate-y-0.5 group-hover:scale-105 transition-all duration-500" style={{ transitionTimingFunction: 'ease' }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <div className="pt-0.5 group-hover:translate-x-1 transition-transform duration-500" style={{ transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }}>
+              <div className="pt-0.5 group-hover:translate-x-1 transition-transform duration-500" style={{ transitionTimingFunction: 'ease' }}>
                 <p className="font-headline font-bold text-[0.95rem] leading-tight group-hover:text-accent transition-colors">
                   {link.label}
                 </p>

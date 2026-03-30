@@ -22,7 +22,7 @@ export default function MagneticButton({ children }: { children: React.ReactNode
       ref={ref}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      style={{ transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)" }}
+      style={{ transition: "transform 0.6s ease" }}
     >
       {children}
     </div>

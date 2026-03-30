@@ -10,7 +10,7 @@ interface ExperiencePageProps {
 function JobEntry({ job, index, isLast }: { job: typeof experience[0]; index: number; isLast: boolean }) {
   return (
     <div data-anim="slide-up" data-anim-d={String(index + 2)} className="mb-5 group relative pl-4">
-      <span className="absolute left-0 top-0 bottom-0 w-[2px] bg-accent scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" style={{ transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }} />
+      <span className="absolute left-0 top-0 bottom-0 w-[2px] bg-accent scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" style={{ transitionTimingFunction: 'ease' }} />
       <div className="flex justify-between items-baseline gap-x-3 mb-[2px]">
         <h3 className="font-headline text-[1rem] font-bold leading-tight tracking-[-0.005em] group-hover:text-accent transition-colors duration-300">
           {job.role}
