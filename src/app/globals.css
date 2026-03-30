@@ -459,9 +459,10 @@ body::after {
 
 /* ══ Mobile ══ */
 @media (max-width: 768px) {
-  /* Base overrides */
+  /* Base overrides — allow vertical scroll on mobile */
   .paper-page {
     overflow-y: auto;
+    overflow-x: hidden;
     padding-bottom: 4rem;
   }
 
