@@ -23,7 +23,7 @@ export default function CoverPage({ isActive, style, today }: CoverPageProps) {
 
           <ReactiveTitle
             lines={[{ text: "Awab" }, { text: "Elkhalil" }]}
-            className="text-[1.8rem] sm:text-[3rem] md:text-[6rem] lg:text-[9rem] mb-2"
+            className="text-[1.8rem] sm:text-[3rem] md:text-[6rem] lg:text-[8.5rem] mb-2"
           />
 
           <div data-anim="slide-up" data-anim-d="2" className="byline my-3">

@@ -15,14 +15,14 @@ interface ReactiveTitleProps {
 }
 
 interface LetterState {
+  cx: number;
+  cy: number;
   x: number;
   y: number;
   rot: number;
-  scale: number;
   targetX: number;
   targetY: number;
   targetRot: number;
-  targetScale: number;
 }
 
 export default function ReactiveTitle({
@@ -36,11 +36,33 @@ export default function ReactiveTitle({
   const states = useRef<LetterState[]>([]);
   const mouseRef = useRef({ x: -9999, y: -9999 });
   const rafRef = useRef<number>(0);
+  const rectsStale = useRef(true);
 
-  // Initialize states array when spans are set
+  const cacheRects = useCallback(() => {
+    // Temporarily reset all transforms so rects are accurate
+    for (const span of spanRefs.current) {
+      if (span) span.style.transform = "";
+    }
+
+    // Force layout read
+    for (let i = 0; i < spanRefs.current.length; i++) {
+      const span = spanRefs.current[i];
+      if (!span || !states.current[i]) continue;
+      const rect = span.getBoundingClientRect();
+      states.current[i].cx = rect.left + rect.width / 2;
+      states.current[i].cy = rect.top + rect.height / 2;
+    }
+
+    rectsStale.current = false;
+  }, []);
+
   const ensureStates = useCallback((count: number) => {
     while (states.current.length < count) {
-      states.current.push({ x: 0, y: 0, rot: 0, scale: 1, targetX: 0, targetY: 0, targetRot: 0, targetScale: 1 });
+      states.current.push({
+        cx: 0, cy: 0,
+        x: 0, y: 0, rot: 0,
+        targetX: 0, targetY: 0, targetRot: 0,
+      });
     }
   }, []);
 
@@ -55,54 +77,52 @@ export default function ReactiveTitle({
       mouseRef.current = { x: -9999, y: -9999 };
     };
 
-    const lerp = 0.08; // Smooth factor — lower = smoother
+    const onResize = () => {
+      rectsStale.current = true;
+    };
+
+    // Cache rects after a short delay (let layout settle)
+    const initTimeout = setTimeout(() => cacheRects(), 500);
+
+    const lerp = 0.06;
+    const maxDist = 140;
 
     const animate = () => {
+      if (rectsStale.current) cacheRects();
+
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
-      const maxDist = 130;
 
       for (let i = 0; i < spanRefs.current.length; i++) {
         const span = spanRefs.current[i];
-        const state = states.current[i];
-        if (!span || !state) continue;
+        const s = states.current[i];
+        if (!span || !s) continue;
 
-        const rect = span.getBoundingClientRect();
-        // Account for current transform offset
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
+        // Use cached center positions (offset by current transform)
+        const cx = s.cx + s.x;
+        const cy = s.cy + s.y;
         const dx = mx - cx;
         const dy = my - cy;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < maxDist && dist > 0) {
           const force = 1 - dist / maxDist;
-          state.targetX = -(dx / dist) * force * 12;
-          state.targetY = -(dy / dist) * force * 8;
-          state.targetRot = (dx > 0 ? -1 : 1) * force * 5;
-          state.targetScale = 1 + force * 0.06;
+          s.targetX = -(dx / dist) * force * 14;
+          s.targetY = -(dy / dist) * force * 9;
+          s.targetRot = (dx > 0 ? -1 : 1) * force * 6;
         } else {
-          state.targetX = 0;
-          state.targetY = 0;
-          state.targetRot = 0;
-          state.targetScale = 1;
+          s.targetX = 0;
+          s.targetY = 0;
+          s.targetRot = 0;
         }
 
-        // Lerp toward target
-        state.x += (state.targetX - state.x) * lerp;
-        state.y += (state.targetY - state.y) * lerp;
-        state.rot += (state.targetRot - state.rot) * lerp;
-        state.scale += (state.targetScale - state.scale) * lerp;
+        s.x += (s.targetX - s.x) * lerp;
+        s.y += (s.targetY - s.y) * lerp;
+        s.rot += (s.targetRot - s.rot) * lerp;
 
-        // Apply — skip if negligible to reduce paint
-        if (
-          Math.abs(state.x) > 0.05 ||
-          Math.abs(state.y) > 0.05 ||
-          Math.abs(state.rot) > 0.05 ||
-          Math.abs(state.scale - 1) > 0.001
-        ) {
-          span.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rot}deg) scale(${state.scale})`;
-        } else {
+        if (Math.abs(s.x) > 0.1 || Math.abs(s.y) > 0.1 || Math.abs(s.rot) > 0.1) {
+          span.style.transform = `translate(${s.x}px, ${s.y}px) rotate(${s.rot}deg)`;
+        } else if (span.style.transform) {
           span.style.transform = "";
         }
       }
@@ -112,14 +132,17 @@ export default function ReactiveTitle({
 
     rafRef.current = requestAnimationFrame(animate);
     window.addEventListener("mousemove", onMove);
+    window.addEventListener("resize", onResize);
     document.addEventListener("mouseleave", onLeave);
 
     return () => {
+      clearTimeout(initTimeout);
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("resize", onResize);
       document.removeEventListener("mouseleave", onLeave);
     };
-  }, []);
+  }, [cacheRects]);
 
   let idx = 0;
 
@@ -140,7 +163,7 @@ export default function ReactiveTitle({
               <span
                 key={i}
                 ref={(el) => { spanRefs.current[i] = el; }}
-                className={`inline-block ${line.accent ? "text-accent" : ""}`}
+                className={`inline-block will-change-transform ${line.accent ? "text-accent" : ""}`}
               >
                 {char}
               </span>
