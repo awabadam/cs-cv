@@ -29,11 +29,11 @@ function RiverObjects() {
   const objects = useMemo<FloatingObject[]>(() => {
     return Array.from({ length: OBJECT_COUNT }, (_, i) => {
       const t = i / OBJECT_COUNT;
-      const spread = 4;
+      const spread = 3;
       const pos = new THREE.Vector3(
-        4 - t * 10 + (Math.random() - 0.5) * spread,
-        4 - t * 8 + (Math.random() - 0.5) * spread,
-        (Math.random() - 0.5) * 5
+        6 - t * 14 + (Math.random() - 0.5) * spread,
+        5 - t * 12 + (Math.random() - 0.5) * spread,
+        -1 + (Math.random() - 0.5) * 3
       );
       return {
         position: pos.clone(),
@@ -44,13 +44,13 @@ function RiverObjects() {
           Math.random() * Math.PI * 2,
           Math.random() * Math.PI * 2
         ),
-        speed: 0.1 + Math.random() * 0.3,
+        speed: 0.4 + Math.random() * 0.6,
         rotSpeed: new THREE.Vector3(
           (Math.random() - 0.5) * 0.025,
           (Math.random() - 0.5) * 0.025,
           (Math.random() - 0.5) * 0.02
         ),
-        scale: 0.04 + Math.random() * 0.22,
+        scale: 0.15 + Math.random() * 0.45,
         shape: Math.floor(Math.random() * 6),
         color: COLORS[Math.floor(Math.random() * COLORS.length)],
         offset: Math.random() * Math.PI * 2,
@@ -71,9 +71,9 @@ function RiverObjects() {
     );
 
     objects.forEach((obj) => {
-      // Update flow position (the "real" path)
-      obj.flowPosition.x -= obj.speed * 0.007;
-      obj.flowPosition.y -= obj.speed * 0.005;
+      // Update flow position — strong diagonal top-right to bottom-left
+      obj.flowPosition.x -= obj.speed * 0.025;
+      obj.flowPosition.y -= obj.speed * 0.018;
 
       // Swirl on flow path
       obj.flowPosition.x += Math.sin(time * 0.35 + obj.offset) * 0.004;
@@ -114,10 +114,10 @@ function RiverObjects() {
       obj.position.z = obj.flowPosition.z + obj.displacement.z;
 
       // Respawn when off screen
-      if (obj.flowPosition.x < -7 || obj.flowPosition.y < -6) {
-        obj.flowPosition.x = 6 + Math.random() * 3;
-        obj.flowPosition.y = 5 + Math.random() * 3;
-        obj.flowPosition.z = (Math.random() - 0.5) * 5;
+      if (obj.flowPosition.x < -8 || obj.flowPosition.y < -7) {
+        obj.flowPosition.x = 8 + Math.random() * 4;
+        obj.flowPosition.y = 6 + Math.random() * 4;
+        obj.flowPosition.z = -1 + (Math.random() - 0.5) * 3;
         obj.displacement.set(0, 0, 0);
       }
     });
@@ -173,13 +173,13 @@ export default function ObjectRiver() {
   return (
     <div className="w-full h-full" style={{ background: "var(--paper-edge)" }}>
       <Canvas
-        camera={{ position: [0, 0, 7], fov: 50 }}
+        camera={{ position: [0, 0, 4.5], fov: 55 }}
         gl={{ antialias: true, alpha: true }}
         style={{ background: "transparent" }}
         dpr={[1, 1.5]}
       >
         <color attach="background" args={["#e8e2d4"]} />
-        <fog attach="fog" args={["#e8e2d4", 6, 14]} />
+        <fog attach="fog" args={["#e8e2d4", 3, 10]} />
 
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 3]} intensity={0.9} color="#f5f0e8" />
