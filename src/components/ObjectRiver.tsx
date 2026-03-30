@@ -1,14 +1,15 @@
 "use client";
 
 import { useRef, useMemo } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
-const OBJECT_COUNT = 40;
-const COLORS = ["#141414", "#3d3d3d", "#7d7a6f", "#c9c3b4", "#4a4a4a"];
+const OBJECT_COUNT = 150;
+const COLORS = ["#141414", "#3d3d3d", "#7d7a6f", "#c9c3b4", "#4a4a4a", "#1a1a1a", "#a09a8c"];
 
 interface FloatingObject {
   position: THREE.Vector3;
+  basePosition: THREE.Vector3;
   rotation: THREE.Euler;
   speed: number;
   rotSpeed: THREE.Vector3;
@@ -20,29 +21,35 @@ interface FloatingObject {
 
 function RiverObjects() {
   const groupRef = useRef<THREE.Group>(null);
+  const mouse = useRef(new THREE.Vector2(0, 0));
+  const mouseWorld = useRef(new THREE.Vector3(0, 0, 0));
+  const { viewport } = useThree();
 
   const objects = useMemo<FloatingObject[]>(() => {
     return Array.from({ length: OBJECT_COUNT }, (_, i) => {
       const t = i / OBJECT_COUNT;
+      const spread = 4;
+      const pos = new THREE.Vector3(
+        4 - t * 10 + (Math.random() - 0.5) * spread,
+        4 - t * 8 + (Math.random() - 0.5) * spread,
+        (Math.random() - 0.5) * 5
+      );
       return {
-        position: new THREE.Vector3(
-          3 - t * 8 + (Math.random() - 0.5) * 2.5,
-          3 - t * 6 + (Math.random() - 0.5) * 2,
-          (Math.random() - 0.5) * 3
-        ),
+        position: pos.clone(),
+        basePosition: pos.clone(),
         rotation: new THREE.Euler(
           Math.random() * Math.PI * 2,
           Math.random() * Math.PI * 2,
           Math.random() * Math.PI * 2
         ),
-        speed: 0.15 + Math.random() * 0.25,
+        speed: 0.1 + Math.random() * 0.3,
         rotSpeed: new THREE.Vector3(
-          (Math.random() - 0.5) * 0.02,
-          (Math.random() - 0.5) * 0.02,
-          (Math.random() - 0.5) * 0.015
+          (Math.random() - 0.5) * 0.025,
+          (Math.random() - 0.5) * 0.025,
+          (Math.random() - 0.5) * 0.02
         ),
-        scale: 0.08 + Math.random() * 0.25,
-        shape: Math.floor(Math.random() * 5),
+        scale: 0.04 + Math.random() * 0.22,
+        shape: Math.floor(Math.random() * 6),
         color: COLORS[Math.floor(Math.random() * COLORS.length)],
         offset: Math.random() * Math.PI * 2,
       };
@@ -51,38 +58,66 @@ function RiverObjects() {
 
   useFrame((state) => {
     const time = state.clock.elapsedTime;
+    const pointer = state.pointer;
+
+    // Convert pointer to world coordinates
+    mouse.current.set(pointer.x, pointer.y);
+    mouseWorld.current.set(
+      pointer.x * viewport.width * 0.5,
+      pointer.y * viewport.height * 0.5,
+      0
+    );
 
     objects.forEach((obj) => {
       // Flow from top-right to bottom-left
-      obj.position.x -= obj.speed * 0.008;
-      obj.position.y -= obj.speed * 0.006;
+      obj.position.x -= obj.speed * 0.007;
+      obj.position.y -= obj.speed * 0.005;
 
       // Swirl motion
-      obj.position.x += Math.sin(time * 0.3 + obj.offset) * 0.003;
-      obj.position.y += Math.cos(time * 0.25 + obj.offset) * 0.002;
-      obj.position.z += Math.sin(time * 0.2 + obj.offset * 2) * 0.001;
+      obj.position.x += Math.sin(time * 0.35 + obj.offset) * 0.004;
+      obj.position.y += Math.cos(time * 0.3 + obj.offset) * 0.003;
+      obj.position.z += Math.sin(time * 0.2 + obj.offset * 2) * 0.002;
 
-      // Rotate
-      obj.rotation.x += obj.rotSpeed.x;
-      obj.rotation.y += obj.rotSpeed.y;
-      obj.rotation.z += obj.rotSpeed.z;
+      // Mouse repulsion — objects push away from cursor
+      const dx = obj.position.x - mouseWorld.current.x;
+      const dy = obj.position.y - mouseWorld.current.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const repelRadius = 2.5;
 
-      // Respawn when off screen (bottom-left)
-      if (obj.position.x < -6 || obj.position.y < -5) {
-        obj.position.x = 5 + Math.random() * 2;
-        obj.position.y = 4 + Math.random() * 2;
-        obj.position.z = (Math.random() - 0.5) * 3;
+      if (dist < repelRadius) {
+        const force = (1 - dist / repelRadius) * 0.15;
+        const angle = Math.atan2(dy, dx);
+        obj.position.x += Math.cos(angle) * force;
+        obj.position.y += Math.sin(angle) * force;
+        obj.position.z += (Math.random() - 0.5) * force * 0.3;
+
+        // Speed up rotation when near cursor
+        obj.rotation.x += obj.rotSpeed.x * 3;
+        obj.rotation.y += obj.rotSpeed.y * 3;
+        obj.rotation.z += obj.rotSpeed.z * 3;
+      } else {
+        obj.rotation.x += obj.rotSpeed.x;
+        obj.rotation.y += obj.rotSpeed.y;
+        obj.rotation.z += obj.rotSpeed.z;
+      }
+
+      // Respawn when off screen
+      if (obj.position.x < -7 || obj.position.y < -6) {
+        obj.position.x = 6 + Math.random() * 3;
+        obj.position.y = 5 + Math.random() * 3;
+        obj.position.z = (Math.random() - 0.5) * 5;
       }
     });
 
     if (groupRef.current) {
-      groupRef.current.children.forEach((child, i) => {
+      const children = groupRef.current.children;
+      for (let i = 0; i < children.length; i++) {
         const obj = objects[i];
         if (obj) {
-          child.position.copy(obj.position);
-          child.rotation.copy(obj.rotation);
+          children[i].position.copy(obj.position);
+          children[i].rotation.copy(obj.rotation);
         }
-      });
+      }
     }
   });
 
@@ -93,6 +128,7 @@ function RiverObjects() {
       new THREE.TetrahedronGeometry(0.7),
       new THREE.TorusGeometry(0.4, 0.15, 8, 16),
       new THREE.CylinderGeometry(0.3, 0.3, 1, 6),
+      new THREE.IcosahedronGeometry(0.5),
     ],
     []
   );
@@ -112,7 +148,7 @@ function RiverObjects() {
             roughness={0.85}
             metalness={0.05}
             transparent
-            opacity={0.6 + obj.scale * 0.8}
+            opacity={0.5 + obj.scale * 1.2}
           />
         </mesh>
       ))}
@@ -124,18 +160,18 @@ export default function ObjectRiver() {
   return (
     <div className="w-full h-full" style={{ background: "var(--paper-edge)" }}>
       <Canvas
-        camera={{ position: [0, 0, 6], fov: 50 }}
+        camera={{ position: [0, 0, 7], fov: 50 }}
         gl={{ antialias: true, alpha: true }}
         style={{ background: "transparent" }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
       >
         <color attach="background" args={["#e8e2d4"]} />
-        <fog attach="fog" args={["#e8e2d4", 5, 12]} />
+        <fog attach="fog" args={["#e8e2d4", 6, 14]} />
 
-        {/* Soft editorial lighting */}
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[5, 5, 3]} intensity={0.8} color="#f5f0e8" />
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[5, 5, 3]} intensity={0.9} color="#f5f0e8" />
         <directionalLight position={[-3, -2, 2]} intensity={0.3} color="#c9c3b4" />
+        <pointLight position={[0, 0, 4]} intensity={0.2} color="#f4efe4" />
 
         <RiverObjects />
       </Canvas>
