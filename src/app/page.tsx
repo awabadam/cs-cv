@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback, useRef, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 /* ── DATA ── */
@@ -61,14 +62,16 @@ const expertise = {
     "Brand Identity Systems",
     "Editorial & Publication Design",
     "Typography & Type Setting",
-    "Packaging & Print Production",
     "UI/UX & Digital Product Design",
     "Motion Graphics & Animation",
     "Art Direction & Photography",
+    "Packaging & Print Production",
   ],
   technical: [
     "Next.js & React",
+    "Three.js & WebGL",
     "Tailwind CSS",
+    "AI Integration & Chatbots",
     "VPS, Docker & Nginx",
     "Google Ads & Analytics",
     "Adobe Creative Suite",
@@ -81,32 +84,42 @@ const caseStudies = [
   {
     slug: "saphire-dent",
     number: "I",
-    headline: "From Four Figures to Seven",
+    headline: "Building a Dental Empire's Entire Visual World",
     subtitle: "Saphire Dent & Estetik World",
     description:
-      "Five years of building two dental tourism brands from the ground up — logos, identity systems, social media, ad campaigns, websites, and a design team. A study in growing with the business.",
-    category: "Brand Identity & Digital",
+      "Five years as the sole-then-lead designer for two dental tourism brands. Logos, identity systems, social media, ad campaigns, websites, and a design team — built from nothing.",
+    category: "Brand Identity & Web",
     year: "2020 – 2025",
   },
   {
-    slug: "editorial-system",
+    slug: "jouvence",
     number: "II",
-    headline: "Building a Modular Editorial Design System",
-    subtitle: "Publication Design",
+    headline: "Luxury Aesthetics, Translated to Screen",
+    subtitle: "Jouvence Medical Aesthetic",
     description:
-      "A systematic approach to layout and typography that transformed a quarterly publication into an industry design benchmark. Scalable, consistent, unmistakable.",
-    category: "Editorial Design",
-    year: "2023",
+      "A premium medical aesthetics clinic needed a website that matched the exclusivity of its service. Multilingual, conversion-focused, built with Next.js — luxury minimalism for an international clientele.",
+    category: "Web Design & Development",
+    year: "2024",
   },
   {
-    slug: "packaging-redesign",
+    slug: "esteexpert",
     number: "III",
-    headline: "Shelf Impact Through Restraint",
-    subtitle: "Packaging Redesign",
+    headline: "Trust Through Design",
+    subtitle: "EsteExpert Clinic",
     description:
-      "A packaging redesign that increased retail visibility by stripping away everything unnecessary. Proof that less, done right, commands more attention.",
-    category: "Packaging",
-    year: "2023",
+      "A medical aesthetics clinic website designed to convert hesitant international patients into booked consultations. Every design decision served one goal: build trust fast.",
+    category: "Web Design & Development",
+    year: "2024",
+  },
+  {
+    slug: "awab-design",
+    number: "IV",
+    headline: "Designing the Designer's Own Platform",
+    subtitle: "awab.design",
+    description:
+      "A personal portfolio and service platform built with Next.js, React, WebGL, and AI-driven features. 50+ websites documented, conversion-focused, and a showcase of the full stack.",
+    category: "Portfolio & Web Development",
+    year: "2024",
   },
 ];
 
@@ -115,11 +128,21 @@ const PAGE_COUNT = pageLabels.length;
 
 /* ── PAGE ── */
 
-export default function HorizontalCV() {
-  const [currentPage, setCurrentPage] = useState(0);
+export default function Page() {
+  return (
+    <Suspense>
+      <HorizontalCV />
+    </Suspense>
+  );
+}
+
+function HorizontalCV() {
+  const searchParams = useSearchParams();
+  const initialPage = Number(searchParams.get("page")) || 0;
+  const [currentPage, setCurrentPage] = useState(initialPage);
   const [isAnimating, setIsAnimating] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const currentPageRef = useRef(0);
+  const currentPageRef = useRef(initialPage);
   const isAnimatingRef = useRef(false);
 
   // Keep refs in sync with state
@@ -243,8 +266,8 @@ export default function HorizontalCV() {
               </p>
 
               <p className="pull-quote mb-6">
-                I don&rsquo;t stop when it&rsquo;s done.<br />
-                I stop when it&rsquo;s right.&ensp;&rdquo;
+                Every project is a system waiting to be understood,<br />
+                then shaped until it works on its own terms.&ensp;&rdquo;
               </p>
 
               <hr className="rule-ornament mb-4" />
@@ -524,57 +547,78 @@ export default function HorizontalCV() {
             </div>
 
             {/* Right — three case studies side by side */}
-            <div className="w-[70%] grid grid-cols-3 h-full">
-              {caseStudies.map((study, i) => (
-                <Link
-                  key={study.slug}
-                  href={`/case-studies/${study.slug}`}
-                  className={`border-none group flex flex-col px-6 pt-8 pb-14 overflow-hidden ${
-                    i < caseStudies.length - 1 ? "border-r border-rule-light" : ""
-                  }`}
-                >
-                  {/* Number + category */}
-                  <div className="flex items-end justify-between mb-3">
+            {/* Bento grid — diagonal */}
+            <div className="w-[70%] grid h-full gap-0" style={{ gridTemplateColumns: "1.2fr 1fr", gridTemplateRows: "1.1fr 0.9fr" }}>
+              {caseStudies.map((study, i) => {
+                const isLarge = i === 0 || i === 3;
+                const borders = [
+                  "border-r border-rule-light border-b border-rule-light",
+                  "border-b border-rule-light",
+                  "border-r border-rule-light",
+                  "",
+                ][i];
+
+                return (
+                  <Link
+                    key={study.slug}
+                    href={`/case-studies/${study.slug}`}
+                    className={`border-none group relative overflow-hidden ${borders} transition-colors duration-500 hover:bg-paper-edge/40`}
+                  >
+                    {/* Background number */}
                     <span
-                      className="font-headline text-[4rem] font-bold leading-none text-paper-edge group-hover:text-accent transition-colors"
+                      className="absolute font-headline font-bold leading-none text-paper-edge transition-all duration-500 group-hover:text-rule-light group-hover:scale-110"
+                      style={{
+                        fontSize: isLarge ? "12rem" : "8rem",
+                        right: i % 2 === 0 ? "-0.5rem" : "auto",
+                        left: i % 2 === 1 ? "-0.5rem" : "auto",
+                        bottom: "-1.5rem",
+                      }}
                     >
                       {study.number}
                     </span>
-                    <span className="section-label text-accent text-[0.6rem] text-right">
-                      {study.category}<br/>{study.year}
-                    </span>
-                  </div>
 
-                  <hr className="rule-thick mb-4" />
+                    {/* Content */}
+                    <div className={`relative z-10 flex flex-col h-full ${isLarge ? "px-8 pt-7 pb-8" : "px-6 pt-6 pb-7"}`}>
+                      {/* Top: category tag */}
+                      <div className="flex items-center gap-2 mb-auto">
+                        <span className="section-label text-accent text-[0.5rem] tracking-[0.3em]">
+                          {study.category}
+                        </span>
+                        <hr className="rule-light flex-1" />
+                        <span className="dateline text-ink-lighter text-[0.6rem]">
+                          {study.year}
+                        </span>
+                      </div>
 
-                  {/* Image */}
-                  <div className="img-placeholder w-full h-44 mb-4 group-hover:opacity-80 transition-opacity">
-                    project imagery
-                  </div>
+                      {/* Bottom: title + details */}
+                      <div className="mt-auto">
+                        <h3 className={`font-headline font-bold leading-[1.1] mb-2 group-hover:text-accent transition-colors ${isLarge ? "text-[1.5rem]" : "text-[1.1rem]"}`}>
+                          {study.headline}
+                        </h3>
 
-                  {/* Headline */}
-                  <h3 className="font-headline text-[1.2rem] font-bold leading-[1.15] mb-2 group-hover:text-accent transition-colors">
-                    {study.headline}
-                  </h3>
+                        <p className="dateline text-ink-lighter text-[0.6rem] mb-2">
+                          {study.subtitle}
+                        </p>
 
-                  {/* Subtitle */}
-                  <p className="dateline text-ink-lighter text-[0.7rem] mb-3">
-                    {study.subtitle}
-                  </p>
+                        {isLarge && (
+                          <p className="text-ink-light leading-[1.55] text-[0.78rem] mb-3">
+                            {study.description}
+                          </p>
+                        )}
 
-                  {/* Description */}
-                  <p className="justify-editorial text-ink-light leading-[1.6] text-[0.82rem] flex-1">
-                    {study.description}
-                  </p>
-
-                  {/* CTA */}
-                  <div className="mt-4 pt-3 border-t border-rule-faint">
-                    <span className="section-label text-ink-lighter text-[0.6rem] group-hover:text-accent transition-colors tracking-[0.2em]">
-                      Read full study &rarr;
-                    </span>
-                  </div>
-                </Link>
-              ))}
+                        <div className="flex items-center gap-2">
+                          <span className="section-label text-ink-lighter text-[0.5rem] group-hover:text-accent transition-colors tracking-[0.2em]">
+                            Read study
+                          </span>
+                          <span className="text-ink-lighter group-hover:text-accent group-hover:translate-x-1 transition-all text-[0.7rem]">
+                            &rarr;
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
           <span className="folio">5</span>
