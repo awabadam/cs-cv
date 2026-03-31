@@ -15,18 +15,14 @@ interface ReactiveTitleProps {
   isActive?: boolean;
 }
 
-interface LetterState {
-  cx: number;
-  cy: number;
-  x: number;
-  y: number;
-  rot: number;
-  vx: number;
-  vy: number;
-  vr: number;
-  targetX: number;
-  targetY: number;
-  targetRot: number;
+// Frame-rate independent damping (Three.js MathUtils.damp approach)
+function damp(current: number, target: number, smoothing: number, dt: number): number {
+  return current + (target - current) * (1 - Math.exp(-smoothing * dt));
+}
+
+// Round to 2 decimal places to avoid subpixel shimmer
+function r2(n: number): number {
+  return (n * 100 | 0) / 100;
 }
 
 export default function ReactiveTitle({
@@ -38,47 +34,22 @@ export default function ReactiveTitle({
 }: ReactiveTitleProps) {
   const containerRef = useRef<HTMLHeadingElement>(null);
   const spanRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const states = useRef<LetterState[]>([]);
+  const stateX = useRef<Float32Array>(new Float32Array(0));
+  const stateY = useRef<Float32Array>(new Float32Array(0));
+  const stateR = useRef<Float32Array>(new Float32Array(0));
   const mouseRef = useRef({ x: -9999, y: -9999 });
   const rafRef = useRef<number>(0);
-  const rectsStale = useRef(true);
+  const lastTime = useRef(0);
+  const charCount = useRef(0);
 
-  const cacheRects = useCallback(() => {
-    // Temporarily reset all transforms so rects are accurate
-    for (const span of spanRefs.current) {
-      if (span) span.style.transform = "";
-    }
-
-    // Force layout read
-    for (let i = 0; i < spanRefs.current.length; i++) {
-      const span = spanRefs.current[i];
-      if (!span || !states.current[i]) continue;
-      const rect = span.getBoundingClientRect();
-      states.current[i].cx = rect.left + rect.width / 2;
-      states.current[i].cy = rect.top + rect.height / 2;
-    }
-
-    rectsStale.current = false;
-  }, []);
-
-  const ensureStates = useCallback((count: number) => {
-    while (states.current.length < count) {
-      states.current.push({
-        cx: 0, cy: 0,
-        x: 0, y: 0, rot: 0,
-        vx: 0, vy: 0, vr: 0,
-        targetX: 0, targetY: 0, targetRot: 0,
-      });
+  const initState = useCallback((count: number) => {
+    if (stateX.current.length !== count) {
+      stateX.current = new Float32Array(count);
+      stateY.current = new Float32Array(count);
+      stateR.current = new Float32Array(count);
+      charCount.current = count;
     }
   }, []);
-
-  // Recache when page becomes active (elements are now on-screen)
-  useEffect(() => {
-    if (isActive) {
-      const timeout = setTimeout(() => { rectsStale.current = true; }, 100);
-      return () => clearTimeout(timeout);
-    }
-  }, [isActive]);
 
   useEffect(() => {
     if (!window.matchMedia("(pointer: fine)").matches) return;
@@ -86,64 +57,72 @@ export default function ReactiveTitle({
     const onMove = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
     };
-
     const onLeave = () => {
       mouseRef.current = { x: -9999, y: -9999 };
     };
 
-    const onResize = () => {
-      rectsStale.current = true;
-    };
-
-    // Cache rects after a short delay (let layout settle)
-    const initTimeout = setTimeout(() => cacheRects(), 500);
-
-    // Spring physics constants
-    const stiffness = 0.03;
-    const damping = 0.85;
+    const smoothing = 8; // Higher = snappier, lower = smoother (8-12 range)
     const maxDist = 140;
+    const maxPush = 14;
+    const maxPushY = 9;
+    const maxRot = 6;
+    const threshold = 0.05;
 
-    const animate = () => {
-      if (rectsStale.current) cacheRects();
+    const animate = (timestamp: number) => {
+      const dt = Math.min((timestamp - lastTime.current) / 1000, 0.05); // Cap at 50ms
+      lastTime.current = timestamp;
 
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
+      const count = charCount.current;
 
-      for (let i = 0; i < spanRefs.current.length; i++) {
+      // Batch read: get all rects first (no transforms reset needed — we read live)
+      const centers: { cx: number; cy: number }[] = [];
+      for (let i = 0; i < count; i++) {
         const span = spanRefs.current[i];
-        const s = states.current[i];
-        if (!span || !s) continue;
+        if (span) {
+          const rect = span.getBoundingClientRect();
+          centers.push({ cx: rect.left + rect.width / 2, cy: rect.top + rect.height / 2 });
+        } else {
+          centers.push({ cx: 0, cy: 0 });
+        }
+      }
 
-        const cx = s.cx + s.x;
-        const cy = s.cy + s.y;
+      // Batch compute + write
+      for (let i = 0; i < count; i++) {
+        const span = spanRefs.current[i];
+        if (!span) continue;
+
+        const { cx, cy } = centers[i];
         const dx = mx - cx;
         const dy = my - cy;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+        const distSq = dx * dx + dy * dy;
+        const maxDistSq = maxDist * maxDist;
 
-        if (dist < maxDist && dist > 0) {
+        let targetX = 0, targetY = 0, targetR = 0;
+
+        if (distSq < maxDistSq && distSq > 0) {
+          const dist = Math.sqrt(distSq);
           const force = 1 - dist / maxDist;
-          s.targetX = -(dx / dist) * force * 14;
-          s.targetY = -(dy / dist) * force * 9;
-          s.targetRot = (dx > 0 ? -1 : 1) * force * 6;
-        } else {
-          s.targetX = 0;
-          s.targetY = 0;
-          s.targetRot = 0;
+          targetX = -(dx / dist) * force * maxPush;
+          targetY = -(dy / dist) * force * maxPushY;
+          targetR = (dx > 0 ? -1 : 1) * force * maxRot;
         }
 
-        // Spring: velocity += (target - current) * stiffness, then damp
-        s.vx += (s.targetX - s.x) * stiffness;
-        s.vy += (s.targetY - s.y) * stiffness;
-        s.vr += (s.targetRot - s.rot) * stiffness;
-        s.vx *= damping;
-        s.vy *= damping;
-        s.vr *= damping;
-        s.x += s.vx;
-        s.y += s.vy;
-        s.rot += s.vr;
+        const curX = stateX.current[i];
+        const curY = stateY.current[i];
+        const curR = stateR.current[i];
 
-        if (Math.abs(s.x) > 0.05 || Math.abs(s.y) > 0.05 || Math.abs(s.rot) > 0.05) {
-          span.style.transform = `translate(${s.x}px, ${s.y}px) rotate(${s.rot}deg)`;
+        const newX = damp(curX, targetX, smoothing, dt);
+        const newY = damp(curY, targetY, smoothing, dt);
+        const newR = damp(curR, targetR, smoothing, dt);
+
+        stateX.current[i] = newX;
+        stateY.current[i] = newY;
+        stateR.current[i] = newR;
+
+        if (Math.abs(newX) > threshold || Math.abs(newY) > threshold || Math.abs(newR) > threshold) {
+          span.style.transform = `translate3d(${r2(newX)}px, ${r2(newY)}px, 0) rotate(${r2(newR)}deg)`;
         } else if (span.style.transform) {
           span.style.transform = "";
         }
@@ -152,19 +131,17 @@ export default function ReactiveTitle({
       rafRef.current = requestAnimationFrame(animate);
     };
 
+    lastTime.current = performance.now();
     rafRef.current = requestAnimationFrame(animate);
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("resize", onResize);
-    document.addEventListener("mouseleave", onLeave);
+    window.addEventListener("pointermove", onMove, { passive: true });
+    document.addEventListener("pointerleave", onLeave);
 
     return () => {
-      clearTimeout(initTimeout);
       cancelAnimationFrame(rafRef.current);
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("resize", onResize);
-      document.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("pointermove", onMove);
+      document.removeEventListener("pointerleave", onLeave);
     };
-  }, [cacheRects]);
+  }, []);
 
   let idx = 0;
 
@@ -179,13 +156,14 @@ export default function ReactiveTitle({
         <span key={li}>
           {line.text.split("").map((char) => {
             const i = idx++;
-            ensureStates(i + 1);
+            initState(i + 1);
             if (char === " ") return <span key={i}>&nbsp;</span>;
             return (
               <span
                 key={i}
                 ref={(el) => { spanRefs.current[i] = el; }}
                 className={`inline-block will-change-transform ${line.accent ? "text-accent" : ""}`}
+                style={{ backfaceVisibility: "hidden" }}
               >
                 {char}
               </span>
