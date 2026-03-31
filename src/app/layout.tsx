@@ -39,7 +39,9 @@ export default function RootLayout({
         />
         <link href={fontUrl} rel="stylesheet" />
       </head>
-      <body className="h-full">{children}</body>
+      <body className="h-full">
+        {children}
+      </body>
     </html>
   );
 }

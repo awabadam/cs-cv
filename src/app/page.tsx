@@ -144,6 +144,22 @@ function HorizontalCV() {
           <CaseStudiesPage isActive={currentPage === 4} style={getPageStyle(4)} />
           <ContactPage isActive={currentPage === 5} style={getPageStyle(5)} />
         </div>
+
+        {/* Window light overlay — inside scroller to be above the 3D stacking context */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          zIndex: 10,
+          mixBlendMode: 'multiply',
+          background: `
+            linear-gradient(125deg, rgba(30,28,20,0.12) 0%, rgba(30,28,20,0.06) 22%, transparent 38%, transparent 62%, rgba(30,28,20,0.04) 78%, rgba(30,28,20,0.10) 100%),
+            radial-gradient(ellipse 50% 50% at 0% 100%, rgba(30,28,20,0.14) 0%, transparent 70%),
+            radial-gradient(ellipse 40% 40% at 0% 0%, rgba(30,28,20,0.08) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 40% at 100% 100%, rgba(30,28,20,0.10) 0%, transparent 65%),
+            radial-gradient(ellipse 75% 75% at 55% 35%, transparent 25%, rgba(30,28,20,0.12) 100%)
+          `,
+        }} />
       </div>
 
       <PageNav currentPage={currentPage} goToPage={goToPage} pageLabels={pageLabels} PAGE_COUNT={PAGE_COUNT} />
