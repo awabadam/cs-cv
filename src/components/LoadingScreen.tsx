@@ -17,7 +17,7 @@ export default function LoadingScreen() {
     const start = Date.now();
     document.fonts.ready.then(() => {
       const elapsed = Date.now() - start;
-      const remaining = Math.max(800 - elapsed, 0);
+      const remaining = Math.max(2000 - elapsed, 0);
       setTimeout(() => setLoaded(true), remaining);
     });
   }, []);

@@ -13,6 +13,7 @@ import ExpertisePage from "@/components/pages/ExpertisePage";
 import CaseStudiesPage from "@/components/pages/CaseStudiesPage";
 import ContactPage from "@/components/pages/ContactPage";
 import { pageLabels, PAGE_COUNT } from "@/data/content";
+import { usePaperSound } from "@/components/PaperSound";
 
 export default function Page() {
   return (
@@ -53,6 +54,8 @@ function HorizontalCV() {
     [currentPage]
   );
 
+  const playPaper = usePaperSound();
+
   const goToPage = useCallback((index: number) => {
     const clamped = Math.max(0, Math.min(index, PAGE_COUNT - 1));
     if (clamped === currentPageRef.current || isAnimatingRef.current) return;
@@ -61,11 +64,12 @@ function HorizontalCV() {
     setCurrentPage(clamped);
     currentPageRef.current = clamped;
     particlesRef.current?.burst(window.innerWidth / 2, window.innerHeight / 2);
+    playPaper();
     setTimeout(() => {
       isAnimatingRef.current = false;
       setIsAnimating(false);
     }, 900);
-  }, []);
+  }, [playPaper]);
 
   useEffect(() => {
     const onWheel = (e: WheelEvent) => {
@@ -143,9 +147,13 @@ function HorizontalCV() {
           <ExpertisePage isActive={currentPage === 3} style={getPageStyle(3)} />
           <CaseStudiesPage isActive={currentPage === 4} style={getPageStyle(4)} />
           <ContactPage isActive={currentPage === 5} style={getPageStyle(5)} />
+
         </div>
 
-        {/* Window light overlay — inside scroller to be above the 3D stacking context */}
+        {/* Paper grain texture — stays fixed */}
+        <div className="grain-overlay" />
+
+        {/* Window light overlay */}
         <div style={{
           position: 'absolute',
           inset: 0,
@@ -153,11 +161,11 @@ function HorizontalCV() {
           zIndex: 10,
           mixBlendMode: 'multiply',
           background: `
-            linear-gradient(125deg, rgba(30,28,20,0.12) 0%, rgba(30,28,20,0.06) 22%, transparent 38%, transparent 62%, rgba(30,28,20,0.04) 78%, rgba(30,28,20,0.10) 100%),
-            radial-gradient(ellipse 50% 50% at 0% 100%, rgba(30,28,20,0.14) 0%, transparent 70%),
-            radial-gradient(ellipse 40% 40% at 0% 0%, rgba(30,28,20,0.08) 0%, transparent 60%),
-            radial-gradient(ellipse 50% 40% at 100% 100%, rgba(30,28,20,0.10) 0%, transparent 65%),
-            radial-gradient(ellipse 75% 75% at 55% 35%, transparent 25%, rgba(30,28,20,0.12) 100%)
+            linear-gradient(125deg, rgba(20,18,10,0.22) 0%, rgba(20,18,10,0.10) 22%, transparent 38%, transparent 62%, rgba(20,18,10,0.08) 78%, rgba(20,18,10,0.18) 100%),
+            radial-gradient(ellipse 50% 50% at 0% 100%, rgba(20,18,10,0.25) 0%, transparent 70%),
+            radial-gradient(ellipse 40% 40% at 0% 0%, rgba(20,18,10,0.15) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 40% at 100% 100%, rgba(20,18,10,0.18) 0%, transparent 65%),
+            radial-gradient(ellipse 75% 75% at 55% 35%, transparent 20%, rgba(20,18,10,0.20) 100%)
           `,
         }} />
       </div>

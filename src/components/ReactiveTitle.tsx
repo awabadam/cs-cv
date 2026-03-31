@@ -127,7 +127,7 @@ export default function ReactiveTitle({
           const sx = r2(-newX * 0.9);
           const sy = r2(-newY * 0.9);
           const blur = r2(1 + shadowStrength * 4);
-          const alpha = r2(shadowStrength * 0.8);
+          const alpha = r2(0.05 + shadowStrength * 0.25);
           const scale = 1 + shadowStrength * 0.08;
           span.style.transform = `translate3d(${r2(newX)}px, ${r2(newY)}px, 0) rotate(${r2(newR)}deg) scale(${r2(scale)})`;
           span.style.textShadow = `${sx}px ${sy}px ${blur}px rgba(20,20,10,${alpha}), ${r2(sx*1.1)}px ${r2(sy*1.1)}px ${r2(blur*2)}px rgba(20,20,10,${r2(alpha*0.4)})`;

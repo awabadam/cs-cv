@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLSpanElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
   const pos = useRef({ x: 0, y: 0 });
@@ -59,6 +60,10 @@ export default function CustomCursor() {
         labelRef.current.style.transform = `translate(${pos.current.x - 10}px, ${pos.current.y + 18}px)`;
         labelRef.current.style.opacity = String(labelOpacity.current);
       }
+      if (glowRef.current) {
+        glowRef.current.style.transform = `translate(calc(${pos.current.x}px - 50%), calc(${pos.current.y}px - 50%))`;
+        glowRef.current.style.opacity = visible ? "1" : "0";
+      }
 
       raf = requestAnimationFrame(animate);
     };
@@ -100,6 +105,19 @@ export default function CustomCursor() {
       >
         View
       </span>
+
+      {/* Cursor light glow — reveals dark areas */}
+      <div
+        ref={glowRef}
+        className="fixed top-0 left-0 pointer-events-none"
+        style={{
+          zIndex: 2,
+          width: 500,
+          height: 500,
+          background: "radial-gradient(ellipse 55% 45% at 48% 52%, rgba(255,252,240,0.35) 0%, rgba(255,250,238,0.15) 25%, rgba(255,248,235,0.06) 45%, transparent 65%)",
+          mixBlendMode: "screen",
+        }}
+      />
     </>
   );
 }

@@ -11,7 +11,17 @@ interface PageNavProps {
 
 export default function PageNav({ currentPage, goToPage, pageLabels, PAGE_COUNT }: PageNavProps) {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 grid items-center bg-paper-page/95 backdrop-blur-sm px-4 md:px-6 py-2.5 md:py-3 border-t border-rule-faint" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
+    <nav className="fixed bottom-0 left-0 right-0 z-50 grid items-center backdrop-blur-sm px-4 md:px-6 py-2.5 md:py-3 border-t border-rule-faint" style={{
+      gridTemplateColumns: "1fr auto 1fr",
+      background: `
+        linear-gradient(90deg, rgba(20,18,10,0.30) 0%, rgba(20,18,10,0.10) 35%, transparent 60%, rgba(20,18,10,0.22) 100%),
+        linear-gradient(0deg, rgba(20,18,10,0.12) 0%, transparent 100%),
+        rgba(248,244,236,0.9)
+      `,
+    }}>
+      {/* Grain texture */}
+      <div className="grain-overlay" style={{ opacity: 0.04, zIndex: 0, position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }} />
+
       {/* Left spacer */}
       <div />
 
