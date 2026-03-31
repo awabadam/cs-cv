@@ -20,6 +20,7 @@ export default function CaseStudiesPage({ isActive, style }: CaseStudiesPageProp
             <ReactiveTitle
               lines={[{ text: "Case" }, { text: "Stud", accent: true }, { text: "ies" }]}
               className="text-[1.5rem] sm:text-[2.5rem] md:text-[5rem] lg:text-[6.5rem] leading-[0.82] mb-6"
+              isActive={isActive}
             />
           </div>
           <div>

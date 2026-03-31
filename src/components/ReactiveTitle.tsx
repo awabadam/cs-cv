@@ -12,6 +12,7 @@ interface ReactiveTitleProps {
   className?: string;
   animType?: string;
   animDelay?: string;
+  isActive?: boolean;
 }
 
 interface LetterState {
@@ -20,6 +21,9 @@ interface LetterState {
   x: number;
   y: number;
   rot: number;
+  vx: number;
+  vy: number;
+  vr: number;
   targetX: number;
   targetY: number;
   targetRot: number;
@@ -30,6 +34,7 @@ export default function ReactiveTitle({
   className = "",
   animType = "slide-left",
   animDelay = "1",
+  isActive = false,
 }: ReactiveTitleProps) {
   const containerRef = useRef<HTMLHeadingElement>(null);
   const spanRefs = useRef<(HTMLSpanElement | null)[]>([]);
@@ -61,10 +66,19 @@ export default function ReactiveTitle({
       states.current.push({
         cx: 0, cy: 0,
         x: 0, y: 0, rot: 0,
+        vx: 0, vy: 0, vr: 0,
         targetX: 0, targetY: 0, targetRot: 0,
       });
     }
   }, []);
+
+  // Recache when page becomes active (elements are now on-screen)
+  useEffect(() => {
+    if (isActive) {
+      const timeout = setTimeout(() => { rectsStale.current = true; }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [isActive]);
 
   useEffect(() => {
     if (!window.matchMedia("(pointer: fine)").matches) return;
@@ -84,7 +98,9 @@ export default function ReactiveTitle({
     // Cache rects after a short delay (let layout settle)
     const initTimeout = setTimeout(() => cacheRects(), 500);
 
-    const lerp = 0.06;
+    // Spring physics constants
+    const stiffness = 0.03;
+    const damping = 0.85;
     const maxDist = 140;
 
     const animate = () => {
@@ -98,7 +114,6 @@ export default function ReactiveTitle({
         const s = states.current[i];
         if (!span || !s) continue;
 
-        // Use cached center positions (offset by current transform)
         const cx = s.cx + s.x;
         const cy = s.cy + s.y;
         const dx = mx - cx;
@@ -116,11 +131,18 @@ export default function ReactiveTitle({
           s.targetRot = 0;
         }
 
-        s.x += (s.targetX - s.x) * lerp;
-        s.y += (s.targetY - s.y) * lerp;
-        s.rot += (s.targetRot - s.rot) * lerp;
+        // Spring: velocity += (target - current) * stiffness, then damp
+        s.vx += (s.targetX - s.x) * stiffness;
+        s.vy += (s.targetY - s.y) * stiffness;
+        s.vr += (s.targetRot - s.rot) * stiffness;
+        s.vx *= damping;
+        s.vy *= damping;
+        s.vr *= damping;
+        s.x += s.vx;
+        s.y += s.vy;
+        s.rot += s.vr;
 
-        if (Math.abs(s.x) > 0.1 || Math.abs(s.y) > 0.1 || Math.abs(s.rot) > 0.1) {
+        if (Math.abs(s.x) > 0.05 || Math.abs(s.y) > 0.05 || Math.abs(s.rot) > 0.05) {
           span.style.transform = `translate(${s.x}px, ${s.y}px) rotate(${s.rot}deg)`;
         } else if (span.style.transform) {
           span.style.transform = "";
