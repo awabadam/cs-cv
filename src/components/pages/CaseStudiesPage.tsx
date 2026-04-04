@@ -19,7 +19,7 @@ export default function CaseStudiesPage({ isActive, style }: CaseStudiesPageProp
             <div data-anim="fade" data-anim-d="1" className="section-label text-ink-lighter mb-1">Selected</div>
             <ReactiveTitle
               lines={[{ text: "Case" }, { text: "Stud", accent: true }, { text: "ies" }]}
-              className="text-[1.5rem] sm:text-[2.5rem] md:text-[5rem] lg:text-[6.5rem] leading-[0.82] mb-6"
+              className="text-[clamp(1.2rem,4vw,6.5rem)] leading-[0.82] mb-6"
               isActive={isActive}
             />
           </div>
@@ -64,9 +64,8 @@ export default function CaseStudiesPage({ isActive, style }: CaseStudiesPageProp
                 }}
               >
                 <span
-                  className={`absolute font-headline font-bold leading-none text-paper-edge transition-all duration-500 group-hover:text-rule-light group-hover:scale-110 bento-float-${i + 1} bento-num`}
+                  className={`absolute font-headline font-bold leading-none text-paper-edge transition-all duration-500 group-hover:text-rule-light group-hover:scale-110 bento-float-${i + 1} bento-num ${isLarge ? "text-[4rem] md:text-[12rem]" : "text-[3rem] md:text-[8rem]"}`}
                   style={{
-                    fontSize: isLarge ? "12rem" : "8rem",
                     right: i % 2 === 0 ? "-0.5rem" : "auto",
                     left: i % 2 === 1 ? "-0.5rem" : "auto",
                     bottom: "-1.5rem",

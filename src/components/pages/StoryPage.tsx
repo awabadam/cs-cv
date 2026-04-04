@@ -13,7 +13,7 @@ export default function StoryPage({ isActive, style }: StoryPageProps) {
           <div>
             <div data-anim="fade" data-anim-d="1" className="section-label text-ink-lighter mb-1">The Journey</div>
             <hr className="rule-thick mb-6" />
-            <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[1.5rem] sm:text-[2.2rem] md:text-[4rem] lg:text-[5rem] leading-[0.85] mb-6">
+            <h2 data-anim="slide-left" data-anim-d="1" className="masthead-title text-[clamp(1.2rem,4vw,5rem)] leading-[0.85] mb-6">
               Khar<br/>toum<br/>
               <span className="text-accent">to</span><br/>
               Istan<br/>bul
@@ -75,7 +75,7 @@ export default function StoryPage({ isActive, style }: StoryPageProps) {
           </div>
           <div data-anim="fade" data-anim-d="4" className="mt-auto pt-5">
             <hr className="rule-thick mb-4" />
-            <p className="font-headline text-[1.4rem] italic text-center leading-[1.35] text-ink-light mb-4">
+            <p className="font-headline text-[1.1rem] md:text-[1.4rem] italic text-center leading-[1.35] text-ink-light mb-4">
               &ldquo;I don&rsquo;t stop when it&rsquo;s done. I stop when it&rsquo;s right.&rdquo;
             </p>
             <hr className="rule-thick" />

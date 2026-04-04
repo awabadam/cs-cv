@@ -17,7 +17,7 @@ export default function ContactPage({ isActive, style }: ContactPageProps) {
             <hr className="rule-thick mb-6" />
             <ReactiveTitle
               lines={[{ text: "Let's" }, { text: "Build", accent: true }, { text: "Some" }, { text: "thing" }]}
-              className="text-[1.5rem] sm:text-[2.5rem] md:text-[5.5rem] lg:text-[7rem] leading-[0.82] mb-6"
+              className="text-[clamp(1.2rem,4.5vw,7rem)] leading-[0.82] mb-6"
               isActive={isActive}
             />
           </div>

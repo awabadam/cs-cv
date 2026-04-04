@@ -213,7 +213,7 @@ export default async function CaseStudyPage({
         {/* Title block */}
         <div className="flex gap-4 md:gap-8 items-end">
           <span
-            className="font-headline text-[4rem] md:text-[8rem] font-bold leading-none text-paper-edge"
+            className="font-headline text-[2.5rem] md:text-[8rem] font-bold leading-none text-paper-edge"
             style={{ marginBottom: "-0.1em" }}
           >
             {study.number}
@@ -222,7 +222,7 @@ export default async function CaseStudyPage({
             <div className="section-label text-accent mb-2 tracking-[0.3em]">
               {study.category}&ensp;&middot;&ensp;{study.year}
             </div>
-            <h1 className="masthead-title text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem] leading-[0.88] mb-3">
+            <h1 className="masthead-title text-[clamp(1.3rem,3.5vw,4.5rem)] leading-[0.88] mb-3">
               {study.title}
             </h1>
             <p className="dateline text-ink-lighter">
@@ -275,10 +275,10 @@ export default async function CaseStudyPage({
           {study.sections.map((section, i) => (
             <div key={i} className="mb-10">
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="font-headline text-[2rem] font-bold leading-none text-paper-edge">
+                <span className="font-headline text-[1.5rem] md:text-[2rem] font-bold leading-none text-paper-edge">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h2 className="font-headline text-[1.4rem] font-bold leading-tight">
+                <h2 className="font-headline text-[1.1rem] md:text-[1.4rem] font-bold leading-tight">
                   {section.heading}
                 </h2>
               </div>

@@ -10,13 +10,13 @@ export default function NotFound() {
         <hr className="rule-thick mb-6" />
 
         <h1
-          className="masthead-title text-[6rem] md:text-[8rem] leading-[0.85] mb-4"
+          className="masthead-title text-[3.5rem] md:text-[8rem] leading-[0.85] mb-4"
           style={{ opacity: 1, transform: "none" }}
         >
           404
         </h1>
 
-        <p className="font-headline text-[1.3rem] font-bold mb-4">
+        <p className="font-headline text-[1rem] md:text-[1.3rem] font-bold mb-4">
           This page has gone to print.
         </p>
 

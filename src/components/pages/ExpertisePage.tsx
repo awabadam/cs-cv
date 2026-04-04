@@ -37,7 +37,7 @@ export default function ExpertisePage({ isActive, style }: ExpertisePageProps) {
         <div className="w-full md:w-[38%] flex-none md:flex-col flex flex-col md:border-r border-rule-light px-4 md:px-10 py-4 md:pt-8 md:pb-14 md:max-h-none">
           <ReactiveTitle
             lines={[{ text: "Exper" }, { text: "tise", accent: true }]}
-            className="text-[1.5rem] sm:text-[2.5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.82] mb-4 md:mb-8"
+            className="text-[clamp(1.2rem,4.5vw,7.5rem)] leading-[0.82] mb-4 md:mb-8"
             isActive={isActive}
           />
 

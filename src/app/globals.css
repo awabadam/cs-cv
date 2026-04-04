@@ -61,7 +61,7 @@ html, body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--f-body);
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.8;
   font-weight: 400;
   font-feature-settings: 'liga' 1, 'kern' 1;
@@ -486,11 +486,6 @@ a:hover {
     padding-bottom: 4rem;
   }
 
-  .masthead-title {
-    font-size: 2.8rem !important;
-    letter-spacing: 0.02em !important;
-  }
-
   .page-inner {
     padding: 1.5rem 1.25rem 3rem;
     column-width: 280px;
@@ -516,12 +511,6 @@ a:hover {
     min-height: 40vh;
   }
 
-  /* Typography scaling */
-  .masthead-title {
-    font-size: 1.5rem !important;
-    letter-spacing: 0.02em !important;
-  }
-
   .section-label {
     letter-spacing: 0.08em;
   }
@@ -535,11 +524,6 @@ a:hover {
   }
   .drop-cap::first-letter {
     font-size: 2.5em;
-  }
-
-  /* Bento number sizing */
-  .bento-num {
-    font-size: 4rem !important;
   }
 
   /* Folio */
@@ -570,6 +554,10 @@ a:hover {
   border: 0.5px solid var(--paper-edge);
   box-shadow: 2px 3px 12px var(--shadow), 6px 8px 30px var(--shadow);
   padding: 3rem 2.5rem;
+}
+
+@media (min-width: 769px) {
+  html, body { font-size: 18px; }
 }
 
 @media (max-width: 768px) {
