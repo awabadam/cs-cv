@@ -14,6 +14,7 @@ import CaseStudiesPage from "@/components/pages/CaseStudiesPage";
 import ContactPage from "@/components/pages/ContactPage";
 import { pageLabels, PAGE_COUNT } from "@/data/content";
 import { usePaperSound } from "@/components/PaperSound";
+import FallingParticles from "@/components/FallingParticles";
 
 export default function Page() {
   return (
@@ -129,6 +130,7 @@ function HorizontalCV() {
       <LoadingScreen />
       <CustomCursor />
       <InkParticles ref={particlesRef} />
+      <FallingParticles />
 
       {/* Scroll progress bar */}
       <div className="fixed top-0 left-0 h-[1px] bg-ink z-[51]" style={{
