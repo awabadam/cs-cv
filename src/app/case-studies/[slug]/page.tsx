@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import SitePreview from "@/components/SitePreview";
 import CaseStudyChrome from "@/components/CaseStudyChrome";
+import CaseStudyDiagram from "@/components/CaseStudyDiagrams";
 
 const studies: Record<
   string,
@@ -18,9 +19,15 @@ const studies: Record<
     iframeable?: boolean;
     preview?: string;
     facts: { label: string; value: string }[];
+    stats?: { value: string; label: string }[];
     quote: string;
     lede: string;
-    sections: { heading: string; body: string; image?: string }[];
+    sections: {
+      heading: string;
+      body: string;
+      plate?: { src: string; alt: string; caption: string; w: number; h: number };
+    }[];
+    diagram?: { after: number; caption: string };
   }
 > = {
   "saphire-dent": {
@@ -41,6 +48,16 @@ const studies: Record<
       { label: "Languages", value: "Eight, including RTL Arabic" },
       { label: "Scale", value: "714 commits · five products" },
     ],
+    stats: [
+      { value: "714", label: "commits over sixteen months" },
+      { value: "8", label: "languages, incl. RTL Arabic" },
+      { value: "5", label: "production systems, shipped solo" },
+      { value: "200+", label: "patient case studies a month" },
+    ],
+    diagram: {
+      after: 5,
+      caption: "The ecosystem, mapped — five products around one clinic",
+    },
     quote: "Every touchpoint had to say: we are serious, we are professional, you are safe here.",
     lede: "When I joined there was no designer, no brand system, and no visual identity to speak of — two dental tourism brands under one company, serving international patients from a single Istanbul clinic. I spent five years building the brand. Then I spent the next phase building the software it runs on: five production systems, all shipped solo.",
     sections: [
@@ -59,6 +76,13 @@ const studies: Record<
       {
         heading: "The Flagship Platform",
         body: "By 2025 I could build what I had been designing. saphiredent.com is now a Next.js and PostgreSQL platform in eight languages including RTL Arabic — with a custom CMS behind five-role access control, an AI chatbot with human takeover and sales analytics, AI-assisted lead management, a geographic map of incoming leads, and Odoo CRM integration. 714 commits over sixteen months. Dedicated landing pages strip the site chrome entirely for a one-to-one match with each ad campaign.",
+        plate: {
+          src: "/images/case-studies/saphiredent-arabic.jpg",
+          alt: "saphiredent.com Arabic edition — the homepage fully mirrored right-to-left",
+          caption: "The Arabic edition — one of eight languages, mirrored right-to-left",
+          w: 2880,
+          h: 1430,
+        },
       },
       {
         heading: "Engineering the Operations",
@@ -89,6 +113,16 @@ const studies: Record<
       { label: "Access", value: "Eight-role reporting tree · HMAC webhooks" },
       { label: "Scale", value: "224 commits in five weeks" },
     ],
+    stats: [
+      { value: "224", label: "commits in five weeks" },
+      { value: "8", label: "roles in the reporting tree" },
+      { value: "3", label: "model stages per conversation" },
+      { value: "5 min", label: "HMAC replay window on ingest" },
+    ],
+    diagram: {
+      after: 1,
+      caption: "The pipeline — from recording to coaching in the margin",
+    },
     quote: "Analysis is worthless as a summary at the top of a page.",
     lede: "A dental tourism clinic lives or dies on phone calls. Hundreds of them a month, in several languages, made by consultants nobody has time to listen to. Saphire Intelligence ingests every call and WhatsApp thread, transcribes and translates it, analyses it, and hands back coaching — written in the margin beside the exact sentence it refers to.",
     sections: [
@@ -136,6 +170,16 @@ const studies: Record<
       { label: "Commerce", value: "Subscription billing · PDF reporting" },
       { label: "Scale", value: "295 commits over thirteen months" },
     ],
+    stats: [
+      { value: "295", label: "commits over thirteen months" },
+      { value: "AES-256", label: "GCM encryption at rest" },
+      { value: "Day 1", label: "multi-tenant from the first commit" },
+      { value: "Every", label: "PHI read hits the audit trail" },
+    ],
+    diagram: {
+      after: 2,
+      caption: "Security as architecture — the walls a request passes through",
+    },
     quote: "A practice management system that cannot isolate two clinics is a demo, not a product.",
     lede: "Five years inside a dental clinic teaches you what the software gets wrong. Vuedent is my answer: multi-tenant practice management where patient records, imaging, scheduling, and billing live in one system built around how a clinic actually moves through a day.",
     sections: [
@@ -146,6 +190,13 @@ const studies: Record<
       {
         heading: "The Product",
         body: "Patient records with full clinical history, image tagging by tooth region so a photograph attaches to the specific site it documents, scheduling that understands rooms and not just time slots, PDF reporting, and subscription billing. Multi-tenant from the first commit, because a practice management system that cannot isolate two clinics is a demo, not a product.",
+        plate: {
+          src: "/images/case-studies/vuedent-dashboard.jpg",
+          alt: "The Vuedent demo dashboard — schedule, patients, and revenue in one view",
+          caption: "The live demo at vuedent.com — fictional patients, real product",
+          w: 2880,
+          h: 1520,
+        },
       },
       {
         heading: "Security as Architecture",
@@ -173,12 +224,24 @@ const studies: Record<
       { label: "Languages", value: "English · French · Arabic (RTL)" },
       { label: "Extension", value: "Odoo patient-CRM addon" },
     ],
+    stats: [
+      { value: "3", label: "languages, with full RTL Arabic" },
+      { value: "14", label: "months — my longest engagement" },
+      { value: "1", label: "custom Odoo patient-CRM addon" },
+    ],
     quote: "The design conveys exclusivity through restraint, not ornamentation.",
     lede: "Jouvence is a premium medical aesthetic clinic in Istanbul offering dental work, hair restoration, and VIP concierge services to an international clientele. They needed a website that matched the exclusivity of walking through their doors — in three languages. It became my longest-running client engagement.",
     sections: [
       {
         heading: "The Challenge",
         body: "The clinic's positioning is luxury-first: German and Swiss dental materials, sapphire FUE hair transplants, VIP transportation and accommodation packages. The existing digital presence reflected none of it. The site had to convey premium quality, build trust with patients who would board a plane for treatment, and convert in English, French, and Arabic.",
+        plate: {
+          src: "/images/case-studies/jouvence-vip.jpg",
+          alt: "VIP concierge services on jouvencetr.com — transportation, accommodation, translation, aftercare",
+          caption: "The VIP tier on jouvencetr.com — restraint, white space, and gold",
+          w: 2880,
+          h: 1520,
+        },
       },
       {
         heading: "Design Direction",
@@ -214,6 +277,11 @@ const studies: Record<
       { label: "Measurement", value: "Tag Manager · GA4" },
       { label: "Performance", value: "95+ Lighthouse" },
     ],
+    stats: [
+      { value: "95+", label: "Lighthouse performance score" },
+      { value: "2", label: "languages — English & RTL Arabic" },
+      { value: "$2M+", label: "ad spend managed by the client" },
+    ],
     quote: "Nothing decorative survives if it costs a tenth of a second.",
     lede: "A performance marketer managing millions in annual ad spend has a specific problem: his own site has to outperform the landing pages he critiques for a living. Nothing decorative survives if it costs a tenth of a second.",
     sections: [
@@ -228,6 +296,13 @@ const studies: Record<
       {
         heading: "Built to Be Measured",
         body: "Bilingual EN/AR with RTL, 95+ Lighthouse performance, and conversion tracking wired through Tag Manager and GA4 from day one — because the first thing a media buyer does with a new site is check whether its own events fire correctly.",
+        plate: {
+          src: "/images/case-studies/omar-numbers.jpg",
+          alt: "The omar.marketing track-record section — 300%+ ROAS, $2M+ ad spend, ~50% qualified-lead rate",
+          caption: "The client's own numbers at display size — the section the site exists to support",
+          w: 2880,
+          h: 1520,
+        },
       },
       {
         heading: "The Result",
@@ -250,6 +325,11 @@ const studies: Record<
       { label: "Languages", value: "English · Arabic · Turkish · French" },
       { label: "Contact", value: "WhatsApp handoff · mail pipeline" },
     ],
+    stats: [
+      { value: "4", label: "languages — EN · AR · TR · FR" },
+      { value: "JCI", label: "accredited partner clinic" },
+      { value: "7", label: "Norwood stages in the calculator" },
+    ],
     quote: "Every design decision was filtered through one question: does this build trust?",
     lede: "Medical aesthetics is a trust business. Patients considering procedures abroad need to feel confident before they ever step on a plane. EsteExpert, a JCI-accredited clinic, needed a website that converted hesitation into consultation bookings — fast.",
     sections: [
@@ -260,6 +340,13 @@ const studies: Record<
       {
         heading: "The Approach",
         body: "Every design decision was filtered through one question: does this build trust? Clean typography and generous spacing signal professionalism. Real patient photography signals authenticity. Doctor profiles with credentials signal accountability. A prominent consultation CTA on every page removes friction. The design is warm but clinical — approachable but serious.",
+        plate: {
+          src: "/images/case-studies/esteexpert-hair.jpg",
+          alt: "Trust cards on esteexpert.clinic — world-class expertise, fast results, international care",
+          caption: "Trust, made explicit — reassurance cards and the booking band",
+          w: 2880,
+          h: 1520,
+        },
       },
       {
         heading: "The Calculator",
@@ -291,6 +378,16 @@ const studies: Record<
       { label: "Surfaces", value: "Quote builder · admin · journal" },
       { label: "Scale", value: "197 commits since 2024" },
     ],
+    stats: [
+      { value: "197", label: "commits since 2024" },
+      { value: "4", label: "locales, RTL included" },
+      { value: "9", label: "projects written up" },
+      { value: "4", label: "subdomains in production" },
+    ],
+    diagram: {
+      after: 3,
+      caption: "The constellation — one platform, four satellites",
+    },
     quote: "A freelancer's real bottleneck is the quoting conversation.",
     lede: "The hardest client is yourself. awab.design is my studio platform — portfolio, service catalogue, pricing, journal, and quoting tool in one. It is also the longest-running thing I maintain, and the only project where I am both the brief and the deadline.",
     sections: [
@@ -305,6 +402,13 @@ const studies: Record<
       {
         heading: "Selling Without a Salesperson",
         body: "A freelancer's real bottleneck is the quoting conversation. The site answers it directly: published package pricing, a services catalogue, care plans, and an interactive rate calculator that produces a quote and captures the lead attached to it. The journal does the other half — long-form posts aimed at the niche I actually serve, including Istanbul clinics losing international patients to outdated websites.",
+        plate: {
+          src: "/images/case-studies/awab-pricing.jpg",
+          alt: "Published package pricing on awab.design — landing page, business website, custom website",
+          caption: "Pricing, published — the quoting conversation answered before it starts",
+          w: 2880,
+          h: 1520,
+        },
       },
       {
         heading: "The Work It Documents",
@@ -505,7 +609,21 @@ export default async function CaseStudyPage({
               </p>
             </div>
 
-            <hr className="rule-ornament cs-divider" />
+            {study.stats ? (
+              <div className="cs-stats" data-reveal>
+                <div className="section-label text-ink-lighter cs-stats-label">
+                  By the numbers
+                </div>
+                {study.stats.map((stat) => (
+                  <div key={stat.label} className="cs-stat">
+                    <span className="cs-stat-value">{stat.value}</span>
+                    <span className="cs-stat-label">{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <hr className="rule-ornament cs-divider" />
+            )}
 
             {study.sections.map((section, i) => (
               <section key={i} data-reveal>
@@ -521,6 +639,34 @@ export default async function CaseStudyPage({
                 <p className="justify-editorial text-ink-light leading-[1.85] text-[1rem]">
                   {section.body}
                 </p>
+
+                {section.plate && (
+                  <figure className="cs-plate" data-reveal>
+                    <Image
+                      src={section.plate.src}
+                      alt={section.plate.alt}
+                      width={section.plate.w}
+                      height={section.plate.h}
+                      className="w-full h-auto border border-rule-light"
+                      sizes="(max-width: 768px) 100vw, 760px"
+                    />
+                    <figcaption className="cs-caption">
+                      <span>{section.plate.caption}</span>
+                    </figcaption>
+                  </figure>
+                )}
+
+                {study.diagram?.after === i && (
+                  <figure className="cs-plate" data-reveal>
+                    <div className="cs-diagram">
+                      <CaseStudyDiagram slug={slug} />
+                    </div>
+                    <figcaption className="cs-caption">
+                      <span>{study.diagram.caption}</span>
+                      <span className="hidden sm:inline">Fig. {study.number}</span>
+                    </figcaption>
+                  </figure>
+                )}
 
                 {i === quoteAfter ? (
                   <blockquote className="pull-quote cs-quote">{study.quote}</blockquote>

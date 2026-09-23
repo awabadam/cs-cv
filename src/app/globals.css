@@ -669,6 +669,94 @@ a:hover {
 .cs-divider { margin: 2.75rem 0; }
 .cs-quote { margin: 3.25rem 0; }
 
+/* ── Case study: "By the numbers" strip ── */
+.cs-stats {
+  position: relative;
+  border-top: 3px solid var(--rule);
+  border-bottom: 1px solid var(--rule-light);
+  margin: 2.75rem 0;
+  padding: 1.9rem 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 1.5rem;
+}
+.cs-stats-label {
+  position: absolute;
+  top: 0.55rem;
+  left: 0;
+  font-size: 0.62rem;
+}
+.cs-stat {
+  padding: 0.9rem 0.9rem 0;
+  text-align: center;
+}
+.cs-stat:nth-child(odd) {
+  /* the label div is child 1, so stats sit at children 2..n; odd = 2nd column */
+  border-left: 1px solid var(--rule-faint);
+}
+@media (min-width: 640px) {
+  .cs-stats {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  }
+  .cs-stat:nth-child(odd) {
+    border-left: none;
+  }
+  .cs-stat + .cs-stat {
+    border-left: 1px solid var(--rule-faint);
+  }
+}
+.cs-stat-value {
+  display: block;
+  font-family: var(--f-headline);
+  font-weight: 900;
+  font-size: clamp(1.65rem, 3vw, 2.3rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 0.55rem;
+  font-variant-numeric: lining-nums;
+}
+.cs-stat-label {
+  display: block;
+  font-family: var(--f-sc);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-lighter);
+  line-height: 1.55;
+}
+
+/* ── Case study: interior plates & figures ── */
+.cs-plate {
+  margin: 2.5rem 0 0;
+}
+.cs-plate img {
+  display: block;
+}
+
+/* ── Case study: ink schematics ── */
+.cs-diagram {
+  border: 1px solid var(--rule-light);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 23px,
+      rgba(20, 20, 10, 0.025) 23px,
+      rgba(20, 20, 10, 0.025) 24px
+    );
+  padding: clamp(0.75rem, 2.5vw, 1.5rem);
+}
+.cs-diagram {
+  overflow-x: auto;
+}
+.cs-diagram svg {
+  display: block;
+  width: 100%;
+  min-width: 540px; /* below this the small caps stop being legible — pan instead */
+  height: auto;
+}
+
 /* Scroll reveals */
 [data-reveal] {
   opacity: 0;
