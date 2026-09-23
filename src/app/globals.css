@@ -559,16 +559,134 @@ a:hover {
   min-height: 100%;
   height: 100%;
   background: var(--paper);
-  padding: 3rem 2rem;
+  padding: 2.5rem 2rem 0;
 }
 
-.case-study-paper {
-  max-width: 720px;
+/* The article sits on its own sheet, the way the horizontal pages do */
+.case-study-sheet {
+  max-width: 1160px;
   margin: 0 auto;
   background: var(--paper-page);
   border: 0.5px solid var(--paper-edge);
-  box-shadow: 2px 3px 12px var(--shadow), 6px 8px 30px var(--shadow);
-  padding: 3rem 2.5rem;
+  border-bottom: none;
+  box-shadow:
+    inset 0 0 90px rgba(20, 20, 10, 0.035),
+    2px 3px 14px var(--shadow),
+    8px 12px 40px var(--shadow);
+  padding: 3rem 3.25rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Reading rule — fills as the article is read */
+.cs-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 200;
+  pointer-events: none;
+  background: var(--rule-faint);
+}
+.cs-progress span {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  transition: transform 0.12s linear;
+}
+
+/* Running head — the folio line at the top of a printed spread */
+.cs-runhead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  font-family: var(--f-sc);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-lighter);
+  padding-bottom: 0.65rem;
+  border-bottom: 0.5px solid var(--rule-light);
+}
+.cs-runhead a { border-bottom: none; }
+.cs-runhead a:hover { color: var(--accent); }
+
+/* Infobox — the boxed panel of facts beside a feature article */
+.cs-file {
+  border-top: 2.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule-light);
+  padding-top: 0.7rem;
+}
+.cs-file dt {
+  font-family: var(--f-sc);
+  font-size: 0.64rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-lighter);
+  margin-bottom: 0.1rem;
+}
+.cs-file dd {
+  font-size: 0.83rem;
+  line-height: 1.45;
+  color: var(--ink-light);
+  padding-bottom: 0.45rem;
+  margin-bottom: 0.45rem;
+  border-bottom: 0.5px solid var(--rule-faint);
+}
+.cs-file dd a { border-bottom: none; }
+.cs-file dd:last-of-type { border-bottom: none; }
+
+/* Section numerals hang in the margin, as marginalia rather than headings */
+.cs-section-no {
+  font-family: var(--f-headline);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--paper-edge);
+  user-select: none;
+}
+
+/* Caption under a captured screenshot */
+.cs-caption {
+  font-family: var(--f-sc);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-lighter);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 0.5px solid var(--rule-faint);
+}
+
+/* `.rule-ornament` and `.pull-quote` set their own margins, so article rhythm
+   is declared here rather than with utilities that lose to them. */
+.cs-divider { margin: 2.75rem 0; }
+.cs-quote { margin: 3.25rem 0; }
+
+/* Scroll reveals */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+[data-reveal-d="1"] { transition-delay: 0.07s; }
+[data-reveal-d="2"] { transition-delay: 0.15s; }
+[data-reveal-d="3"] { transition-delay: 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .cs-progress span { transition: none; }
 }
 
 @media (min-width: 769px) {
@@ -576,6 +694,7 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-  .case-study-page { padding: 1rem; }
-  .case-study-paper { padding: 2rem 1.5rem; }
+  .case-study-page { padding: 0.75rem 0.75rem 0; }
+  .case-study-sheet { padding: 1.5rem 1.35rem 0; }
+  .cs-runhead { font-size: 0.6rem; letter-spacing: 0.16em; }
 }

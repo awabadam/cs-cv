@@ -12,7 +12,7 @@ export default function SitePreview({
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="w-full h-[60vh] min-h-[400px] mb-8 border border-rule-light overflow-hidden relative">
+    <div className="w-full aspect-[16/9] md:aspect-[2/1] border border-rule-light overflow-hidden relative">
       {/* Loading state */}
       {!loaded && (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-paper-page z-10">
@@ -43,7 +43,7 @@ export default function SitePreview({
         rel="noopener noreferrer"
         className="absolute top-3 right-3 section-label text-[0.6rem] bg-paper-page/90 backdrop-blur-sm px-3 py-1.5 border border-rule-faint hover:text-accent transition-colors z-20"
       >
-        Open live site &nearr;
+        Open live site ↗
       </a>
     </div>
   );

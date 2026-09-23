@@ -1,7 +1,9 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import SitePreview from "@/components/SitePreview";
+import CaseStudyChrome from "@/components/CaseStudyChrome";
 
 const studies: Record<
   string,
@@ -15,6 +17,8 @@ const studies: Record<
     url?: string;
     iframeable?: boolean;
     preview?: string;
+    facts: { label: string; value: string }[];
+    quote: string;
     lede: string;
     sections: { heading: string; body: string; image?: string }[];
   }
@@ -29,6 +33,15 @@ const studies: Record<
     url: "https://saphiredent.com/en/",
     iframeable: false,
     preview: "/images/case-studies/saphiredent.jpg",
+    facts: [
+      { label: "Client", value: "Saphire Dent & Estetik World" },
+      { label: "Engagement", value: "Design from 2020 · Code from 2025" },
+      { label: "Disciplines", value: "Identity, art direction, full-stack" },
+      { label: "Platform", value: "Next.js · PostgreSQL · Odoo CRM" },
+      { label: "Languages", value: "Eight, including RTL Arabic" },
+      { label: "Scale", value: "714 commits · five products" },
+    ],
+    quote: "Every touchpoint had to say: we are serious, we are professional, you are safe here.",
     lede: "When I joined there was no designer, no brand system, and no visual identity to speak of — two dental tourism brands under one company, serving international patients from a single Istanbul clinic. I spent five years building the brand. Then I spent the next phase building the software it runs on: five production systems, all shipped solo.",
     sections: [
       {
@@ -68,6 +81,15 @@ const studies: Record<
     category: "AI Product Engineering",
     year: "2026",
     role: "Designer & Developer",
+    facts: [
+      { label: "Client", value: "Saphire Dent — internal system" },
+      { label: "Discipline", value: "AI product engineering" },
+      { label: "Pipeline", value: "Job queue · worker · object storage" },
+      { label: "Models", value: "Transcription, translation, analysis" },
+      { label: "Access", value: "Eight-role reporting tree · HMAC webhooks" },
+      { label: "Scale", value: "224 commits in five weeks" },
+    ],
+    quote: "Analysis is worthless as a summary at the top of a page.",
     lede: "A dental tourism clinic lives or dies on phone calls. Hundreds of them a month, in several languages, made by consultants nobody has time to listen to. Saphire Intelligence ingests every call and WhatsApp thread, transcribes and translates it, analyses it, and hands back coaching — written in the margin beside the exact sentence it refers to.",
     sections: [
       {
@@ -106,6 +128,15 @@ const studies: Record<
     url: "https://vuedent.com",
     iframeable: false,
     preview: "/images/case-studies/vuedent.jpg",
+    facts: [
+      { label: "Product", value: "Own IP · multi-tenant SaaS" },
+      { label: "Discipline", value: "Product design & full-stack" },
+      { label: "Platform", value: "Next.js · PostgreSQL · Drizzle" },
+      { label: "Security", value: "AES-256-GCM at rest · PHI audit trail" },
+      { label: "Commerce", value: "Subscription billing · PDF reporting" },
+      { label: "Scale", value: "295 commits over thirteen months" },
+    ],
+    quote: "A practice management system that cannot isolate two clinics is a demo, not a product.",
     lede: "Five years inside a dental clinic teaches you what the software gets wrong. Vuedent is my answer: multi-tenant practice management where patient records, imaging, scheduling, and billing live in one system built around how a clinic actually moves through a day.",
     sections: [
       {
@@ -134,6 +165,15 @@ const studies: Record<
     year: "2025 – 2026",
     role: "Designer & Developer",
     url: "https://www.jouvencetr.com/en",
+    facts: [
+      { label: "Client", value: "Jouvence Medical Aesthetic, Istanbul" },
+      { label: "Engagement", value: "March 2025 – May 2026" },
+      { label: "Discipline", value: "Design & front-end" },
+      { label: "Platform", value: "Next.js · GSAP · Lenis" },
+      { label: "Languages", value: "English · French · Arabic (RTL)" },
+      { label: "Extension", value: "Odoo patient-CRM addon" },
+    ],
+    quote: "The design conveys exclusivity through restraint, not ornamentation.",
     lede: "Jouvence is a premium medical aesthetic clinic in Istanbul offering dental work, hair restoration, and VIP concierge services to an international clientele. They needed a website that matched the exclusivity of walking through their doors — in three languages. It became my longest-running client engagement.",
     sections: [
       {
@@ -166,6 +206,15 @@ const studies: Record<
     year: "2026",
     role: "Designer & Developer",
     url: "https://omar.marketing",
+    facts: [
+      { label: "Client", value: "Omar Karaa, performance marketer" },
+      { label: "Discipline", value: "Design, motion & front-end" },
+      { label: "Platform", value: "Next.js · Three.js" },
+      { label: "Languages", value: "English · Arabic (RTL)" },
+      { label: "Measurement", value: "Tag Manager · GA4" },
+      { label: "Performance", value: "95+ Lighthouse" },
+    ],
+    quote: "Nothing decorative survives if it costs a tenth of a second.",
     lede: "A performance marketer managing millions in annual ad spend has a specific problem: his own site has to outperform the landing pages he critiques for a living. Nothing decorative survives if it costs a tenth of a second.",
     sections: [
       {
@@ -194,6 +243,14 @@ const studies: Record<
     year: "2026",
     role: "Designer & Developer",
     url: "https://esteexpert.clinic",
+    facts: [
+      { label: "Client", value: "EsteExpert Clinic — JCI accredited" },
+      { label: "Discipline", value: "Design & development" },
+      { label: "Centrepiece", value: "Norwood-scale graft calculator" },
+      { label: "Languages", value: "English · Arabic · Turkish · French" },
+      { label: "Contact", value: "WhatsApp handoff · mail pipeline" },
+    ],
+    quote: "Every design decision was filtered through one question: does this build trust?",
     lede: "Medical aesthetics is a trust business. Patients considering procedures abroad need to feel confident before they ever step on a plane. EsteExpert, a JCI-accredited clinic, needed a website that converted hesitation into consultation bookings — fast.",
     sections: [
       {
@@ -226,6 +283,15 @@ const studies: Record<
     year: "2024 – Present",
     role: "Designer & Developer",
     url: "https://www.awab.design",
+    facts: [
+      { label: "Client", value: "Myself — the hardest one" },
+      { label: "Discipline", value: "Design, development, content" },
+      { label: "Platform", value: "Next.js · Three.js · Supabase" },
+      { label: "Languages", value: "English · Arabic · Turkish · French" },
+      { label: "Surfaces", value: "Quote builder · admin · journal" },
+      { label: "Scale", value: "197 commits since 2024" },
+    ],
+    quote: "A freelancer's real bottleneck is the quoting conversation.",
     lede: "The hardest client is yourself. awab.design is my studio platform — portfolio, service catalogue, pricing, journal, and quoting tool in one. It is also the longest-running thing I maintain, and the only project where I am both the brief and the deadline.",
     sections: [
       {
@@ -252,8 +318,38 @@ const studies: Record<
   },
 };
 
+/* The order the studies appear on the Work page; `esteexpert` is routable but untiled. */
+const ORDER = [
+  "saphire-dent",
+  "saphire-intelligence",
+  "vuedent",
+  "jouvence",
+  "omar-marketing",
+  "awab-design",
+];
+
 export function generateStaticParams() {
   return Object.keys(studies).map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const study = studies[slug];
+  if (!study) return {};
+
+  const title = `${study.title} — ${study.subtitle}`;
+  const description = study.lede.slice(0, 200);
+
+  return {
+    title,
+    description,
+    openGraph: { title, description, type: "article" },
+    twitter: { card: "summary_large_image", title, description },
+  };
 }
 
 export default async function CaseStudyPage({
@@ -265,150 +361,218 @@ export default async function CaseStudyPage({
   const study = studies[slug];
   if (!study) notFound();
 
+  /* `esteexpert` sits outside the numbered sequence, so it carries no numeral. */
+  const numbered = study.number !== "—";
+  const position = ORDER.indexOf(slug);
+  const nextSlug = ORDER[position === -1 ? 0 : (position + 1) % ORDER.length];
+  const next = nextSlug === slug ? null : studies[nextSlug];
+
+  /* The pull quote interrupts the article the way it would in print: after the
+     reader has settled in, never at the very top or the very end, and never
+     directly beside the paragraph the line was pulled from. */
+  const candidates = study.sections
+    .map((_, i) => i)
+    .filter(
+      (i) =>
+        i >= 1 &&
+        i <= study.sections.length - 2 &&
+        !study.sections[i].body.includes(study.quote) &&
+        !study.sections[i + 1].body.includes(study.quote)
+    );
+  const quoteAfter = candidates[0] ?? Math.min(1, study.sections.length - 2);
+
   return (
-    <div>
-      {/* Hero — full width */}
-      <div className="max-w-[1200px] mx-auto mb-12">
-        {/* Back nav */}
-        <div className="flex justify-between items-center mb-8">
-          <Link
-            href="/?page=4"
-            className="section-label text-ink-lighter text-[0.68rem] hover:text-accent transition-colors"
-          >
-            &larr; Back to main
-          </Link>
-          <span className="section-label text-ink-lighter text-[0.68rem]">
-            Case Study {study.number}
+    <>
+      <CaseStudyChrome />
+
+      <article className="case-study-sheet">
+        <div className="grain-overlay" aria-hidden="true" />
+
+        {/* ── Running head ── */}
+        <header className="cs-runhead">
+          <Link href="/?page=4">&larr; Selected Work</Link>
+          <span className="hidden sm:inline text-ink-lighter/70">
+            Awab Elkhalil &ensp;·&ensp; {study.subtitle}
           </span>
-        </div>
+          <span>{numbered ? `Case Study ${study.number}` : "Selected Project"}</span>
+        </header>
 
-        {/* Live site preview */}
-        {study.url && (
-          study.iframeable !== false ? (
-            <SitePreview url={study.url} title={`${study.subtitle} — live site`} />
-          ) : study.preview ? (
-            <a
-              href={study.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full h-[50vh] min-h-[360px] mb-8 border border-rule-light overflow-hidden relative group"
-            >
-              <Image
-                src={study.preview}
-                alt={`${study.subtitle} website screenshot`}
-                fill
-                className="object-cover object-top"
-                sizes="100vw"
-              />
-              <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/5 transition-colors flex items-center justify-center">
-                <span className="section-label text-[0.75rem] bg-paper-page/90 backdrop-blur-sm px-5 py-2.5 border border-rule-faint opacity-0 group-hover:opacity-100 transition-opacity tracking-[0.2em]">
-                  Visit live site &nearr;
-                </span>
-              </div>
-            </a>
-          ) : null
-        )}
-
-        {/* Title block */}
-        <div className="flex gap-4 md:gap-8 items-end">
-          <span
-            className="font-headline text-[2.5rem] md:text-[8rem] font-bold leading-none text-paper-edge"
-            style={{ marginBottom: "-0.1em" }}
-          >
-            {study.number}
-          </span>
-          <div className="flex-1 pb-2">
-            <div className="section-label text-accent mb-2 tracking-[0.3em]">
-              {study.category}&ensp;&middot;&ensp;{study.year}
-            </div>
-            <h1 className="masthead-title text-[clamp(1.3rem,3.5vw,4.5rem)] leading-[0.88] mb-3">
-              {study.title}
-            </h1>
-            <p className="dateline text-ink-lighter">
-              {study.subtitle}
-            </p>
-          </div>
-        </div>
-
-        <hr className="rule-thick mt-6 mb-0" />
-      </div>
-
-      {/* Content area */}
-      <div className="max-w-[1200px] mx-auto">
-        {/* Role + Lede — two column */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 md:gap-12 mb-12">
-          <div>
-            <div className="section-label text-ink-lighter mb-1">Role</div>
-            <hr className="rule-thick mb-3" />
-            <p className="font-headline font-bold text-[1.05rem] leading-snug mb-3">
-              {study.role}
-            </p>
-            {study.url && (
-              <>
-                <div className="section-label text-ink-lighter mb-1 mt-4">Live Site</div>
-                <hr className="rule-light mb-2" />
-                <a
-                  href={study.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent text-[0.9rem] hover:text-ink transition-colors"
-                >
-                  {study.url.replace("https://www.", "").replace("https://", "")} &nearr;
-                </a>
-              </>
+        {/* ── Masthead: kicker, headline, numeral hung in the margin ── */}
+        <div
+          className="grid grid-cols-1 md:grid-cols-[minmax(210px,240px)_minmax(0,1fr)] gap-x-10 pt-8 md:pt-12"
+          data-reveal
+        >
+          <div className="hidden md:flex items-start justify-end pr-2">
+            {numbered && (
+              <span
+                className="font-headline font-bold leading-[0.8] text-paper-edge text-[7.5rem] select-none"
+                aria-hidden="true"
+              >
+                {study.number}
+              </span>
             )}
           </div>
+
           <div>
-            <div className="section-label text-ink-lighter mb-1">Overview</div>
-            <hr className="rule-thick mb-3" />
-            <p className="drop-cap justify-editorial text-ink-light leading-[1.8] text-[1.05rem]">
-              {study.lede}
-            </p>
+            <div className="section-label text-accent tracking-[0.3em] mb-3">
+              {numbered && <span className="md:hidden">{study.number} &ensp;·&ensp; </span>}
+              {study.category}&ensp;·&ensp;{study.year}
+            </div>
+            <h1 className="masthead-title text-[clamp(1.7rem,3.9vw,3.5rem)] leading-[0.92] mb-4">
+              {study.title}
+            </h1>
+            <p className="dateline text-ink-lighter">{study.subtitle}</p>
+            <hr className="rule-thick mt-5 mb-[3px]" />
+            <hr className="rule-thin" />
           </div>
         </div>
 
-        <hr className="rule-ornament mb-12" />
-
-        {/* Sections — clean editorial text */}
-        <div className="max-w-3xl mx-auto">
-          {study.sections.map((section, i) => (
-            <div key={i} className="mb-10">
-              <div className="flex items-baseline gap-3 mb-2">
-                <span className="font-headline text-[1.5rem] md:text-[2rem] font-bold leading-none text-paper-edge">
-                  {String(i + 1).padStart(2, "0")}
+        {/* ── Plate: the live site, framed or captured ── */}
+        {study.url && (study.iframeable !== false || study.preview) && (
+          <figure className="mt-10" data-reveal data-reveal-d="1">
+            {study.iframeable !== false ? (
+              <SitePreview url={study.url} title={`${study.subtitle} — live site`} />
+            ) : (
+              <a
+                href={study.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative aspect-[16/9] md:aspect-[2/1] border border-rule-light overflow-hidden group !border-b"
+              >
+                <Image
+                  src={study.preview!}
+                  alt={`${study.subtitle} website, captured`}
+                  fill
+                  className="object-cover object-top transition-transform duration-[1.2s] ease-out group-hover:scale-[1.02]"
+                  sizes="(max-width: 768px) 100vw, 1100px"
+                  priority
+                />
+                <span className="absolute inset-0 flex items-center justify-center bg-ink/0 group-hover:bg-ink/10 transition-colors duration-500">
+                  <span className="section-label text-[0.72rem] bg-paper-page/92 backdrop-blur-sm px-5 py-2.5 border border-rule-faint opacity-0 group-hover:opacity-100 transition-opacity duration-300 tracking-[0.22em]">
+                    Visit live site ↗
+                  </span>
                 </span>
-                <h2 className="font-headline text-[1.1rem] md:text-[1.4rem] font-bold leading-tight">
-                  {section.heading}
-                </h2>
-              </div>
-              <hr className="rule-light mb-4" />
-              <p className="justify-editorial text-ink-light leading-[1.85] text-[1rem]">
-                {section.body}
-              </p>
-              {i < study.sections.length - 1 && (
-                <hr className="rule-ornament mt-10" />
+              </a>
+            )}
+            <figcaption className="cs-caption">
+              <span>{study.subtitle}, as published</span>
+              <span className="hidden sm:inline">
+                {study.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")} ↗
+              </span>
+            </figcaption>
+          </figure>
+        )}
+
+        {/* ── The file, the standfirst, and the article ── */}
+        <div className="grid grid-cols-1 md:grid-cols-[minmax(210px,240px)_minmax(0,1fr)] gap-x-10 gap-y-10 mt-12">
+          <aside className="md:sticky md:top-6 md:self-start md:max-h-[calc(100vh-4rem)] md:overflow-y-auto" data-reveal>
+            <div className="section-label text-ink-lighter mb-1">The File</div>
+            <dl className="cs-file">
+              <dt>Role</dt>
+              <dd className="font-headline font-bold text-ink text-[0.95rem]">
+                {study.role}
+              </dd>
+              {study.facts.map((fact) => (
+                <div key={fact.label}>
+                  <dt>{fact.label}</dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))}
+              {study.url && (
+                <div>
+                  <dt>Live site</dt>
+                  <dd>
+                    <a
+                      href={study.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:text-ink transition-colors"
+                    >
+                      {study.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")} ↗
+                    </a>
+                  </dd>
+                </div>
               )}
+            </dl>
+          </aside>
+
+          <div className="max-w-[70ch]">
+            <div data-reveal data-reveal-d="1">
+              <div className="section-label text-ink-lighter mb-1">Overview</div>
+              <hr className="rule-thick mb-4" />
+              <p className="drop-cap justify-editorial text-ink-light leading-[1.8] text-[1.08rem]">
+                {study.lede}
+              </p>
             </div>
-          ))}
+
+            <hr className="rule-ornament cs-divider" />
+
+            {study.sections.map((section, i) => (
+              <section key={i} data-reveal>
+                <div className="flex items-baseline gap-3 mb-2">
+                  <span className="cs-section-no">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h2 className="font-headline text-[1.15rem] md:text-[1.45rem] font-bold leading-tight">
+                    {section.heading}
+                  </h2>
+                </div>
+                <hr className="rule-light mb-4" />
+                <p className="justify-editorial text-ink-light leading-[1.85] text-[1rem]">
+                  {section.body}
+                </p>
+
+                {i === quoteAfter ? (
+                  <blockquote className="pull-quote cs-quote">{study.quote}</blockquote>
+                ) : i < study.sections.length - 1 ? (
+                  <hr className="rule-ornament cs-divider" />
+                ) : null}
+              </section>
+            ))}
+          </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-16 mb-8">
-          <hr className="rule-thick mb-[3px]" />
-          <hr className="rule-thin mb-6" />
-          <div className="flex justify-between items-center">
-            <p className="text-ink-lighter text-[0.72rem] leading-[1.6]">
-              &copy; {new Date().getFullYear()} Awab Elkhalil
-            </p>
+        {/* ── Continued: the next study in the sequence ── */}
+        {next && (
+          <div className="mt-20" data-reveal>
+            <hr className="rule-thick mb-[3px]" />
+            <hr className="rule-thin mb-7" />
             <Link
-              href="/"
-              className="section-label text-[0.68rem] text-ink-lighter hover:text-accent transition-colors"
+              href={`/case-studies/${nextSlug}`}
+              className="group grid grid-cols-1 md:grid-cols-[minmax(210px,240px)_minmax(0,1fr)] gap-x-10 gap-y-3 !border-b-0"
             >
-              Back to main &rarr;
+              <div className="section-label text-ink-lighter tracking-[0.24em] md:text-right md:pr-2">
+                Continued &rarr;
+              </div>
+              <div>
+                <div className="section-label text-accent tracking-[0.3em] mb-2">
+                  Case Study {next.number}&ensp;·&ensp;{next.category}
+                </div>
+                <h2 className="masthead-title text-[clamp(1.35rem,3vw,2.4rem)] leading-[0.95] mb-2 group-hover:text-accent transition-colors duration-300">
+                  {next.title}
+                </h2>
+                <p className="dateline text-ink-lighter">{next.subtitle}</p>
+              </div>
             </Link>
           </div>
-        </div>
-      </div>
-    </div>
+        )}
+
+        {/* ── Colophon ── */}
+        <footer className="mt-16 pb-9">
+          <hr className="rule-thin mb-4" />
+          <div className="flex flex-wrap justify-between items-baseline gap-3">
+            <p className="text-ink-lighter text-[0.72rem] leading-[1.6]">
+              &copy; 2026 Awab Elkhalil &ensp;·&ensp; Istanbul
+            </p>
+            <Link
+              href="/?page=4"
+              className="section-label text-[0.68rem] text-ink-lighter hover:text-accent transition-colors"
+            >
+              All case studies &rarr;
+            </Link>
+          </div>
+        </footer>
+      </article>
+    </>
   );
 }
