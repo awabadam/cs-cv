@@ -31,6 +31,10 @@ function JobEntry({ job, index, isLast }: { job: typeof experience[0]; index: nu
 }
 
 export default function ExperiencePage({ isActive, style }: ExperiencePageProps) {
+  const split = Math.ceil(experience.length / 2);
+  const leftColumn = experience.slice(0, split);
+  const rightColumn = experience.slice(split);
+
   return (
     <section className="paper-page" data-active={isActive} style={style}>
       <div className="flex flex-col md:flex-row h-auto md:h-full">
@@ -44,13 +48,13 @@ export default function ExperiencePage({ isActive, style }: ExperiencePageProps)
 
         <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-8 overflow-y-auto px-4 md:px-6 pt-4 md:pt-6 pb-4" style={{ height: '100%' }}>
           <div className="md:border-r border-rule-light md:pr-8">
-            {experience.slice(0, 3).map((job, i) => (
-              <JobEntry key={i} job={job} index={i} isLast={i === 2} />
+            {leftColumn.map((job, i) => (
+              <JobEntry key={i} job={job} index={i} isLast={i === leftColumn.length - 1} />
             ))}
           </div>
           <div>
-            {experience.slice(3).map((job, i) => (
-              <JobEntry key={i} job={job} index={i} isLast={i === experience.slice(3).length - 1} />
+            {rightColumn.map((job, i) => (
+              <JobEntry key={i} job={job} index={i} isLast={i === rightColumn.length - 1} />
             ))}
           </div>
         </div>

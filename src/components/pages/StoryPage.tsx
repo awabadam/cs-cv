@@ -37,9 +37,14 @@ export default function StoryPage({ isActive, style }: StoryPageProps) {
               <span className="text-ink font-bold text-[0.85rem]">Moved to Istanbul</span>
             </div>
             <div data-anim="slide-up" data-anim-d="5" className="flex items-center gap-3">
-              <span className="dateline text-ink-lighter w-12">2025</span>
+              <span className="dateline text-ink-lighter w-12">2024</span>
               <hr className="rule-light flex-1" />
-              <span className="text-ink-light text-[0.85rem]">Shifted to web dev</span>
+              <span className="text-ink-light text-[0.85rem]">First sites shipped solo</span>
+            </div>
+            <div data-anim="slide-up" data-anim-d="6" className="flex items-center gap-3">
+              <span className="dateline text-ink-lighter w-12">2026</span>
+              <hr className="rule-light flex-1" />
+              <span className="text-ink-light text-[0.85rem]">Five products live</span>
             </div>
           </div>
         </div>
@@ -79,7 +84,7 @@ export default function StoryPage({ isActive, style }: StoryPageProps) {
           <p className="dateline text-ink-lighter text-[0.6rem] mb-5 flex justify-between">
             <span>Khartoum, 2016</span>
             <span>&mdash;&mdash;&mdash;</span>
-            <span>Istanbul, 2025</span>
+            <span>Istanbul, 2026</span>
           </p>
           <div data-anim="slide-up" data-anim-d="3" className="grid grid-cols-1 md:grid-cols-2 gap-x-6 flex-1">
             <div className="md:border-r border-rule-light md:pr-6">
@@ -97,8 +102,10 @@ export default function StoryPage({ isActive, style }: StoryPageProps) {
                 with two brands and no designer. Over five years I built
                 everything&thinsp;&mdash;&thinsp;the logos, the identity
                 systems, the social media, the websites&thinsp;&mdash;&thinsp;and
-                a team to carry it forward. Today I focus on web development.
-                The design eye never left.
+                a team to carry it forward. Then I learned to build the
+                software too: a platform in eight languages, a patient app, a
+                portal, an AI system that listens to sales calls. The design
+                eye never left.
               </p>
             </div>
           </div>

@@ -7,7 +7,15 @@ export const experience = [
     location: "Istanbul, Turkiye",
     period: "2025 – Present",
     description:
-      "Now focused on the web — architecting and developing the main website and high-conversion landing pages. Working directly with management on cross-brand digital strategy. Integrated Google Ads and Analytics to drive measurable campaign ROI.",
+      "Sole builder of the clinic's digital ecosystem — five production systems around one dental tourism practice. The flagship platform runs in eight languages with a custom CMS, an AI chatbot, and Odoo CRM integration, self-hosted on Docker with blue-green deploys.",
+  },
+  {
+    role: "Full-Stack Developer & Designer",
+    company: "Independent — Freelance",
+    location: "Istanbul, Turkiye",
+    period: "2024 – Present",
+    description:
+      "End-to-end delivery for clinics, agencies, and small businesses: strategy, brand, interface, code, deployment. Jouvence, EsteExpert, Omar Marketing, Prestij Emlak — solo, on fixed deadlines, most of them Arabic-first.",
   },
   {
     role: "Lead Graphic Designer & Media Team Lead",
@@ -15,15 +23,15 @@ export const experience = [
     location: "Istanbul, Turkiye",
     period: "2020 – 2025",
     description:
-      "Joined as the sole designer for two brands under one company. Designed both logos, art directed all social media, created ad campaigns, and edited before-and-after patient photography. Built and led a design team of three.",
+      "Joined as the sole designer for two brands under one company. Designed both logos, art directed all social media, built the ad creative, and ran a photography pipeline producing 200+ patient case studies a month. Grew the team from one to three.",
   },
   {
-    role: "Co-Founder",
+    role: "Co-Founder & Creative Lead",
     company: "Sequence Media Productions",
     location: "Khartoum, Sudan",
     period: "2019 – 2020",
     description:
-      "Co-founded a media production studio with friends, all while holding full-time positions elsewhere. Oversaw creative direction and client strategy. Left amicably to pursue design over media production — a clearer path.",
+      "Co-founded a creative studio with friends while holding a full-time role elsewhere. Delivered 360° campaigns for 12+ clients across FMCG, food, and tech. Left amicably to pursue design over media production.",
   },
   {
     role: "Lead Graphic Designer",
@@ -31,7 +39,7 @@ export const experience = [
     location: "Khartoum, Sudan",
     period: "2019 – 2020",
     description:
-      "Led a team of designers and a motion artist across multi-sector branding and advertising projects for tech, FMCG, and services clients.",
+      "Led a team of designers and a motion artist across startup branding, multi-sector campaigns, and the first landing pages I ever hand-coded in HTML and JavaScript.",
   },
   {
     role: "Graphic Designer",
@@ -39,15 +47,15 @@ export const experience = [
     location: "Khartoum, Sudan",
     period: "2018 – 2019",
     description:
-      "Produced branding and digital campaign assets across diverse client engagements.",
+      "Produced 100+ social advertisements across diverse client engagements and standardised the templates behind them, cutting turnaround on routine work.",
   },
   {
     role: "Graphic Designer",
     company: "icare-net",
-    location: "Sudan",
+    location: "Khartoum, Sudan",
     period: "2016 – 2018",
     description:
-      "First professional role. Designed logos, event branding, product graphics, and print materials. First introduction to web design — where the curiosity began.",
+      "First professional role. Logos, event branding, product graphics, print materials — and the first website and mobile app interfaces I ever designed. Where the curiosity began.",
   },
 ];
 
@@ -62,15 +70,17 @@ export const expertise = {
     "Packaging & Print Production",
   ],
   technical: [
-    "Next.js & React",
+    "Next.js, React & TypeScript",
+    "Tailwind CSS & Design Systems",
     "Three.js & WebGL",
-    "Tailwind CSS",
-    "AI Integration & Chatbots",
-    "VPS, Docker & Nginx",
-    "Google Ads & Analytics",
-    "Adobe Creative Suite",
-    "Figma & Prototyping",
-    "Blender 3D",
+    "PostgreSQL, Prisma & Drizzle",
+    "Expo & React Native",
+    "AI Chatbots & Content Pipelines",
+    "Arabic-First i18n & RTL",
+    "Docker, Dokploy & VPS Deployment",
+    "Nginx, CI/CD & Blue-Green Deploys",
+    "GA4, Tag Manager & Google Ads",
+    "Adobe Suite, Figma & Blender",
   ],
 };
 
@@ -78,42 +88,62 @@ export const caseStudies = [
   {
     slug: "saphire-dent",
     number: "I",
-    headline: "Building a Dental Empire's Entire Visual World",
+    headline: "One Clinic, Five Products, One Builder",
     subtitle: "Saphire Dent & Estetik World",
     description:
-      "Five years as the sole-then-lead designer for two dental tourism brands. Logos, identity systems, social media, ad campaigns, websites, and a design team — built from nothing.",
-    category: "Brand Identity & Web",
-    year: "2020 – 2025",
+      "Five years as the designer, then the developer, for two dental tourism brands. Logos and identity first; then a website, an admin platform, a patient app, a portal, and a call-intelligence system — all shipped solo.",
+    category: "Brand, Web & Product",
+    year: "2020 – Present",
+  },
+  {
+    slug: "saphire-intelligence",
+    number: "II",
+    headline: "Teaching a Clinic to Hear Itself",
+    subtitle: "Saphire Intelligence",
+    description:
+      "Sales calls and WhatsApp threads pass through transcription, translation, and analysis, then come back as coaching notes in the margin of the exact conversation turn they belong to.",
+    category: "AI Product Engineering",
+    year: "2026",
+  },
+  {
+    slug: "vuedent",
+    number: "III",
+    headline: "A Practice Management System, Built Solo",
+    subtitle: "Vuedent",
+    description:
+      "Multi-tenant dental practice software: patient records, tooth-region image tagging, scheduling, encryption at rest, and an audit trail for every view of a record.",
+    category: "Product & SaaS",
+    year: "2025 – 2026",
   },
   {
     slug: "jouvence",
-    number: "II",
+    number: "IV",
     headline: "Luxury Aesthetics, Translated to Screen",
     subtitle: "Jouvence Medical Aesthetic",
     description:
-      "A premium medical aesthetics clinic needed a website that matched the exclusivity of its service. Multilingual, conversion-focused, built with Next.js — luxury minimalism for an international clientele.",
+      "A premium medical aesthetics clinic needed a website matching the exclusivity of its service. Trilingual with RTL Arabic, motion-led, built with Next.js — luxury minimalism for an international clientele.",
     category: "Web Design & Development",
-    year: "2024",
+    year: "2025 – 2026",
   },
   {
-    slug: "esteexpert",
-    number: "III",
-    headline: "Trust Through Design",
-    subtitle: "EsteExpert Clinic",
+    slug: "omar-marketing",
+    number: "V",
+    headline: "A Media Buyer Makes His Own Case",
+    subtitle: "Omar Marketing",
     description:
-      "A medical aesthetics clinic website designed to convert hesitant international patients into booked consultations. Every design decision served one goal: build trust fast.",
-    category: "Web Design & Development",
-    year: "2024",
+      "A performance marketer who spends millions on ads a year needed a site that performs as hard as his campaigns. Three.js visuals, bilingual EN/AR, 95+ Lighthouse.",
+    category: "Web & Motion",
+    year: "2026",
   },
   {
     slug: "awab-design",
-    number: "IV",
+    number: "VI",
     headline: "Designing the Designer's Own Platform",
     subtitle: "awab.design",
     description:
-      "A personal portfolio and service platform built with Next.js, React, WebGL, and AI-driven features. 50+ websites documented, conversion-focused, and a showcase of the full stack.",
-    category: "Portfolio & Web Development",
-    year: "2024",
+      "My own studio platform: four locales with RTL Arabic, an interactive quote builder, an admin panel, a journal, and nine documented projects. The hardest client is yourself.",
+    category: "Portfolio & Platform",
+    year: "2024 – Present",
   },
 ];
 

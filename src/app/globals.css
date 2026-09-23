@@ -461,6 +461,8 @@ a:hover {
 .paper-page[data-active="true"] .bento-float-2 { animation: float 4s ease 1s infinite; }
 .paper-page[data-active="true"] .bento-float-3 { animation: float 4s ease 2s infinite; }
 .paper-page[data-active="true"] .bento-float-4 { animation: float 4s ease 3s infinite; }
+.paper-page[data-active="true"] .bento-float-5 { animation: float 4s ease 0.5s infinite; }
+.paper-page[data-active="true"] .bento-float-6 { animation: float 4s ease 1.5s infinite; }
 
 /* ══ Folio breathing ══ */
 .paper-page[data-active="true"] .folio {
@@ -484,8 +486,8 @@ a:hover {
 /* ══ Bento grid ══ */
 .bento-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  grid-template-rows: 1.1fr 0.9fr;
+  grid-template-columns: 1.15fr 1fr;
+  grid-template-rows: 1.12fr 0.94fr 0.94fr;
   height: 100%;
   gap: 0;
 }

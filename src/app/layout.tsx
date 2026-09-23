@@ -7,11 +7,11 @@ const fontUrl =
 export const metadata: Metadata = {
   title: "Awab Elkhalil — Designer & Developer",
   description:
-    "Portfolio and CV of Awab Elkhalil, digital artisan creating data-driven website solutions. Based in Istanbul.",
+    "Portfolio and CV of Awab Elkhalil — designer and developer building multilingual, Arabic-first web products end to end. Based in Istanbul.",
   openGraph: {
     title: "Awab Elkhalil — Designer & Developer",
     description:
-      "Digital artisan. One designer. Two brands. Five years. Every pixel.",
+      "Designer and developer. I design it, then I build it — end to end, every pixel.",
     type: "website",
     locale: "en_US",
   },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Awab Elkhalil — Designer & Developer",
     description:
-      "Digital artisan. One designer. Two brands. Five years. Every pixel.",
+      "Designer and developer. I design it, then I build it — end to end, every pixel.",
   },
 };
 

@@ -34,13 +34,16 @@ export default function CaseStudiesPage({ isActive, style }: CaseStudiesPageProp
 
         <div className="w-full md:w-[70%] bento-grid">
           {caseStudies.map((study, i) => {
-            const isLarge = i === 0 || i === 3;
+            const isLarge = i === 0;
+            const col = i % 2;
+            const row = Math.floor(i / 2);
+            const lastRow = Math.ceil(caseStudies.length / 2) - 1;
             const borders = [
-              "border-r border-rule-light border-b border-rule-light",
-              "border-b border-rule-light",
-              "border-r border-rule-light",
-              "",
-            ][i];
+              col === 0 ? "border-r border-rule-light" : "",
+              row < lastRow ? "border-b border-rule-light" : "",
+            ]
+              .filter(Boolean)
+              .join(" ");
 
             return (
               <Link
@@ -64,7 +67,7 @@ export default function CaseStudiesPage({ isActive, style }: CaseStudiesPageProp
                 }}
               >
                 <span
-                  className={`absolute font-headline font-bold leading-none text-paper-edge transition-all duration-500 group-hover:text-rule-light group-hover:scale-110 bento-float-${i + 1} bento-num ${isLarge ? "text-[4rem] md:text-[12rem]" : "text-[3rem] md:text-[8rem]"}`}
+                  className={`absolute font-headline font-bold leading-none text-paper-edge transition-all duration-500 group-hover:text-rule-light group-hover:scale-110 bento-float-${i + 1} bento-num ${isLarge ? "text-[3.5rem] md:text-[9rem]" : "text-[2.75rem] md:text-[6.5rem]"}`}
                   style={{
                     right: i % 2 === 0 ? "-0.5rem" : "auto",
                     left: i % 2 === 1 ? "-0.5rem" : "auto",
@@ -74,7 +77,7 @@ export default function CaseStudiesPage({ isActive, style }: CaseStudiesPageProp
                   {study.number}
                 </span>
 
-                <div className={`relative z-10 flex flex-col h-full ${isLarge ? "px-4 md:px-8 pt-5 md:pt-7 pb-6 md:pb-8" : "px-3 md:px-6 pt-4 md:pt-6 pb-5 md:pb-7"}`}>
+                <div className={`relative z-10 flex flex-col h-full ${isLarge ? "px-4 md:px-7 pt-4 md:pt-6 pb-5 md:pb-7" : "px-3 md:px-6 pt-3.5 md:pt-5 pb-4 md:pb-6"}`}>
                   <div className="flex items-center gap-2 mb-auto">
                     <span className="section-label text-accent text-[0.5rem] tracking-[0.3em]">
                       {study.category}
@@ -86,7 +89,7 @@ export default function CaseStudiesPage({ isActive, style }: CaseStudiesPageProp
                   </div>
 
                   <div className="mt-auto">
-                    <h3 className={`font-headline font-bold leading-[1.1] mb-2 group-hover:text-accent transition-colors ${isLarge ? "text-[1.5rem]" : "text-[1.1rem]"}`}>
+                    <h3 className={`font-headline font-bold leading-[1.1] mb-2 group-hover:text-accent transition-colors ${isLarge ? "text-[1.35rem]" : "text-[1.02rem]"}`}>
                       {study.headline}
                     </h3>
                     <p className="dateline text-ink-lighter text-[0.6rem] mb-2">

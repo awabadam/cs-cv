@@ -32,17 +32,18 @@ export default function CoverPage({ isActive, style, today }: CoverPageProps) {
           </div>
 
           <h2 data-anim="slide-up" data-anim-d="3" className="font-quote text-[1.15rem] leading-[1.45] font-normal mb-5 text-ink-light italic">
-            One designer. Two brands.<br />
-            Five&nbsp;years. Every&nbsp;pixel.
+            I design it, then I build it.<br />
+            End&nbsp;to&nbsp;end. Every&nbsp;pixel.
           </h2>
 
           <p data-anim="slide-up" data-anim-d="4" className="justify-editorial text-ink-light leading-[1.7] mb-4 text-[0.9rem]">
             I am a digital artisan. I hack, I play, I mold projects until
             they hit their targets&thinsp;&mdash;&thinsp;or until the work
-            speaks for itself. A decade of graphic design,
-            five&nbsp;years building two brands from the ground up, and a
-            growing practice in web development have taught me that the best
-            work lives at the intersection of craft and obsession.
+            speaks for itself. A decade of graphic design, five&nbsp;years
+            building two brands from the ground up, and a practice that now
+            runs the whole distance&thinsp;&mdash;&thinsp;brand, interface,
+            code, and the server it ships to. Mostly multilingual, mostly
+            Arabic&nbsp;first, mostly built alone.
           </p>
 
           <p data-anim="fade" data-anim-d="5" className="pull-quote mb-4">
