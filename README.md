@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Awab Elkhalil — Interactive CV
 
-## Getting Started
+An interactive CV and case-study portfolio, designed as an editorial newspaper spread.
 
-First, run the development server:
+**Live:** [cv.awab.design](https://cv.awab.design)
+
+## What's inside
+
+- **Horizontal page layout.** Full-screen pages with transform-based transitions, set out like the pages of a broadsheet.
+- **Editorial typography.** Playfair Display masthead, Fraunces headlines, Libre Caslon body text and Cormorant SC small caps on a cream paper palette with a deep red accent.
+- **Case studies.** Six long-form case studies, each with ink-style diagrams, stat strips and live site previews. Sites that block framing are shown as clickable screenshots.
+- **Interaction details.** Ink and falling-paper particle effects in Three.js, a custom cursor, magnetic buttons, reactive titles and optional paper sound effects.
+- **Generated Open Graph image and icon.**
+
+All CV content lives in a single typed file, [`src/data/content.ts`](src/data/content.ts). [`CONTENT.md`](CONTENT.md) documents the sources and the claims behind it.
+
+## Tech stack
+
+- [Next.js 16](https://nextjs.org/) (App Router) and TypeScript
+- [React Three Fiber](https://r3f.docs.pmnd.rs/) and [drei](https://drei.docs.pmnd.rs/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+## Getting started
 
 ```bash
+git clone https://github.com/awabadam/cs-cv.git
+cd cs-cv
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). No environment variables are needed.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── page.tsx                  # The CV spread
+│   └── case-studies/[slug]/      # Case study pages
+├── components/                   # Particles, cursor, diagrams, previews
+│   └── pages/                    # Individual CV pages
+└── data/content.ts               # All CV and case-study content
+public/images/                    # Cover, story and case-study imagery
+```
 
-## Learn More
+## Author
 
-To learn more about Next.js, take a look at the following resources:
+**Awab Elkhalil** · [awab.design](https://www.awab.design) · [LinkedIn](https://linkedin.com/in/awab-adam)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This repository is shared as a portfolio piece. The content, design and imagery are not licensed for reuse. Client names and screenshots belong to their respective owners.
