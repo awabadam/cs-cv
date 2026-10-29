@@ -136,4 +136,5 @@ From the KB case-study draft — do not harden these without verification:
 - Work first: the home page opens on the project grid; project pages open on the cover image.
 - No decoration competing with the images: neutral greys, one typeface, thin rules.
 - Images keep their own aspect ratios in justified rows; any image opens a full-screen viewer.
-- Light and dark mode follow the system setting.
+- Light and dark mode follow the system setting by default (Auto); the header switch pins Light or Dark, remembered per browser.
+- Favicon: an "AE" monogram set in Switzer Bold (src/app/icon.svg, favicon.ico, apple-icon.png), inverting with the system colour scheme.

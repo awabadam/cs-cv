@@ -32,13 +32,20 @@ export const metadata: Metadata = {
   },
 };
 
+/* Apply a pinned light/dark choice (ThemeSwitch) before first paint, so it never flashes. */
+const themeInit = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${switzer.variable} antialiased`}>
+    // The script sets data-theme before React hydrates, hence suppressHydrationWarning.
+    <html lang="en" className={`${switzer.variable} antialiased`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+      </head>
       <body>{children}</body>
     </html>
   );

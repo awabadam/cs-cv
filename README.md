@@ -10,7 +10,7 @@ A work-first portfolio and CV. The home page opens on an image grid of every pro
 - **Project pages.** Cover, then every board in justified rows that keep each image at its own aspect ratio. Any image opens a full-screen viewer that steps through the whole project with arrow keys or a swipe. Motion pieces loop silently while on screen and play with controls in the viewer.
 - **Case studies.** Seven projects carry a long-form write-up under the work, with stat strips, plates and line diagrams.
 - **CV.** About, experience, skills and contact on the home page, below the work.
-- **Plain styling.** One typeface (Switzer), neutral tones, light and dark mode from the system setting. No effects in the way of the images.
+- **Plain styling.** One typeface (Switzer), neutral tones, light and dark mode that follow the system, with a header switch to pin either. No effects in the way of the images.
 - **Static output.** Every page is prerendered. Old `/case-studies/:slug` links redirect to `/work/:slug`.
 
 ## Content

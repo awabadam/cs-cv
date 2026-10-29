@@ -6,6 +6,7 @@ import CaseStudyDiagram from "@/components/CaseStudyDiagrams";
 import Gallery from "@/components/Gallery";
 import ProjectCard from "@/components/ProjectCard";
 import SiteFooter from "@/components/SiteFooter";
+import ThemeSwitch from "@/components/ThemeSwitch";
 import { images, kindLabels, plain, projects, type Project } from "@/data/work";
 import type { Study } from "@/data/studies";
 
@@ -197,9 +198,12 @@ export default async function WorkPage({
         <Link href="/" className="font-medium">
           Awab Elkhalil
         </Link>
-        <Link href="/#work" className="text-muted hover:text-fg">
-          &larr; All work
-        </Link>
+        <div className="flex items-center gap-5">
+          <Link href="/#work" className="text-muted hover:text-fg">
+            &larr; All work
+          </Link>
+          <ThemeSwitch />
+        </div>
       </header>
 
       <main>

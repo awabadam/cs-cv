@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import SiteFooter from "@/components/SiteFooter";
+import ThemeSwitch from "@/components/ThemeSwitch";
 import WorkGrid from "@/components/WorkGrid";
 import { experience, expertise, socialLinks } from "@/data/content";
 
@@ -25,11 +26,13 @@ function SectionHead({ id, children }: { id: string; children: React.ReactNode }
 export default function Home() {
   return (
     <>
-      <header className="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-5 text-sm">
+      {/* On a phone the switch sits beside the name and the section links take the next line. */}
+      <header className="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-5 text-sm">
         <Link href="/" className="font-medium">
           Awab Elkhalil
         </Link>
-        <nav aria-label="Sections" className="flex gap-5 text-muted">
+        <ThemeSwitch className="sm:order-last" />
+        <nav aria-label="Sections" className="flex w-full gap-5 text-muted sm:ml-auto sm:w-auto">
           {nav.map(([label, href]) => (
             <a key={href} href={href} className="hover:text-fg">
               {label}

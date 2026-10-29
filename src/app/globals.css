@@ -15,14 +15,22 @@
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
+/* Auto follows the system; the header switch can pin light or dark (html[data-theme]). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #090a0c;
     --fg: #ededee;
     --muted: #8c8c93;
     --line: #232428;
     --panel: #141518;
   }
+}
+:root[data-theme="dark"] {
+  --bg: #090a0c;
+  --fg: #ededee;
+  --muted: #8c8c93;
+  --line: #232428;
+  --panel: #141518;
 }
 
 @theme inline {
@@ -40,6 +48,12 @@ html {
   color: var(--fg);
   color-scheme: light dark;
   -webkit-text-size-adjust: 100%;
+}
+html[data-theme="light"] {
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 body {
