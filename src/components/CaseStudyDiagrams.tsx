@@ -1,13 +1,13 @@
 /**
- * Editorial schematics for the case studies — drawn like newspaper figures:
- * hairline strokes, small caps, and no colour the ink doesn't already own.
+ * Schematics for the case studies: hairline strokes, small labels, and no colour
+ * beyond the page's own foreground and background.
  * Server-safe: plain SVG, no state, sized by viewBox and scaled by CSS.
  */
 
-const SC = "var(--f-sc)";
-const INK = "var(--ink)";
-const FAINT = "var(--ink-lighter)";
-const PAPER = "var(--paper-page)";
+const SC = "var(--font-switzer), sans-serif";
+const INK = "var(--fg)";
+const FAINT = "var(--muted)";
+const PAPER = "var(--bg)";
 
 function Box({
   cx,
@@ -178,7 +178,7 @@ function VuedentLayers() {
   );
   return (
     <svg viewBox="0 0 720 330" role="img" aria-label="Diagram: a request passes through the tenant wall and encryption before every read lands in the audit trail">
-      <title>Vuedent's security layers</title>
+      <title>Vuedent&rsquo;s security layers</title>
       <ArrowDefs id={m} />
       <rect x="36" y="26" width="648" height="280" fill="none" stroke={INK} strokeWidth="0.9" />
       <rect x="116" y="88" width="488" height="192" fill="none" stroke={INK} strokeWidth="0.9" />
@@ -210,7 +210,7 @@ function AwabConstellation() {
     [150, 84, "emlak.awab.design", "real-estate listings"],
     [570, 84, "gym.awab.design", "training PWA"],
     [150, 316, "quran.awab.design", "offline Quran reader"],
-    [570, 316, "cv.awab.design", "this document"],
+    [570, 316, "cv.awab.design", "this site"],
   ];
   return (
     <svg viewBox="0 0 720 400" role="img" aria-label="Diagram: four production subdomains orbiting awab.design">

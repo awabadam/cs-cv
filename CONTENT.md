@@ -1,6 +1,6 @@
 # Content Documentation — Awab Elkhalil CV/Portfolio
 
-> Last synced: 2026-09-23. Sources: CV Knowledge Base (`Nextcloud/Main vault/1 Projects/CV Knowledge Base`),
+> Last synced: 2026-10-28. Sources: CV Knowledge Base (`Nextcloud/Main vault/1 Projects/CV Knowledge Base`),
 > GitHub `awabadam` + `AwabElAdam`, and local repo commit history.
 
 ## Identity
@@ -77,24 +77,40 @@ GA4, Tag Manager & Google Ads · Adobe Suite, Figma & Blender
 **Method:** spec-first delivery with AI coding agents — writes the spec, directs and reviews the
 implementation, tests and deploys. Framing rule from the KB: *method, not skills deficit.*
 
-## Case Studies (site tiles — 6)
+## Work (22 projects)
 
-| # | Slug | Subject | Category | Year | Live preview |
-|---|---|---|---|---|---|
-| I | `saphire-dent` | Saphire Dent & Estetik World | Brand, Web & Product | 2020 – Present | screenshot (X-Frame-Options: DENY) |
-| II | `saphire-intelligence` | Saphire Intelligence | AI Product Engineering | 2026 | none (internal system) |
-| III | `vuedent` | Vuedent | Product & SaaS | 2025 – 2026 | https://vuedent.com (X-Frame-Options: DENY → screenshot preview) |
-| IV | `jouvence` | Jouvence Medical Aesthetic | Web Design & Development | 2025 – 2026 | iframe jouvencetr.com/en |
-| V | `omar-marketing` | Omar Marketing | Web & Motion | 2026 | iframe omar.marketing |
-| VI | `awab-design` | awab.design | Portfolio & Platform | 2024 – Present | iframe awab.design |
+The project index, captions and images come from the portfolio knowledge base
+(`CV Knowledge Base/web-portfolio`, see its `SCHEMA.md`). `src/data/work.json` and `public/work/*.webp`
+are generated from it; regenerate after changing the knowledge base. Motion pieces add a silent H.264
+clip at `public/work/<key>.mp4` (720 px short side), with the webp as its poster frame. Excluded from the
+site, as in the print portfolio: `lp-implant-03`, `lp-implant-07`, `lp-mobile2`, `ads-smile-more` (patient
+imagery). Sarı Dental is left off the site at the owner's request; it stays in the knowledge base.
 
-`esteexpert` remains a routed case study (`/case-studies/esteexpert`) but is not tiled on the Work page.
+Order: 01 Saphire Dent Brand Identity · 02 Saphire Dent Main Site · 03 Yasmina Beauty ·
+04 Bespoke Clinics · 05 Motion · 06 Omega Implants · 07 Campaign System · 08 Jouvence ·
+09 EsteExpert · 10 Omar Marketing · 11 awab.design · 12 Vuedent · 13 Saphire Intelligence ·
+14 DentBazaar · 15 WATERBOY · 16 TAKU · 17 Chef's Burger & Crepe · 18 Blue Mesh · 19 Italy Pizza ·
+20 Branded Equipment · 21 Key Visuals · 22 Photography. A motion cover loops on its index card too.
+
+Vuedent and Saphire Intelligence have no board set; they are built from their case studies in
+`src/data/work.ts`.
+
+### Case studies (long-form, `src/data/studies.ts`)
+
+| Slug | Subject | Category | Year |
+|---|---|---|---|
+| `saphire-dent` | Saphire Dent & Estetik World | Brand, Web & Product | 2020 – Present |
+| `saphire-intelligence` | Saphire Intelligence | AI Product Engineering | 2026 |
+| `vuedent` | Vuedent | Product & SaaS | 2025 – 2026 |
+| `jouvence` | Jouvence Medical Aesthetic | Web Design & Development | 2025 – 2026 |
+| `esteexpert` | EsteExpert Clinic | Web Design & Development | 2026 |
+| `omar-marketing` | Omar Marketing | Web & Motion | 2026 |
+| `awab-design` | awab.design | Portfolio & Platform | 2024 – Present |
+
+Each renders under the work on `/work/<slug>`. `/case-studies/<slug>` redirects there (308).
 
 **Verified commit counts (2026-09-23):** Saphiredent 714 · saphire-intelligence 224 · vuedent 295 ·
 portfolio 197 · Saphire-app 104 · patient-portal 136.
-
-**Iframe check (2026-09-23):** all case-study URLs frameable except saphiredent.com and vuedent.com
-(both X-Frame-Options: DENY — rendered as clickable screenshot previews).
 
 ## Claims to handle carefully
 From the KB case-study draft — do not harden these without verification:
@@ -112,18 +128,12 @@ From the KB case-study draft — do not harden these without verification:
 6. **2024:** first sites shipped solo as a developer; freelance practice begins
 7. **2025–2026:** web developer & lead designer; five products live around one clinic
 
-## Fonts in Use
-- **Masthead (name):** Playfair Display — 800 weight, uppercase
-- **Headlines:** Fraunces — variable font, section titles
-- **Body:** Libre Caslon Text
-- **Small caps:** Cormorant SC — datelines, labels, bylines
-- **Also loaded:** Cormorant Garamond, Bodoni Moda
+## Typeface
+- **Switzer** (variable, 100–900), self-hosted from `src/app/fonts/` under the ITF Free Font License (Fontshare).
+- System monospace for numbers and labels.
 
 ## Design Direction
-- Editorial/newspaper aesthetic with paper texture
-- Horizontal full-screen pages with transform-based transitions
-- Split layouts: title left, content right
-- Cream paper palette, dark ink, deep red accent (#6b1010)
-- Ornamental dividers between sections
-- Pull quotes with large decorative opening quotation mark
-- Work page: 2-column × 3-row bento grid, first tile large with description
+- Work first: the home page opens on the project grid; project pages open on the cover image.
+- No decoration competing with the images: neutral greys, one typeface, thin rules.
+- Images keep their own aspect ratios in justified rows; any image opens a full-screen viewer.
+- Light and dark mode follow the system setting.

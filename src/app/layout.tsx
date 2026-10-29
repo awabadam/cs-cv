@@ -1,17 +1,26 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const fontUrl =
-  "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant+SC:wght@300;400;500;600;700&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Playfair+Display:wght@400..900&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap";
+const switzer = localFont({
+  src: "./fonts/Switzer-Variable.woff2",
+  weight: "100 900",
+  variable: "--font-switzer",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Awab Elkhalil — Designer & Developer",
+  metadataBase: new URL("https://cv.awab.design"),
+  title: {
+    default: "Awab Elkhalil — Designer & Developer",
+    template: "%s — Awab Elkhalil",
+  },
   description:
-    "Portfolio and CV of Awab Elkhalil — designer and developer building multilingual, Arabic-first web products end to end. Based in Istanbul.",
+    "Work and CV of Awab Elkhalil — brand identity, campaigns, websites and products, designed and built end to end. Based in Istanbul.",
   openGraph: {
     title: "Awab Elkhalil — Designer & Developer",
     description:
-      "Designer and developer. I design it, then I build it — end to end, every pixel.",
+      "Brand identity, campaigns, websites and products — designed and built end to end.",
     type: "website",
     locale: "en_US",
   },
@@ -19,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Awab Elkhalil — Designer & Developer",
     description:
-      "Designer and developer. I design it, then I build it — end to end, every pixel.",
+      "Brand identity, campaigns, websites and products — designed and built end to end.",
   },
 };
 
@@ -29,19 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link href={fontUrl} rel="stylesheet" />
-      </head>
-      <body className="h-full">
-        {children}
-      </body>
+    <html lang="en" className={`${switzer.variable} antialiased`}>
+      <body>{children}</body>
     </html>
   );
 }

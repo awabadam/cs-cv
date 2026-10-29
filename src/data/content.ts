@@ -155,5 +155,3 @@ export const socialLinks = [
   { label: "Facebook", url: "https://facebook.com/awabeladam", display: "awabeladam" },
 ];
 
-export const pageLabels = ["Cover", "Story", "Experience", "Expertise", "Work", "Contact"];
-export const PAGE_COUNT = pageLabels.length;

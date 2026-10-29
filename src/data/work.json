@@ -1,0 +1,3576 @@
+{
+ "projects": [
+  {
+   "id": "saphire-dent-identity",
+   "client": "Saphire Dent",
+   "title": "Brand Identity",
+   "year": "2021–2022",
+   "sector": "Dental tourism clinic, Istanbul",
+   "disciplines": [
+    "Logo",
+    "Identity",
+    "Stationery",
+    "Print"
+   ],
+   "kind": [
+    "brand",
+    "print"
+   ],
+   "palette": [
+    {
+     "hex": "#E38233",
+     "name": "Cadmium Orange",
+     "source": "copy"
+    },
+    {
+     "hex": "#293D47",
+     "name": "Charcoal Blue",
+     "source": "copy"
+    },
+    {
+     "hex": "#EBE7D9",
+     "name": "Cream",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Logo, colours, pattern and stationery for an Istanbul dental clinic, from the 2021 presentation to the 2022 guideline.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "A new identity for Saphire Dent, a dental clinic in Istanbul that treats patients from abroad. I joined the clinic in November 2020, and the identity was presented, in Arabic, in February 2021."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Designed the mark: a crown, a tooth and a diamond drawn as one icon, set over a SAPHIRE DENT wordmark. I tested the icon across colours and sizes, then built the rest of the kit from it: two brand colours, a diamond line pattern, circular seals, stationery, business cards, paper cups and staff ID cards. A second card direction, in gold foil on a dark card, followed in March 2021. Related: the clinic's website (<a href=\"#saphire-dent\">chapter 05</a>)."
+    },
+    {
+     "lead": "Handover.",
+     "text": "In January 2022 I set the logo and colours down in a guideline, with HEX, RGB and CMYK values, and the headed paper followed in February. The mark is still the clinic's logo and favicon on <a href=\"https://saphiredent.com\">saphiredent.com</a>."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Role",
+     "v": "Lead Graphic Designer, in-house"
+    },
+    {
+     "k": "Deliverables",
+     "v": "Logo · icon · colours · pattern · seals · stationery · business cards · paper cups · ID cards · guideline"
+    },
+    {
+     "k": "Tools",
+     "v": "Illustrator · InDesign"
+    },
+    {
+     "k": "Presented",
+     "v": "February 2021, in Arabic"
+    }
+   ],
+   "link": {
+    "href": "https://saphiredent.com",
+    "label": "saphiredent.com"
+   },
+   "cover": {
+    "img": "sapb-logo",
+    "cap": "The primary logo, stacked: the crown, tooth and diamond mark over the SAPHIRE DENT wordmark. From the January 2022 logo and colours guideline."
+   },
+   "sections": [
+    {
+     "title": "The Mark",
+     "note": null,
+     "rows": [
+      [
+       {
+        "img": "sapb-concept",
+        "cap": "The idea, from the February 2021 presentation: a crown, a tooth and a diamond, combined."
+       },
+       {
+        "img": "sapb-icon",
+        "cap": "The icon tested across colours and sizes, in cream, orange and charcoal, on dark and light grounds."
+       }
+      ],
+      [
+       {
+        "img": "sapb-emboss",
+        "cap": "The stacked logo pressed into textured paper. A mockup on a stock template."
+       },
+       {
+        "img": "sapb-seals",
+        "cap": "Three circular seals built around the icon."
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Colour & Pattern",
+     "note": null,
+     "rows": [
+      [
+       {
+        "img": "sapb-colours",
+        "cap": "The two brand colours, Cadmium Orange and Charcoal Blue, with HEX, RGB and CMYK values. From the 2022 guideline."
+       },
+       {
+        "img": "sapb-pattern",
+        "cap": "A pattern test from February 2021: the diamond line pattern on orange and on cream, with the horizontal logo."
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Stationery",
+     "note": null,
+     "rows": [
+      [
+       {
+        "img": "sapb-stationery",
+        "cap": "Folder, letterheads, envelopes and a business card. A mockup on a stock template, with lorem ipsum and placeholder names. Addresses blurred."
+       },
+       {
+        "img": "sapb-letterhead",
+        "cap": "Headed paper, 2022: the stacked logo, a diamond line border on the left edge and a large crown-and-tooth watermark. Contact footer cropped."
+       }
+      ],
+      [
+       {
+        "img": "sapb-cards",
+        "cap": "Business card, front and back, with a placeholder name, title and phone numbers. Address blurred."
+       },
+       {
+        "img": "sapb-card-gold",
+        "cap": "The second card direction, from a March 2021 presentation: the mark in a gold outline with foil lettering, on a dark card. A mockup on a stock template, cropped to the front."
+       }
+      ]
+     ]
+    },
+    {
+     "title": "In Use",
+     "note": null,
+     "rows": [
+      [
+       {
+        "img": "sapb-cup",
+        "cap": "Paper cup wrap, shown as the flat print file with its dieline: the line pattern, a large translucent icon and the clinic's public phone number."
+       },
+       {
+        "img": "sapb-idcard",
+        "cap": "Staff ID card with a placeholder name, position and department."
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "saphire-dent",
+   "client": "Saphire Dent",
+   "title": "Main Site",
+   "year": "2025",
+   "sector": "Istanbul · Clinic main site",
+   "disciplines": [
+    "Figma → Next.js",
+    "8 languages"
+   ],
+   "kind": [
+    "web"
+   ],
+   "palette": [
+    {
+     "hex": "#998A63",
+     "name": "Muted gold",
+     "source": "sampled"
+    },
+    {
+     "hex": "#28232A",
+     "name": "Charcoal",
+     "source": "sampled"
+    },
+    {
+     "hex": "#FDFEFE",
+     "name": "White",
+     "source": "sampled"
+    }
+   ],
+   "summary": "The clinic's main site, designed in Figma and carried through build and deployment in eight languages, RTL Arabic included.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "The clinic's main site had to do the job a brochure used to: explain treatments to patients who are choosing from abroad, in their own language, and make the next step obvious."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Designed the site in Figma and carried it through build and deployment. A dark-editorial system with a gold accent, content-driven across eight languages, with right-to-left Arabic treated as a first-class layout rather than a mirror."
+    },
+    {
+     "lead": "Where it sits.",
+     "text": "This is where the campaign system in <a href=\"#campaign-system\">chapter 06</a> lands. The ad sets the promise; the site has to keep it."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Scope",
+     "v": "Design · Build · Deployment"
+    },
+    {
+     "k": "Stack",
+     "v": "Figma → Next.js · 8 locales"
+    }
+   ],
+   "link": {
+    "href": "https://saphiredent.com",
+    "label": "saphiredent.com"
+   },
+   "cover": {
+    "img": "site-saphiredent",
+    "cap": "<a href=\"https://saphiredent.com\">saphiredent.com</a> — the clinic's main site, live and content-driven in eight languages."
+   },
+   "sections": [
+    {
+     "title": "Implant Landing Page, Section by Section",
+     "note": "A dental-implant discount landing page, designed as a 15-section conversion path: hero promise, credibility, treatment detail, social proof, then a single low-friction form. Built for the campaign system in <a href=\"#campaign-system\">chapter 06</a>, so the page picks up exactly where the ad leaves off.",
+     "rows": [
+      [
+       {
+        "img": "lp-implant-01",
+        "cap": "Hero + offer"
+       },
+       {
+        "img": "lp-implant-12",
+        "cap": "Conversion — form & handoff"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Mobile First, In Hand",
+     "note": "The landing page was designed at phone width first and only then opened out, because that is where the traffic arrives: paid social, one thumb, a few seconds of patience. Every section resolves to a single decision and a single button.",
+     "rows": [
+      [
+       {
+        "img": "lp-mobile1",
+        "cap": "Hero, trust row and the first call to action"
+       },
+       {
+        "img": "lp-mobile3",
+        "cap": "Offer block and the booking form at the end of the scroll"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "yasmina-beauty",
+   "client": "Yasmina Beauty",
+   "title": "Rebrand",
+   "year": "2023",
+   "sector": "Dental, hair & aesthetics clinic",
+   "disciplines": [
+    "Rebrand",
+    "Logo",
+    "Social media kit"
+   ],
+   "kind": [
+    "brand"
+   ],
+   "palette": [
+    {
+     "hex": "#B52525",
+     "name": "Red",
+     "source": "copy"
+    },
+    {
+     "hex": "#E3DDDA",
+     "name": "Light grey",
+     "source": "sampled"
+    },
+    {
+     "hex": "#FFFFFF",
+     "name": "White",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Three logo directions, a deep red jasmine mark and a social media kit with post and story templates for a clinic.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "A clinic for dental, hair, face, body and bariatric treatments, for men and women, Arab and European patients alike. The new logo had to be “classy, confident, clear and identifiable” and express the name: yasmina is Arabic for jasmine."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Three logo directions, each written for a different patient: Calmness, Youth and Class. The clinic chose Class, an upright Y whose arms open into a jasmine sprig. Two colour rounds followed, and the clinic settled on a deep red. Around the mark I built the social media kit: cover and profile images, highlight and website icons, and before-and-after templates."
+    },
+    {
+     "lead": "The result.",
+     "text": "Templates the team fills in with each new case, so the feed stays on brand without a designer."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Deliverables",
+     "v": "Three logo directions · two colour rounds · final mark and badge · stationery mockups · social media kit · post and story templates"
+    },
+    {
+     "k": "Tools",
+     "v": "Illustrator · InDesign"
+    },
+    {
+     "k": "Timeline",
+     "v": "February – March 2023"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "yas-mark-roses",
+    "cap": "The final mark in white over dark red roses."
+   },
+   "sections": [
+    {
+     "title": "Three Directions",
+     "note": "Each direction came with its own mockups, so the clinic chose between three finished brands rather than three sketches. The mockups use stock photography.",
+     "rows": [
+      [
+       {
+        "stack": [
+         {
+          "img": "yas-calm-logo",
+          "cap": null
+         },
+         {
+          "img": "yas-calm-use",
+          "cap": "01 Calmness. Calm and comforting, for working professionals: a teal lotus with an orange star."
+         }
+        ]
+       },
+       {
+        "stack": [
+         {
+          "img": "yas-youth-logo",
+          "cap": null
+         },
+         {
+          "img": "yas-youth-use",
+          "cap": "02 Youth. Playful and trendy, for young adults and students: a teal and orange jasmine flower with a script wordmark."
+         }
+        ]
+       },
+       {
+        "stack": [
+         {
+          "img": "yas-class-logo",
+          "cap": null
+         },
+         {
+          "img": "yas-class-use",
+          "cap": "03 Class, chosen. Confident and premium, for affluent patients: an upright Y whose arms open into a jasmine sprig."
+         }
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Colour & the Final Mark",
+     "note": "Two colour rounds on the chosen mark. The clinic chose red, set against white and a light grey.",
+     "rows": [
+      [
+       {
+        "img": "yas-colour1",
+        "cap": "Round one: purple, light blue and red"
+       },
+       {
+        "img": "yas-colour2",
+        "cap": "Round two: purple against red, in gold foil"
+       }
+      ],
+      [
+       {
+        "img": "yas-mark-red",
+        "cap": "The final mark in red #B52525"
+       },
+       {
+        "img": "yas-badge",
+        "cap": "The round badge"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "In Use & Social Kit",
+     "note": null,
+     "rows": [
+      [
+       {
+        "img": "yas-use-kit",
+        "cap": "T-shirt, box and bag set"
+       },
+       {
+        "img": "yas-use-bags",
+        "cap": "Carry bags in red and in white"
+       },
+       {
+        "img": "yas-use-letter",
+        "cap": "Letterheads"
+       }
+      ],
+      [
+       {
+        "img": "yas-kit-cover",
+        "cap": "Cover image: Beauty, Elegance & Class"
+       },
+       {
+        "img": "yas-kit-profile",
+        "cap": "Profile images in white and red"
+       },
+       {
+        "img": "yas-kit-highlights",
+        "cap": "Highlight covers and treatment icons"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "A Frame for Every Result",
+     "note": "Every post and story comes in a red and a white version, with the before and after photos side by side or stacked. The frames are empty here on purpose: the published posts carry real patients’ results, and those stay with the clinic.",
+     "rows": [
+      [
+       {
+        "stack": [
+         {
+          "img": "yas-tpl-sq-red",
+          "cap": "Post, red"
+         },
+         {
+          "img": "yas-tpl-sq-white",
+          "cap": "Post, white"
+         }
+        ]
+       },
+       {
+        "img": "yas-tpl-st-red",
+        "cap": "Story, red"
+       },
+       {
+        "img": "yas-tpl-st-stacked",
+        "cap": "Story, before above after"
+       },
+       {
+        "img": "yas-tpl-st-white",
+        "cap": "Story, white"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bespoke-clinics",
+   "client": "Bespoke Clinics",
+   "title": "Identity",
+   "year": "2022",
+   "sector": "Dental & aesthetics, Istanbul",
+   "disciplines": [
+    "Stylescapes",
+    "Identity",
+    "Stationery"
+   ],
+   "kind": [
+    "brand"
+   ],
+   "palette": [
+    {
+     "hex": "#172B40",
+     "name": "Navy",
+     "source": "copy"
+    },
+    {
+     "hex": "#FCBD8D",
+     "name": "Peach",
+     "source": "copy"
+    },
+    {
+     "hex": "#D96058",
+     "name": "Coral",
+     "source": "copy"
+    }
+   ],
+   "summary": "Stylescapes, a coral and peach monogram, stationery, social templates and a sales team kit for a dental and aesthetics clinic.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "Bespoke Clinics treats international patients in Istanbul for dental, hair, face, body and bariatric procedures. They wanted a brand that felt personal and premium rather than clinical, away from the cold blue and white of most clinics in the market, and a kit the staff could use from day one."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Stylescapes first, so the client could agree on a mood before any logo work. Then three monogram routes, each shown on signage, posters, vehicles and apparel. The client chose the first: a coral B and a peach C that share one stroke. Around it I built the palette, the stationery, social media templates and a WhatsApp kit for each sales consultant."
+    },
+    {
+     "lead": "Handover.",
+     "text": "July 2022: the logo suite, stationery, social media templates and sales profiles."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Deliverables",
+     "v": "Stylescapes · monogram and logo suite · palette · stationery · signage, vehicle and apparel mockups · social templates · sales team kit"
+    },
+    {
+     "k": "Tools",
+     "v": "Illustrator · Photoshop · InDesign"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "bes-cover",
+    "cap": "The primary logo on navy: Bespoke Clinics, dental and aesthetics, Istanbul."
+   },
+   "sections": [
+    {
+     "title": "Direction",
+     "note": "Before drawing a logo, I built stylescapes so the client could agree on a mood: warm peach and coral against deep navy, editorial portraits, and a softer voice than most clinic branding. Every photo on these boards is a stock placeholder.",
+     "rows": [
+      [
+       {
+        "img": "bes-style1",
+        "cap": "Type and colour: Berkshire Swash with coral, blush, peach and navy"
+       },
+       {
+        "stack": [
+         {
+          "img": "bes-style2",
+          "cap": "A service banner, with treatment icons on a navy strip"
+         },
+         {
+          "img": "bes-style3",
+          "cap": "Before-and-after posts in the same palette"
+         }
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "title": "The Mark",
+     "note": "I presented three monogram routes, each tested on signage, posters, vehicles and apparel. The client chose the first. The serif lettering keeps it closer to a beauty house than a medical practice.",
+     "rows": [
+      [
+       {
+        "img": "bes-logo",
+        "cap": "Primary logo: a coral B and a peach C share one stroke"
+       },
+       {
+        "img": "bes-colours",
+        "cap": "Navy #172B40, peach #FCBD8D, coral #D96058, and a gradient for social and sales assets"
+       }
+      ],
+      [
+       {
+        "img": "bes-monogram",
+        "cap": "The BC monogram on each colour, and inside the badge"
+       },
+       {
+        "img": "bes-lockups",
+        "cap": "The logo on peach, navy and cream"
+       },
+       {
+        "img": "bes-badge",
+        "cap": "The badge, foiled in gold on navy card"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "In Use",
+     "note": "The stationery reuses the colour blocks from the palette, and the monogram comes back as a large outline watermark on the letterhead. The WhatsApp kit for each sales consultant is not shown here: it carries the consultants’ own photos.",
+     "rows": [
+      [
+       {
+        "img": "bes-sign",
+        "cap": "Round wall sign with the monogram badge"
+       },
+       {
+        "img": "bes-cards",
+        "cap": "Business cards in coral, peach and navy"
+       }
+      ],
+      [
+       {
+        "img": "bes-van",
+        "cap": "Van livery"
+       },
+       {
+        "img": "bes-tshirts",
+        "cap": "Staff T-shirts, front and back"
+       },
+       {
+        "img": "bes-letterhead",
+        "cap": "Letterhead with an outline watermark"
+       },
+       {
+        "img": "bes-bag",
+        "cap": "Carry bag"
+       },
+       {
+        "img": "bes-social",
+        "cap": "Social profile images"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "motion",
+   "client": "Motion",
+   "title": "Explainers, Ads & 3D Loops",
+   "year": "2020–2021",
+   "sector": "Dental & dental tourism",
+   "disciplines": [
+    "Motion graphics",
+    "Kinetic type",
+    "3D animation"
+   ],
+   "kind": [
+    "motion",
+    "3d"
+   ],
+   "palette": [
+    {
+     "hex": "#E8A739",
+     "name": "Gold",
+     "source": "sampled"
+    },
+    {
+     "hex": "#0A070A",
+     "name": "Black",
+     "source": "sampled"
+    },
+    {
+     "hex": "#FAEFD3",
+     "name": "Warm white",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Animated explainers, short ads and Blender loops for Saphire Dent and Estetik World, in Arabic and English.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "The dental brands I designed for met most of their patients in social feeds, where a still post scrolls past. A lot of the work had to move: explainers that answer a patient's first questions, short spots for each offer, and loops that make a product feel physical."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Saphire Dent's explainer series cut into kinetic title cards, Estetik World's offer spots in Arabic and English cuts, all in After Effects; and short product and type loops lit, animated and rendered in Blender."
+    },
+    {
+     "lead": "The result.",
+     "text": "Square cuts for the feed, 9:16 for stories, and the same piece in both languages where the audience needed it."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Tools",
+     "v": "After Effects · Blender"
+    },
+    {
+     "k": "Formats",
+     "v": "1:1 feed · 9:16 stories · 16:9"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "bl-helix",
+    "cap": "A Blender loop: a gold implant turning through a white double helix."
+   },
+   "sections": [
+    {
+     "title": "Saphire Dent Explainers",
+     "note": "A series answering a patient's first questions about implants and zirconium crowns, cut as square posts. The 3D dental clips inside them are third-party animation (Vatech EzCodi); the type, layout and edit are mine.",
+     "rows": [
+      [
+       {
+        "img": "sd-impl-who",
+        "cap": "“How to determine if you need a dental implant”"
+       },
+       {
+        "img": "sd-impl-what",
+        "cap": "“So what are dental implants?”"
+       },
+       {
+        "img": "sd-impl-how",
+        "cap": "“How is it done?”"
+       },
+       {
+        "img": "sd-zirc",
+        "cap": "“Are you a good zirconium crowns candidate?”"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Estetik World Spots",
+     "note": "Offer and service spots for a dental-tourism brand in Istanbul, mostly in Arabic and English cuts. Photos, footage and 3D product models are stock or supplier assets; the layout, type and animation are mine.",
+     "rows": [
+      [
+       {
+        "img": "ew-mascot-ar",
+        "cap": "Dental treatment in Turkey, Arabic cut: the tooth mascot in a fez in front of Istanbul's skyline, one service per scene"
+       },
+       {
+        "img": "ew-mascot-en",
+        "cap": "English cut, with the month's 30% discount"
+       }
+      ],
+      [
+       {
+        "img": "ew-spring-ar",
+        "cap": "Spring campaign, Arabic cut: “Enjoy the warm spring of Istanbul while renewing your smile”, then an implant set into a gum model"
+       },
+       {
+        "img": "ew-spring-en",
+        "cap": "English cut"
+       },
+       {
+        "img": "ew-implant",
+        "cap": "“Dental implants in Turkey, starting from 250€”"
+       }
+      ],
+      [
+       {
+        "img": "ew-eid-care",
+        "cap": "Eid al-Adha stories: dental care"
+       },
+       {
+        "img": "ew-eid-implants",
+        "cap": "Implants"
+       },
+       {
+        "img": "ew-eid-zirc",
+        "cap": "Zirconium crowns"
+       },
+       {
+        "img": "ew-eid-sheep",
+        "cap": "Eid al-Adha"
+       }
+      ],
+      [
+       {
+        "img": "ew-services",
+        "cap": "“Dental services in Turkey”: a circular infographic over footage of Istanbul"
+       },
+       {
+        "img": "ew-onbrand",
+        "cap": "“Huge discounts on cosmetic procedures”: Arabic kinetic type in black and gold"
+       },
+       {
+        "img": "ad-straumann",
+        "cap": "Straumann implants at 50% off, €1,500 to €750 (Arabic, 9:16). The Straumann logo and implant render are the manufacturer's."
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Blender Loops",
+     "note": "Short product and type loops, lit, animated and rendered in Blender.",
+     "rows": [
+      [
+       {
+        "img": "bl-implants",
+        "cap": "One implant becomes three"
+       },
+       {
+        "img": "bl-saphire-case",
+        "cap": "A case carrying the Saphire mark"
+       },
+       {
+        "img": "bl-drop",
+        "cap": "An iridescent water drop"
+       }
+      ],
+      [
+       {
+        "img": "bl-type",
+        "cap": "Gold 3D Arabic type: “How to get the best smile in the world”"
+       },
+       {
+        "img": "bl-play",
+        "cap": "A ring that folds into a play button"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "omega-implants",
+   "client": "Omega",
+   "title": "Implants",
+   "year": "2025",
+   "sector": "Dental implants product line",
+   "disciplines": [
+    "Brand",
+    "Packaging",
+    "Web & Mobile UI"
+   ],
+   "kind": [
+    "brand",
+    "web",
+    "print"
+   ],
+   "palette": [
+    {
+     "hex": "#94C11E",
+     "name": "Lime green",
+     "source": "sampled"
+    },
+    {
+     "hex": "#202D18",
+     "name": "Dark green",
+     "source": "sampled"
+    },
+    {
+     "hex": "#FFFFFF",
+     "name": "White",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Packaging and the full desktop and mobile website UI for a dental implants line aimed at clinics and distributors.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "A product brand, not a clinic: packaging and web for a dental implants line aimed at clinics and distributors. The design had to read as a manufactured product with specifications, not a consumer beauty brand."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Built the packaging system and the full website UI in Figma, desktop and mobile, every page: home, about, two implant-system product lines, prosthetics, and contact."
+    },
+    {
+     "lead": "The result.",
+     "text": "One brand identity that survives the physical-to-digital hop: box on the shelf, page on the desktop, same design on the phone."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Deliverables",
+     "v": "Packaging · brand assets · desktop site UI · mobile layouts"
+    },
+    {
+     "k": "Tools",
+     "v": "Figma · Photoshop · Illustrator"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "vp-omega-home",
+    "cap": "Homepage — the product story opens here."
+   },
+   "sections": [
+    {
+     "title": "Website, Desktop",
+     "note": null,
+     "rows": [
+      [
+       {
+        "img": "vp-omega-contact",
+        "cap": "Contact — distribution enquiry"
+       },
+       {
+        "img": "web-omega-frame1",
+        "cap": "Implant system page — spec detail in context"
+       }
+      ],
+      [
+       {
+        "img": "vp-omega-about",
+        "cap": "About — company & certification story"
+       },
+       {
+        "img": "vp-omega-o2",
+        "cap": "O2 Implant System — product line page"
+       }
+      ],
+      [
+       {
+        "img": "vp-omega-o2p",
+        "cap": "Product detail — specifications up front"
+       },
+       {
+        "img": "vp-omega-pros",
+        "cap": "Prosthetics — second product line, same system"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Website, Mobile",
+     "note": "Mobile is where these buyers arrive, often on WhatsApp, mid-conversation: single-column product narrative, thumb-reachable actions, spec tables that scroll instead of shrink.",
+     "rows": [
+      [
+       {
+        "img": "mob-omega-home",
+        "cap": "Home"
+       },
+       {
+        "img": "mob-omega-o2",
+        "cap": "Product line"
+       },
+       {
+        "img": "mob-omega-o2p",
+        "cap": "Product view"
+       },
+       {
+        "img": "mob-omega-contact",
+        "cap": "Contact"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Packaging",
+     "note": "The physical half of the brand. Clinics and distributors judge an implant line by the box before they ever reach the website, so the packaging carries the same typographic system as the site, with the diameter and specification panel given the hierarchy they need at arm's length on a shelf.",
+     "rows": [
+      [
+       {
+        "img": "brand-omega-pack2",
+        "cap": "Single unit — specification panel, diameter marking, and sterile seal"
+       },
+       {
+        "img": "brand-omega-pack3",
+        "cap": "The range on shelf — one box design, sized and coded per implant diameter"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Product Plates & Technical Illustration",
+     "note": "Implants are sold to surgeons, so part of the brand work is not persuasion but instruction: the drill sequence drawn so it can be followed in theatre, and a product plate per implant line that the sales team, the catalogue and the website all draw from.",
+     "rows": [
+      [
+       {
+        "img": "omega-drills",
+        "cap": "Surgical drill set — the tray drawn once, with the final, stopper and hard-bone drill groups called out"
+       },
+       {
+        "stack": [
+         {
+          "img": "omega-spec-o2",
+          "cap": "O2 implant — product plate"
+         },
+         {
+          "img": "omega-spec-o3",
+          "cap": "O3 implant — product plate"
+         }
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Presentation Mockups",
+     "note": "The system shown as an object: browser-framed desktop screens and fanned phone sets, composed for pitch decks, presentations, and social. The same design system, whatever surface it lands on.",
+     "rows": [
+      [
+       {
+        "img": "mock-omega-desktop",
+        "cap": "Desktop — angled browser mockup"
+       },
+       {
+        "img": "mock-omega-phones",
+        "cap": "Mobile — fanned phone set"
+       },
+       {
+        "img": "mock-omega-contact",
+        "cap": "Contact — full browser mockup"
+       }
+      ],
+      [
+       {
+        "img": "web-omega-t1",
+        "cap": "In-context — homepage on device"
+       },
+       {
+        "img": "web-omega-t4",
+        "cap": "In-context — product line"
+       },
+       {
+        "img": "web-omega-t6",
+        "cap": "In-context — prosthetics"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "campaign-system",
+   "client": "Campaign",
+   "title": "System",
+   "year": "2020–2025",
+   "sector": "Saphire Dent / Estetik World",
+   "disciplines": [
+    "Meta & Instagram",
+    "EN / AR / FR / TR"
+   ],
+   "kind": [
+    "campaign"
+   ],
+   "palette": [
+    {
+     "hex": "#D85F26",
+     "name": "Orange",
+     "source": "sampled"
+    },
+    {
+     "hex": "#205D86",
+     "name": "Blue",
+     "source": "sampled"
+    },
+    {
+     "hex": "#FDFEFE",
+     "name": "White",
+     "source": "sampled"
+    }
+   ],
+   "summary": "500+ ad creatives for two healthcare-tourism brands, run as one system in English, Arabic, French and Turkish.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "Two healthcare-tourism brands selling to patients who choose a clinic they have never seen. Creative had to do the trust-building a sales team would normally do in person, at paid-social scale."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Ran campaign creative as a system, not one-offs: one art direction, translated across treatment lines, price points, and markets. Every campaign ships in parallel languages: English, Arabic as a first-class right-to-left layout, French and Turkish."
+    },
+    {
+     "lead": "The result.",
+     "text": "500+ ad creatives across the accounts, including the Dubai/UAE opening campaign."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Ad creatives",
+     "v": "500+"
+    },
+    {
+     "k": "Languages per set",
+     "v": "4"
+    },
+    {
+     "k": "Years in market",
+     "v": "5"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "ads-implant-ar",
+    "cap": "The workhorse: the implant campaign that anchored the account — Arabic RTL hero."
+   },
+   "sections": [
+    {
+     "title": "One Campaign, Three Languages",
+     "note": "Localization is where most campaign systems fall apart. Here the layout, type hierarchy, and imagery are re-decided per language while the brand stays one.",
+     "rows": [
+      [
+       {
+        "img": "ads-implant-en",
+        "cap": "English — source art direction"
+       },
+       {
+        "img": "ads-implant-ar",
+        "cap": "Arabic — RTL rebuilt, not mirrored"
+       },
+       {
+        "img": "ads-implant-fr",
+        "cap": "French — same system, new market"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "The Library",
+     "note": "Top row: one offer, four markets, first carousel frame per language. Bottom row: the register shifts (offer, credibility, premium, comparison) while the system holds.",
+     "rows": [
+      [
+       {
+        "img": "camp-hs-ar1",
+        "cap": "Hollywood Smile — Arabic"
+       },
+       {
+        "img": "camp-hs-en1",
+        "cap": "Hollywood Smile — English"
+       },
+       {
+        "img": "camp-hs-fr1",
+        "cap": "Hollywood Smile — French"
+       },
+       {
+        "img": "camp-hs-tr1",
+        "cap": "Hollywood Smile — Turkish"
+       }
+      ],
+      [
+       {
+        "img": "ads-ew-post2",
+        "cap": "Offer set — seasonal discount"
+       },
+       {
+        "img": "ads-experience",
+        "cap": "Experience — credibility angle"
+       },
+       {
+        "img": "ads-luxurious",
+        "cap": "Luxury register — premium tier"
+       },
+       {
+        "img": "ads-thebest",
+        "cap": "Comparison creative — why us"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Formats & Offer Sets",
+     "note": "One offer, three placements. Sized to a single baseline so the proportions can be read against each other: story for reach, feed for consideration, article for conversion.",
+     "rows": [
+      [
+       {
+        "img": "ads-ew-story",
+        "cap": "Story (9:16) — discount offer"
+       },
+       {
+        "img": "ads-ew-post",
+        "cap": "Feed post — same offer, feed grammar"
+       },
+       {
+        "img": "ads-ew-article",
+        "cap": "Article cover — long-form landing variant"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Carousel Ads",
+     "note": "Carousel is the format that carries a treatment story, because each swipe can take one step. The structure stays fixed across languages so performance stays comparable; only the type and the offer change.",
+     "rows": [
+      [
+       {
+        "img": "camp-carousel-en",
+        "cap": "English — the full multi-frame strip as shipped: hook, treatment explanation, then the consultation offer and price entry point."
+       }
+      ],
+      [
+       {
+        "img": "camp-carousel-fr",
+        "cap": "French — the same three swipes rebuilt for the market: type re-set, offer re-priced, imagery held constant."
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Dubai Opening, Two Languages",
+     "note": "The grand-opening set for the clinic’s Dubai–Jumeirah branch: one limited-time offer — AED 1,000 down from 2,000 — produced twice. The Arabic set is not the English set translated: the layout is mirrored, the type re-set, and the offer block moved to where a right-to-left eye lands first.",
+     "rows": [
+      [
+       {
+        "img": "camp-dubai-en4",
+        "cap": "English — “Dental Implants in Dubai”, the opening offer"
+       },
+       {
+        "img": "camp-dubai-en2",
+        "cap": "English — AED 1,000, struck through from 2,000"
+       },
+       {
+        "img": "camp-dubai-en3",
+        "cap": "English — third cut, Jumeirah branch line"
+       }
+      ],
+      [
+       {
+        "img": "camp-dubai-ar1",
+        "cap": "Arabic — the same offer, rebuilt right to left"
+       },
+       {
+        "img": "camp-dubai-ar2",
+        "cap": "Arabic — price block moved to the RTL entry point"
+       },
+       {
+        "img": "camp-dubai-ar3",
+        "cap": "Arabic — third cut for the local audience"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Start-of-Year Offer Set",
+     "note": "A January push across three treatment lines. Each creative was built in Photoshop <em>without</em> its typography, then rebuilt as a Canva template so marketing could change the copy, the price and the offer without a designer in the loop — the art direction stayed fixed while the offer moved.",
+     "rows": [
+      [
+       {
+        "img": "camp-soy-crowns",
+        "cap": "Dental crowns — €120, January only"
+       },
+       {
+        "img": "camp-soy-veneers",
+        "cap": "Veneers — same grid, different treatment line"
+       }
+      ],
+      [
+       {
+        "img": "camp-soy-hair3",
+        "cap": "Hair transplant — the warm counterpart"
+       },
+       {
+        "img": "camp-soy-hair2",
+        "cap": "Hair transplant — second offer variant"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Carousel, Arabic & English",
+     "note": "Holding the frame structure identical across languages is what makes the numbers comparable: when one locale outperforms another, the difference is the market, not the layout.",
+     "rows": [
+      [
+       {
+        "img": "camp-car-ar-v1",
+        "cap": "Arabic — the three-swipe implant story, read right to left: hook, explanation, then the €200 entry point."
+       }
+      ],
+      [
+       {
+        "img": "camp-car-en-v1",
+        "cap": "English — the same three swipes rebuilt left to right: “Want to start smiling again?”, the explanation, then the free consultation."
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "jouvence",
+   "client": "Jouvence",
+   "title": "Aesthetic Clinic",
+   "year": "2025–2026",
+   "sector": "Istanbul · Hair, dental & aesthetics",
+   "disciplines": [
+    "Premium brand-led site",
+    "EN / AR / FR"
+   ],
+   "kind": [
+    "web"
+   ],
+   "palette": [
+    {
+     "hex": "#171A1C",
+     "name": "Charcoal",
+     "source": "sampled"
+    },
+    {
+     "hex": "#CE8803",
+     "name": "Amber",
+     "source": "sampled"
+    }
+   ],
+   "summary": "A brand-led, mobile-first site in three languages for a premium aesthetic clinic, with GSAP and Lenis motion.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "A premium aesthetic clinic that needed to look chosen rather than shopped for. The design had to carry a price point without ever saying it."
+    },
+    {
+     "lead": "What I did.",
+     "text": "A brand-led, mobile-first site in three languages, with motion treated as part of the design rather than decoration: GSAP for the sequencing, Lenis for the scroll."
+    },
+    {
+     "lead": "The run.",
+     "text": "The longest single-site engagement in this portfolio — March 2025 to May 2026, design through deployment and then through every round of content the clinic sent."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Scope",
+     "v": "Brand-led design · Build · Motion"
+    },
+    {
+     "k": "Stack",
+     "v": "Figma · Next.js · GSAP + Lenis"
+    }
+   ],
+   "link": {
+    "href": "https://www.jouvencetr.com/en",
+    "label": "jouvencetr.com"
+   },
+   "cover": {
+    "img": "site-jouvence",
+    "cap": "<a href=\"https://www.jouvencetr.com/en\">jouvencetr.com</a> — premium, brand-led, EN / AR / FR."
+   },
+   "sections": []
+  },
+  {
+   "id": "esteexpert",
+   "client": "EsteExpert",
+   "title": "Clinic Site",
+   "year": "2025",
+   "sector": "Istanbul · Multi-specialty medical clinic",
+   "disciplines": [
+    "Lead generation",
+    "EN / AR / TR / FR"
+   ],
+   "kind": [
+    "web"
+   ],
+   "palette": [
+    {
+     "hex": "#01777E",
+     "name": "Teal",
+     "source": "sampled"
+    },
+    {
+     "hex": "#F8A303",
+     "name": "Amber",
+     "source": "sampled"
+    },
+    {
+     "hex": "#1D2322",
+     "name": "Near-black",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Booking-focused clinic site in four locales, with doctor profiles and an interactive graft calculator for hair restoration.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "A clinic selling medical treatment, cosmetic care, and check-ups to patients who will never walk in before they pay. The site had to answer the questions a patient is too shy to ask."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Booking-focused UX across every treatment line: doctor profiles carrying the credibility, and an interactive graft calculator on the hair-restoration path that turns an anxious question into a number the patient can act on. Four locales, Arabic included."
+    },
+    {
+     "lead": "The result.",
+     "text": "The page does the qualifying, so the enquiry that arrives is already specific."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Scope",
+     "v": "UX · Design · Build"
+    },
+    {
+     "k": "Built",
+     "v": "Graft calculator · doctor trust profiles"
+    }
+   ],
+   "link": {
+    "href": "https://esteexpert.clinic",
+    "label": "esteexpert.clinic"
+   },
+   "cover": {
+    "img": "site-esteexpert",
+    "cap": "<a href=\"https://esteexpert.clinic\">esteexpert.clinic</a> — lead generation across the clinic's treatment lines, four locales."
+   },
+   "sections": []
+  },
+  {
+   "id": "omar-marketing",
+   "client": "Omar",
+   "title": "Marketing",
+   "year": "2026",
+   "sector": "Performance-marketing agency",
+   "disciplines": [
+    "Identity",
+    "3D web",
+    "Multilingual"
+   ],
+   "kind": [
+    "brand",
+    "web",
+    "3d"
+   ],
+   "palette": [
+    {
+     "hex": "#0E1728",
+     "name": "Navy",
+     "source": "sampled"
+    },
+    {
+     "hex": "#3C9C98",
+     "name": "Teal",
+     "source": "sampled"
+    },
+    {
+     "hex": "#3285E2",
+     "name": "Blue",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Agency identity and a dark, motion-led multilingual site with 3D web visuals in Three.js for a performance marketer.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "A performance marketer selling results needs a site that performs. Here the work is the proof, so the site had to be the first exhibit."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Agency identity plus a dark, motion-led site with 3D web visuals built in Three.js, multilingual from the first layout, and conversion tracking wired in from the start rather than bolted on."
+    },
+    {
+     "lead": "What runs on it.",
+     "text": "The agency's own client case studies, including work for Saphire Dent and ClinicExpert."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Scope",
+     "v": "Identity · Web design · Build"
+    },
+    {
+     "k": "Stack",
+     "v": "Figma · Three.js · Next.js"
+    }
+   ],
+   "link": {
+    "href": "https://omar.marketing",
+    "label": "omar.marketing"
+   },
+   "cover": {
+    "img": "site-omar",
+    "cap": "<a href=\"https://omar.marketing\">omar.marketing</a> — agency identity with 3D web visuals."
+   },
+   "sections": [
+    {
+     "title": "Inside the Site",
+     "note": "Seven languages meant seven versions of every layout, not one layout translated: Arabic mirrors completely, and each market gets its own panel rather than a shared template with the words swapped. Live at <a href=\"https://omar.marketing\">omar.marketing</a>",
+     "rows": [
+      [
+       {
+        "img": "site-omar-case",
+        "cap": "Case-study module — the brief on the left, the outcome on the right, one row per client"
+       },
+       {
+        "stack": [
+         {
+          "img": "site-omar-ar",
+          "cap": "Arabic build — the whole page mirrored, right to left"
+         },
+         {
+          "img": "site-omar-markets",
+          "cap": "Seven markets, switchable — each one its own panel"
+         }
+        ]
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "awab-design",
+   "client": "awab.design",
+   "title": "Studio Platform",
+   "year": "2024–2026",
+   "sector": "Own product",
+   "disciplines": [
+    "Four locales",
+    "RTL",
+    "Website check"
+   ],
+   "kind": [
+    "web"
+   ],
+   "palette": [
+    {
+     "hex": "#1D2538",
+     "name": "Navy",
+     "source": "sampled"
+    },
+    {
+     "hex": "#3B4A6A",
+     "name": "Slate",
+     "source": "sampled"
+    },
+    {
+     "hex": "#FDFFFF",
+     "name": "White",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Own four-locale studio site for clinics, with RTL Arabic, light and dark themes and a free website check; built and run solo.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "My own shop window, and the one project where I set the brief. Today it sells one thing clearly: websites and brand kits for clinics that treat patients from abroad."
+    },
+    {
+     "lead": "What I did.",
+     "text": "A four-locale site with first-class RTL Arabic and light and dark themes, with fixed-price packages, a clinic branding service and the case studies behind them. The way in is a free website check: a quick scan plus ten questions, a score out of 100 and the three fixes that matter most, in order, with a 30-day playbook by email. Designed, built and run solo."
+    },
+    {
+     "lead": "Still running.",
+     "text": "In continuous development since July 2024: content, SEO, and the product side of it are all mine to keep."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Scope",
+     "v": "Design · Build · Operate"
+    },
+    {
+     "k": "Built",
+     "v": "Website check · 30-day playbook · admin panel"
+    }
+   ],
+   "link": {
+    "href": "https://awab.design",
+    "label": "awab.design"
+   },
+   "cover": {
+    "img": "site-awab-home26",
+    "cap": "<a href=\"https://awab.design\">awab.design</a> — the English homepage, written for clinics that treat international patients."
+   },
+   "sections": [
+    {
+     "title": "Inside the Platform",
+     "note": "The check is the part I care about most: a clinic owner gets something useful in two minutes, and I learn what the clinic needs before the first call. The report shown is filled with demo answers. Live at <a href=\"https://awab.design\">awab.design</a>",
+     "rows": [
+      [
+       {
+        "img": "site-awab-check",
+        "cap": "The website check — a sample report: the score, the gap, and three fixes in order"
+       },
+       {
+        "stack": [
+         {
+          "img": "site-awab-ar26",
+          "cap": "Arabic build — navigation, type and buttons all mirrored"
+         },
+         {
+          "img": "site-awab-brand",
+          "cap": "The clinic branding service, with Bespoke Clinics and Yasmina Beauty as recent work"
+         }
+        ]
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dentbazaar",
+   "client": "DentBazaar",
+   "title": "B2B Marketplace",
+   "year": null,
+   "sector": "Own product · Dental supply marketplace",
+   "disciplines": [
+    "Next.js front end",
+    "EN + RTL Arabic",
+    "Multi-vendor"
+   ],
+   "kind": [
+    "web"
+   ],
+   "palette": [
+    {
+     "hex": "#008F81",
+     "name": "Teal green",
+     "source": "sampled"
+    },
+    {
+     "hex": "#0E1923",
+     "name": "Dark navy",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Next.js front end for a B2B dental supply marketplace: five-category catalogue, trade pricing behind sign-in, RTL Arabic.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "Clinics buy consumables and equipment the way industry buys parts: by specification, in bulk, from suppliers they already deal with. So the model for the catalogue was an industrial supply house — McMaster-Carr — and not a consumer shop."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Designed and built the front end in Next.js: a five-category catalogue with brand, price and stock facets, product pages with trade pricing held behind sign-in, bulk-discount and seller panels, cart, and separate buyer and seller sign-up. Arabic is a full right-to-left build, not a translation layer."
+    },
+    {
+     "lead": "Where it stands.",
+     "text": "277 commits before I paused it in June 2026. The front end is mine; it runs against a Java EE backend and ships an Expo mobile client from the same monorepo. The catalogue shown here is seeded demo data."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Scope",
+     "v": "Product design · Front-end build"
+    },
+    {
+     "k": "Stack",
+     "v": "Next.js · Radix UI · EN/AR RTL"
+    }
+   ],
+   "link": {
+    "href": "https://bazaardent.com",
+    "label": "bazaardent.com"
+   },
+   "cover": {
+    "img": "site-bazaar",
+    "cap": "<a href=\"https://bazaardent.com\">bazaardent.com</a> — a trade marketplace for dental supply: prices open once you are signed in."
+   },
+   "sections": [
+    {
+     "title": "Inside the Catalogue",
+     "note": "Trade buyers do not browse. They arrive knowing the part, and they want the price, the stock and the terms on one screen. That is why pricing sits behind sign-in, why the brand list carries its own search box, and why the whole catalogue was measured against McMaster-Carr rather than a consumer store. Live at <a href=\"https://bazaardent.com\">bazaardent.com</a>",
+     "rows": [
+      [
+       {
+        "img": "site-bazaar-catalog",
+        "cap": "The catalogue — category tree, a brand facet with its own search, stock and price filters, sort"
+       },
+       {
+        "stack": [
+         {
+          "img": "site-bazaar-ar",
+          "cap": "Arabic build — hero, navigation and feature row all mirrored"
+         },
+         {
+          "img": "site-bazaar-product",
+          "cap": "Product page — gated price, bulk-discount terms, seller panel"
+         }
+        ]
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "waterboy",
+   "client": "WATERBOY",
+   "title": "Brand & 3D",
+   "year": "2021",
+   "sector": "Water containers brand",
+   "disciplines": [
+    "Identity",
+    "Packaging",
+    "3D product"
+   ],
+   "kind": [
+    "brand",
+    "3d"
+   ],
+   "palette": [
+    {
+     "hex": "#000000",
+     "name": "Black",
+     "source": "sampled"
+    },
+    {
+     "hex": "#3D3D3D",
+     "name": "Graphite",
+     "source": "sampled"
+    },
+    {
+     "hex": "#C9C9C9",
+     "name": "Silver",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Identity, label and Blender-rendered product shots for a water-container brand.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "A premium identity for a water-container brand: a commodity product that needed to look chosen, not just bought."
+    },
+    {
+     "lead": "What I did.",
+     "text": "A confident mark, a restrained palette, and 3D-rendered product shots that make plain water feel designed. Everything from logo to container render produced in-house: Illustrator for the identity, Photoshop for art direction, Blender for the product visualization."
+    },
+    {
+     "lead": "The result.",
+     "text": "A brand system that works at every scale the product lives at: the label in the hand, the truck on the road, the render in the pitch deck."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Deliverables",
+     "v": "Brand identity · label/packaging · 3D product renders"
+    },
+    {
+     "k": "Tools",
+     "v": "Illustrator · Photoshop · Blender"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "brand-waterboy",
+    "cap": "WATERBOY — identity and 3D product visualization (Illustrator, Photoshop, Blender)."
+   },
+   "sections": [
+    {
+     "title": "The Brand, Rendered",
+     "note": "A self-directed brief: take a commodity — a water container — and design it as if it were a premium object. Identity in Illustrator, art direction in Photoshop, every product shot modelled and rendered in Blender rather than photographed.",
+     "rows": [
+      [
+       {
+        "img": "wb-hero",
+        "cap": "WATERBOY — the identity carried entirely by the product: black on black, lit so the form reads before the logo does."
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Renders & Type System",
+     "note": "Modelling the container myself meant the brand could be art-directed and re-lit without a shoot: new angle, new palette, same afternoon.",
+     "rows": [
+      [
+       {
+        "img": "wb-render1",
+        "cap": "Single unit — cap detail and surface"
+       },
+       {
+        "img": "wb-render2",
+        "cap": "The range, staged as a family"
+       },
+       {
+        "img": "wb-render3",
+        "cap": "Closing slide of the brand deck — the range back-lit under “Thanks for watching”"
+       }
+      ],
+      [
+       {
+        "img": "wb-type",
+        "cap": "Type system — Acumin Variable, ultra-black italic for the mark, condensed for specification"
+       },
+       {
+        "img": "wb-renders",
+        "cap": "Render plate from the brand deck"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "taku",
+   "client": "TAKU",
+   "title": "Logo & Guidelines",
+   "year": "2019–2020",
+   "sector": "E-commerce platform, UAE",
+   "disciplines": [
+    "Logo",
+    "Brand rules",
+    "Bilingual document"
+   ],
+   "kind": [
+    "brand"
+   ],
+   "palette": [
+    {
+     "hex": "#FF0300",
+     "name": "Red",
+     "source": "copy"
+    },
+    {
+     "hex": "#06080A",
+     "name": "Black",
+     "source": "copy"
+    }
+   ],
+   "summary": "A four-stroke mark and an Arabic guideline document for a UAE e-commerce platform, both brand colours specified.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "A new e-commerce platform aimed at young shoppers in the United Arab Emirates needed a mark that would survive being shrunk to an app icon and blown up to a billboard — and a set of rules its own team could follow without me in the room."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Drew the mark: four strokes that read as a wordmark at size and as a repeatable pattern when tiled. Then wrote the guideline document in Arabic — icon, colour, and typography plates, with Pantone, CMYK, RGB and hex specified for both brand colours so a printer in Dubai and a developer anywhere get the same red."
+    },
+    {
+     "lead": "The result.",
+     "text": "A small, complete identity: one mark, two colours, one typeface, and the document that keeps them consistent."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Deliverables",
+     "v": "Logo · icon · colour and type rules · application mockups"
+    },
+    {
+     "k": "Specified",
+     "v": "Pantone 2347 C / Black 6 C · CMYK · RGB · hex"
+    },
+    {
+     "k": "Typeface",
+     "v": "D-DIN Condensed Bold"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "taku-mark",
+    "cap": "The mark — four strokes, one wordmark"
+   },
+   "sections": [
+    {
+     "title": "The Rules, In Arabic",
+     "note": "The guideline is written in Arabic because the team that had to follow it works in Arabic. Every colour carries Pantone, CMYK, RGB and hex — the four numbers a printer, a fabricator and a developer each need, so nobody has to guess which red is the red.",
+     "rows": [
+      [
+       {
+        "img": "taku-icon",
+        "cap": "الأيقونة — the icon, standalone"
+       },
+       {
+        "img": "taku-colour",
+        "cap": "الألوان — two colours, specified four ways each"
+       },
+       {
+        "img": "taku-type",
+        "cap": "الخط المستخدم — D-DIN Condensed Bold"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "The Mark In The World",
+     "note": "The same four strokes at four scales: an app icon a thumb covers, a t-shirt back, a car door, a billboard. The mark holds because it is strokes rather than detail — nothing in it disappears when it gets small.",
+     "rows": [
+      [
+       {
+        "img": "taku-app1",
+        "cap": "Merchandise and vehicle livery"
+       },
+       {
+        "img": "taku-app2",
+        "cap": "App icon, stationery, device"
+       },
+       {
+        "img": "taku-app3",
+        "cap": "Interior, billboard, and the mark used as pattern"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "burger-chefs",
+   "client": "Chef's Burger & Crepe",
+   "title": "Brand & Launch",
+   "year": "2020",
+   "sector": "Burger & crepe restaurant, Khartoum",
+   "disciplines": [
+    "Identity",
+    "Menus & signage",
+    "Packaging",
+    "Social"
+   ],
+   "kind": [
+    "brand",
+    "print"
+   ],
+   "palette": [
+    {
+     "hex": "#EC2124",
+     "name": "Chef's red",
+     "source": "sampled"
+    },
+    {
+     "hex": "#000000",
+     "name": "Black",
+     "source": "sampled"
+    },
+    {
+     "hex": "#FFFFFF",
+     "name": "White",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Identity, menus, signage, packaging and launch posts for a late-night burger-and-crepe restaurant in Khartoum.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "A new burger-and-crepe restaurant in Khartoum, open late and delivering on the short number 6142. It needed the whole kit before opening: the mark, the menus, the signage, the packaging and the launch posts."
+    },
+    {
+     "lead": "What I did.",
+     "text": "A chef's hat whose band is drawn as a burger (bun, red filling, bun) over a script wordmark with a red apostrophe. Around it, a doodle pattern of burgers, tomatoes and sauce bottles that runs across the bag, the boards and the posts. Bilingual menus and menu boards in English and Arabic, roll-up banners in three colourways, and a run of opening and product posts."
+    },
+    {
+     "lead": "The result.",
+     "text": "One system from the shopfront to the delivery bag, in two languages: black and white for the brand, red reserved for prices, offers and the delivery number."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Deliverables",
+     "v": "Logo · pattern · menus & menu boards · roll-up banners · paper bag · social posts · Facebook cover"
+    },
+    {
+     "k": "Tools",
+     "v": "Illustrator · Photoshop · InDesign"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "chef-cover",
+    "cap": "Chef's Burger & Crepe — the takeaway set: bag, burger box, fries sleeve and flag. Shown on a free mockup (Burger Store Mockup by mockupcloud); the branding on it is mine."
+   },
+   "sections": [
+    {
+     "title": "Identity",
+     "note": "The mark, its reversed version, the pattern, and the routes that came before it.",
+     "rows": [
+      [
+       {
+        "img": "chef-logo",
+        "cap": "Primary lockup: a chef's hat whose band is a burger, over a script wordmark"
+       },
+       {
+        "img": "chef-logo-dark",
+        "cap": "Reversed on black, over the doodle pattern"
+       },
+       {
+        "img": "chef-pattern",
+        "cap": "The pattern in the brand red: burgers, tomatoes, pickles, lettuce, sauce bottles"
+       }
+      ],
+      [
+       {
+        "img": "chef-drafts",
+        "cap": "Logo drafts: six routes, from a stencil burger wordmark to a hat on a cartoon burger, before the final mark"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Packaging & Signage",
+     "note": "Packaging is shown on a free mockup template (Burger Store Mockup by mockupcloud). The food on the banners and menus is stock cut-out photography.",
+     "rows": [
+      [
+       {
+        "img": "chef-pack",
+        "cap": "Takeaway set on marble"
+       },
+       {
+        "img": "chef-pack-white",
+        "cap": "White-bag variant"
+       }
+      ],
+      [
+       {
+        "img": "chef-bag",
+        "cap": "Paper bag print file: the mark in a black tab over the pattern, with “Blazing fast!!” and the 6142 delivery number"
+       }
+      ],
+      [
+       {
+        "img": "chef-banner-red",
+        "cap": "Roll-up banner, red"
+       },
+       {
+        "img": "chef-banner-grey",
+        "cap": "Grey"
+       },
+       {
+        "img": "chef-banner-black",
+        "cap": "Black"
+       },
+       {
+        "img": "chef-banner-crepe",
+        "cap": "Crepe roll-up"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Menus & Boards",
+     "note": "Every item named in English and Arabic, priced in Sudanese pounds.",
+     "rows": [
+      [
+       {
+        "img": "chef-menu-burgers",
+        "cap": "Menu, burgers: each item in both languages, the price in a red badge, combo and delivery strip along the foot"
+       },
+       {
+        "img": "chef-menu-crepes",
+        "cap": "Menu, crepes, with the Big Chef's Burger on the facing panel"
+       }
+      ],
+      [
+       {
+        "img": "chef-board-bbq",
+        "cap": "Menu board: BBQ burger"
+       },
+       {
+        "img": "chef-board-crepe",
+        "cap": "Chef's crepe"
+       },
+       {
+        "img": "chef-board-burger",
+        "cap": "Chef's burger"
+       }
+      ],
+      [
+       {
+        "img": "chef-menu-list",
+        "cap": "An earlier type-only price list"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Launch Posts",
+     "note": "Opening and product posts for Instagram and Facebook. The product posts are built on photos of the restaurant's food; the layout and type are mine.",
+     "rows": [
+      [
+       {
+        "img": "chef-post-open",
+        "cap": "Opening hours, 9 AM to 3 AM"
+       },
+       {
+        "img": "chef-post-247",
+        "cap": "Going 24/7"
+       },
+       {
+        "img": "chef-post-247-ar",
+        "cap": "The same in Arabic"
+       },
+       {
+        "img": "chef-post-box",
+        "cap": "Delivery on 6142"
+       }
+      ],
+      [
+       {
+        "img": "chef-post-big",
+        "cap": "Big Chef's Burger"
+       },
+       {
+        "img": "chef-post-double",
+        "cap": "Double Up"
+       },
+       {
+        "img": "chef-post-crepe",
+        "cap": "Shish tawook crepe"
+       },
+       {
+        "img": "chef-post-crepe-ar",
+        "cap": "Arabic version"
+       }
+      ],
+      [
+       {
+        "img": "chef-fb-cover",
+        "cap": "Facebook cover"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "blue-mesh",
+   "client": "Blue Mesh",
+   "title": "Brand & Logo Motion",
+   "year": "2021",
+   "sector": "Counseling & business development",
+   "disciplines": [
+    "Identity",
+    "3D",
+    "Logo animation"
+   ],
+   "kind": [
+    "brand",
+    "3d",
+    "motion"
+   ],
+   "palette": [
+    {
+     "hex": "#2353A0",
+     "name": "Navy",
+     "source": "sampled"
+    },
+    {
+     "hex": "#177BBD",
+     "name": "Mesh blue",
+     "source": "sampled"
+    },
+    {
+     "hex": "#25ABE2",
+     "name": "Cyan",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Mark, lockups, a Blender render and a logo animation for a counseling and business-development company.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "An identity for Blue Mesh, a counseling and business-development company: a mark, its lockups, and the first things a new firm puts in front of clients."
+    },
+    {
+     "lead": "What I did.",
+     "text": "A mark of a figure with a cyan hexagon for a head, in a navy-to-blue gradient. Horizontal and stacked lockups, explorations on white and on the gradient, a desktop wallpaper, a Blender render of the mark in relief, and a seven-second logo animation."
+    },
+    {
+     "lead": "The result.",
+     "text": "A small system: one mark, two lockups, one gradient, and a logo sting for video."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Deliverables",
+     "v": "Logo & lockups · desktop wallpaper · 3D render · logo animation"
+    },
+    {
+     "k": "Tools",
+     "v": "Illustrator · After Effects · Blender"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "bm-cover",
+    "cap": "Blue Mesh — the mark in relief on the brand blue, rendered in Blender."
+   },
+   "sections": [
+    {
+     "title": "Mark & Lockups",
+     "note": null,
+     "rows": [
+      [
+       {
+        "img": "bm-logo-h",
+        "cap": "Horizontal lockup, with the “Counseling & Business Development” line"
+       },
+       {
+        "img": "bm-logo-v",
+        "cap": "Stacked lockup"
+       }
+      ],
+      [
+       {
+        "img": "bm-drafts-light",
+        "cap": "Mark explorations on white"
+       },
+       {
+        "img": "bm-drafts-blue",
+        "cap": "And on the gradient"
+       },
+       {
+        "img": "bm-logo-anim",
+        "cap": "Logo animation"
+       }
+      ],
+      [
+       {
+        "img": "bm-wallpaper",
+        "cap": "Desktop wallpaper"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Applications",
+     "note": "Card, cups, notebook and badges are shown on mockup templates; the artwork on them is mine.",
+     "rows": [
+      [
+       {
+        "img": "bm-card",
+        "cap": "Business card, logo side"
+       },
+       {
+        "img": "bm-cups",
+        "cap": "Cups"
+       }
+      ],
+      [
+       {
+        "img": "bm-notes",
+        "cap": "Notebook"
+       },
+       {
+        "img": "bm-pin",
+        "cap": "Button badges"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "italy-pizza",
+   "client": "Italy Pizza",
+   "title": "Menu System",
+   "year": "2020",
+   "sector": "Restaurant, Khartoum",
+   "disciplines": [
+    "Print menu",
+    "Social menu",
+    "Arabic / English"
+   ],
+   "kind": [
+    "print",
+    "campaign"
+   ],
+   "palette": [
+    {
+     "hex": "#F5EF1D",
+     "name": "Yellow",
+     "source": "sampled"
+    },
+    {
+     "hex": "#060505",
+     "name": "Black",
+     "source": "sampled"
+    }
+   ],
+   "summary": "A bilingual printed trifold menu, rebuilt as twenty square social plates in Arabic and English, for a restaurant in Khartoum.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "One menu, two places it had to live: folded in a customer’s hands, and scrolling past them on a phone. The same prices, the same dishes, two completely different reading situations."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Set the printed trifold first — full range, both languages on one sheet, priced. Then rebuilt it for social: twenty square plates, one per category, each produced twice — Arabic and English — so the feed could speak to either customer without a translated screenshot."
+    },
+    {
+     "lead": "The result.",
+     "text": "A menu that holds its prices and its appetite appeal at trifold scale and at thumbnail scale, in two languages."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Deliverables",
+     "v": "Printed trifold menu · 20 social plates · bilingual throughout"
+    },
+    {
+     "k": "Categories",
+     "v": "Pizza · sandwiches · rolls · calzones · meals · appetizers · juices · desserts"
+    },
+    {
+     "k": "Tools",
+     "v": "Illustrator · Photoshop · InDesign"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "pizza-trifold",
+    "cap": "The printed trifold"
+   },
+   "sections": [
+    {
+     "title": "The Printed Menu, Flat",
+     "note": "Both sides of the trifold, flat. Arabic and English run in the same table rather than on facing panels, so the sheet stays one menu instead of becoming two — and a mixed table can order from a single page.",
+     "rows": [
+      [
+       {
+        "img": "pizza-flat2",
+        "cap": "Outside — classic pizza, rolls, upgrades, toppings"
+       },
+       {
+        "img": "pizza-flat1",
+        "cap": "Inside — appetizers, meals, desserts, drinks, and the cover panel"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "The Social Menu, Produced Twice",
+     "note": "Four of the twenty plates, in both languages. The Arabic is not a caption bolted onto the English plate: the headline swaps side, the price column flips with it, and the call-to-action moves to where a right-to-left eye finishes. Same food, same prices, two builds.",
+     "rows": [
+      [
+       {
+        "img": "pizza-ar-sand",
+        "cap": "سندوشات"
+       },
+       {
+        "img": "pizza-ar-pizza",
+        "cap": "بيتزا"
+       },
+       {
+        "img": "pizza-ar-calz",
+        "cap": "كلزوني"
+       },
+       {
+        "img": "pizza-ar-juice",
+        "cap": "العصائر"
+       }
+      ],
+      [
+       {
+        "img": "pizza-en-sand",
+        "cap": "Sandwiches"
+       },
+       {
+        "img": "pizza-en-pizza",
+        "cap": "Pizza"
+       },
+       {
+        "img": "pizza-en-calz",
+        "cap": "Calzones"
+       },
+       {
+        "img": "pizza-en-juice",
+        "cap": "Juices"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "branded-equipment",
+   "client": "Branded Equipment",
+   "title": "3D",
+   "year": "2021",
+   "sector": "Estetik World, Istanbul",
+   "disciplines": [
+    "Product visualization",
+    "Engraved branding"
+   ],
+   "kind": [
+    "3d"
+   ],
+   "palette": [
+    {
+     "hex": "#988861",
+     "name": "Gold",
+     "source": "sampled"
+    },
+    {
+     "hex": "#0E100F",
+     "name": "Black",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Four Blender renders of a clinic's own-branded surgical instrument: gold engraving on a machined black body.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "Show a clinic’s own-branded surgical instrument before a photographable one existed — close enough that a prospective patient reads the engraving, clean enough to sit in clinical marketing."
+    },
+    {
+     "lead": "What I did.",
+     "text": "Modelled and rendered the instrument, then applied the clinic’s engraved mark — gold on a machined black body — and lit it dark so the only bright things in frame are the logo and the working tip."
+    },
+    {
+     "lead": "The result.",
+     "text": "Product imagery for an object that had no product photography, in the house style."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Deliverables",
+     "v": "Four 4K renders — pair, body, engraving detail, working tip"
+    },
+    {
+     "k": "Tools",
+     "v": "Blender · Photoshop"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "veq-hero",
+    "cap": "The engraving — MG Sarı Sağlık Turizmi · Estetik World, in gold"
+   },
+   "sections": [
+    {
+     "title": "Four Views",
+     "note": "Rendered on black so the instrument is described by its highlights alone — the gold engraving, the turned edges of the grip, the blade. Four views from one model, which is the argument for building it rather than shooting it: the next angle costs a render, not a shoot.",
+     "rows": [
+      [
+       {
+        "img": "veq-pair",
+        "cap": "The pair, full length"
+       },
+       {
+        "img": "veq-body",
+        "cap": "Machined body and knurled grip"
+       },
+       {
+        "img": "veq-tip",
+        "cap": "The working tip"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "key-visuals",
+   "client": "Key Visuals",
+   "title": "& Client Work",
+   "year": "2021–2025",
+   "sector": "Selected commissions",
+   "disciplines": [
+    "Art direction",
+    "Social",
+    "Campaign"
+   ],
+   "kind": [
+    "campaign"
+   ],
+   "palette": [
+    {
+     "hex": "#A8D837",
+     "name": "Lime green",
+     "source": "sampled"
+    },
+    {
+     "hex": "#F69D5F",
+     "name": "Orange",
+     "source": "sampled"
+    },
+    {
+     "hex": "#FFFE91",
+     "name": "Pale yellow",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Key visuals for the Bushra Pay fintech launch, plus offer and market-launch creative for Saphire Dent and Estetik World.",
+   "copy": [
+    {
+     "lead": "Bushra Pay.",
+     "text": "Key visuals for a fintech launch: clean, trust-forward, payment-native; the visual language of money handled carefully."
+    },
+    {
+     "lead": "Saphire Dent consumer.",
+     "text": "Smile-led creative and gift-offer campaigns for the clinic's patient audience, the warmer register alongside the clinical campaign system in <a href=\"#campaign-system\">chapter 06</a>."
+    },
+    {
+     "lead": "Market launch.",
+     "text": "The Dubai/UAE opening campaign, plus hair-transplant creative for Estetik World: the same art direction re-pitched for a new market and a new treatment line."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Tools",
+     "v": "Illustrator · Photoshop · Lightroom"
+    },
+    {
+     "k": "Formats",
+     "v": "Feed · stories · key visuals · offer campaigns"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "ads-bushra-pay",
+    "cap": "Bushra Pay — fintech launch key visuals: the visual language of money, handled carefully."
+   },
+   "sections": [
+    {
+     "title": "Bushra Pay — Key Visuals & Out of Home",
+     "note": "A fintech launch has to look safe before it looks modern. The icon set does the explaining — send, receive, balance — so the photography can stay ordinary: real people, real streets, money treated as an everyday act rather than a spectacle.",
+     "rows": [
+      [
+       {
+        "img": "bushra-ooh1",
+        "cap": "Billboard — the app held up against the city it pays in"
+       },
+       {
+        "img": "bushra-ooh2",
+        "cap": "Roadside unit — one message, readable at speed"
+       }
+      ],
+      [
+       {
+        "img": "bushra-key1",
+        "cap": "Key visual — send"
+       },
+       {
+        "img": "bushra-key2",
+        "cap": "Key visual — receive"
+       },
+       {
+        "img": "bushra-key3",
+        "cap": "Key visual — the app in the hand"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Selected Commissions",
+     "note": null,
+     "rows": [
+      [
+       {
+        "img": "ads-saphire-campaign",
+        "cap": "Social campaign set — recurring offer system"
+       },
+       {
+        "img": "ads-saphiredent-dubai",
+        "cap": "Dubai / UAE market launch"
+       }
+      ],
+      [
+       {
+        "img": "ads-saphiredent-smile",
+        "cap": "Gift-offer campaign — the warmer consumer register"
+       },
+       {
+        "img": "ads-estetik-hair",
+        "cap": "Estetik World — hair-transplant treatment line"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "photography",
+   "client": "Photography",
+   "title": "& Retouching",
+   "year": "Ongoing",
+   "sector": "Product & street",
+   "disciplines": [
+    "Photography",
+    "Batch workflows"
+   ],
+   "kind": [
+    "photo"
+   ],
+   "palette": [
+    {
+     "hex": "#131921",
+     "name": "Near-black",
+     "source": "sampled"
+    },
+    {
+     "hex": "#F7AB3D",
+     "name": "Lamp amber",
+     "source": "sampled"
+    },
+    {
+     "hex": "#EEBE60",
+     "name": "Sunset gold",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Product and street photography across Egypt and Sudan on a Canon EOS 600D, plus daily Instagram retouching.",
+   "copy": [
+    {
+     "lead": "The practice.",
+     "text": "The quiet half of the work: photography and retouching that the campaigns in this portfolio are built on."
+    },
+    {
+     "lead": "Photography.",
+     "text": "Product and street work shot across Egypt and Sudan on a Canon EOS 600D; a daily Instagram retouching and photomanipulation discipline that keeps the eye sharp between briefs."
+    },
+    {
+     "lead": "At scale.",
+     "text": "At Saphire Dent, the standardization of the clinical before/after capture workflow (consistent framing, lighting, and staging) cut revision rounds and multiplied batch-editing throughput via Photoshop Actions pipelines."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Kit",
+     "v": "Canon EOS 600D · Lightroom · Photoshop"
+    },
+    {
+     "k": "Production",
+     "v": "Batch pipelines · studio workflow standardization"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "photo-photography",
+    "cap": "Street & product photography — Egypt / Sudan"
+   },
+   "sections": [
+    {
+     "title": "Retouching",
+     "note": null,
+     "rows": [
+      [
+       {
+        "img": "photo-daily-edits",
+        "cap": "Instagram Daily Edits — retouching & photomanipulation"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Selected Frames",
+     "note": "Portrait frames — architecture, product and light, shot on a Canon EOS 600D and graded in Lightroom.<br>Landscape frames — product still life, and the city after dark.<br>Low light on purpose. Most of these are single-source: one lamp, one window, one skyline — which is the same discipline the clinical before / after workflow needed, only with the drama left in.",
+     "rows": [
+      [
+       {
+        "img": "photo-minaret",
+        "cap": null
+       },
+       {
+        "img": "photo-watch-p1",
+        "cap": null
+       },
+       {
+        "img": "photo-watch-d",
+        "cap": null
+       },
+       {
+        "img": "photo-plant",
+        "cap": null
+       },
+       {
+        "img": "photo-sunset",
+        "cap": null
+       }
+      ],
+      [
+       {
+        "img": "photo-lens",
+        "cap": null
+       },
+       {
+        "img": "photo-lantern",
+        "cap": null
+       },
+       {
+        "img": "photo-city",
+        "cap": null
+       }
+      ]
+     ]
+    }
+   ]
+  }
+ ],
+ "images": {
+  "ad-straumann": {
+   "w": 720,
+   "h": 1280,
+   "video": true
+  },
+  "ads-bushra-pay": {
+   "w": 808,
+   "h": 632
+  },
+  "ads-estetik-hair": {
+   "w": 404,
+   "h": 316
+  },
+  "ads-ew-article": {
+   "w": 1455,
+   "h": 818
+  },
+  "ads-ew-post": {
+   "w": 818,
+   "h": 818
+  },
+  "ads-ew-post2": {
+   "w": 680,
+   "h": 680
+  },
+  "ads-ew-story": {
+   "w": 460,
+   "h": 818
+  },
+  "ads-experience": {
+   "w": 680,
+   "h": 680
+  },
+  "ads-implant-ar": {
+   "w": 1080,
+   "h": 1080
+  },
+  "ads-implant-en": {
+   "w": 918,
+   "h": 918
+  },
+  "ads-implant-fr": {
+   "w": 918,
+   "h": 918
+  },
+  "ads-luxurious": {
+   "w": 680,
+   "h": 680
+  },
+  "ads-saphire-campaign": {
+   "w": 808,
+   "h": 632
+  },
+  "ads-saphiredent-dubai": {
+   "w": 808,
+   "h": 632
+  },
+  "ads-saphiredent-smile": {
+   "w": 808,
+   "h": 632
+  },
+  "ads-thebest": {
+   "w": 680,
+   "h": 680
+  },
+  "bes-badge": {
+   "w": 2000,
+   "h": 1200
+  },
+  "bes-bag": {
+   "w": 2000,
+   "h": 1334
+  },
+  "bes-cards": {
+   "w": 2000,
+   "h": 1200
+  },
+  "bes-colours": {
+   "w": 2000,
+   "h": 1286
+  },
+  "bes-cover": {
+   "w": 2000,
+   "h": 1500
+  },
+  "bes-letterhead": {
+   "w": 2000,
+   "h": 1200
+  },
+  "bes-lockups": {
+   "w": 2000,
+   "h": 1500
+  },
+  "bes-logo": {
+   "w": 1760,
+   "h": 930
+  },
+  "bes-monogram": {
+   "w": 2000,
+   "h": 2000
+  },
+  "bes-sign": {
+   "w": 2000,
+   "h": 1200
+  },
+  "bes-social": {
+   "w": 2000,
+   "h": 1200
+  },
+  "bes-style1": {
+   "w": 2000,
+   "h": 1127
+  },
+  "bes-style2": {
+   "w": 2000,
+   "h": 1127
+  },
+  "bes-style3": {
+   "w": 2000,
+   "h": 1127
+  },
+  "bes-tshirts": {
+   "w": 2000,
+   "h": 1200
+  },
+  "bes-van": {
+   "w": 2000,
+   "h": 1200
+  },
+  "bl-drop": {
+   "w": 720,
+   "h": 1280,
+   "video": true
+  },
+  "bl-helix": {
+   "w": 720,
+   "h": 1280,
+   "video": true
+  },
+  "bl-implants": {
+   "w": 720,
+   "h": 1280,
+   "video": true
+  },
+  "bl-play": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "bl-saphire-case": {
+   "w": 720,
+   "h": 1280,
+   "video": true
+  },
+  "bl-type": {
+   "w": 1280,
+   "h": 720,
+   "video": true
+  },
+  "bm-card": {
+   "w": 2000,
+   "h": 1333
+  },
+  "bm-cover": {
+   "w": 1920,
+   "h": 1080
+  },
+  "bm-cups": {
+   "w": 2000,
+   "h": 1504
+  },
+  "bm-drafts-blue": {
+   "w": 1081,
+   "h": 1921
+  },
+  "bm-drafts-light": {
+   "w": 1080,
+   "h": 1921
+  },
+  "bm-logo-anim": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "bm-logo-h": {
+   "w": 1080,
+   "h": 410
+  },
+  "bm-logo-v": {
+   "w": 868,
+   "h": 868
+  },
+  "bm-notes": {
+   "w": 2000,
+   "h": 1334
+  },
+  "bm-pin": {
+   "w": 2000,
+   "h": 1333
+  },
+  "bm-wallpaper": {
+   "w": 2000,
+   "h": 1125
+  },
+  "brand-omega-pack2": {
+   "w": 734,
+   "h": 1154
+  },
+  "brand-omega-pack3": {
+   "w": 1608,
+   "h": 904
+  },
+  "brand-waterboy": {
+   "w": 808,
+   "h": 632
+  },
+  "bushra-key1": {
+   "w": 888,
+   "h": 592
+  },
+  "bushra-key2": {
+   "w": 888,
+   "h": 592
+  },
+  "bushra-key3": {
+   "w": 959,
+   "h": 592
+  },
+  "bushra-ooh1": {
+   "w": 1120,
+   "h": 732
+  },
+  "bushra-ooh2": {
+   "w": 1254,
+   "h": 732
+  },
+  "camp-car-ar-v1": {
+   "w": 1890,
+   "h": 630
+  },
+  "camp-car-en-v1": {
+   "w": 1890,
+   "h": 630
+  },
+  "camp-carousel-en": {
+   "w": 1800,
+   "h": 600
+  },
+  "camp-carousel-fr": {
+   "w": 1418,
+   "h": 472
+  },
+  "camp-dubai-ar1": {
+   "w": 912,
+   "h": 514
+  },
+  "camp-dubai-ar2": {
+   "w": 912,
+   "h": 514
+  },
+  "camp-dubai-ar3": {
+   "w": 912,
+   "h": 514
+  },
+  "camp-dubai-en2": {
+   "w": 912,
+   "h": 514
+  },
+  "camp-dubai-en3": {
+   "w": 912,
+   "h": 514
+  },
+  "camp-dubai-en4": {
+   "w": 912,
+   "h": 514
+  },
+  "camp-hs-ar1": {
+   "w": 680,
+   "h": 680
+  },
+  "camp-hs-en1": {
+   "w": 680,
+   "h": 680
+  },
+  "camp-hs-fr1": {
+   "w": 680,
+   "h": 680
+  },
+  "camp-hs-tr1": {
+   "w": 680,
+   "h": 680
+  },
+  "camp-soy-crowns": {
+   "w": 1130,
+   "h": 636
+  },
+  "camp-soy-hair2": {
+   "w": 1130,
+   "h": 636
+  },
+  "camp-soy-hair3": {
+   "w": 1130,
+   "h": 636
+  },
+  "camp-soy-veneers": {
+   "w": 1130,
+   "h": 636
+  },
+  "chef-bag": {
+   "w": 2000,
+   "h": 1339
+  },
+  "chef-banner-black": {
+   "w": 948,
+   "h": 2000
+  },
+  "chef-banner-crepe": {
+   "w": 792,
+   "h": 2000
+  },
+  "chef-banner-grey": {
+   "w": 948,
+   "h": 2000
+  },
+  "chef-banner-red": {
+   "w": 948,
+   "h": 2000
+  },
+  "chef-board-bbq": {
+   "w": 2000,
+   "h": 2000
+  },
+  "chef-board-burger": {
+   "w": 2000,
+   "h": 2000
+  },
+  "chef-board-crepe": {
+   "w": 2000,
+   "h": 2000
+  },
+  "chef-cover": {
+   "w": 2000,
+   "h": 1333
+  },
+  "chef-drafts": {
+   "w": 1523,
+   "h": 667
+  },
+  "chef-fb-cover": {
+   "w": 1640,
+   "h": 624
+  },
+  "chef-logo": {
+   "w": 2000,
+   "h": 2000
+  },
+  "chef-logo-dark": {
+   "w": 2000,
+   "h": 2000
+  },
+  "chef-menu-burgers": {
+   "w": 2000,
+   "h": 1414
+  },
+  "chef-menu-crepes": {
+   "w": 2000,
+   "h": 1414
+  },
+  "chef-menu-list": {
+   "w": 1754,
+   "h": 1241
+  },
+  "chef-pack": {
+   "w": 2000,
+   "h": 1333
+  },
+  "chef-pack-white": {
+   "w": 2000,
+   "h": 1333
+  },
+  "chef-pattern": {
+   "w": 2000,
+   "h": 2000
+  },
+  "chef-post-247": {
+   "w": 1000,
+   "h": 1000
+  },
+  "chef-post-247-ar": {
+   "w": 1000,
+   "h": 1000
+  },
+  "chef-post-big": {
+   "w": 1000,
+   "h": 1000
+  },
+  "chef-post-box": {
+   "w": 1000,
+   "h": 1000
+  },
+  "chef-post-crepe": {
+   "w": 1000,
+   "h": 1000
+  },
+  "chef-post-crepe-ar": {
+   "w": 1000,
+   "h": 1000
+  },
+  "chef-post-double": {
+   "w": 1000,
+   "h": 1000
+  },
+  "chef-post-open": {
+   "w": 1000,
+   "h": 1000
+  },
+  "ew-eid-care": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "ew-eid-implants": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "ew-eid-sheep": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "ew-eid-zirc": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "ew-implant": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "ew-mascot-ar": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "ew-mascot-en": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "ew-onbrand": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "ew-services": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "ew-spring-ar": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "ew-spring-en": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "lp-implant-01": {
+   "w": 680,
+   "h": 1472
+  },
+  "lp-implant-12": {
+   "w": 680,
+   "h": 1472
+  },
+  "lp-mobile1": {
+   "w": 910,
+   "h": 682
+  },
+  "lp-mobile3": {
+   "w": 910,
+   "h": 682
+  },
+  "mob-omega-contact": {
+   "w": 382,
+   "h": 826
+  },
+  "mob-omega-home": {
+   "w": 389,
+   "h": 841
+  },
+  "mob-omega-o2": {
+   "w": 389,
+   "h": 841
+  },
+  "mob-omega-o2p": {
+   "w": 382,
+   "h": 826
+  },
+  "mock-omega-contact": {
+   "w": 823,
+   "h": 618
+  },
+  "mock-omega-desktop": {
+   "w": 823,
+   "h": 618
+  },
+  "mock-omega-phones": {
+   "w": 823,
+   "h": 618
+  },
+  "omega-drills": {
+   "w": 1655,
+   "h": 1006
+  },
+  "omega-spec-o2": {
+   "w": 1107,
+   "h": 450
+  },
+  "omega-spec-o3": {
+   "w": 1107,
+   "h": 450
+  },
+  "photo-city": {
+   "w": 731,
+   "h": 488
+  },
+  "photo-daily-edits": {
+   "w": 803,
+   "h": 628
+  },
+  "photo-lantern": {
+   "w": 731,
+   "h": 488
+  },
+  "photo-lens": {
+   "w": 731,
+   "h": 488
+  },
+  "photo-minaret": {
+   "w": 388,
+   "h": 654
+  },
+  "photo-photography": {
+   "w": 803,
+   "h": 628
+  },
+  "photo-plant": {
+   "w": 436,
+   "h": 654
+  },
+  "photo-sunset": {
+   "w": 436,
+   "h": 654
+  },
+  "photo-watch-d": {
+   "w": 420,
+   "h": 654
+  },
+  "photo-watch-p1": {
+   "w": 436,
+   "h": 654
+  },
+  "pizza-ar-calz": {
+   "w": 680,
+   "h": 680
+  },
+  "pizza-ar-juice": {
+   "w": 680,
+   "h": 680
+  },
+  "pizza-ar-pizza": {
+   "w": 680,
+   "h": 680
+  },
+  "pizza-ar-sand": {
+   "w": 680,
+   "h": 680
+  },
+  "pizza-en-calz": {
+   "w": 680,
+   "h": 680
+  },
+  "pizza-en-juice": {
+   "w": 680,
+   "h": 680
+  },
+  "pizza-en-pizza": {
+   "w": 680,
+   "h": 680
+  },
+  "pizza-en-sand": {
+   "w": 680,
+   "h": 680
+  },
+  "pizza-flat1": {
+   "w": 1387,
+   "h": 762
+  },
+  "pizza-flat2": {
+   "w": 1387,
+   "h": 762
+  },
+  "pizza-trifold": {
+   "w": 1645,
+   "h": 1098
+  },
+  "sapb-card-gold": {
+   "w": 1984,
+   "h": 909
+  },
+  "sapb-cards": {
+   "w": 2000,
+   "h": 1250
+  },
+  "sapb-colours": {
+   "w": 2000,
+   "h": 1250
+  },
+  "sapb-concept": {
+   "w": 2000,
+   "h": 1250
+  },
+  "sapb-cup": {
+   "w": 1700,
+   "h": 1080
+  },
+  "sapb-emboss": {
+   "w": 2000,
+   "h": 1333
+  },
+  "sapb-icon": {
+   "w": 2000,
+   "h": 1250
+  },
+  "sapb-idcard": {
+   "w": 1223,
+   "h": 2000
+  },
+  "sapb-letterhead": {
+   "w": 1415,
+   "h": 1830
+  },
+  "sapb-logo": {
+   "w": 2000,
+   "h": 1250
+  },
+  "sapb-pattern": {
+   "w": 2000,
+   "h": 1890
+  },
+  "sapb-seals": {
+   "w": 2000,
+   "h": 1250
+  },
+  "sapb-stationery": {
+   "w": 2000,
+   "h": 857
+  },
+  "sd-impl-how": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "sd-impl-what": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "sd-impl-who": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "sd-zirc": {
+   "w": 720,
+   "h": 720,
+   "video": true
+  },
+  "site-awab-ar26": {
+   "w": 2000,
+   "h": 1335
+  },
+  "site-awab-brand": {
+   "w": 2000,
+   "h": 1200
+  },
+  "site-awab-check": {
+   "w": 2000,
+   "h": 1316
+  },
+  "site-awab-home26": {
+   "w": 2000,
+   "h": 1335
+  },
+  "site-bazaar": {
+   "w": 1440,
+   "h": 960
+  },
+  "site-bazaar-ar": {
+   "w": 1124,
+   "h": 650
+  },
+  "site-bazaar-catalog": {
+   "w": 1634,
+   "h": 1402
+  },
+  "site-bazaar-product": {
+   "w": 1124,
+   "h": 664
+  },
+  "site-esteexpert": {
+   "w": 1440,
+   "h": 960
+  },
+  "site-jouvence": {
+   "w": 1440,
+   "h": 960
+  },
+  "site-omar": {
+   "w": 1440,
+   "h": 960
+  },
+  "site-omar-ar": {
+   "w": 1077,
+   "h": 718
+  },
+  "site-omar-case": {
+   "w": 1899,
+   "h": 1240
+  },
+  "site-omar-markets": {
+   "w": 1077,
+   "h": 718
+  },
+  "site-saphiredent": {
+   "w": 1440,
+   "h": 660
+  },
+  "taku-app1": {
+   "w": 912,
+   "h": 514
+  },
+  "taku-app2": {
+   "w": 912,
+   "h": 514
+  },
+  "taku-app3": {
+   "w": 912,
+   "h": 514
+  },
+  "taku-colour": {
+   "w": 815,
+   "h": 458
+  },
+  "taku-icon": {
+   "w": 815,
+   "h": 458
+  },
+  "taku-mark": {
+   "w": 1645,
+   "h": 926
+  },
+  "taku-type": {
+   "w": 815,
+   "h": 458
+  },
+  "veq-body": {
+   "w": 912,
+   "h": 514
+  },
+  "veq-hero": {
+   "w": 1645,
+   "h": 926
+  },
+  "veq-pair": {
+   "w": 912,
+   "h": 514
+  },
+  "veq-tip": {
+   "w": 912,
+   "h": 514
+  },
+  "vp-omega-about": {
+   "w": 1254,
+   "h": 706
+  },
+  "vp-omega-contact": {
+   "w": 805,
+   "h": 452
+  },
+  "vp-omega-home": {
+   "w": 1646,
+   "h": 926
+  },
+  "vp-omega-o2": {
+   "w": 1254,
+   "h": 706
+  },
+  "vp-omega-o2p": {
+   "w": 1254,
+   "h": 706
+  },
+  "vp-omega-pros": {
+   "w": 1254,
+   "h": 706
+  },
+  "wb-hero": {
+   "w": 1920,
+   "h": 1080
+  },
+  "wb-render1": {
+   "w": 912,
+   "h": 514
+  },
+  "wb-render2": {
+   "w": 912,
+   "h": 514
+  },
+  "wb-render3": {
+   "w": 912,
+   "h": 514
+  },
+  "wb-renders": {
+   "w": 1249,
+   "h": 702
+  },
+  "wb-type": {
+   "w": 1249,
+   "h": 702
+  },
+  "web-omega-frame1": {
+   "w": 805,
+   "h": 452
+  },
+  "web-omega-t1": {
+   "w": 823,
+   "h": 576
+  },
+  "web-omega-t4": {
+   "w": 823,
+   "h": 644
+  },
+  "web-omega-t6": {
+   "w": 823,
+   "h": 644
+  },
+  "yas-badge": {
+   "w": 1300,
+   "h": 1000
+  },
+  "yas-calm-logo": {
+   "w": 1300,
+   "h": 1000
+  },
+  "yas-calm-use": {
+   "w": 2000,
+   "h": 1204
+  },
+  "yas-class-logo": {
+   "w": 1300,
+   "h": 1000
+  },
+  "yas-class-use": {
+   "w": 2000,
+   "h": 1204
+  },
+  "yas-colour1": {
+   "w": 2000,
+   "h": 1401
+  },
+  "yas-colour2": {
+   "w": 2000,
+   "h": 1401
+  },
+  "yas-kit-cover": {
+   "w": 2000,
+   "h": 1125
+  },
+  "yas-kit-highlights": {
+   "w": 1916,
+   "h": 1650
+  },
+  "yas-kit-profile": {
+   "w": 1284,
+   "h": 1283
+  },
+  "yas-mark-red": {
+   "w": 1300,
+   "h": 1000
+  },
+  "yas-mark-roses": {
+   "w": 2000,
+   "h": 1401
+  },
+  "yas-tpl-sq-red": {
+   "w": 1080,
+   "h": 1080
+  },
+  "yas-tpl-sq-white": {
+   "w": 1080,
+   "h": 1080
+  },
+  "yas-tpl-st-red": {
+   "w": 1080,
+   "h": 1920
+  },
+  "yas-tpl-st-stacked": {
+   "w": 1080,
+   "h": 1920
+  },
+  "yas-tpl-st-white": {
+   "w": 1080,
+   "h": 1920
+  },
+  "yas-use-bags": {
+   "w": 2000,
+   "h": 1204
+  },
+  "yas-use-kit": {
+   "w": 2000,
+   "h": 1180
+  },
+  "yas-use-letter": {
+   "w": 2000,
+   "h": 1204
+  },
+  "yas-youth-logo": {
+   "w": 1300,
+   "h": 1000
+  },
+  "yas-youth-use": {
+   "w": 2000,
+   "h": 1204
+  }
+ }
+}

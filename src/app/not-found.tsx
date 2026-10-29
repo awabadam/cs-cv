@@ -2,38 +2,15 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-paper flex items-center justify-center px-6">
-      <div className="text-center max-w-md">
-        <p className="section-label text-ink-lighter mb-2 tracking-[0.3em]">
-          Error
-        </p>
-        <hr className="rule-thick mb-6" />
-
-        <h1
-          className="masthead-title text-[3.5rem] md:text-[8rem] leading-[0.85] mb-4"
-          style={{ opacity: 1, transform: "none" }}
-        >
-          404
-        </h1>
-
-        <p className="font-headline text-[1rem] md:text-[1.3rem] font-bold mb-4">
-          This page has gone to print.
-        </p>
-
-        <p className="text-ink-light leading-[1.7] mb-8 text-[0.9rem]">
-          The page you&rsquo;re looking for doesn&rsquo;t exist, or has been
-          moved to a different edition.
-        </p>
-
-        <hr className="rule-ornament mb-6" />
-
-        <Link
-          href="/"
-          className="section-label text-[0.7rem] tracking-[0.2em] hover:text-accent transition-colors"
-        >
-          &larr; Back to the cover
-        </Link>
-      </div>
-    </div>
+    <main className="wrap min-h-[80vh] flex flex-col justify-center">
+      <p className="font-mono text-xs text-muted">404</p>
+      <h1 className="mt-2 text-[clamp(2rem,5vw,4rem)] font-semibold leading-tight tracking-[-0.02em]">
+        Nothing here.
+      </h1>
+      <p className="mt-4 text-muted">The page you&rsquo;re looking for doesn&rsquo;t exist or has moved.</p>
+      <Link href="/#work" className="mt-8 w-fit underline underline-offset-3">
+        &larr; See the work
+      </Link>
+    </main>
   );
 }

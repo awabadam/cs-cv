@@ -13,78 +13,26 @@ export default function OGImage() {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#f4efe4",
-          fontFamily: "serif",
-          position: "relative",
+          justifyContent: "space-between",
+          padding: 80,
+          backgroundColor: "#f7f7f7",
+          color: "#0a0a0b",
+          fontFamily: "sans-serif",
         }}
       >
-        {/* Top rule */}
-        <div
-          style={{
-            position: "absolute",
-            top: 60,
-            left: 80,
-            right: 80,
-            height: 3,
-            backgroundColor: "#141414",
-          }}
-        />
-
-        {/* Name */}
-        <div
-          style={{
-            fontSize: 80,
-            fontWeight: 800,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "#141414",
-            lineHeight: 0.9,
-            textAlign: "center",
-          }}
-        >
-          AWAB
+        <div style={{ fontSize: 28, fontWeight: 600 }}>Awab Elkhalil</div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ fontSize: 76, fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.02em" }}>
+            I design it, then I build it.
+          </div>
+          <div style={{ fontSize: 76, fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.02em", color: "#6b6b70" }}>
+            Brand, interface, code.
+          </div>
         </div>
-        <div
-          style={{
-            fontSize: 80,
-            fontWeight: 800,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "#141414",
-            lineHeight: 0.9,
-            textAlign: "center",
-            marginTop: 8,
-          }}
-        >
-          ELKHALIL
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24, color: "#6b6b70" }}>
+          <div>Designer &amp; developer · Istanbul</div>
+          <div>cv.awab.design</div>
         </div>
-
-        {/* Subtitle */}
-        <div
-          style={{
-            fontSize: 18,
-            letterSpacing: "0.3em",
-            textTransform: "uppercase",
-            color: "#7d7a6f",
-            marginTop: 32,
-          }}
-        >
-          Designer & Developer — Istanbul
-        </div>
-
-        {/* Bottom rule */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 60,
-            left: 80,
-            right: 80,
-            height: 3,
-            backgroundColor: "#141414",
-          }}
-        />
       </div>
     ),
     { ...size }
