@@ -1853,18 +1853,16 @@
   {
    "id": "ubuntu-taxi",
    "client": "Ubuntu Taxi",
-   "title": "Brand, App & Launch",
+   "title": "Brand & Launch",
    "year": "2019",
    "sector": "Ride-hailing app, Khartoum",
    "disciplines": [
     "Identity",
-    "App UI",
     "Social",
     "Print"
    ],
    "kind": [
     "brand",
-    "product",
     "campaign",
     "print"
    ],
@@ -1885,25 +1883,25 @@
      "source": "sampled"
     }
    ],
-   "summary": "Logo, app screens, launch posts and event roll-ups for a ride-hailing app in Khartoum, made at icare-net.",
+   "summary": "Logo, launch posts, a usage guide and event roll-ups for a ride-hailing app in Khartoum, made at icare-net.",
    "copy": [
     {
      "lead": "The brief.",
-     "text": "Ubuntu Taxi was icare-net’s ride-hailing app for Khartoum: one app for riders, one for drivers, both in Arabic and English. It needed an identity, the app screens, and a launch campaign that showed people how to sign up and book a ride."
+     "text": "Ubuntu Taxi was icare-net’s ride-hailing app for Khartoum: one app for riders, one for drivers, both in Arabic and English. It needed an identity and a launch campaign that showed people how to sign up and book a ride."
     },
     {
      "lead": "What I did.",
-     "text": "The mark: two interlocking strokes inside a rounded square, a small orange taxi tag on its corner, and the line “I am because we are” under the wordmark. I designed the screens for both apps, then the launch: bilingual posts built around real app screens, a six-post usage guide that walks a new rider from download to choosing a class, and three roll-ups for icare-net’s seventh-anniversary event. I also edited the photos from the launch shoot and put the mark on them for the posts."
+     "text": "The mark: two interlocking strokes inside a rounded square, a small orange taxi tag on its corner, and the line “I am because we are” under the wordmark. Then the launch: bilingual posts built around screenshots of the app, a six-post usage guide that walks a new rider from download to choosing a class, and three roll-ups for icare-net’s seventh-anniversary event. I also edited the photos from the launch shoot and put the mark on them for the posts."
     },
     {
      "lead": "The result.",
-     "text": "One look across the app, the feed and the event floor: charcoal and white throughout, with orange as the accent, from the taxi tag to the buttons in the app’s dialogs."
+     "text": "One look across the feed and the event floor: charcoal and white throughout, with the taxi tag’s orange as the accent."
     }
    ],
    "facts": [
     {
      "k": "Deliverables",
-     "v": "Logo · rider and driver app screens · launch posts · six-post usage guide · roll-up banners · photo edits"
+     "v": "Logo · launch posts · six-post usage guide · roll-up banners · photo edits"
     },
     {
      "k": "Play Store",
@@ -1937,54 +1935,8 @@
      ]
     },
     {
-     "title": "The App",
-     "note": "The rider app is shown in Arabic and the driver app in English; each switches language from its first screen. These are screenshots of the working apps from September 2019, with Google Maps underneath.",
-     "rows": [
-      [
-       {
-        "img": "ub-app-c-register",
-        "cap": "Rider sign-up: name, phone, password, a referrer’s phone"
-       },
-       {
-        "img": "ub-app-c-code",
-        "cap": "Verification code"
-       },
-       {
-        "img": "ub-app-c-map",
-        "cap": "Set pickup and destination, then order"
-       },
-       {
-        "img": "ub-app-c-class",
-        "cap": "Choose a class: hatchback, saloon, premium or luxury"
-       },
-       {
-        "img": "ub-app-c-fare",
-        "cap": "Confirm the fare"
-       }
-      ],
-      [
-       {
-        "img": "ub-app-d-register",
-        "cap": "Driver sign-up: phone, activation code, password"
-       },
-       {
-        "img": "ub-app-d-request",
-        "cap": "Incoming request: class, pickup and destination, accept or cancel"
-       },
-       {
-        "img": "ub-app-d-arrived",
-        "cap": "On the way: call the rider, or mark them reached"
-       },
-       {
-        "img": "ub-app-d-done",
-        "cap": "Trip finished: the fare, then a rating for the rider"
-       }
-      ]
-     ]
-    },
-    {
      "title": "Launch Posts",
-     "note": "Bilingual posts for Facebook and Instagram, each built around a real app screen. The phone is a Samsung mockup template; the screens, layout and type are mine.",
+     "note": "Bilingual posts for Facebook and Instagram, each built around a screenshot of the app. The phone is a Samsung mockup template and the app screens aren’t mine; the layout and type are.",
      "rows": [
       [
        {
@@ -2018,7 +1970,7 @@
     },
     {
      "title": "Usage Guide",
-     "note": "A six-post carousel, Arabic first with English under it, from downloading the app to choosing a class. The Play Store listing in the second post showed 4.3 stars from 156 reviews.",
+     "note": "A six-post carousel, Arabic first with English under it, from downloading the app to choosing a class, set on the same mockup and app screenshots. The Play Store listing in the second post showed 4.3 stars from 156 reviews.",
      "rows": [
       [
        {
@@ -3645,42 +3597,6 @@
   "taku-type": {
    "w": 815,
    "h": 458
-  },
-  "ub-app-c-class": {
-   "w": 540,
-   "h": 960
-  },
-  "ub-app-c-code": {
-   "w": 540,
-   "h": 960
-  },
-  "ub-app-c-fare": {
-   "w": 540,
-   "h": 960
-  },
-  "ub-app-c-map": {
-   "w": 540,
-   "h": 960
-  },
-  "ub-app-c-register": {
-   "w": 540,
-   "h": 960
-  },
-  "ub-app-d-arrived": {
-   "w": 525,
-   "h": 1080
-  },
-  "ub-app-d-done": {
-   "w": 525,
-   "h": 1080
-  },
-  "ub-app-d-register": {
-   "w": 525,
-   "h": 1080
-  },
-  "ub-app-d-request": {
-   "w": 525,
-   "h": 1080
   },
   "ub-end": {
    "w": 1000,
