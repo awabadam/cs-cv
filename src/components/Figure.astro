@@ -1,0 +1,34 @@
+---
+import Clip from "@/components/Clip.astro";
+import Pic from "@/components/Pic.astro";
+import { images, plain, type Img } from "@/data/work";
+
+/* One image (or clip) in a project gallery, as a button that opens the viewer. */
+interface Props {
+  item: Img;
+  sizes: string;
+  priority?: boolean;
+}
+
+const { item, sizes, priority = false } = Astro.props;
+const m = images[item.img];
+const alt = plain(item.cap);
+---
+
+<figure>
+  <button
+    type="button"
+    class="zoom"
+    data-alt={alt}
+    aria-label={item.cap ? `Enlarge: ${alt}` : "Enlarge image"}
+  >
+    {
+      m.video ? (
+        <Clip src={m.video} poster={m.src} w={m.w} h={m.h} />
+      ) : (
+        <Pic src={m.src} alt="" sizes={sizes} priority={priority} />
+      )
+    }
+  </button>
+  {item.cap && <figcaption class="cap" set:html={item.cap} />}
+</figure>

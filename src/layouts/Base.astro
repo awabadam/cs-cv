@@ -1,0 +1,61 @@
+---
+import { Font } from "astro:assets";
+import "@/styles/global.css";
+
+const SITE = "Awab Elkhalil — Designer & Developer";
+
+interface Props {
+  /* The page's own title; the site name follows it. Omit on the home page. */
+  title?: string;
+  description: string;
+  /* Open Graph and Twitter text, when it should differ from the page's. */
+  share?: { title: string; description: string };
+  /* An absolute or site-relative URL; defaults to the site card (public/og.png). */
+  image?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
+}
+
+const { title, description, share, image, type = "website", noindex = false } = Astro.props;
+const fullTitle = title ? `${title} — Awab Elkhalil` : SITE;
+const og = share ?? { title: title ?? SITE, description };
+const ogImage = new URL(image ?? "/og.png", Astro.site).href;
+
+/* Apply a pinned light/dark choice (ThemeSwitch) before first paint, so it never flashes. */
+const themeInit = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+
+/* Chrome and Edge prerender a page as the pointer settles on a link to it, so the click
+   lands on a finished page. Other browsers prefetch on hover (prefetch in astro.config). */
+const speculation = JSON.stringify({
+  prerender: [{ source: "document", where: { href_matches: "/*" }, eagerness: "moderate" }],
+});
+---
+
+<!doctype html>
+<html lang="en" class="antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline set:html={themeInit} />
+    <Font cssVariable="--font-switzer" preload />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta property="og:title" content={og.title} />
+    <meta property="og:description" content={og.description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={og.title} />
+    <meta name="twitter:description" content={og.description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-icon.png" />
+    <script type="speculationrules" is:inline set:html={speculation} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

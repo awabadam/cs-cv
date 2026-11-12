@@ -1,36 +1,17 @@
-# Production image for Dokploy. Builds the standalone server (output: "standalone"
-# in next.config.ts), so the final stage carries no full node_modules.
+# Production image for Dokploy. Astro builds the whole site to static files, images
+# included, and nginx serves them; nothing else runs at request time.
 
-FROM node:24-alpine AS base
-
-FROM base AS deps
+FROM node:24-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
-
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-ENV NEXT_TELEMETRY_DISABLED=1
-RUN npm run build
+# Resized images are cached between builds, so a deploy only processes new or changed ones.
+RUN --mount=type=cache,target=/app/node_modules/.astro npm run build
+RUN find dist -type f \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.svg' -o -name '*.json' -o -name '*.xml' -o -name '*.txt' \) \
+      -exec sh -c 'for f; do gzip -9 -c "$f" > "$f.gz"; done' _ {} +
 
-FROM base AS runner
-WORKDIR /app
-ENV NODE_ENV=production \
-    NEXT_TELEMETRY_DISABLED=1 \
-    PORT=3000 \
-    HOSTNAME=0.0.0.0
-
-RUN addgroup -S -g 1001 nodejs && adduser -S -u 1001 -G nodejs nextjs
-
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-# Resized images are cached here. Mount a volume on /app/.next/cache to keep them across deploys.
-RUN mkdir -p .next/cache && chown nextjs:nodejs .next/cache
-
-USER nextjs
+FROM nginxinc/nginx-unprivileged:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 3000
-CMD ["node", "server.js"]

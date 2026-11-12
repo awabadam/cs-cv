@@ -1,0 +1,42 @@
+---
+import CaseStudyDiagram from "@/components/CaseStudyDiagrams";
+import Clip from "@/components/Clip.astro";
+import Pic from "@/components/Pic.astro";
+import { images, plain, type Project } from "@/data/work";
+
+/* One project in the index: its image first (a motion cover loops), then number, name and year. */
+interface Props {
+  project: Project;
+  sizes: string;
+  eager?: boolean;
+}
+
+const { project: p, sizes, eager = false } = Astro.props;
+const key = p.thumb ?? p.cover?.img;
+const img = key ? images[key] : null;
+const alt = !p.thumb && p.cover ? plain(p.cover.cap) : "";
+---
+
+<a href={`/work/${p.id}`} class="card block">
+  <div class="card-img">
+    {
+      img?.video ? (
+        <Clip src={img.video} poster={img.src} w={img.w} h={img.h} label={alt} />
+      ) : img ? (
+        <Pic src={img.src} alt={alt} sizes={sizes} eager={eager} />
+      ) : (
+        <div class="diagram h-full grid place-items-center p-[6%]">
+          <CaseStudyDiagram slug={p.id} />
+        </div>
+      )
+    }
+  </div>
+  <div class="mt-3 flex items-baseline gap-3 text-[15px] leading-snug">
+    <span class="font-mono text-xs text-muted">{p.num}</span>
+    <span class="flex-1 min-w-0">
+      <span class="font-medium">{p.client}</span>{" "}
+      <span class="text-muted">{p.title}</span>
+    </span>
+    {p.year && <span class="text-sm text-muted whitespace-nowrap">{p.year}</span>}
+  </div>
+</a>

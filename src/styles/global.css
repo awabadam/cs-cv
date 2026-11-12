@@ -75,6 +75,14 @@ body {
   padding-inline: clamp(16px, 3vw, 40px);
 }
 
+/* The pressed theme button follows html[data-theme], so it is right before any script runs. */
+:root:not([data-theme]) [data-theme-set="auto"],
+:root[data-theme="light"] [data-theme-set="light"],
+:root[data-theme="dark"] [data-theme-set="dark"] {
+  background: var(--line);
+  color: var(--fg);
+}
+
 /* Links inside copy and captions */
 .prose a,
 .cap a,

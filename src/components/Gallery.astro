@@ -1,0 +1,159 @@
+---
+import Figure from "@/components/Figure.astro";
+import { images, type Cell, type Img, type Section } from "@/data/work";
+
+/**
+ * The cover, then the slot (the project text), then every section's image rows.
+ * Any image opens a full-screen view that steps through the whole project; motion pieces
+ * loop silently in place and play with controls in the viewer.
+ */
+interface Props {
+  cover: Img | null;
+  sections: Section[];
+}
+
+const { cover, sections } = Astro.props;
+
+const ratio = (i: Img) => images[i.img].w / images[i.img].h;
+/* A stack of images in one column reads at the row's height when its ratio is 1 / Σ(1/ratio). */
+const cellRatio = (c: Cell) =>
+  "stack" in c ? 1 / c.stack.reduce((sum, i) => sum + 1 / ratio(i), 0) : ratio(c);
+
+const count = sections
+  .flatMap((s) => s.rows.flat())
+  .reduce((n, c) => n + ("stack" in c ? c.stack.length : 1), cover ? 1 : 0);
+---
+
+{
+  cover && (
+    <div class="cover" style={`--ar: ${ratio(cover)}`}>
+      <Figure item={cover} sizes="(max-width: 1680px) 100vw, 1600px" priority />
+    </div>
+  )
+}
+
+<slot />
+
+{
+  sections.map((s) => (
+    <section class="mt-16">
+      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-t border-line pt-3 mb-5">
+        <h2 class="text-lg font-medium">{s.title}</h2>
+        {s.note && <p class="prose text-sm text-muted max-w-[80ch]" set:html={s.note} />}
+      </div>
+      <div class="rows">
+        {s.rows.map((r) => {
+          const total = r.reduce((sum, c) => sum + cellRatio(c), 0);
+          return (
+            <div class="row">
+              {r.map((c) => {
+                const sizes = `(max-width: 640px) 100vw, ${Math.ceil((cellRatio(c) / total) * 100)}vw`;
+                return (
+                  <div class="cell" style={`--ar: ${cellRatio(c)}`}>
+                    {"stack" in c ? (
+                      <div class="stack">
+                        {c.stack.map((i) => (
+                          <Figure item={i} sizes={sizes} />
+                        ))}
+                      </div>
+                    ) : (
+                      <Figure item={c} sizes={sizes} />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  ))
+}
+
+<dialog class="lightbox" aria-label="Image viewer">
+  <figure>
+    <figcaption><span class="font-mono mr-2" data-lb-count></span><span data-lb-cap></span></figcaption>
+  </figure>
+  <button type="button" class="lb-btn top-3 right-3" data-lb-close aria-label="Close">✕</button>
+  {
+    count > 1 && (
+      <>
+        <button type="button" class="lb-btn left-2 top-1/2 -translate-y-1/2" data-lb-step="-1" aria-label="Previous image">
+          ←
+        </button>
+        <button type="button" class="lb-btn right-2 top-1/2 -translate-y-1/2" data-lb-step="1" aria-label="Next image">
+          →
+        </button>
+      </>
+    )
+  }
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>("dialog.lightbox");
+  if (dialog) {
+    const zooms = [...document.querySelectorAll<HTMLButtonElement>(".zoom")];
+    const figure = dialog.querySelector("figure")!;
+    const count = dialog.querySelector("[data-lb-count]")!;
+    const cap = dialog.querySelector("[data-lb-cap]")!;
+    let open = -1;
+
+    /* The viewer reuses the page image's srcset at near full width; a clip gets controls. */
+    const media = (z: HTMLButtonElement) => {
+      const clip = z.querySelector("video");
+      const pic = z.querySelector("img");
+      const el = clip ? document.createElement("video") : document.createElement("img");
+      const from = (clip ?? pic)!;
+      el.setAttribute("width", from.getAttribute("width") ?? "");
+      el.setAttribute("height", from.getAttribute("height") ?? "");
+      if (el instanceof HTMLVideoElement) {
+        el.poster = clip!.poster;
+        el.controls = el.autoplay = el.muted = el.loop = el.playsInline = true;
+        el.setAttribute("aria-label", z.dataset.alt ?? "");
+        el.src = clip!.getAttribute("src")!;
+      } else {
+        el.alt = z.dataset.alt ?? "";
+        el.sizes = "94vw";
+        el.srcset = pic!.srcset;
+        el.src = pic!.src;
+      }
+      return el;
+    };
+
+    const show = (i: number) => {
+      open = i;
+      figure.querySelector("img, video")?.remove();
+      figure.prepend(media(zooms[i]));
+      count.textContent = `${i + 1} / ${zooms.length}`;
+      cap.innerHTML = zooms[i].closest("figure")?.querySelector("figcaption")?.innerHTML ?? "";
+      if (!dialog.open) dialog.showModal();
+    };
+    const step = (n: number) => open >= 0 && show((open + n + zooms.length) % zooms.length);
+
+    zooms.forEach((z, i) => z.addEventListener("click", () => show(i)));
+    dialog.querySelector("[data-lb-close]")!.addEventListener("click", () => dialog.close());
+    dialog.querySelectorAll<HTMLElement>("[data-lb-step]").forEach((b) =>
+      b.addEventListener("click", () => step(Number(b.dataset.lbStep)))
+    );
+
+    dialog.addEventListener("close", () => {
+      open = -1;
+      figure.querySelector("img, video")?.remove();
+    });
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog || e.target === figure) dialog.close();
+    });
+    dialog.addEventListener("keydown", (e) => {
+      if ((e.target as HTMLElement).tagName === "VIDEO") return; // arrows seek the clip
+      if (e.key === "ArrowRight") step(1);
+      if (e.key === "ArrowLeft") step(-1);
+    });
+
+    let touchX = 0;
+    dialog.addEventListener("touchstart", (e) => (touchX = e.touches[0].clientX), { passive: true });
+    dialog.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+    });
+  }
+</script>

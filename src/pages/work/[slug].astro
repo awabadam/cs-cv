@@ -1,0 +1,96 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getImage } from "astro:assets";
+import Gallery from "@/components/Gallery.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import ProjectText from "@/components/ProjectText.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
+import ThemeSwitch from "@/components/ThemeSwitch.astro";
+import Writeup from "@/components/Writeup.astro";
+import { asset } from "@/data/assets";
+import { images, kindLabels, plain, projects } from "@/data/work";
+import Base from "@/layouts/Base.astro";
+
+export const getStaticPaths = (() =>
+  projects.map((p, at) => ({ params: { slug: p.id }, props: { at } }))) satisfies GetStaticPaths;
+
+const { at } = Astro.props;
+const p = projects[at];
+const more = [1, 2, 3].map((n) => projects[(at + n) % projects.length]);
+const hasGallery = !!p.cover || p.sections.length > 0 || p.copy.length > 0;
+
+const title = `${p.client} ${p.title}`;
+const description = plain(p.summary);
+/* Link previews get the cover as a 1200px JPEG, which every network reads. */
+const cover = p.cover && images[p.cover.img];
+const share = cover && (await getImage({ src: asset(cover.src), width: Math.min(1200, cover.w), format: "jpg" }));
+---
+
+<Base title={title} description={description} share={{ title, description }} image={share?.src} type="article">
+  <header class="wrap flex items-center justify-between py-5 text-sm">
+    <a href="/" class="font-medium">Awab Elkhalil</a>
+    <div class="flex items-center gap-5">
+      <a href="/#work" class="text-muted hover:text-fg">&larr; All work</a>
+      <ThemeSwitch />
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap pt-4 pb-8">
+      <p class="font-mono text-xs text-muted">
+        {p.num} / {projects.length} &middot; {p.kind.map((k) => kindLabels[k]).join(", ")}
+      </p>
+      <h1 class="mt-2 text-[clamp(2rem,5vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
+        {p.client} <span class="text-muted font-normal">{p.title}</span>
+      </h1>
+      <p class="mt-3 text-muted">
+        {[p.year, p.sector].filter(Boolean).join(" · ")}
+        {
+          p.link && (
+            <>
+              {(p.year || p.sector) && " · "}
+              <a
+                href={p.link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-fg underline underline-offset-3 decoration-muted hover:decoration-fg"
+              >
+                {p.link.label} ↗
+              </a>
+            </>
+          )
+        }
+      </p>
+    </div>
+
+    {
+      hasGallery && (
+        <div class="wrap">
+          <Gallery cover={p.cover} sections={p.sections}>
+            {p.copy.length > 0 && <ProjectText project={p} />}
+          </Gallery>
+        </div>
+      )
+    }
+
+    {p.study && <Writeup slug={p.id} study={p.study} first={!hasGallery} />}
+
+    <nav class="wrap mt-24" aria-label="More work">
+      <div class="flex items-baseline justify-between border-t border-line pt-4 mb-6">
+        <h2 class="text-lg font-medium">Next</h2>
+        <a href="/#work" class="text-sm text-muted hover:text-fg">All {projects.length} projects &rarr;</a>
+      </div>
+      <ul class="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          more.map((m) => (
+            <li>
+              <ProjectCard project={m} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </main>
+
+  <SiteFooter />
+</Base>

@@ -80,9 +80,10 @@ implementation, tests and deploys. Framing rule from the KB: *method, not skills
 ## Work (22 projects)
 
 The project index, captions and images come from the portfolio knowledge base
-(`CV Knowledge Base/web-portfolio`, see its `SCHEMA.md`). `src/data/work.json` and `public/work/*.webp`
+(`CV Knowledge Base/web-portfolio`, see its `SCHEMA.md`). `src/data/work.json` and `src/assets/work/*.webp`
 are generated from it; regenerate after changing the knowledge base. Motion pieces add a silent H.264
-clip at `public/work/<key>.mp4` (720 px short side), with the webp as its poster frame. Excluded from the
+clip at `public/work/<key>.mp4` (720 px short side), with the webp as its poster frame. Images go in
+`src/assets` so the build can resize them; clips stay in `public` and are served as they are. Excluded from the
 site, as in the print portfolio: `lp-implant-03`, `lp-implant-07`, `lp-mobile2`, `ads-smile-more` (patient
 imagery). Sarı Dental is left off the site at the owner's request; it stays in the knowledge base.
 

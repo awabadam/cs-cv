@@ -1,0 +1,44 @@
+---
+import { getImage } from "astro:assets";
+import { asset } from "@/data/assets";
+
+/* A looping clip that plays only while on screen, and never on its own under reduced motion. */
+interface Props {
+  src: string;
+  poster: string;
+  w: number;
+  h: number;
+  label?: string;
+}
+
+const { src, poster, w, h, label } = Astro.props;
+const still = await getImage({ src: asset(poster) });
+---
+
+<video
+  data-clip
+  src={src}
+  poster={still.src}
+  width={w}
+  height={h}
+  aria-label={label || undefined}
+  muted
+  loop
+  playsinline
+  preload="none"></video>
+
+<script>
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          const v = e.target as HTMLVideoElement;
+          if (e.isIntersecting) v.play().catch(() => {});
+          else v.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    document.querySelectorAll("video[data-clip]").forEach((v) => io.observe(v));
+  }
+</script>

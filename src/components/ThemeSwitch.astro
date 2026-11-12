@@ -1,0 +1,80 @@
+---
+/* Auto follows the system; Light and Dark pin it. The choice lives in localStorage and is
+   applied before first paint by the script in Base.astro, as html[data-theme]. The pressed
+   button is styled from that attribute (global.css), so it is right before this script runs. */
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+const themes = [
+  ["auto", "Auto"],
+  ["light", "Light"],
+  ["dark", "Dark"],
+] as const;
+---
+
+<div role="group" aria-label="Colour theme" class:list={["flex rounded-full border border-line p-0.5", className]}>
+  {
+    themes.map(([t, label]) => (
+      <button
+        type="button"
+        data-theme-set={t}
+        aria-pressed={t === "auto" ? "true" : "false"}
+        aria-label={label}
+        title={label}
+        class="grid size-7 place-items-center rounded-full text-muted hover:text-fg"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          {t === "auto" && (
+            <>
+              <circle cx="8" cy="8" r="5.5" />
+              <path d="M8 2.5a5.5 5.5 0 0 1 0 11z" fill="currentColor" stroke="none" />
+            </>
+          )}
+          {t === "light" && (
+            <>
+              <circle cx="8" cy="8" r="2.75" />
+              <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3.05 3.05l1.06 1.06M11.89 11.89l1.06 1.06M3.05 12.95l1.06-1.06M11.89 4.11l1.06-1.06" />
+            </>
+          )}
+          {t === "dark" && <path d="M13.5 9.6A5.75 5.75 0 0 1 6.4 2.5a5.75 5.75 0 1 0 7.1 7.1z" />}
+        </svg>
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  const root = document.documentElement;
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-theme-set]");
+
+  const sync = () => {
+    const t = root.dataset.theme ?? "auto";
+    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.themeSet === t)));
+  };
+
+  buttons.forEach((b) =>
+    b.addEventListener("click", () => {
+      const t = b.dataset.themeSet;
+      if (t === "light" || t === "dark") root.dataset.theme = t;
+      else delete root.dataset.theme;
+      try {
+        if (t === "light" || t === "dark") localStorage.setItem("theme", t);
+        else localStorage.removeItem("theme");
+      } catch {}
+      sync();
+    })
+  );
+  sync();
+</script>

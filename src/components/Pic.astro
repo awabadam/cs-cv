@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import { asset, widthsFor } from "@/data/assets";
+
+/* A responsive WebP from src/assets. `priority` is for the one image that leads the page. */
+interface Props {
+  src: string;
+  alt: string;
+  sizes: string;
+  eager?: boolean;
+  priority?: boolean;
+  class?: string;
+}
+
+const { src, alt, sizes, eager = false, priority = false, class: className } = Astro.props;
+const img = asset(src);
+---
+
+<Image
+  src={img}
+  alt={alt}
+  widths={widthsFor(img.width)}
+  sizes={sizes}
+  loading={eager || priority ? "eager" : "lazy"}
+  priority={priority}
+  class={className}
+/>

@@ -11,11 +11,11 @@ A work-first portfolio and CV. The home page opens on an image grid of every pro
 - **Case studies.** Seven projects carry a long-form write-up under the work, with stat strips, plates and line diagrams.
 - **CV.** About, experience, skills and contact on the home page, below the work.
 - **Plain styling.** One typeface (Switzer), neutral tones, light and dark mode that follow the system, with a header switch to pin either. No effects in the way of the images.
-- **Static output.** Every page is prerendered. Old `/case-studies/:slug` links redirect to `/work/:slug`.
+- **Static and light.** Every page is prerendered to plain HTML with its CSS inline and a few kilobytes of script. Images are resized to WebP at build time. Links prerender on hover, so the next page is usually ready before the click. Old `/case-studies/:slug` links redirect to `/work/:slug`.
 
 ## Content
 
-- [`src/data/work.json`](src/data/work.json) and [`public/work/`](public/work/) are generated from the portfolio knowledge base (project data, captions and images). Regenerate them rather than editing by hand.
+- [`src/data/work.json`](src/data/work.json), [`src/assets/work/`](src/assets/work/) (images) and [`public/work/`](public/work/) (motion clips) are generated from the portfolio knowledge base. Regenerate them rather than editing by hand.
 - [`src/data/work.ts`](src/data/work.ts) types that data, adds the two product case studies that have no board set (Vuedent, Saphire Intelligence), and attaches the write-ups.
 - [`src/data/studies.ts`](src/data/studies.ts) holds the long-form case studies.
 - [`src/data/content.ts`](src/data/content.ts) holds the CV: experience, skills, links.
@@ -24,9 +24,11 @@ A work-first portfolio and CV. The home page opens on an image grid of every pro
 
 ## Tech stack
 
-- [Next.js 16](https://nextjs.org/) (App Router) and TypeScript
+- [Astro 7](https://astro.build/), static output, and TypeScript
 - [Tailwind CSS 4](https://tailwindcss.com/)
-- `next/image` for responsive WebP delivery; motion as static H.264 clips
+- `astro:assets` for responsive WebP; motion as static H.264 clips
+- React only at build time, to render the case-study diagrams; none of it ships to the browser
+- nginx in a Docker image for hosting (see [`Dockerfile`](Dockerfile) and [`nginx.conf`](nginx.conf))
 
 ## Getting started
 
@@ -37,23 +39,26 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). No environment variables are needed.
+Open [http://localhost:4321](http://localhost:4321). No environment variables are needed.
 
 ## Structure
 
 ```
 src/
-├── app/
-│   ├── page.tsx              # Work grid, about, experience, skills, contact
-│   ├── work/[slug]/page.tsx  # One project: gallery, text, case study
-│   └── fonts/                # Switzer variable font (FFL licence)
+├── pages/
+│   ├── index.astro           # Work grid, about, experience, skills, contact
+│   ├── work/[slug].astro     # One project: gallery, text, case study
+│   └── 404.astro
+├── layouts/Base.astro        # Head, meta, font, theme
 ├── components/
-│   ├── WorkGrid.tsx          # Filterable project grid
-│   ├── ProjectCard.tsx
-│   ├── Gallery.tsx           # Justified rows and the full-screen viewer
-│   └── CaseStudyDiagrams.tsx
+│   ├── WorkGrid.astro        # Filterable project grid
+│   ├── ProjectCard.astro
+│   ├── Gallery.astro         # Justified rows and the full-screen viewer
+│   └── CaseStudyDiagrams.tsx # Rendered to static SVG at build time
+├── assets/                   # Project and case-study images (work/ is generated)
+├── fonts/                    # Switzer variable font (FFL licence)
 └── data/                     # work.json (generated), work.ts, studies.ts, content.ts
-public/work/                  # Project images and motion clips (generated)
+public/work/                  # Motion clips (generated)
 ```
 
 ## Author
