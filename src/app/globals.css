@@ -140,12 +140,19 @@ body {
   width: 100%;
   height: auto;
 }
+/* The cover runs the full content width at its own ratio, rounded; past 82vh it crops
+   rather than letterboxing. The viewer still shows the whole image. */
+.cover .zoom {
+  aspect-ratio: var(--ar);
+  max-height: 82vh;
+  overflow: hidden;
+  border-radius: clamp(10px, 1.2vw, 18px);
+}
 .cover .zoom img,
 .cover .zoom video {
-  max-height: 82vh;
-  width: auto;
-  max-width: 100%;
-  margin-inline: auto;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
 }
 /* Filter chips scroll sideways on a phone instead of wrapping into rows. */
 .chips {

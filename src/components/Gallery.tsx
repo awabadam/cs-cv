@@ -76,7 +76,7 @@ export default function Gallery({
   return (
     <>
       {cover && (
-        <div className="cover">
+        <div className="cover" style={{ "--ar": ratio(cover) } as React.CSSProperties}>
           {figure(cover, "(max-width: 1680px) 100vw, 1600px", "", true)}
         </div>
       )}
