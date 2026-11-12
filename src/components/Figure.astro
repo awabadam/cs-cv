@@ -2,6 +2,7 @@
 import Clip from "@/components/Clip.astro";
 import Pic from "@/components/Pic.astro";
 import { images, plain, type Img } from "@/data/work";
+import { localeOf, ui } from "@/i18n/ui";
 
 /* One image (or clip) in a project gallery, as a button that opens the viewer. */
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
 const { item, sizes, priority = false } = Astro.props;
 const m = images[item.img];
 const alt = plain(item.cap);
+const tx = ui[localeOf(Astro.url)];
 ---
 
 <figure>
@@ -20,7 +22,7 @@ const alt = plain(item.cap);
     type="button"
     class="zoom"
     data-alt={alt}
-    aria-label={item.cap ? `Enlarge: ${alt}` : "Enlarge image"}
+    aria-label={item.cap ? tx.enlarge(alt) : tx.enlargeImage}
   >
     {
       m.video ? (

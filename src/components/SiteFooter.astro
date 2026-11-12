@@ -1,6 +1,12 @@
+---
+import { localeOf, ui } from "@/i18n/ui";
+
+const tx = ui[localeOf(Astro.url)];
+---
+
 <footer class="wrap mt-24 pb-10">
   <div class="flex flex-wrap justify-between gap-3 border-t border-line pt-4 text-sm text-muted">
-    <p>&copy; {new Date().getFullYear()} Awab Elkhalil &middot; Istanbul</p>
+    <p>&copy; {new Date().getFullYear()} {tx.name} &middot; {tx.city}</p>
     <a href="mailto:awabe.adam@gmail.com" class="hover:text-fg">awabe.adam@gmail.com</a>
   </div>
 </footer>

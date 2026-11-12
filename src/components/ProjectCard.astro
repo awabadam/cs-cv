@@ -3,6 +3,7 @@ import CaseStudyDiagram from "@/components/CaseStudyDiagrams";
 import Clip from "@/components/Clip.astro";
 import Pic from "@/components/Pic.astro";
 import { images, plain, type Project } from "@/data/work";
+import { localeOf, localized } from "@/i18n/ui";
 
 /* One project in the index: its image first (a motion cover loops), then number, name and year. */
 interface Props {
@@ -15,9 +16,10 @@ const { project: p, sizes, eager = false } = Astro.props;
 const key = p.thumb ?? p.cover?.img;
 const img = key ? images[key] : null;
 const alt = !p.thumb && p.cover ? plain(p.cover.cap) : "";
+const href = localized(`/work/${p.id}`, localeOf(Astro.url));
 ---
 
-<a href={`/work/${p.id}`} class="card block">
+<a href={href} class="card block">
   <div class="card-img">
     {
       img?.video ? (

@@ -2,19 +2,32 @@
 import type { GetStaticPaths } from "astro";
 import { getImage } from "astro:assets";
 import Gallery from "@/components/Gallery.astro";
+import LangSwitch from "@/components/LangSwitch.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import ProjectText from "@/components/ProjectText.astro";
 import SiteFooter from "@/components/SiteFooter.astro";
 import ThemeSwitch from "@/components/ThemeSwitch.astro";
 import Writeup from "@/components/Writeup.astro";
 import { asset } from "@/data/assets";
-import { images, kindLabels, plain, projects } from "@/data/work";
+import { images, plain, projectsFor } from "@/data/work";
+import { localized, locales, ui, type Locale } from "@/i18n/ui";
 import Base from "@/layouts/Base.astro";
 
+/* /work/<id> in English, /ar/work/<id> and /tr/work/<id> in the others. */
 export const getStaticPaths = (() =>
-  projects.map((p, at) => ({ params: { slug: p.id }, props: { at } }))) satisfies GetStaticPaths;
+  locales.flatMap((l) =>
+    projectsFor(l).map((p, at) => ({
+      params: { lang: l === "en" ? undefined : l, slug: p.id },
+      props: { l, at },
+    }))
+  )) satisfies GetStaticPaths;
 
 const { at } = Astro.props;
+const l: Locale = Astro.props.l;
+const tx = ui[l];
+const projects = projectsFor(l);
+const home = localized("/", l);
+const workIndex = localized("/#work", l);
 const p = projects[at];
 const more = [1, 2, 3].map((n) => projects[(at + n) % projects.length]);
 const hasGallery = !!p.cover || p.sections.length > 0 || p.copy.length > 0;
@@ -27,18 +40,20 @@ const share = cover && (await getImage({ src: asset(cover.src), width: Math.min(
 ---
 
 <Base title={title} description={description} share={{ title, description }} image={share?.src} type="article">
-  <header class="wrap flex items-center justify-between py-5 text-sm">
-    <a href="/" class="font-medium">Awab Elkhalil</a>
-    <div class="flex items-center gap-5">
-      <a href="/#work" class="text-muted hover:text-fg">&larr; All work</a>
+  {/* As on the index: on a phone the switches sit beside the name, the way back below. */}
+  <header class="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-5 text-sm">
+    <a href={home} class="font-medium">{tx.name}</a>
+    <div class="flex items-center gap-4 sm:order-last">
+      <LangSwitch />
       <ThemeSwitch />
     </div>
+    <a href={workIndex} class="w-full text-muted hover:text-fg sm:ms-auto sm:w-auto">{tx.allWork}</a>
   </header>
 
   <main>
     <div class="wrap pt-4 pb-8">
       <p class="font-mono text-xs text-muted">
-        {p.num} / {projects.length} &middot; {p.kind.map((k) => kindLabels[k]).join(", ")}
+        {p.num} / {projects.length} &middot; {p.kind.map((k) => tx.kinds[k]).join(tx.listSep)}
       </p>
       <h1 class="mt-2 text-[clamp(2rem,5vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
         {p.client} <span class="text-muted font-normal">{p.title}</span>
@@ -75,10 +90,10 @@ const share = cover && (await getImage({ src: asset(cover.src), width: Math.min(
 
     {p.study && <Writeup slug={p.id} study={p.study} first={!hasGallery} />}
 
-    <nav class="wrap mt-24" aria-label="More work">
+    <nav class="wrap mt-24" aria-label={tx.moreWork}>
       <div class="flex items-baseline justify-between border-t border-line pt-4 mb-6">
-        <h2 class="text-lg font-medium">Next</h2>
-        <a href="/#work" class="text-sm text-muted hover:text-fg">All {projects.length} projects &rarr;</a>
+        <h2 class="text-lg font-medium">{tx.next}</h2>
+        <a href={workIndex} class="text-sm text-muted hover:text-fg">{tx.allProjects(projects.length)}</a>
       </div>
       <ul class="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {

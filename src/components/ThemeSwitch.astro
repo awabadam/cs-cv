@@ -1,4 +1,6 @@
 ---
+import { localeOf, ui } from "@/i18n/ui";
+
 /* Auto follows the system; Light and Dark pin it. The choice lives in localStorage and is
    applied before first paint by the script in Base.astro, as html[data-theme]. The pressed
    button is styled from that attribute (global.css), so it is right before this script runs. */
@@ -7,14 +9,15 @@ interface Props {
 }
 
 const { class: className = "" } = Astro.props;
+const tx = ui[localeOf(Astro.url)];
 const themes = [
-  ["auto", "Auto"],
-  ["light", "Light"],
-  ["dark", "Dark"],
+  ["auto", tx.themes.auto],
+  ["light", tx.themes.light],
+  ["dark", tx.themes.dark],
 ] as const;
 ---
 
-<div role="group" aria-label="Colour theme" class:list={["flex rounded-full border border-line p-0.5", className]}>
+<div role="group" aria-label={tx.theme} class:list={["flex rounded-full border border-line p-0.5", className]}>
   {
     themes.map(([t, label]) => (
       <button

@@ -5,11 +5,14 @@
  * add a clip at public/work/<key>.mp4. Two products that
  * exist only as written case studies (Vuedent, Saphire Intelligence) are added here,
  * and every project with a long-form write-up in studies.ts carries it as `study`.
+ * projectsFor(locale) gives the list with its text translated (src/i18n).
  */
 
 import data from "./work.json";
 import { caseStudies } from "./content";
 import { studies, type Study } from "./studies";
+import { localize, t } from "@/i18n/data";
+import { localized, ui, type Locale } from "@/i18n/ui";
 
 export type Kind = "brand" | "web" | "product" | "campaign" | "3d" | "motion" | "print" | "photo";
 export type Img = { img: string; cap: string };
@@ -38,16 +41,8 @@ export type Project = {
   study?: Study;
 };
 
-export const kindLabels: Record<Kind, string> = {
-  brand: "Brand",
-  web: "Web",
-  product: "Product",
-  campaign: "Campaign",
-  "3d": "3D",
-  motion: "Motion",
-  print: "Print",
-  photo: "Photo",
-};
+/* The order the filter chips take; their labels are in src/i18n/ui.ts. */
+const KINDS: Kind[] = ["brand", "web", "product", "campaign", "3d", "motion", "print", "photo"];
 
 /* A motion piece is its poster frame (the webp) plus a clip beside it in public/work. */
 export const images: Record<string, { w: number; h: number; src: string; video?: string }> = {
@@ -60,9 +55,17 @@ export const images: Record<string, { w: number; h: number; src: string; video?:
   "cs-vuedent": { w: 2880, h: 1520, src: "/images/case-studies/vuedent.jpg" },
 };
 
+type Source = Omit<Project, "num">;
+
 /* Products documented only as case studies; their text comes from the study itself. */
-function fromStudy(slug: string, kind: Kind[], cover: Img | null): Omit<Project, "num"> {
-  const s = studies[slug];
+function fromStudy(
+  l: Locale,
+  st: Record<string, Study>,
+  slug: string,
+  kind: Kind[],
+  cover: Img | null
+): Source {
+  const s = st[slug];
   const card = caseStudies.find((c) => c.slug === slug)!;
   return {
     id: slug,
@@ -73,7 +76,7 @@ function fromStudy(slug: string, kind: Kind[], cover: Img | null): Omit<Project,
     disciplines: [],
     kind,
     palette: [],
-    summary: card.description,
+    summary: t(card.description, l),
     copy: [],
     facts: [],
     link: s.url ? { href: s.url, label: s.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "") } : null,
@@ -82,53 +85,61 @@ function fromStudy(slug: string, kind: Kind[], cover: Img | null): Omit<Project,
   };
 }
 
-const products = [
-  fromStudy("vuedent", ["product", "web"], {
-    img: "cs-vuedent",
-    cap: '<a href="https://vuedent.com">vuedent.com</a> — the product homepage',
-  }),
-  fromStudy("saphire-intelligence", ["product"], null),
-];
-
 const THUMBS: Record<string, string> = {};
 
-const ordered = [...(data.projects as unknown as Omit<Project, "num">[])];
-ordered.splice(ordered.findIndex((p) => p.id === "awab-design") + 1, 0, ...products);
+/* Every project in index order, its text in one language. */
+function ordered(l: Locale): Source[] {
+  const st = localize(studies, l);
+  const list = [...localize(data.projects as unknown as Source[], l)];
+  const products = [
+    fromStudy(l, st, "vuedent", ["product", "web"], {
+      img: "cs-vuedent",
+      cap: t('<a href="https://vuedent.com">vuedent.com</a> — the product homepage', l),
+    }),
+    fromStudy(l, st, "saphire-intelligence", ["product"], null),
+  ];
+  list.splice(list.findIndex((p) => p.id === "awab-design") + 1, 0, ...products);
+  return list.map((p) => ({ ...p, study: st[p.id] }));
+}
 
-const NUM = Object.fromEntries(ordered.map((p, i) => [p.id, String(i + 1).padStart(2, "0")]));
+const NUM = Object.fromEntries(ordered("en").map((p, i) => [p.id, String(i + 1).padStart(2, "0")]));
 
-/* The portfolio cross-references chapters by number; here they point at the project page,
-   and outbound links open in a new tab. */
-function relink(html: string) {
+/* The portfolio cross-references chapters by number; here they point at the project page in
+   the same language, and outbound links open in a new tab. */
+function relink(html: string, l: Locale) {
   return html
-    .replace(/<a href="#([a-z0-9-]+)">chapter \d+<\/a>/g, (m, id: string) =>
-      NUM[id] ? `<a href="/work/${id}">project ${NUM[id]}</a>` : m
+    .replace(/<a href="#([a-z0-9-]+)">[^<]*<\/a>/g, (m, id: string) =>
+      NUM[id] ? `<a href="${localized(`/work/${id}`, l)}">${ui[l].project} ${NUM[id]}</a>` : m
     )
     .replace(/<a href="http/g, '<a target="_blank" rel="noopener noreferrer" href="http');
 }
 
-/* Some images (logo lockups, photographs) carry no caption in the source data. */
-const relinkImg = (i: Img): Img => ({ ...i, cap: i.cap ? relink(i.cap) : "" });
+const cache = new Map<Locale, Project[]>();
 
-export const projects: Project[] = ordered.map((p) => ({
-  ...p,
-  num: NUM[p.id],
-  thumb: THUMBS[p.id],
-  copy: p.copy.map((c) => ({ ...c, text: relink(c.text) })),
-  cover: p.cover && relinkImg(p.cover),
-  sections: p.sections.map((s) => ({
-    ...s,
-    note: s.note && relink(s.note),
-    rows: s.rows.map((r) =>
-      r.map((c) => ("stack" in c ? { stack: c.stack.map(relinkImg) } : relinkImg(c)))
-    ),
-  })),
-  study: studies[p.id],
-}));
+export function projectsFor(l: Locale): Project[] {
+  const hit = cache.get(l);
+  if (hit) return hit;
+  /* Some images (logo lockups, photographs) carry no caption in the source data. */
+  const relinkImg = (i: Img): Img => ({ ...i, cap: i.cap ? relink(i.cap, l) : "" });
+  const list = ordered(l).map((p) => ({
+    ...p,
+    num: NUM[p.id],
+    thumb: THUMBS[p.id],
+    copy: p.copy.map((c) => ({ ...c, text: relink(c.text, l) })),
+    cover: p.cover && relinkImg(p.cover),
+    sections: p.sections.map((s) => ({
+      ...s,
+      note: s.note && relink(s.note, l),
+      rows: s.rows.map((r) =>
+        r.map((c) => ("stack" in c ? { stack: c.stack.map(relinkImg) } : relinkImg(c)))
+      ),
+    })),
+  }));
+  cache.set(l, list);
+  return list;
+}
 
-export const kinds = (Object.keys(kindLabels) as Kind[]).filter((k) =>
-  projects.some((p) => p.kind.includes(k))
-);
+export const kinds = KINDS.filter((k) => projectsFor("en").some((p) => p.kind.includes(k)));
 
 /* Plain text of a caption, for alt text and aria labels. */
 export const plain = (html: string) =>

@@ -10,7 +10,9 @@ A work-first portfolio and CV. The home page opens on an image grid of every pro
 - **Project pages.** Cover, then every board in justified rows that keep each image at its own aspect ratio. Any image opens a full-screen viewer that steps through the whole project with arrow keys or a swipe. Motion pieces loop silently while on screen and play with controls in the viewer.
 - **Case studies.** Seven projects carry a long-form write-up under the work, with stat strips, plates and line diagrams.
 - **CV.** About, experience, skills and contact on the home page, below the work.
-- **Plain styling.** One typeface (Switzer), neutral tones, light and dark mode that follow the system, with a header switch to pin either. No effects in the way of the images.
+- **Three languages.** English at `/`, Arabic (right to left) at `/ar`, Turkish at `/tr`, with a header switch that keeps you on the same page. Each page links its translations for search engines.
+- **Plain styling.** One typeface (Switzer, with IBM Plex Sans Arabic for Arabic text), neutral tones, rounded images throughout, light and dark mode that follow the system, with a header switch to pin either. No effects in the way of the images.
+- **Smooth motion.** Wheel scrolling and in-page links glide ([Lenis](https://lenis.darkroom.engineering/)), and pages cross-fade into each other. Both stand down for anyone whose system asks for reduced motion.
 - **Static and light.** Every page is prerendered to plain HTML with its CSS inline and a few kilobytes of script. Images are resized to WebP at build time. Links prerender on hover, so the next page is usually ready before the click. Old `/case-studies/:slug` links redirect to `/work/:slug`.
 
 ## Content
@@ -19,6 +21,8 @@ A work-first portfolio and CV. The home page opens on an image grid of every pro
 - [`src/data/work.ts`](src/data/work.ts) types that data, adds the two product case studies that have no board set (Vuedent, Saphire Intelligence), and attaches the write-ups.
 - [`src/data/studies.ts`](src/data/studies.ts) holds the long-form case studies.
 - [`src/data/content.ts`](src/data/content.ts) holds the CV: experience, skills, links.
+- [`src/i18n/ui.ts`](src/i18n/ui.ts) holds the interface text (navigation, labels, hero, about) in all three languages.
+- [`src/i18n/ar.json`](src/i18n/ar.json) and [`src/i18n/tr.json`](src/i18n/tr.json) translate the data: each maps an English string, exactly as it appears in the data, to its translation. Text with no entry shows in English. After changing the data, run `npm run i18n` to list what is missing or no longer used.
 
 [`CONTENT.md`](CONTENT.md) documents the sources and the claims behind it.
 
@@ -27,6 +31,7 @@ A work-first portfolio and CV. The home page opens on an image grid of every pro
 - [Astro 7](https://astro.build/), static output, and TypeScript
 - [Tailwind CSS 4](https://tailwindcss.com/)
 - `astro:assets` for responsive WebP; motion as static H.264 clips
+- [Lenis](https://lenis.darkroom.engineering/) for smooth scrolling
 - React only at build time, to render the case-study diagrams; none of it ships to the browser
 - nginx in a Docker image for hosting (see [`Dockerfile`](Dockerfile) and [`nginx.conf`](nginx.conf))
 
@@ -46,17 +51,20 @@ Open [http://localhost:4321](http://localhost:4321). No environment variables ar
 ```
 src/
 ├── pages/
-│   ├── index.astro           # Work grid, about, experience, skills, contact
-│   ├── work/[slug].astro     # One project: gallery, text, case study
+│   ├── [...lang]/            # Every page once per language: /, /ar, /tr
+│   │   ├── index.astro       # Work grid, about, experience, skills, contact
+│   │   └── work/[slug].astro # One project: gallery, text, case study
+│   ├── [lang]/404.astro      # The Arabic and Turkish 404s
 │   └── 404.astro
-├── layouts/Base.astro        # Head, meta, font, theme
+├── layouts/Base.astro        # Head, meta, fonts, theme, smooth scroll
+├── i18n/                     # Interface text, data translations (ar.json, tr.json)
 ├── components/
 │   ├── WorkGrid.astro        # Filterable project grid
 │   ├── ProjectCard.astro
 │   ├── Gallery.astro         # Justified rows and the full-screen viewer
 │   └── CaseStudyDiagrams.tsx # Rendered to static SVG at build time
 ├── assets/                   # Project and case-study images (work/ is generated)
-├── fonts/                    # Switzer variable font (FFL licence)
+├── fonts/                    # Switzer variable font (FFL licence); Plex Arabic comes from Google Fonts at build
 └── data/                     # work.json (generated), work.ts, studies.ts, content.ts
 public/work/                  # Motion clips (generated)
 ```

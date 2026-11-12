@@ -130,7 +130,8 @@ From the KB case-study draft — do not harden these without verification:
 7. **2025–2026:** web developer & lead designer; five products live around one clinic
 
 ## Typeface
-- **Switzer** (variable, 100–900), self-hosted from `src/app/fonts/` under the ITF Free Font License (Fontshare).
+- **Switzer** (variable, 100–900), self-hosted from `src/fonts/` under the ITF Free Font License (Fontshare).
+- **IBM Plex Sans Arabic** (400, 500, 600) for Arabic text on the Arabic pages, fetched from Google Fonts at build time and self-hosted (SIL Open Font License). Latin text on those pages stays in Switzer.
 - System monospace for numbers and labels.
 
 ## Design Direction
@@ -138,4 +139,5 @@ From the KB case-study draft — do not harden these without verification:
 - No decoration competing with the images: neutral greys, one typeface, thin rules.
 - Images keep their own aspect ratios in justified rows; any image opens a full-screen viewer.
 - Light and dark mode follow the system setting by default (Auto); the header switch pins Light or Dark, remembered per browser.
-- Favicon: an "AE" monogram set in Switzer Bold (src/app/icon.svg, favicon.ico, apple-icon.png), inverting with the system colour scheme.
+- English, Arabic and Turkish. The Arabic and Turkish text is machine-translated and needs a native read, especially the claims above and the Arabic spelling of the name (أواب الخليل). Case-study diagrams stay in English.
+- Favicon: an "AE" monogram set in Switzer Bold (public/icon.svg, favicon.ico, apple-icon.png), inverting with the system colour scheme.

@@ -2,6 +2,7 @@
 import CaseStudyDiagram from "@/components/CaseStudyDiagrams";
 import Pic from "@/components/Pic.astro";
 import type { Study } from "@/data/studies";
+import { localeOf, ui } from "@/i18n/ui";
 
 /* The long-form write-up, for projects that have one. */
 interface Props {
@@ -11,13 +12,14 @@ interface Props {
 }
 
 const { slug, study: s, first } = Astro.props;
+const tx = ui[localeOf(Astro.url)];
 const host = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 ---
 
 <section class:list={["wrap", first ? "mt-4" : "mt-24"]} aria-labelledby="writeup">
   <div class="border-t border-line pt-4 grid gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,1fr)_340px]">
     <div class="max-w-[68ch]">
-      <p class="font-mono text-xs text-muted">Case study</p>
+      <p class="font-mono text-xs text-muted">{tx.caseStudy}</p>
       <h2 id="writeup" class="mt-2 text-[clamp(1.6rem,3vw,2.4rem)] font-semibold leading-tight tracking-[-0.015em]">
         {s.title}
       </h2>
@@ -47,14 +49,14 @@ const host = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\
                   src={sec.plate.src}
                   alt={sec.plate.alt}
                   sizes="(max-width: 768px) 100vw, 760px"
-                  class="w-full h-auto bg-panel"
+                  class="w-full h-auto bg-panel rounded-img"
                 />
                 <figcaption class="cap">{sec.plate.caption}</figcaption>
               </figure>
             )}
             {s.diagram?.after === i && (
               <figure class="mt-6">
-                <div class="diagram border border-line p-4 sm:p-6">
+                <div class="diagram rounded-img border border-line p-4 sm:p-6">
                   <CaseStudyDiagram slug={slug} />
                 </div>
                 <figcaption class="cap">{s.diagram.caption}</figcaption>
@@ -67,7 +69,7 @@ const host = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\
 
     <aside class="text-sm lg:sticky lg:top-6 lg:self-start">
       <dl class="grid grid-cols-[112px_minmax(0,1fr)] gap-x-4 gap-y-2">
-        <dt class="text-muted">Role</dt>
+        <dt class="text-muted">{tx.roleLabel}</dt>
         <dd class="font-medium">{s.role}</dd>
         {
           s.facts.map((f) => (
@@ -80,7 +82,7 @@ const host = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\
         {
           s.url && (
             <>
-              <dt class="text-muted">Live site</dt>
+              <dt class="text-muted">{tx.liveSite}</dt>
               <dd>
                 <a href={s.url} target="_blank" rel="noopener noreferrer" class="underline underline-offset-3">
                   {host(s.url)} ↗

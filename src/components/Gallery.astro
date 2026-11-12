@@ -1,6 +1,7 @@
 ---
 import Figure from "@/components/Figure.astro";
 import { images, type Cell, type Img, type Section } from "@/data/work";
+import { isRtl, localeOf, ui } from "@/i18n/ui";
 
 /**
  * The cover, then the slot (the project text), then every section's image rows.
@@ -13,6 +14,10 @@ interface Props {
 }
 
 const { cover, sections } = Astro.props;
+const l = localeOf(Astro.url);
+const tx = ui[l];
+/* The arrows point the way the reading goes: in Arabic, back is to the right. */
+const [back, forward] = isRtl(l) ? ["→", "←"] : ["←", "→"];
 
 const ratio = (i: Img) => images[i.img].w / images[i.img].h;
 /* A stack of images in one column reads at the row's height when its ratio is 1 / Σ(1/ratio). */
@@ -70,19 +75,19 @@ const count = sections
   ))
 }
 
-<dialog class="lightbox" aria-label="Image viewer">
+<dialog class="lightbox" aria-label={tx.viewer}>
   <figure>
-    <figcaption><span class="font-mono mr-2" data-lb-count></span><span data-lb-cap></span></figcaption>
+    <figcaption><span class="font-mono me-2" data-lb-count></span><span data-lb-cap></span></figcaption>
   </figure>
-  <button type="button" class="lb-btn top-3 right-3" data-lb-close aria-label="Close">✕</button>
+  <button type="button" class="lb-btn top-3 end-3" data-lb-close aria-label={tx.close} autofocus>✕</button>
   {
     count > 1 && (
       <>
-        <button type="button" class="lb-btn left-2 top-1/2 -translate-y-1/2" data-lb-step="-1" aria-label="Previous image">
-          ←
+        <button type="button" class="lb-btn start-2 top-1/2 -translate-y-1/2" data-lb-step="-1" aria-label={tx.prev}>
+          {back}
         </button>
-        <button type="button" class="lb-btn right-2 top-1/2 -translate-y-1/2" data-lb-step="1" aria-label="Next image">
-          →
+        <button type="button" class="lb-btn end-2 top-1/2 -translate-y-1/2" data-lb-step="1" aria-label={tx.nextImage}>
+          {forward}
         </button>
       </>
     )
@@ -97,6 +102,8 @@ const count = sections
     const count = dialog.querySelector("[data-lb-count]")!;
     const cap = dialog.querySelector("[data-lb-cap]")!;
     let open = -1;
+    /* In a right-to-left page the next image sits to the left, for keys and swipes alike. */
+    const ahead = document.documentElement.dir === "rtl" ? -1 : 1;
 
     /* The viewer reuses the page image's srcset at near full width; a clip gets controls. */
     const media = (z: HTMLButtonElement) => {
@@ -143,17 +150,19 @@ const count = sections
     dialog.addEventListener("click", (e) => {
       if (e.target === dialog || e.target === figure) dialog.close();
     });
-    dialog.addEventListener("keydown", (e) => {
-      if ((e.target as HTMLElement).tagName === "VIDEO") return; // arrows seek the clip
-      if (e.key === "ArrowRight") step(1);
-      if (e.key === "ArrowLeft") step(-1);
+    /* On the document, not the dialog: stepping swaps the caption, and a focused link in it
+       goes with it, leaving focus on the page body. */
+    document.addEventListener("keydown", (e) => {
+      if (!dialog.open || (e.target as HTMLElement).tagName === "VIDEO") return; // arrows seek the clip
+      if (e.key === "ArrowRight") step(ahead);
+      if (e.key === "ArrowLeft") step(-ahead);
     });
 
     let touchX = 0;
     dialog.addEventListener("touchstart", (e) => (touchX = e.touches[0].clientX), { passive: true });
     dialog.addEventListener("touchend", (e) => {
       const dx = e.changedTouches[0].clientX - touchX;
-      if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+      if (Math.abs(dx) > 50) step(dx < 0 ? ahead : -ahead);
     });
   }
 </script>

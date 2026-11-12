@@ -28,6 +28,18 @@ export default defineConfig({
         variants: [{ src: ["./src/fonts/Switzer-Variable.woff2"], weight: "100 900", style: "normal" }],
       },
     },
+    /* Arabic pages only. Its faces cover just the Arabic block and it has no fallbacks of its
+       own, so Latin text on those pages (names, numbers) still falls through to Switzer. */
+    {
+      provider: fontProviders.google(),
+      name: "IBM Plex Sans Arabic",
+      cssVariable: "--font-arabic",
+      weights: [400, 500, 600],
+      styles: ["normal"],
+      subsets: ["arabic"],
+      fallbacks: [],
+      optimizedFallbacks: false,
+    },
   ],
   vite: { plugins: [tailwindcss()] },
 });

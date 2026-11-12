@@ -1,0 +1,9 @@
+---
+import type { GetStaticPaths } from "astro";
+import NotFound from "@/components/NotFound.astro";
+
+/* /ar/404 and /tr/404; nginx serves them for missing pages under /ar and /tr. */
+export const getStaticPaths = (() => [{ params: { lang: "ar" } }, { params: { lang: "tr" } }]) satisfies GetStaticPaths;
+---
+
+<NotFound />

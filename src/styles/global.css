@@ -1,6 +1,7 @@
 /*
  * Work-first and deliberately plain: one sans (Switzer), system mono for numbers,
- * monochrome tokens, and nothing between the visitor and the images.
+ * monochrome tokens, and nothing between the visitor and the images. Arabic pages set
+ * their Arabic in IBM Plex Sans Arabic beside it.
  */
 
 @import "tailwindcss";
@@ -12,6 +13,8 @@
   --line: #e1e1e3;
   --panel: #ececee;
   --gap: 12px;
+  /* One corner radius for every image, card, clip and diagram on the site. */
+  --radius: clamp(10px, 1.2vw, 18px);
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
@@ -41,6 +44,7 @@
   --color-panel: var(--panel);
   --font-sans: var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--mono);
+  --radius-img: var(--radius);
 }
 
 html {
@@ -61,6 +65,34 @@ body {
   font-size: 16px;
   line-height: 1.55;
   text-rendering: optimizeLegibility;
+}
+
+/* ── Arabic ──
+ * The Arabic face covers only Arabic letters, so names and numbers fall through to Switzer.
+ * Tracking would pull the joined letters apart, and the script needs taller lines. */
+html:lang(ar) {
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, var(--font-arabic), monospace;
+}
+html:lang(ar) body {
+  font-family: var(--font-arabic), var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
+}
+html:lang(ar) * {
+  letter-spacing: normal;
+}
+html:lang(ar) :is(h1, h2, h3) {
+  line-height: 1.3;
+}
+
+/* Nothing behind the image viewer scrolls while it is open. */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* Pages cross-fade into each other where the browser supports it. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
 }
 
 ::selection {
@@ -102,14 +134,17 @@ body {
 .card-img {
   aspect-ratio: 4 / 3;
   background: var(--panel);
+  border-radius: var(--radius);
   overflow: hidden;
+  /* Keeps the corners clipped in Safari while the image scales on hover. */
+  isolation: isolate;
 }
 .card-img img,
 .card-img video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .card:hover .card-img img,
 .card:hover .card-img video {
@@ -141,6 +176,9 @@ body {
   width: 100%;
   cursor: zoom-in;
   background: var(--panel);
+  border-radius: var(--radius);
+  overflow: hidden;
+  isolation: isolate;
 }
 .zoom img,
 .zoom video {
@@ -148,19 +186,16 @@ body {
   width: 100%;
   height: auto;
 }
-/* The cover runs the full content width at its own ratio, rounded; past 82vh it crops
-   rather than letterboxing. The viewer still shows the whole image. */
+/* The cover runs the full content width at its own ratio; past 82vh it crops rather than
+   letterboxing. The viewer still shows the whole image. */
 .cover .zoom {
   aspect-ratio: var(--ar);
   max-height: 82vh;
-  overflow: hidden;
-  border-radius: clamp(10px, 1.2vw, 18px);
 }
 .cover .zoom img,
 .cover .zoom video {
   height: 100%;
   object-fit: cover;
-  border-radius: inherit;
 }
 /* Filter chips scroll sideways on a phone instead of wrapping into rows. */
 .chips {
@@ -219,6 +254,7 @@ body {
   width: auto;
   height: auto;
   object-fit: contain;
+  border-radius: var(--radius);
 }
 .lightbox figcaption {
   margin-top: 12px;

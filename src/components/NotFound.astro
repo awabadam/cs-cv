@@ -1,0 +1,17 @@
+---
+import { localeOf, localized, ui } from "@/i18n/ui";
+import Base from "@/layouts/Base.astro";
+
+/* The 404 page, in the language of the part of the site it is served for. */
+const l = localeOf(Astro.url);
+const tx = ui[l].notFound;
+---
+
+<Base title={tx.title} description={tx.body} noindex>
+  <main class="wrap min-h-[80vh] flex flex-col justify-center">
+    <p class="font-mono text-xs text-muted">404</p>
+    <h1 class="mt-2 text-[clamp(2rem,5vw,4rem)] font-semibold leading-tight tracking-[-0.02em]">{tx.heading}</h1>
+    <p class="mt-4 text-muted">{tx.body}</p>
+    <a href={localized("/#work", l)} class="mt-8 w-fit underline underline-offset-3">{tx.back}</a>
+  </main>
+</Base>

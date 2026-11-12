@@ -1,5 +1,6 @@
 ---
 import type { Project } from "@/data/work";
+import { localeOf, ui } from "@/i18n/ui";
 
 /* The project's copy, beside its scope, facts and palette. */
 interface Props {
@@ -7,12 +8,13 @@ interface Props {
 }
 
 const { project: p } = Astro.props;
+const tx = ui[localeOf(Astro.url)];
 const sampled = p.palette.filter((c) => c.source === "sampled");
 const paletteNote = !sampled.length
   ? null
   : sampled.length === p.palette.length
-    ? "Sampled from the artwork"
-    : `${sampled.map((c) => c.name || c.hex.toUpperCase()).join(", ")} sampled from the artwork; the rest as specified`;
+    ? tx.sampledAll
+    : tx.sampledSome(sampled.map((c) => c.name || c.hex.toUpperCase()).join(tx.listSep));
 ---
 
 <div class="grid gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,1fr)_340px] mt-10">
@@ -32,8 +34,8 @@ const paletteNote = !sampled.length
       {
         p.disciplines.length > 0 && (
           <>
-            <dt class="text-muted">Scope</dt>
-            <dd>{p.disciplines.join(", ")}</dd>
+            <dt class="text-muted">{tx.scope}</dt>
+            <dd>{p.disciplines.join(tx.listSep)}</dd>
           </>
         )
       }
@@ -50,7 +52,7 @@ const paletteNote = !sampled.length
     {
       p.palette.length > 0 && (
         <div>
-          <p class="text-muted mb-2">Palette</p>
+          <p class="text-muted mb-2">{tx.palette}</p>
           <ul class="flex flex-wrap gap-x-4 gap-y-2">
             {p.palette.map((c) => (
               <li class="flex items-center gap-2">
@@ -60,7 +62,7 @@ const paletteNote = !sampled.length
                   aria-hidden="true"
                 />
                 <span class="font-mono text-xs">
-                  {c.hex.toUpperCase()}
+                  <span dir="ltr">{c.hex.toUpperCase()}</span>
                   {c.name && <span class="text-muted"> {c.name}</span>}
                 </span>
               </li>

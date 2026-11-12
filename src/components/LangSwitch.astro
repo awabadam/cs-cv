@@ -1,0 +1,24 @@
+---
+import { languages, localeOf, localized, locales, ui, unlocalized } from "@/i18n/ui";
+
+/* Links to this same page in each language. */
+const l = localeOf(Astro.url);
+const path = unlocalized(Astro.url);
+---
+
+<nav aria-label={ui[l].language} class="flex items-center gap-3 text-sm">
+  {
+    locales.map((to) => (
+      <a
+        href={localized(path, to)}
+        hreflang={to}
+        lang={to}
+        title={languages[to].name}
+        aria-current={to === l ? "page" : undefined}
+        class="text-muted hover:text-fg aria-[current]:text-fg aria-[current]:font-medium"
+      >
+        {languages[to].short}
+      </a>
+    ))
+  }
+</nav>

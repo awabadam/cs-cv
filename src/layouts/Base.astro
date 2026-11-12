@@ -1,8 +1,8 @@
 ---
 import { Font } from "astro:assets";
+import "lenis/dist/lenis.css";
 import "@/styles/global.css";
-
-const SITE = "Awab Elkhalil — Designer & Developer";
+import { isRtl, languages, localeOf, localized, locales, ui, unlocalized } from "@/i18n/ui";
 
 interface Props {
   /* The page's own title; the site name follows it. Omit on the home page. */
@@ -17,9 +17,16 @@ interface Props {
 }
 
 const { title, description, share, image, type = "website", noindex = false } = Astro.props;
-const fullTitle = title ? `${title} — Awab Elkhalil` : SITE;
-const og = share ?? { title: title ?? SITE, description };
+
+/* The language comes from the URL: / is English, /ar and /tr the others. */
+const l = localeOf(Astro.url);
+const tx = ui[l];
+const path = unlocalized(Astro.url);
+const site = `${tx.name} — ${tx.role}`;
+const fullTitle = title ? `${title} — ${tx.name}` : site;
+const og = share ?? { title: title ?? site, description };
 const ogImage = new URL(image ?? "/og.png", Astro.site).href;
+const href = (to: (typeof locales)[number]) => new URL(localized(path, to), Astro.site).href;
 
 /* Apply a pinned light/dark choice (ThemeSwitch) before first paint, so it never flashes. */
 const themeInit = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
@@ -32,19 +39,33 @@ const speculation = JSON.stringify({
 ---
 
 <!doctype html>
-<html lang="en" class="antialiased">
+<html lang={l} dir={isRtl(l) ? "rtl" : "ltr"} class="antialiased">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script is:inline set:html={themeInit} />
+    {/* Arabic pages set Arabic in IBM Plex Sans Arabic and keep Switzer for Latin. */}
+    {l === "ar" && <Font cssVariable="--font-arabic" preload={[{ weight: "400" }]} />}
     <Font cssVariable="--font-switzer" preload />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
+    {
+      !noindex && (
+        <>
+          <link rel="canonical" href={href(l)} />
+          {locales.map((to) => (
+            <link rel="alternate" hreflang={to} href={href(to)} />
+          ))}
+          <link rel="alternate" hreflang="x-default" href={href("en")} />
+        </>
+      )
+    }
     <meta property="og:title" content={og.title} />
     <meta property="og:description" content={og.description} />
     <meta property="og:type" content={type} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={languages[l].og} />
+    {locales.filter((to) => to !== l).map((to) => <meta property="og:locale:alternate" content={languages[to].og} />)}
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={og.title} />
@@ -59,3 +80,17 @@ const speculation = JSON.stringify({
     <slot />
   </body>
 </html>
+
+<script>
+  /* Smooth wheel scrolling, and in-page links that glide to their section (respecting
+     scroll-margin). Touch keeps the native scroll, and so does anyone who asks the system
+     for reduced motion. The image viewer is left to scroll and swipe on its own. */
+  import Lenis from "lenis";
+
+  new Lenis({
+    autoRaf: true,
+    anchors: true,
+    stopInertiaOnNavigate: true,
+    prevent: (node) => !!node.closest("dialog"),
+  });
+</script>

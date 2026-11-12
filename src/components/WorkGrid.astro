@@ -1,8 +1,12 @@
 ---
 import ProjectCard from "@/components/ProjectCard.astro";
-import { kindLabels, kinds, projects } from "@/data/work";
+import { kinds, projectsFor } from "@/data/work";
+import { localeOf, ui } from "@/i18n/ui";
 
 /* Every project, with chips that filter by discipline. The filter only hides cards. */
+const l = localeOf(Astro.url);
+const tx = ui[l];
+const projects = projectsFor(l);
 const chipClass =
   "shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full text-sm border border-line transition-colors aria-pressed:bg-fg aria-pressed:text-bg aria-pressed:border-fg hover:border-fg";
 ---
@@ -10,18 +14,18 @@ const chipClass =
 <div data-workgrid>
   <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-line pt-4 mb-6">
     <h2 class="text-lg font-medium">
-      Work <span class="text-muted font-normal" data-count>{projects.length}</span>
+      {tx.nav.work} <span class="text-muted font-normal" data-count>{projects.length}</span>
     </h2>
     <div
       class="chips flex gap-2 overflow-x-auto w-[calc(100%+32px)] -mx-4 px-4 sm:w-auto sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible"
       role="group"
-      aria-label="Filter by discipline"
+      aria-label={tx.filter}
     >
-      <button type="button" data-kind="" aria-pressed="true" class={chipClass}>All</button>
+      <button type="button" data-kind="" aria-pressed="true" class={chipClass}>{tx.all}</button>
       {
         kinds.map((k) => (
           <button type="button" data-kind={k} aria-pressed="false" class={chipClass}>
-            {kindLabels[k]}
+            {tx.kinds[k]}
           </button>
         ))
       }
