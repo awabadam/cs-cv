@@ -1858,13 +1858,11 @@
    "sector": "Ride-hailing app, Khartoum",
    "disciplines": [
     "Identity",
-    "Social",
-    "Print"
+    "Social"
    ],
    "kind": [
     "brand",
-    "campaign",
-    "print"
+    "campaign"
    ],
    "palette": [
     {
@@ -1883,25 +1881,25 @@
      "source": "sampled"
     }
    ],
-   "summary": "Logo, launch posts, a usage guide and event roll-ups for a ride-hailing app in Khartoum, made at icare-net.",
+   "summary": "Logo, launch posts and a usage guide for a ride-hailing app in Khartoum.",
    "copy": [
     {
      "lead": "The brief.",
-     "text": "Ubuntu Taxi was icare-net’s ride-hailing app for Khartoum: one app for riders, one for drivers, both in Arabic and English. It needed an identity and a launch campaign that showed people how to sign up and book a ride."
+     "text": "Ubuntu Taxi was a ride-hailing app for Khartoum: one app for riders, one for drivers, both in Arabic and English. It needed an identity and a launch campaign that showed people how to sign up and book a ride."
     },
     {
      "lead": "What I did.",
-     "text": "The mark: two interlocking strokes inside a rounded square, a small orange taxi tag on its corner, and the line “I am because we are” under the wordmark. Then the launch: bilingual posts built around screenshots of the app, a six-post usage guide that walks a new rider from download to choosing a class, and three roll-ups for icare-net’s seventh-anniversary event. I also edited the photos from the launch shoot and put the mark on them for the posts."
+     "text": "The mark: two interlocking strokes inside a rounded square, a small orange taxi tag on its corner, and the line “I am because we are” under the wordmark. Then the launch: bilingual posts built around screenshots of the app, and a six-post usage guide that walks a new rider from download to choosing a class. I also edited the photos from the launch shoot and put the mark on them for the posts."
     },
     {
      "lead": "The result.",
-     "text": "One look across the feed and the event floor: charcoal and white throughout, with the taxi tag’s orange as the accent."
+     "text": "One look across the feed: charcoal and white throughout, with the taxi tag’s orange as the accent."
     }
    ],
    "facts": [
     {
      "k": "Deliverables",
-     "v": "Logo · launch posts · six-post usage guide · roll-up banners · photo edits"
+     "v": "Logo · launch posts · six-post usage guide · photo edits"
     },
     {
      "k": "Play Store",
@@ -1910,10 +1908,6 @@
     {
      "k": "Tools",
      "v": "Illustrator · Photoshop"
-    },
-    {
-     "k": "Made at",
-     "v": "icare-net, Khartoum"
     }
    ],
    "link": null,
@@ -2018,26 +2012,6 @@
        {
         "img": "ub-photo-keys",
         "cap": "Keys handed over through the driver’s window"
-       }
-      ]
-     ]
-    },
-    {
-     "title": "Event Roll-ups",
-     "note": "Three roll-up banners for icare-net’s seventh-anniversary event, one Arabic line each. Every banner in the event set leaves its lower third plain.",
-     "rows": [
-      [
-       {
-        "img": "ub-roll-1",
-        "cap": "معاك على طول الرحلة: with you the whole ride"
-       },
-       {
-        "img": "ub-roll-2",
-        "cap": "ساهل و سريع الإستخدام: easy and quick to use"
-       },
-       {
-        "img": "ub-roll-3",
-        "cap": "نمشي سوا؟: shall we go?"
        }
       ]
      ]
@@ -2382,6 +2356,388 @@
        {
         "img": "bm-pin",
         "cap": "Button badges"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nenzo",
+   "client": "Nenzo",
+   "title": "Logo Proposals",
+   "year": "2022",
+   "sector": "Auto services",
+   "disciplines": [
+    "Logo",
+    "Sketching",
+    "Mockups"
+   ],
+   "kind": [
+    "brand"
+   ],
+   "palette": [
+    {
+     "hex": "#162C41",
+     "name": "Navy",
+     "source": "sampled"
+    },
+    {
+     "hex": "#D84F59",
+     "name": "Coral",
+     "source": "sampled"
+    },
+    {
+     "hex": "#034AA6",
+     "name": "Blue",
+     "source": "sampled"
+    },
+    {
+     "hex": "#05DBF3",
+     "name": "Cyan",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Three logo directions for an auto services provider, from pencil sketches to a mockup deck. Shown as pitched.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "Nenzo, an auto services provider, needed a logo. The top of my sketch sheet sets the idea I worked to: brakes, a wrench and the N of the name, in one mark."
+    },
+    {
+     "lead": "What I did.",
+     "text": "I sketched on paper first and filmed it, then took three marks into vector. Each combines a wrench, a brake disc with its caliper, and the N. A proposal deck put each one on a sign, a T-shirt, a box, a mug and cup, a sticker and a phone, and over stock garage photos. An earlier hexagon direction had got as far as a stylescape in March."
+    },
+    {
+     "lead": "The result.",
+     "text": "Three options at equal weight, sent in April 2022. These are the proposals as pitched; the final pick isn’t shown."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Deliverables",
+     "v": "Sketches · three logo options · proposal deck"
+    },
+    {
+     "k": "Status",
+     "v": "Proposals"
+    },
+    {
+     "k": "Tools",
+     "v": "Illustrator · Photoshop · InDesign · Premiere Pro"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "nz-cover",
+    "cap": "Nenzo: the cover of the logo proposal deck"
+   },
+   "sections": [
+    {
+     "title": "Sketches",
+     "note": "Pencil on a spiral pad. The clip is the sketching session sped up eight times.",
+     "rows": [
+      [
+       {
+        "img": "nz-sketch",
+        "cap": "Sketch and ideation, 2 minutes at 8× speed"
+       },
+       {
+        "img": "nz-sketches",
+        "cap": "The sheet: “brakes + wrench + Nenzo”, with ticks, crosses and notes on which to refine"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Option 01",
+     "note": "The disc and its caliper as a dome, resting on a cyan wrench. The sign, shirt, box, mug, cup and sticker are mockup templates and the garage photos are stock; the marks, lockups and layouts are mine.",
+     "rows": [
+      [
+       {
+        "img": "nz-o1-mark",
+        "cap": "The mark, and what it’s built from: wrench + brake disc + N"
+       },
+       {
+        "img": "nz-o1-lockup",
+        "cap": "Lockup with the line “auto services provider”"
+       }
+      ],
+      [
+       {
+        "img": "nz-o1-sign",
+        "cap": "Office sign, T-shirt and box"
+       },
+       {
+        "img": "nz-o1-mug",
+        "cap": "Mug, sticker and takeaway cup"
+       },
+       {
+        "img": "nz-o1-floor",
+        "cap": "Composited onto a workshop floor, under a car"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Option 02",
+     "note": "A disc split on the diagonal of the N, with a wrench breaking out of the top. Same templates and stock photos as Option 01.",
+     "rows": [
+      [
+       {
+        "img": "nz-o2-mark",
+        "cap": "The mark, and what it’s built from"
+       },
+       {
+        "img": "nz-o2-lockup",
+        "cap": "Lockup"
+       }
+      ],
+      [
+       {
+        "img": "nz-o2-sign",
+        "cap": "Office sign, T-shirt and box"
+       },
+       {
+        "img": "nz-o2-mug",
+        "cap": "Mug, sticker and takeaway cup"
+       },
+       {
+        "img": "nz-o2-garage",
+        "cap": "Composited onto the wall of a service bay"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Option 03",
+     "note": "A slanted N in blue and cyan, with a coral arc over it for the caliper. Same templates and stock photos as Option 01.",
+     "rows": [
+      [
+       {
+        "img": "nz-o3-mark",
+        "cap": "The mark, and what it’s built from"
+       },
+       {
+        "img": "nz-o3-lockup",
+        "cap": "Lockup"
+       }
+      ],
+      [
+       {
+        "img": "nz-o3-sign",
+        "cap": "Office sign, T-shirt and box"
+       },
+       {
+        "img": "nz-o3-mug",
+        "cap": "Mug, sticker and takeaway cup"
+       }
+      ],
+      [
+       {
+        "img": "nz-o3-tyre",
+        "cap": "Reversed out over a garage photo"
+       },
+       {
+        "img": "nz-o3-dash",
+        "cap": "With a tagline: “the service your car deserves”"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "An Earlier Direction",
+     "note": "Before the three options, a hexagon like a nut seen end-on, set on a stylescape in March 2022. The building, van, polo and cap are mockup templates.",
+     "rows": [
+      [
+       {
+        "img": "nz-hex-scape",
+        "cap": "Stylescape: building sign, sleeve, van, polo and cap"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "early-logos",
+   "client": "Early Logos",
+   "title": "Cash Ween, Khafd & Zoly",
+   "year": "2017",
+   "sector": "Payments & apps",
+   "disciplines": [
+    "Logo",
+    "Guidelines",
+    "Card & app UI"
+   ],
+   "kind": [
+    "brand"
+   ],
+   "palette": [
+    {
+     "hex": "#115C63",
+     "name": "Blue Stone",
+     "source": "copy"
+    },
+    {
+     "hex": "#FFD34D",
+     "name": "Mustard",
+     "source": "copy"
+    },
+    {
+     "hex": "#BF1E2D",
+     "name": "Khafd red",
+     "source": "sampled"
+    },
+    {
+     "hex": "#0071BB",
+     "name": "Zoly blue",
+     "source": "sampled"
+    }
+   ],
+   "summary": "Early logo work: a cash-machine finder with a short guideline, a discount card and its app, and a chat app.",
+   "copy": [
+    {
+     "lead": "The brief.",
+     "text": "Three logo jobs from 2017: Cash Ween, a guide to the nearest cash machine; Khafd, a discount card with an app for bills, top-ups and shopping; and Zoly, a chat app."
+    },
+    {
+     "lead": "What I did.",
+     "text": "For Cash Ween, a location pin with a cash machine inside it, and a short guideline covering clear space, colours and fonts. For Khafd, the Arabic name drawn as a chain of rings, then the card, a mobile and a web login, and a services menu. For Zoly, wordmark and icon drafts down to a colour set."
+    },
+    {
+     "lead": "The result.",
+     "text": "Khafd’s rings carry from the logo to the card and both sign-in screens; Cash Ween’s guideline fits on four pages."
+    }
+   ],
+   "facts": [
+    {
+     "k": "Deliverables",
+     "v": "Logos · a four-page logo guideline · card design · login and menu screens · icon drafts"
+    },
+    {
+     "k": "Tools",
+     "v": "Illustrator"
+    }
+   ],
+   "link": null,
+   "cover": {
+    "img": "kh-cover",
+    "cap": "Khafd: the name drawn as a chain of rings, over “Discount service”"
+   },
+   "sections": [
+    {
+     "title": "Cash Ween",
+     "note": "The name mixes English and Arabic: “Cash وين”, cash, where? The pin holds a cash machine, its card slot and keypad cut out of the teal, and the tagline “دليلك” means your guide.",
+     "rows": [
+      [
+       {
+        "img": "cw-guide-cover",
+        "cap": "Guideline cover"
+       },
+       {
+        "img": "cw-stacked",
+        "cap": "Stacked lockup with the tagline"
+       },
+       {
+        "img": "cw-horizontal",
+        "cap": "Horizontal lockup"
+       }
+      ],
+      [
+       {
+        "img": "cw-space",
+        "cap": "Clear space: 1 cm around each lockup"
+       },
+       {
+        "img": "cw-space-dark",
+        "cap": "The same on Blue Stone"
+       }
+      ],
+      [
+       {
+        "img": "cw-colours",
+        "cap": "Four colours with web and print values: Iceberg, Cadet Blue, Mustard, Blue Stone"
+       },
+       {
+        "img": "cw-fonts",
+        "cap": "Fonts: 29LT Bukra and A Sardar Hoor for Arabic, Eras Bold ITC for English"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Khafd",
+     "note": "خفض means lowering, as in prices; the tagline “خفض لتربح” reads lower to gain. Each letter is a ring in red, orange or yellow, and the dots are separate colours. The rings repeat as a faint pattern behind the screens.",
+     "rows": [
+      [
+       {
+        "img": "kh-logo",
+        "cap": "The letters خ ف ض inside the rings, with the tagline"
+       },
+       {
+        "img": "kh-logo-en",
+        "cap": "With “Discount service” for English use"
+       }
+      ],
+      [
+       {
+        "img": "kh-app-login",
+        "cap": "Mobile sign-in"
+       },
+       {
+        "img": "kh-web-login",
+        "cap": "Web sign-in"
+       }
+      ],
+      [
+       {
+        "img": "kh-app-menu",
+        "cap": "Services menu, the logo at its centre"
+       },
+       {
+        "img": "kh-services",
+        "cap": "Labelled services: bills, top-up, medical, smart government, e-market"
+       }
+      ],
+      [
+       {
+        "img": "kh-card-red",
+        "cap": "Card front in red"
+       },
+       {
+        "img": "kh-card-white",
+        "cap": "Card front in white"
+       },
+       {
+        "img": "kh-card-back",
+        "cap": "Card back"
+       }
+      ]
+     ]
+    },
+    {
+     "title": "Zoly",
+     "note": "Drafts for a chat app: a rounded wordmark, and a speech bubble with a z drawn like a dollar sign.",
+     "rows": [
+      [
+       {
+        "img": "zo-wordmarks",
+        "cap": "Wordmark and icon explorations"
+       },
+       {
+        "img": "zo-bubbles",
+        "cap": "Bubble icons, cleaned up as vectors"
+       }
+      ],
+      [
+       {
+        "img": "zo-icons",
+        "cap": "Six icon shapes on white and on the brand blue"
+       },
+       {
+        "img": "zo-colours",
+        "cap": "Colour options"
        }
       ]
      ]
@@ -3243,6 +3599,34 @@
    "w": 1000,
    "h": 1000
   },
+  "cw-colours": {
+   "w": 2000,
+   "h": 1125
+  },
+  "cw-fonts": {
+   "w": 2000,
+   "h": 1125
+  },
+  "cw-guide-cover": {
+   "w": 2000,
+   "h": 1125
+  },
+  "cw-horizontal": {
+   "w": 2000,
+   "h": 2000
+  },
+  "cw-space": {
+   "w": 2000,
+   "h": 1125
+  },
+  "cw-space-dark": {
+   "w": 2000,
+   "h": 1125
+  },
+  "cw-stacked": {
+   "w": 2000,
+   "h": 2000
+  },
   "ew-eid-care": {
    "w": 720,
    "h": 720,
@@ -3298,6 +3682,46 @@
    "h": 720,
    "video": true
   },
+  "kh-app-login": {
+   "w": 1334,
+   "h": 2000
+  },
+  "kh-app-menu": {
+   "w": 1334,
+   "h": 2000
+  },
+  "kh-card-back": {
+   "w": 2000,
+   "h": 1260
+  },
+  "kh-card-red": {
+   "w": 2000,
+   "h": 1260
+  },
+  "kh-card-white": {
+   "w": 2000,
+   "h": 1260
+  },
+  "kh-cover": {
+   "w": 2000,
+   "h": 1250
+  },
+  "kh-logo": {
+   "w": 2000,
+   "h": 1999
+  },
+  "kh-logo-en": {
+   "w": 2000,
+   "h": 1999
+  },
+  "kh-services": {
+   "w": 1334,
+   "h": 2000
+  },
+  "kh-web-login": {
+   "w": 2000,
+   "h": 1332
+  },
   "lp-implant-01": {
    "w": 680,
    "h": 1472
@@ -3341,6 +3765,87 @@
   "mock-omega-phones": {
    "w": 823,
    "h": 618
+  },
+  "nz-cover": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-hex-scape": {
+   "w": 2000,
+   "h": 376
+  },
+  "nz-o1-floor": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-o1-lockup": {
+   "w": 1240,
+   "h": 744
+  },
+  "nz-o1-mark": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-o1-mug": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-o1-sign": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-o2-garage": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-o2-lockup": {
+   "w": 1240,
+   "h": 744
+  },
+  "nz-o2-mark": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-o2-mug": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-o2-sign": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-o3-dash": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-o3-lockup": {
+   "w": 1240,
+   "h": 744
+  },
+  "nz-o3-mark": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-o3-mug": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-o3-sign": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-o3-tyre": {
+   "w": 2000,
+   "h": 1200
+  },
+  "nz-sketch": {
+   "w": 720,
+   "h": 1280,
+   "video": true
+  },
+  "nz-sketches": {
+   "w": 984,
+   "h": 1214
   },
   "omega-drills": {
    "w": 1655,
@@ -3666,18 +4171,6 @@
    "w": 1000,
    "h": 1000
   },
-  "ub-roll-1": {
-   "w": 706,
-   "h": 2000
-  },
-  "ub-roll-2": {
-   "w": 706,
-   "h": 2000
-  },
-  "ub-roll-3": {
-   "w": 706,
-   "h": 2000
-  },
   "veq-body": {
    "w": 912,
    "h": 514
@@ -3845,6 +4338,22 @@
   "yas-youth-use": {
    "w": 2000,
    "h": 1204
+  },
+  "zo-bubbles": {
+   "w": 1992,
+   "h": 2000
+  },
+  "zo-colours": {
+   "w": 1992,
+   "h": 2000
+  },
+  "zo-icons": {
+   "w": 2000,
+   "h": 596
+  },
+  "zo-wordmarks": {
+   "w": 2000,
+   "h": 1250
   }
  }
 }
