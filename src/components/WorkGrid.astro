@@ -8,16 +8,16 @@ const l = localeOf(Astro.url);
 const tx = ui[l];
 const projects = projectsFor(l);
 const chipClass =
-  "shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full text-sm border border-line transition-colors aria-pressed:bg-fg aria-pressed:text-bg aria-pressed:border-fg hover:border-fg";
+  "shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full border border-line transition-colors aria-pressed:bg-fg aria-pressed:text-bg aria-pressed:border-fg hover:border-fg";
 ---
 
 <div data-workgrid>
-  <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-line pt-4 mb-6">
-    <h2 class="text-lg font-medium">
-      {tx.nav.work} <span class="text-muted font-normal" data-count>{projects.length}</span>
+  <div class="head flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+    <h2>
+      {tx.nav.work} <span class="text-muted" data-count>{projects.length}</span>
     </h2>
     <div
-      class="chips flex gap-2 overflow-x-auto w-[calc(100%+32px)] -mx-4 px-4 sm:w-auto sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible"
+      class="chips flex gap-2 overflow-x-auto w-[calc(100%+24px)] -mx-3 px-3 sm:w-auto sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible"
       role="group"
       aria-label={tx.filter}
     >
@@ -32,15 +32,11 @@ const chipClass =
     </div>
   </div>
 
-  <ul class="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+  <ul class="grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
     {
-      projects.map((p, i) => (
+      projects.map((p) => (
         <li data-kinds={p.kind.join(" ")}>
-          <ProjectCard
-            project={p}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            eager={i < 6}
-          />
+          <ProjectCard project={p} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
         </li>
       ))
     }
@@ -48,22 +44,34 @@ const chipClass =
 </div>
 
 <script>
-  const grid = document.querySelector<HTMLElement>("[data-workgrid]");
-  if (grid) {
-    const chips = grid.querySelectorAll<HTMLButtonElement>("[data-kind]");
-    const cards = grid.querySelectorAll<HTMLElement>("[data-kinds]");
-    const count = grid.querySelector("[data-count]")!;
-    chips.forEach((chip) =>
-      chip.addEventListener("click", () => {
-        const k = chip.dataset.kind;
-        chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
-        let shown = 0;
-        cards.forEach((card) => {
-          card.hidden = !!k && !card.dataset.kinds!.split(" ").includes(k);
-          if (!card.hidden) shown++;
-        });
-        count.textContent = String(shown);
-      })
-    );
-  }
+  import { eachPage } from "@/scripts/page";
+
+  eachPage(() => {
+    const grid = document.querySelector<HTMLElement>("[data-workgrid]");
+    if (grid) {
+      const chips = grid.querySelectorAll<HTMLButtonElement>("[data-kind]");
+      const cards = grid.querySelectorAll<HTMLElement>("[data-kinds]");
+      const count = grid.querySelector("[data-count]")!;
+      const calm = matchMedia("(prefers-reduced-motion: reduce)");
+      chips.forEach((chip) =>
+        chip.addEventListener("click", () => {
+          const k = chip.dataset.kind;
+          chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
+          let shown = 0;
+          cards.forEach((card) => {
+            card.hidden = !!k && !card.dataset.kinds!.split(" ").includes(k);
+            if (card.hidden) return;
+            /* The new set rises in one after another, the first dozen staggered. */
+            if (!calm.matches) {
+              card.style.animation = "none";
+              void card.offsetWidth; // restart it if this card was already showing
+              card.style.animation = `arrive var(--slow) var(--ease) ${Math.min(shown, 11) * 45}ms both`;
+            }
+            shown++;
+          });
+          count.textContent = String(shown);
+        })
+      );
+    }
+  });
 </script>

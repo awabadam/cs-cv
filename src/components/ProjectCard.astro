@@ -9,10 +9,9 @@ import { localeOf, localized } from "@/i18n/ui";
 interface Props {
   project: Project;
   sizes: string;
-  eager?: boolean;
 }
 
-const { project: p, sizes, eager = false } = Astro.props;
+const { project: p, sizes } = Astro.props;
 const key = p.thumb ?? p.cover?.img;
 const img = key ? images[key] : null;
 const alt = !p.thumb && p.cover ? plain(p.cover.cap) : "";
@@ -20,12 +19,12 @@ const href = localized(`/work/${p.id}`, localeOf(Astro.url));
 ---
 
 <a href={href} class="card block">
-  <div class="card-img">
+  <div class="card-img reveal">
     {
       img?.video ? (
         <Clip src={img.video} poster={img.src} w={img.w} h={img.h} label={alt} />
       ) : img ? (
-        <Pic src={img.src} alt={alt} sizes={sizes} eager={eager} />
+        <Pic src={img.src} alt={alt} sizes={sizes} />
       ) : (
         <div class="diagram h-full grid place-items-center p-[6%]">
           <CaseStudyDiagram slug={p.id} />

@@ -1,11 +1,13 @@
 ---
 import type { GetStaticPaths } from "astro";
-import LangSwitch from "@/components/LangSwitch.astro";
+import Clip from "@/components/Clip.astro";
 import Pic from "@/components/Pic.astro";
 import SiteFooter from "@/components/SiteFooter.astro";
-import ThemeSwitch from "@/components/ThemeSwitch.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
+import Words from "@/components/Words.astro";
 import WorkGrid from "@/components/WorkGrid.astro";
 import { experience as en, expertise as enSkills, socialLinks } from "@/data/content";
+import { images, plain, projectsFor } from "@/data/work";
 import { localize } from "@/i18n/data";
 import { localized, locales, ui, type Locale } from "@/i18n/ui";
 import Base from "@/layouts/Base.astro";
@@ -22,51 +24,63 @@ const expertise = localize(enSkills, l);
 const EMAIL = "awabe.adam@gmail.com";
 const PHONE = "+90 554 175 9945";
 
-const nav = [
-  [tx.nav.work, "#work"],
-  [tx.nav.about, "#about"],
-  [tx.nav.experience, "#experience"],
-  [tx.nav.contact, "#contact"],
-] as const;
-
 const skills = [
   [tx.design, expertise.design],
   [tx.technical, expertise.technical],
 ] as const;
 
-const head = "border-t border-line pt-4 mb-8 text-lg font-medium scroll-mt-6";
+/* Where else to find me: label, address, the handle shown. */
+const links: [string, string, string][] = [
+  ["LinkedIn", "https://www.linkedin.com/in/awab-adam", "in/awab-adam"],
+  [tx.studioSite, "https://awab.design", "awab.design"],
+  ...socialLinks.map((s): [string, string, string] => [s.label, s.url, s.display]),
+];
+
+/* The page opens on three Blender loops from one project, side by side (two on a phone), and
+   leads to that project. Any motion pieces in that project's gallery will do. */
+const HERO = "motion";
+const LOOPS = ["bl-helix", "bl-implants", "bl-saphire-case"];
+const hero = projectsFor(l).find((p) => p.id === HERO)!;
+const caps = new Map(
+  [hero.cover, ...hero.sections.flatMap((s) => s.rows.flat().flatMap((c) => ("stack" in c ? c.stack : [c])))]
+    .filter((i) => !!i)
+    .map((i) => [i.img, i.cap ? plain(i.cap) : ""])
+);
+const loops = LOOPS.map((k) => ({ ...images[k], label: caps.get(k) ?? "" }));
 ---
 
 <Base description={tx.description} share={{ title: `${tx.name} — ${tx.role}`, description: tx.share }}>
-  {/* On a phone the switches sit beside the name and the section links take the next line. */}
-  <header class="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-5 text-sm">
-    <a href={localized("/", l)} class="font-medium">{tx.name}</a>
-    <div class="flex items-center gap-4 sm:order-last">
-      <LangSwitch />
-      <ThemeSwitch />
-    </div>
-    <nav aria-label={tx.sections} class="flex w-full gap-5 text-muted sm:ms-auto sm:w-auto">
-      {
-        nav.map(([label, href]) => (
-          <a href={href} class="hover:text-fg">
-            {label}
-          </a>
-        ))
-      }
-    </nav>
-  </header>
+  <SiteHeader />
 
   <main>
+    <div class="bleed">
+      <a href={localized(`/work/${hero.id}`, l)} class="card block">
+        <div class="hero-img loops">
+          {
+            loops.map((m) => (
+              <div class="card-img">
+                <Clip src={m.video!} poster={m.src} w={m.w} h={m.h} label={m.label} />
+              </div>
+            ))
+          }
+        </div>
+        <p class="label mt-3 flex justify-between gap-4">
+          <span>{hero.client} <span class="text-muted">{hero.title}</span></span>
+          <span class="text-muted">{hero.year}</span>
+        </p>
+      </a>
+    </div>
+
     <section
-      class="wrap pt-4 pb-10 sm:pt-6 sm:pb-14 grid gap-x-12 gap-y-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-end"
+      class="wrap pt-14 pb-20 sm:pt-24 sm:pb-32 grid gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-end"
     >
-      <h1 class="text-[clamp(2.1rem,4.6vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
-        {tx.hero.title}{" "}
-        <span class="text-muted">{tx.hero.muted}</span>
+      <h1 class="display rise">
+        <Words text={tx.hero.title} />{" "}
+        <span class="text-muted"><Words text={tx.hero.muted} /></span>
       </h1>
       <div class="max-w-[60ch] text-[15px] sm:text-[17px] leading-relaxed">
         <p>{tx.hero.intro}</p>
-        <p class="mt-4 text-sm">
+        <p class="label mt-6">
           <a href={`mailto:${EMAIL}`} class="underline underline-offset-3">{EMAIL}</a>
           <span class="text-muted"> &middot; </span>
           <a
@@ -85,51 +99,94 @@ const head = "border-t border-line pt-4 mb-8 text-lg font-medium scroll-mt-6";
       <WorkGrid />
     </section>
 
-    <section class="wrap mt-28" aria-labelledby="about">
-      <h2 id="about" class={head}>{tx.nav.about}</h2>
-      <div class="grid gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-        <Pic
-          src="/images/story/profile-photo-of-awab.jpg"
-          alt={tx.name}
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          class="w-full h-auto bg-panel rounded-img"
-        />
-        <div class="max-w-[60ch] space-y-4 text-[17px] leading-relaxed">
-          {tx.about.map((para) => <p>{para}</p>)}
-        </div>
+    {/* About: a statement, then the portrait beside the story, one chapter per city. */}
+    <section class="wrap section" aria-labelledby="about">
+      <h2 id="about" class="head">{tx.nav.about}</h2>
+      <p class="display rise max-w-[32ch]">
+        <Words text={tx.about.title} />{" "}
+        <span class="text-muted"><Words text={tx.about.muted} /></span>
+      </p>
+      <div class="mt-14 sm:mt-24 grid gap-x-6 gap-y-14 md:grid-cols-12">
+        <figure class="md:col-span-5">
+          <div class="reveal aspect-[4/5] overflow-hidden rounded-img bg-panel isolate">
+            <Pic
+              src="/images/story/profile-photo-of-awab.jpg"
+              alt={tx.name}
+              sizes="(max-width: 768px) 100vw, 40vw"
+              class="size-full object-cover object-[45%_50%]"
+            />
+          </div>
+          <figcaption class="mt-3 flex items-baseline gap-3 text-[15px] leading-snug">
+            <span class="flex-1 min-w-0">
+              <span class="font-medium">{tx.name}</span> <span class="text-muted">{tx.role}</span>
+            </span>
+            <span class="text-sm text-muted">{tx.city}</span>
+          </figcaption>
+        </figure>
+        <ol class="md:col-start-7 md:col-span-6 md:self-end space-y-12">
+          {
+            tx.about.story.map((c, i) => (
+              <li class="lift">
+                <p class="label flex items-baseline gap-3 border-b border-line pb-3">
+                  <span class="font-mono text-muted">{String(i + 1).padStart(2, "0")}</span>
+                  <span class="flex-1">{c.place}</span>
+                  <span class="font-mono text-muted">{c.years}</span>
+                </p>
+                <p class="mt-5 max-w-[60ch] text-[17px] leading-relaxed">{c.text}</p>
+              </li>
+            ))
+          }
+        </ol>
       </div>
     </section>
 
-    <section class="wrap mt-28" aria-labelledby="experience">
-      <h2 id="experience" class={head}>{tx.nav.experience}</h2>
+    {/* Experience: one row a role, numbered, newest first. */}
+    <section class="wrap section" aria-labelledby="experience">
+      <h2 id="experience" class="head">
+        {tx.nav.experience} <span class="text-muted">{experience.length}</span>
+      </h2>
       <ol>
         {
-          experience.map((e) => (
-            <li class="grid gap-x-8 gap-y-1 border-b border-line py-5 first:pt-0 md:grid-cols-[150px_minmax(0,1fr)_minmax(0,1.3fr)]">
-              <p class="font-mono text-xs text-muted pt-1">{e.period}</p>
-              <div>
-                <p class="font-medium">{e.role}</p>
-                <p class="text-sm text-muted">
+          experience.map((e, i) => (
+            <li class="lift grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-6 gap-y-2 border-b border-line py-7 first:pt-0 md:grid-cols-12">
+              <p class="font-mono text-xs text-muted pt-1.5 md:col-span-1">{String(i + 1).padStart(2, "0")}</p>
+              <p class="font-mono text-xs uppercase tracking-[0.08em] text-muted pt-1.5 md:col-span-2">{e.period}</p>
+              <div class="col-start-2 md:col-start-auto md:col-span-4">
+                <p class="text-[clamp(1.125rem,1.6vw,1.5rem)] leading-snug">{e.role}</p>
+                <p class="mt-1 text-sm text-muted">
                   {e.company} &middot; {e.location}
                 </p>
               </div>
-              <p class="text-[15px] leading-relaxed max-w-[70ch]">{e.description}</p>
+              <p class="col-start-2 mt-2 max-w-[62ch] text-[15px] leading-relaxed md:col-start-auto md:col-span-5 md:mt-0">
+                {e.description}
+              </p>
             </li>
           ))
         }
       </ol>
     </section>
 
-    <section class="wrap mt-28" aria-labelledby="skills">
-      <h2 id="skills" class={head}>{tx.nav.skills}</h2>
-      <div class="grid gap-8 sm:grid-cols-2">
+    {/* Skills: each list set large and run on, a dot between and no item broken over a line.
+        A phone has no room for that, so there it is one item a line. */}
+    <section class="wrap section" aria-labelledby="skills">
+      <h2 id="skills" class="head">{tx.nav.skills}</h2>
+      <div class="grid gap-y-12">
         {
           skills.map(([label, list]) => (
-            <div>
-              <p class="text-sm text-muted mb-3">{label}</p>
-              <ul class="space-y-1.5 text-[15px]">
-                {list.map((s) => (
-                  <li>{s}</li>
+            <div class="lift grid gap-x-6 gap-y-4 md:grid-cols-12">
+              <p class="label md:col-span-3 md:pt-[0.6em]">
+                {label} <span class="text-muted">{list.length}</span>
+              </p>
+              <ul class="md:col-span-9 text-[clamp(1.375rem,2.4vw,2.25rem)] leading-[1.25] tracking-[-0.01em]">
+                {list.map((s, j) => (
+                  <li class="sm:inline-block">
+                    {s}
+                    {j < list.length - 1 && (
+                      <span class="max-sm:hidden text-muted px-[0.3em]" aria-hidden="true">
+                        &middot;
+                      </span>
+                    )}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -138,44 +195,56 @@ const head = "border-t border-line pt-4 mb-8 text-lg font-medium scroll-mt-6";
       </div>
     </section>
 
-    <section class="wrap mt-28" aria-labelledby="contact">
-      <h2 id="contact" class={head}>{tx.nav.contact}</h2>
+    {/* Contact: a line to answer, the address set large under it, then the rest. */}
+    <section class="wrap section" aria-labelledby="contact">
+      <h2 id="contact" class="head">{tx.nav.contact}</h2>
+      <p class="display rise">
+        <Words text={tx.contact.title} />{" "}
+        <span class="text-muted"><Words text={tx.contact.muted} /></span>
+      </p>
       <a
         href={`mailto:${EMAIL}`}
-        class="block w-fit text-[clamp(1.6rem,4vw,3.25rem)] font-semibold tracking-[-0.02em] leading-tight underline decoration-line underline-offset-[0.15em] hover:decoration-fg break-all sm:break-normal"
+        class="mt-3 block w-fit text-[clamp(1.75rem,5.6vw,5.5rem)] leading-[1.05] tracking-[-0.02em] underline decoration-line decoration-1 underline-offset-[0.14em] hover:decoration-fg break-all sm:break-normal"
       >
         {EMAIL}
       </a>
-      <dl class="mt-8 grid grid-cols-[112px_minmax(0,1fr)] gap-x-4 gap-y-2 text-[15px] max-w-xl">
-        <dt class="text-muted">{tx.phone}</dt>
-        <dd class="select-all"><span dir="ltr">{PHONE}</span></dd>
-        <dt class="text-muted">{tx.basedIn}</dt>
-        <dd>{tx.cityCountry}</dd>
-        <dt class="text-muted">LinkedIn</dt>
-        <dd>
-          <a href="https://www.linkedin.com/in/awab-adam" target="_blank" rel="noopener noreferrer" class="hover:underline">
-            in/awab-adam
-          </a>
-        </dd>
-        <dt class="text-muted">{tx.studioSite}</dt>
-        <dd>
-          <a href="https://awab.design" target="_blank" rel="noopener noreferrer" class="hover:underline">
-            awab.design
-          </a>
-        </dd>
-        {
-          socialLinks.map((s) => (
-            <div class="contents">
-              <dt class="text-muted">{s.label}</dt>
-              <dd>
-                <a href={s.url} target="_blank" rel="noopener noreferrer" class="hover:underline" dir="ltr">
-                  {s.display}
-                </a>
-              </dd>
-            </div>
-          ))
-        }
-      </dl>
+      <div class="lift mt-14 sm:mt-20 grid gap-x-6 gap-y-10 border-t border-line pt-6 sm:grid-cols-2 md:grid-cols-12">
+        <div class="md:col-span-3">
+          <p class="label text-muted">{tx.phone}</p>
+          <p class="mt-3 text-[17px]">
+            <a href={`tel:${PHONE.replaceAll(" ", "")}`} class="hover:text-muted" dir="ltr">
+              {PHONE}
+            </a>
+          </p>
+        </div>
+        <div class="md:col-span-3">
+          <p class="label text-muted">{tx.basedIn}</p>
+          <p class="mt-3 text-[17px]">{tx.cityCountry}</p>
+        </div>
+        <div class="sm:col-span-2 md:col-span-6">
+          <p class="label text-muted">{tx.online}</p>
+          <ul class="mt-3 text-[15px]">
+            {
+              links.map(([label, href, handle]) => (
+                <li>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group flex items-baseline gap-4 border-b border-line py-2.5 hover:border-fg"
+                  >
+                    <span class="flex-1 text-muted group-hover:text-fg">{label}</span>
+                    <span dir="ltr">{handle}</span>
+                    <span class="text-muted group-hover:text-fg" aria-hidden="true">
+                      ↗
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
     </section>
   </main>
 

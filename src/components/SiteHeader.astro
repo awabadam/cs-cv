@@ -1,0 +1,96 @@
+---
+import LangSwitch from "@/components/LangSwitch.astro";
+import ThemeSwitch from "@/components/ThemeSwitch.astro";
+import { localeOf, localized, ui } from "@/i18n/ui";
+
+/* The bar on every page: the name, the links, then language and theme. It sticks to the top
+   and draws in to a floating pill once the page scrolls (global.css). The links are the home
+   page's sections, or the page's own (the slot) where it has some. On a phone they fold away
+   behind a menu button and open out of the pill in large type. */
+const l = localeOf(Astro.url);
+const tx = ui[l];
+const own = Astro.slots.has("default");
+
+const sections = [
+  [tx.nav.work, "work"],
+  [tx.nav.about, "about"],
+  [tx.nav.experience, "experience"],
+  [tx.nav.contact, "contact"],
+] as const;
+---
+
+<header class="site-header" data-site-header>
+  <div class="bar label">
+    <a href={localized("/", l)} class="name font-medium">{tx.name}</a>
+    <div class="tools flex items-center gap-4">
+      <LangSwitch />
+      <ThemeSwitch />
+      <button
+        type="button"
+        class="menu-btn grid uppercase text-muted hover:text-fg sm:hidden"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-btn
+      >
+        <span class="open">{tx.menu}</span>
+        <span class="shut" aria-hidden="true">{tx.close}</span>
+      </button>
+    </div>
+    <div class="links" id="site-menu">
+      <div class="links-in">
+        <nav aria-label={tx.sections} class:list={["sections flex gap-5 text-muted", own && "sm:hidden"]}>
+          {
+            sections.map(([label, id], i) => (
+              <a href={localized(`/#${id}`, l)} class="hover:text-fg" style={`--i: ${i}`}>
+                {label}
+              </a>
+            ))
+          }
+        </nav>
+        {own && <div class="max-sm:hidden"><slot /></div>}
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { eachPage } from "@/scripts/page";
+
+  eachPage((signal) => {
+    const header = document.querySelector<HTMLElement>("[data-site-header]");
+    if (!header) return;
+    const update = () => header.toggleAttribute("data-small", scrollY > 16);
+    addEventListener("scroll", update, { passive: true, signal });
+    update();
+
+    /* The menu closes on a link, a click outside it, Escape, or the window growing past a phone. */
+    const button = header.querySelector<HTMLButtonElement>("[data-menu-btn]")!;
+    const menu = header.querySelector<HTMLElement>("#site-menu")!;
+    const set = (open: boolean) => {
+      header.toggleAttribute("data-open", open);
+      button.setAttribute("aria-expanded", String(open));
+    };
+    const isOpen = () => header.hasAttribute("data-open");
+    button.addEventListener("click", () => set(!isOpen()));
+    menu.addEventListener("click", (e) => {
+      if ((e.target as Element).closest("a")) set(false);
+    });
+    document.addEventListener(
+      "click",
+      (e) => {
+        if (isOpen() && !header.querySelector(".bar")!.contains(e.target as Node)) set(false);
+      },
+      { signal }
+    );
+    document.addEventListener(
+      "keydown",
+      (e) => {
+        if (e.key !== "Escape" || !isOpen()) return;
+        set(false);
+        button.focus();
+      },
+      { signal }
+    );
+    matchMedia("(min-width: 640px)").addEventListener("change", () => set(false), { signal });
+  });
+</script>

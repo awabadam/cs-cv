@@ -1,83 +1,73 @@
 ---
 import { localeOf, ui } from "@/i18n/ui";
 
-/* Auto follows the system; Light and Dark pin it. The choice lives in localStorage and is
-   applied before first paint by the script in Base.astro, as html[data-theme]. The pressed
-   button is styled from that attribute (global.css), so it is right before this script runs. */
-interface Props {
-  class?: string;
-}
-
-const { class: className = "" } = Astro.props;
+/* One button that flips between light and dark. The site follows the system until it is
+   pressed; a choice that matches the system goes back to following it, anything else is kept
+   in localStorage and applied before first paint by the script in Base.astro, as
+   html[data-theme]. The icon is chosen from that attribute (global.css), so it is right at once:
+   a moon on a light page, a sun on a dark one. */
 const tx = ui[localeOf(Astro.url)];
-const themes = [
-  ["auto", tx.themes.auto],
-  ["light", tx.themes.light],
-  ["dark", tx.themes.dark],
-] as const;
 ---
 
-<div role="group" aria-label={tx.theme} class:list={["flex rounded-full border border-line p-0.5", className]}>
-  {
-    themes.map(([t, label]) => (
-      <button
-        type="button"
-        data-theme-set={t}
-        aria-pressed={t === "auto" ? "true" : "false"}
-        aria-label={label}
-        title={label}
-        class="grid size-7 place-items-center rounded-full text-muted hover:text-fg"
-      >
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          {t === "auto" && (
-            <>
-              <circle cx="8" cy="8" r="5.5" />
-              <path d="M8 2.5a5.5 5.5 0 0 1 0 11z" fill="currentColor" stroke="none" />
-            </>
-          )}
-          {t === "light" && (
-            <>
-              <circle cx="8" cy="8" r="2.75" />
-              <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3.05 3.05l1.06 1.06M11.89 11.89l1.06 1.06M3.05 12.95l1.06-1.06M11.89 4.11l1.06-1.06" />
-            </>
-          )}
-          {t === "dark" && <path d="M13.5 9.6A5.75 5.75 0 0 1 6.4 2.5a5.75 5.75 0 1 0 7.1 7.1z" />}
-        </svg>
-      </button>
-    ))
-  }
-</div>
+<button
+  type="button"
+  data-theme-toggle
+  aria-pressed="false"
+  aria-label={tx.themes.dark}
+  title={tx.theme}
+  class="theme-toggle grid size-6 place-items-center rounded-full text-muted hover:text-fg"
+>
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path class="i-moon" d="M13.5 9.6A5.75 5.75 0 0 1 6.4 2.5a5.75 5.75 0 1 0 7.1 7.1z" />
+    <g class="i-sun">
+      <circle cx="8" cy="8" r="2.75" />
+      <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3.05 3.05l1.06 1.06M11.89 11.89l1.06 1.06M3.05 12.95l1.06-1.06M11.89 4.11l1.06-1.06" />
+    </g>
+  </svg>
+</button>
 
 <script>
-  const root = document.documentElement;
-  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-theme-set]");
+  import { eachPage } from "@/scripts/page";
 
-  const sync = () => {
-    const t = root.dataset.theme ?? "auto";
-    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.themeSet === t)));
+  const root = document.documentElement;
+  const system = matchMedia("(prefers-color-scheme: dark)");
+  const calm = matchMedia("(prefers-reduced-motion: reduce)");
+
+  const isDark = () => (root.dataset.theme ?? (system.matches ? "dark" : "light")) === "dark";
+  const sync = () => document.querySelector("[data-theme-toggle]")?.setAttribute("aria-pressed", String(isDark()));
+
+  /* Every colour changes in the same instant, rather than each link fading on its own. */
+  const flip = () => {
+    const dark = !isDark();
+    if (dark === system.matches) delete root.dataset.theme;
+    else root.dataset.theme = dark ? "dark" : "light";
+    try {
+      if (root.dataset.theme) localStorage.setItem("theme", root.dataset.theme);
+      else localStorage.removeItem("theme");
+    } catch {}
+    root.classList.add("instant");
+    sync();
+    void root.offsetWidth;
+    root.classList.remove("instant");
   };
 
-  buttons.forEach((b) =>
-    b.addEventListener("click", () => {
-      const t = b.dataset.themeSet;
-      if (t === "light" || t === "dark") root.dataset.theme = t;
-      else delete root.dataset.theme;
-      try {
-        if (t === "light" || t === "dark") localStorage.setItem("theme", t);
-        else localStorage.removeItem("theme");
-      } catch {}
-      sync();
-    })
-  );
-  sync();
+  /* Where the browser can, the whole page cross-fades to the new colours. */
+  eachPage(() => {
+    document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
+      if ("startViewTransition" in document && !calm.matches) document.startViewTransition(flip);
+      else flip();
+    });
+    sync();
+  });
+  system.addEventListener("change", sync);
 </script>

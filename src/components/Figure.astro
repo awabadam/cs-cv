@@ -4,7 +4,8 @@ import Pic from "@/components/Pic.astro";
 import { images, plain, type Img } from "@/data/work";
 import { localeOf, ui } from "@/i18n/ui";
 
-/* One image (or clip) in a project gallery, as a button that opens the viewer. */
+/* One image (or clip) in a project gallery, as a button that opens the viewer. Every one but the
+   cover (priority, already in view) opens up as it scrolls in (global.css). */
 interface Props {
   item: Img;
   sizes: string;
@@ -20,7 +21,7 @@ const tx = ui[localeOf(Astro.url)];
 <figure>
   <button
     type="button"
-    class="zoom"
+    class:list={["zoom", { reveal: !priority }]}
     data-alt={alt}
     aria-label={item.cap ? tx.enlarge(alt) : tx.enlargeImage}
   >

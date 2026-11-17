@@ -1,0 +1,31 @@
+---
+import { isRtl, localeOf } from "@/i18n/ui";
+
+/* Text split into words, each in a mask it rises out of when its heading comes into view
+   (.rise in global.css, src/scripts/motion.ts). On an Arabic page a run of Latin words stays
+   in one piece, so it keeps its own left-to-right order. */
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const rtl = isRtl(localeOf(Astro.url));
+const latin = (w: string) => /[A-Za-z]/.test(w) && !/[؀-ۿ]/.test(w);
+const words = text
+  .split(/\s+/)
+  .filter(Boolean)
+  .reduce<string[]>((out, w) => {
+    if (rtl && out.length && latin(w) && latin(out[out.length - 1])) out[out.length - 1] += ` ${w}`;
+    else out.push(w);
+    return out;
+  }, []);
+---
+
+{
+  words.map((w, i) => (
+    <>
+      {i > 0 && " "}
+      <span class="w"><span>{w}</span></span>
+    </>
+  ))
+}

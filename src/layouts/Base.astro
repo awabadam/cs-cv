@@ -1,7 +1,9 @@
 ---
 import { Font } from "astro:assets";
+import { ClientRouter } from "astro:transitions";
 import "lenis/dist/lenis.css";
 import "@/styles/global.css";
+import ToTop from "@/components/ToTop.astro";
 import { isRtl, languages, localeOf, localized, locales, ui, unlocalized } from "@/i18n/ui";
 
 interface Props {
@@ -28,14 +30,9 @@ const og = share ?? { title: title ?? site, description };
 const ogImage = new URL(image ?? "/og.png", Astro.site).href;
 const href = (to: (typeof locales)[number]) => new URL(localized(path, to), Astro.site).href;
 
-/* Apply a pinned light/dark choice (ThemeSwitch) before first paint, so it never flashes. */
-const themeInit = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
-
-/* Chrome and Edge prerender a page as the pointer settles on a link to it, so the click
-   lands on a finished page. Other browsers prefetch on hover (prefetch in astro.config). */
-const speculation = JSON.stringify({
-  prerender: [{ source: "document", where: { href_matches: "/*" }, eagerness: "moderate" }],
-});
+/* Apply a pinned light/dark choice (ThemeSwitch) before first paint, so it never flashes, and
+   again on each page the router swaps in, since that brings the new page's bare <html>. */
+const themeInit = `(function(){var a=function(){try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}};a();document.addEventListener("astro:after-swap",a)})()`;
 ---
 
 <!doctype html>
@@ -44,9 +41,14 @@ const speculation = JSON.stringify({
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script is:inline set:html={themeInit} />
-    {/* Arabic pages set Arabic in IBM Plex Sans Arabic and keep Switzer for Latin. */}
+    {/* Links within the site change the page in place, inside a view transition, so a card can
+        grow into the cover it opens in any browser with view transitions (src/scripts/motion.ts).
+        Browsers without them swap the page straight over. */}
+    <ClientRouter fallback="swap" />
+    {/* Arabic pages set Arabic in IBM Plex Sans Arabic and keep Zalando Sans for Latin. */}
     {l === "ar" && <Font cssVariable="--font-arabic" preload={[{ weight: "400" }]} />}
-    <Font cssVariable="--font-switzer" preload />
+    <Font cssVariable="--font-zalando" preload={[{ style: "normal", subset: "latin" }]} />
+    <Font cssVariable="--font-dm-mono" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
@@ -74,10 +76,10 @@ const speculation = JSON.stringify({
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-icon.png" />
-    <script type="speculationrules" is:inline set:html={speculation} />
   </head>
   <body>
     <slot />
+    <ToTop />
   </body>
 </html>
 
@@ -86,11 +88,55 @@ const speculation = JSON.stringify({
      scroll-margin). Touch keeps the native scroll, and so does anyone who asks the system
      for reduced motion. The image viewer is left to scroll and swipe on its own. */
   import Lenis from "lenis";
+  import "@/scripts/motion";
+  import { eachPage } from "@/scripts/page";
 
-  new Lenis({
+  /* Exponential ease-out, the same curve as --ease in global.css. */
+  const ease = (t: number) => 1 - 2 ** (-10 * t);
+
+  const lenis = new Lenis({
     autoRaf: true,
-    anchors: true,
+    /* The wheel catches up with a little under a tenth of the distance left each frame:
+       quick to answer, slow to come to rest. */
+    lerp: 0.08,
     stopInertiaOnNavigate: true,
     prevent: (node) => !!node.closest("dialog"),
+  });
+  /* A page swapped in brings its own height. */
+  document.addEventListener("astro:after-swap", () => lenis.resize());
+
+  const calm = matchMedia("(prefers-reduced-motion: reduce)");
+
+  /* A section link glides to its section, taking the same time however far away it is. The
+     router would jump there first and leave nothing to glide, so this takes the click before
+     the router does, and keeps the address in step. #top, as in HTML, is the top of the page,
+     and leaves no mark in the address. */
+  document.addEventListener(
+    "click",
+    (e) => {
+      const a = e.target instanceof Element ? e.target.closest("a") : null;
+      if (!a?.hash || a.href.split("#")[0] !== location.href.split("#")[0]) return;
+      if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const top = a.hash.toLowerCase() === "#top";
+      const section = top ? 0 : document.getElementById(decodeURIComponent(a.hash.slice(1)));
+      if (section === null) return;
+      e.preventDefault();
+      lenis.scrollTo(section, calm.matches ? { immediate: true } : { duration: 1.4, easing: ease });
+      history.replaceState(history.state, "", top ? location.pathname + location.search : a.hash);
+    },
+    { capture: true }
+  );
+
+  /* Pictures still on their way when the page opens fade in as each arrives, rather than
+     snapping in. Ones already there (from the cache) are left alone, and so are the card and
+     cover moving between pages (motion.ts), which have to be seen while they move. */
+  eachPage(() => {
+    for (const img of document.querySelectorAll<HTMLImageElement>("main img")) {
+      if (img.complete || img.closest("[data-vt]")) continue;
+      img.classList.add("arriving");
+      const arrived = () => img.classList.add("arrived");
+      img.addEventListener("load", arrived, { once: true });
+      img.addEventListener("error", arrived, { once: true });
+    }
   });
 </script>

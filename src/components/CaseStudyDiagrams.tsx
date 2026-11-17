@@ -4,7 +4,7 @@
  * Server-safe: plain SVG, no state, sized by viewBox and scaled by CSS.
  */
 
-const SC = "var(--font-switzer), sans-serif";
+const SC = "var(--font-zalando), sans-serif";
 const INK = "var(--fg)";
 const FAINT = "var(--muted)";
 const PAPER = "var(--bg)";

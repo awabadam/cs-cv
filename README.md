@@ -9,11 +9,11 @@ A work-first portfolio and CV. The home page opens on an image grid of every pro
 - **Work index.** Twenty-two projects as an image grid, filterable by discipline (brand, web, product, campaign, 3D, motion, print, photo).
 - **Project pages.** Cover, then every board in justified rows that keep each image at its own aspect ratio. Any image opens a full-screen viewer that steps through the whole project with arrow keys or a swipe. Motion pieces loop silently while on screen and play with controls in the viewer.
 - **Case studies.** Seven projects carry a long-form write-up under the work, with stat strips, plates and line diagrams.
-- **CV.** About, experience, skills and contact on the home page, below the work.
+- **CV.** About, experience, skills and contact on the home page, below the work, and a footer with the time in Istanbul beside a few other cities.
 - **Three languages.** English at `/`, Arabic (right to left) at `/ar`, Turkish at `/tr`, with a header switch that keeps you on the same page. Each page links its translations for search engines.
-- **Plain styling.** One typeface (Switzer, with IBM Plex Sans Arabic for Arabic text), neutral tones, rounded images throughout, light and dark mode that follow the system, with a header switch to pin either. No effects in the way of the images.
-- **Smooth motion.** Wheel scrolling and in-page links glide ([Lenis](https://lenis.darkroom.engineering/)), and pages cross-fade into each other. Both stand down for anyone whose system asks for reduced motion.
-- **Static and light.** Every page is prerendered to plain HTML with its CSS inline and a few kilobytes of script. Images are resized to WebP at build time. Links prerender on hover, so the next page is usually ready before the click. Old `/case-studies/:slug` links redirect to `/work/:slug`.
+- **Plain styling.** One typeface (Zalando Sans, with DM Mono for numbers and IBM Plex Sans Arabic for Arabic text), neutral tones, rounded images throughout, light and dark mode that follow the system, with a header switch to pin either. No effects in the way of the images.
+- **Smooth motion.** Wheel scrolling and in-page links glide ([Lenis](https://lenis.darkroom.engineering/)), pages cross-fade into each other and a project card grows into the cover it opens. Headlines rise line by line and pictures open out as they scroll in. All of it stands down for anyone whose system asks for reduced motion.
+- **Static and light.** Every page is prerendered to plain HTML with its CSS inline and a few kilobytes of script. Images are resized to WebP at build time. Pages change in place through Astro's router, which fetches a link's page on hover, so the next page is usually ready before the click. Old `/case-studies/:slug` links redirect to `/work/:slug`.
 
 ## Content
 
@@ -32,6 +32,7 @@ A work-first portfolio and CV. The home page opens on an image grid of every pro
 - [Tailwind CSS 4](https://tailwindcss.com/)
 - `astro:assets` for responsive WebP; motion as static H.264 clips
 - [Lenis](https://lenis.darkroom.engineering/) for smooth scrolling
+- Zalando Sans, DM Mono and IBM Plex Sans Arabic, fetched from Google Fonts at build time and served from the site (Astro's font API)
 - React only at build time, to render the case-study diagrams; none of it ships to the browser
 - nginx in a Docker image for hosting (see [`Dockerfile`](Dockerfile) and [`nginx.conf`](nginx.conf))
 
@@ -64,7 +65,6 @@ src/
 │   ├── Gallery.astro         # Justified rows and the full-screen viewer
 │   └── CaseStudyDiagrams.tsx # Rendered to static SVG at build time
 ├── assets/                   # Project and case-study images (work/ is generated)
-├── fonts/                    # Switzer variable font (FFL licence); Plex Arabic comes from Google Fonts at build
 └── data/                     # work.json (generated), work.ts, studies.ts, content.ts
 public/work/                  # Motion clips (generated)
 ```

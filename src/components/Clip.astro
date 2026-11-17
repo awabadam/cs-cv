@@ -28,17 +28,21 @@ const still = await getImage({ src: asset(poster) });
   preload="none"></video>
 
 <script>
-  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          const v = e.target as HTMLVideoElement;
-          if (e.isIntersecting) v.play().catch(() => {});
-          else v.pause();
-        }
-      },
-      { threshold: 0.25 }
-    );
-    document.querySelectorAll("video[data-clip]").forEach((v) => io.observe(v));
-  }
+  import { eachPage } from "@/scripts/page";
+
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches)
+    eachPage((signal) => {
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            const v = e.target as HTMLVideoElement;
+            if (e.isIntersecting) v.play().catch(() => {});
+            else v.pause();
+          }
+        },
+        { threshold: 0.25 }
+      );
+      document.querySelectorAll("video[data-clip]").forEach((v) => io.observe(v));
+      signal.addEventListener("abort", () => io.disconnect());
+    });
 </script>

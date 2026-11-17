@@ -15,26 +15,38 @@ export default defineConfig({
     inlineStylesheets: "always",
   },
   integrations: [react()],
-  /* Chrome and Edge prerender links from the speculation rules in Base.astro; this
-     prefetches on hover for the other browsers. */
+  /* The router (Base.astro) fetches a page as soon as its link is hovered, so the change is
+     ready by the click. */
   prefetch: { prefetchAll: true, defaultStrategy: "hover" },
   fonts: [
+    /* Fetched from Google Fonts at build time and served from this site. One variable file
+       per subset covers every weight; latin-ext carries the Turkish letters. */
     {
-      provider: fontProviders.local(),
-      name: "Switzer",
-      cssVariable: "--font-switzer",
+      provider: fontProviders.google(),
+      name: "Zalando Sans",
+      cssVariable: "--font-zalando",
+      weights: ["200 900"],
+      styles: ["normal", "italic"],
+      subsets: ["latin", "latin-ext"],
       fallbacks: ["ui-sans-serif", "system-ui", "sans-serif"],
-      options: {
-        variants: [{ src: ["./src/fonts/Switzer-Variable.woff2"], weight: "100 900", style: "normal" }],
-      },
+    },
+    /* Numbers, dates and small labels. */
+    {
+      provider: fontProviders.google(),
+      name: "DM Mono",
+      cssVariable: "--font-dm-mono",
+      weights: [400, 500],
+      styles: ["normal"],
+      subsets: ["latin", "latin-ext"],
+      fallbacks: ["ui-monospace", "monospace"],
     },
     /* Arabic pages only. Its faces cover just the Arabic block and it has no fallbacks of its
-       own, so Latin text on those pages (names, numbers) still falls through to Switzer. */
+       own, so Latin text on those pages (names, numbers) still falls through to Zalando Sans. */
     {
       provider: fontProviders.google(),
       name: "IBM Plex Sans Arabic",
       cssVariable: "--font-arabic",
-      weights: [400, 500, 600],
+      weights: [400, 500],
       styles: ["normal"],
       subsets: ["arabic"],
       fallbacks: [],

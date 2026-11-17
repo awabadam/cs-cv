@@ -4,8 +4,8 @@ import { images, type Cell, type Img, type Section } from "@/data/work";
 import { isRtl, localeOf, ui } from "@/i18n/ui";
 
 /**
- * The cover, then the slot (the project text), then every section's image rows.
- * Any image opens a full-screen view that steps through the whole project; motion pieces
+ * The cover, across the window, then the slot (the project text) and every section's image
+ * rows in the page column. Any image opens a full-screen view that steps through the whole project; motion pieces
  * loop silently in place and play with controls in the viewer.
  */
 interface Props {
@@ -31,49 +31,51 @@ const count = sections
 
 {
   cover && (
-    <div class="cover" style={`--ar: ${ratio(cover)}`}>
-      <Figure item={cover} sizes="(max-width: 1680px) 100vw, 1600px" priority />
+    <div class="bleed cover" style={`--ar: ${ratio(cover)}`}>
+      <Figure item={cover} sizes="100vw" priority />
     </div>
   )
 }
 
-<slot />
+<div class="wrap">
+  <slot />
 
-{
-  sections.map((s) => (
-    <section class="mt-16">
-      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-t border-line pt-3 mb-5">
-        <h2 class="text-lg font-medium">{s.title}</h2>
-        {s.note && <p class="prose text-sm text-muted max-w-[80ch]" set:html={s.note} />}
-      </div>
-      <div class="rows">
-        {s.rows.map((r) => {
-          const total = r.reduce((sum, c) => sum + cellRatio(c), 0);
-          return (
-            <div class="row">
-              {r.map((c) => {
-                const sizes = `(max-width: 640px) 100vw, ${Math.ceil((cellRatio(c) / total) * 100)}vw`;
-                return (
-                  <div class="cell" style={`--ar: ${cellRatio(c)}`}>
-                    {"stack" in c ? (
-                      <div class="stack">
-                        {c.stack.map((i) => (
-                          <Figure item={i} sizes={sizes} />
-                        ))}
-                      </div>
-                    ) : (
-                      <Figure item={c} sizes={sizes} />
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
-    </section>
-  ))
-}
+  {
+    sections.map((s) => (
+      <section class="mt-20 sm:mt-28">
+        <div class="head flex flex-wrap items-baseline gap-x-6 gap-y-2">
+          <h2>{s.title}</h2>
+          {s.note && <p class="prose text-sm normal-case tracking-normal text-muted max-w-[80ch]" set:html={s.note} />}
+        </div>
+        <div class="rows">
+          {s.rows.map((r) => {
+            const total = r.reduce((sum, c) => sum + cellRatio(c), 0);
+            return (
+              <div class="row">
+                {r.map((c) => {
+                  const sizes = `(max-width: 640px) 100vw, ${Math.ceil((cellRatio(c) / total) * 100)}vw`;
+                  return (
+                    <div class="cell" style={`--ar: ${cellRatio(c)}`}>
+                      {"stack" in c ? (
+                        <div class="stack">
+                          {c.stack.map((i) => (
+                            <Figure item={i} sizes={sizes} />
+                          ))}
+                        </div>
+                      ) : (
+                        <Figure item={c} sizes={sizes} />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    ))
+  }
+</div>
 
 <dialog class="lightbox" aria-label={tx.viewer}>
   <figure>
@@ -95,74 +97,84 @@ const count = sections
 </dialog>
 
 <script>
-  const dialog = document.querySelector<HTMLDialogElement>("dialog.lightbox");
-  if (dialog) {
-    const zooms = [...document.querySelectorAll<HTMLButtonElement>(".zoom")];
-    const figure = dialog.querySelector("figure")!;
-    const count = dialog.querySelector("[data-lb-count]")!;
-    const cap = dialog.querySelector("[data-lb-cap]")!;
-    let open = -1;
-    /* In a right-to-left page the next image sits to the left, for keys and swipes alike. */
-    const ahead = document.documentElement.dir === "rtl" ? -1 : 1;
+  import { eachPage } from "@/scripts/page";
 
-    /* The viewer reuses the page image's srcset at near full width; a clip gets controls. */
-    const media = (z: HTMLButtonElement) => {
-      const clip = z.querySelector("video");
-      const pic = z.querySelector("img");
-      const el = clip ? document.createElement("video") : document.createElement("img");
-      const from = (clip ?? pic)!;
-      el.setAttribute("width", from.getAttribute("width") ?? "");
-      el.setAttribute("height", from.getAttribute("height") ?? "");
-      if (el instanceof HTMLVideoElement) {
-        el.poster = clip!.poster;
-        el.controls = el.autoplay = el.muted = el.loop = el.playsInline = true;
-        el.setAttribute("aria-label", z.dataset.alt ?? "");
-        el.src = clip!.getAttribute("src")!;
-      } else {
-        el.alt = z.dataset.alt ?? "";
-        el.sizes = "94vw";
-        el.srcset = pic!.srcset;
-        el.src = pic!.src;
-      }
-      return el;
-    };
+  eachPage((signal) => {
+    const dialog = document.querySelector<HTMLDialogElement>("dialog.lightbox");
+    if (dialog) {
+      const zooms = [...document.querySelectorAll<HTMLButtonElement>(".zoom")];
+      const figure = dialog.querySelector("figure")!;
+      const count = dialog.querySelector("[data-lb-count]")!;
+      const cap = dialog.querySelector("[data-lb-cap]")!;
+      let open = -1;
+      /* In a right-to-left page the next image sits to the left, for keys and swipes alike. */
+      const ahead = document.documentElement.dir === "rtl" ? -1 : 1;
 
-    const show = (i: number) => {
-      open = i;
-      figure.querySelector("img, video")?.remove();
-      figure.prepend(media(zooms[i]));
-      count.textContent = `${i + 1} / ${zooms.length}`;
-      cap.innerHTML = zooms[i].closest("figure")?.querySelector("figcaption")?.innerHTML ?? "";
-      if (!dialog.open) dialog.showModal();
-    };
-    const step = (n: number) => open >= 0 && show((open + n + zooms.length) % zooms.length);
+      /* The viewer reuses the page image's srcset at near full width; a clip gets controls. */
+      const media = (z: HTMLButtonElement) => {
+        const clip = z.querySelector("video");
+        const pic = z.querySelector("img");
+        const el = clip ? document.createElement("video") : document.createElement("img");
+        const from = (clip ?? pic)!;
+        el.setAttribute("width", from.getAttribute("width") ?? "");
+        el.setAttribute("height", from.getAttribute("height") ?? "");
+        if (el instanceof HTMLVideoElement) {
+          el.poster = clip!.poster;
+          el.controls = el.autoplay = el.muted = el.loop = el.playsInline = true;
+          el.setAttribute("aria-label", z.dataset.alt ?? "");
+          el.src = clip!.getAttribute("src")!;
+        } else {
+          el.alt = z.dataset.alt ?? "";
+          el.sizes = "94vw";
+          el.srcset = pic!.srcset;
+          el.src = pic!.src;
+        }
+        /* It grows in once there is something to show: a clip has its poster, a picture waits. */
+        const ready = () => el.classList.add("ready");
+        if (el instanceof HTMLImageElement && !el.complete) {
+          el.addEventListener("load", ready, { once: true });
+          el.addEventListener("error", ready, { once: true });
+        } else ready();
+        return el;
+      };
 
-    zooms.forEach((z, i) => z.addEventListener("click", () => show(i)));
-    dialog.querySelector("[data-lb-close]")!.addEventListener("click", () => dialog.close());
-    dialog.querySelectorAll<HTMLElement>("[data-lb-step]").forEach((b) =>
-      b.addEventListener("click", () => step(Number(b.dataset.lbStep)))
-    );
+      const show = (i: number) => {
+        open = i;
+        figure.querySelector("img, video")?.remove();
+        figure.prepend(media(zooms[i]));
+        count.textContent = `${i + 1} / ${zooms.length}`;
+        cap.innerHTML = zooms[i].closest("figure")?.querySelector("figcaption")?.innerHTML ?? "";
+        if (!dialog.open) dialog.showModal();
+      };
+      const step = (n: number) => open >= 0 && show((open + n + zooms.length) % zooms.length);
 
-    dialog.addEventListener("close", () => {
-      open = -1;
-      figure.querySelector("img, video")?.remove();
-    });
-    dialog.addEventListener("click", (e) => {
-      if (e.target === dialog || e.target === figure) dialog.close();
-    });
-    /* On the document, not the dialog: stepping swaps the caption, and a focused link in it
-       goes with it, leaving focus on the page body. */
-    document.addEventListener("keydown", (e) => {
-      if (!dialog.open || (e.target as HTMLElement).tagName === "VIDEO") return; // arrows seek the clip
-      if (e.key === "ArrowRight") step(ahead);
-      if (e.key === "ArrowLeft") step(-ahead);
-    });
+      zooms.forEach((z, i) => z.addEventListener("click", () => show(i)));
+      dialog.querySelector("[data-lb-close]")!.addEventListener("click", () => dialog.close());
+      dialog.querySelectorAll<HTMLElement>("[data-lb-step]").forEach((b) =>
+        b.addEventListener("click", () => step(Number(b.dataset.lbStep)))
+      );
 
-    let touchX = 0;
-    dialog.addEventListener("touchstart", (e) => (touchX = e.touches[0].clientX), { passive: true });
-    dialog.addEventListener("touchend", (e) => {
-      const dx = e.changedTouches[0].clientX - touchX;
-      if (Math.abs(dx) > 50) step(dx < 0 ? ahead : -ahead);
-    });
-  }
+      dialog.addEventListener("close", () => {
+        open = -1;
+        figure.querySelector("img, video")?.remove();
+      });
+      dialog.addEventListener("click", (e) => {
+        if (e.target === dialog || e.target === figure) dialog.close();
+      });
+      /* On the document, not the dialog: stepping swaps the caption, and a focused link in it
+         goes with it, leaving focus on the page body. */
+      document.addEventListener("keydown", (e) => {
+        if (!dialog.open || (e.target as HTMLElement).tagName === "VIDEO") return; // arrows seek the clip
+        if (e.key === "ArrowRight") step(ahead);
+        if (e.key === "ArrowLeft") step(-ahead);
+      }, { signal });
+
+      let touchX = 0;
+      dialog.addEventListener("touchstart", (e) => (touchX = e.touches[0].clientX), { passive: true });
+      dialog.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 50) step(dx < 0 ? ahead : -ahead);
+      });
+    }
+  });
 </script>

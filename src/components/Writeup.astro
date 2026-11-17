@@ -16,11 +16,11 @@ const tx = ui[localeOf(Astro.url)];
 const host = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 ---
 
-<section class:list={["wrap", first ? "mt-4" : "mt-24"]} aria-labelledby="writeup">
-  <div class="border-t border-line pt-4 grid gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,1fr)_340px]">
+<section class:list={["wrap", first ? "mt-4" : "section"]} aria-labelledby="writeup">
+  <p class="head">{tx.caseStudy}</p>
+  <div class="grid gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,1fr)_340px]">
     <div class="max-w-[68ch]">
-      <p class="font-mono text-xs text-muted">{tx.caseStudy}</p>
-      <h2 id="writeup" class="mt-2 text-[clamp(1.6rem,3vw,2.4rem)] font-semibold leading-tight tracking-[-0.015em]">
+      <h2 id="writeup" class="text-[clamp(1.75rem,3vw,2.625rem)] leading-[1.1] tracking-[-0.02em]">
         {s.title}
       </h2>
       <p class="mt-5 text-[19px] leading-relaxed">{s.lede}</p>
@@ -30,7 +30,7 @@ const host = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\
           <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 border-y border-line py-5">
             {s.stats.map((st) => (
               <div>
-                <p class="text-2xl font-semibold tracking-tight">{st.value}</p>
+                <p class="text-3xl tracking-[-0.02em]">{st.value}</p>
                 <p class="mt-1 text-xs text-muted leading-snug">{st.label}</p>
               </div>
             ))}
