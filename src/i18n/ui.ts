@@ -50,7 +50,6 @@ type Strings = {
   city: string;
   cityCountry: string;
   studioSite: string;
-  online: string;
   contact: { title: string; muted: string };
   menu: string;
   toTop: string;
@@ -122,8 +121,7 @@ export const ui: Record<Locale, Strings> = {
     city: "Istanbul",
     cityCountry: "Istanbul, Türkiye",
     studioSite: "Studio site",
-    online: "Online",
-    contact: { title: "Have something to build?", muted: "Write to me." },
+    contact: { title: "Have something to build?", muted: "Email me, or message me." },
     menu: "Menu",
     toTop: "Back to top",
     localTime: "Local time",
@@ -207,8 +205,7 @@ export const ui: Record<Locale, Strings> = {
     city: "إسطنبول",
     cityCountry: "إسطنبول، تركيا",
     studioSite: "موقع الاستوديو",
-    online: "على الإنترنت",
-    contact: { title: "لديك ما تريد بناءه؟", muted: "راسلني." },
+    contact: { title: "لديك ما تريد بناءه؟", muted: "راسلني بالبريد، أو برسالة." },
     menu: "القائمة",
     toTop: "العودة إلى الأعلى",
     localTime: "التوقيت المحلي",
@@ -292,8 +289,7 @@ export const ui: Record<Locale, Strings> = {
     city: "İstanbul",
     cityCountry: "İstanbul, Türkiye",
     studioSite: "Stüdyo sitesi",
-    online: "Çevrimiçi",
-    contact: { title: "Yapılacak bir işiniz mi var?", muted: "Bana yazın." },
+    contact: { title: "Yapılacak bir işiniz mi var?", muted: "E-posta atın ya da mesaj yazın." },
     menu: "Menü",
     toTop: "Başa dön",
     localTime: "Yerel saat",

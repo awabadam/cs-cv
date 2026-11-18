@@ -29,11 +29,15 @@ const skills = [
   [tx.technical, expertise.technical],
 ] as const;
 
-/* Where else to find me: label, address, the handle shown. */
-const links: [string, string, string][] = [
-  ["LinkedIn", "https://www.linkedin.com/in/awab-adam", "in/awab-adam"],
-  [tx.studioSite, "https://awab.design", "awab.design"],
-  ...socialLinks.map((s): [string, string, string] => [s.label, s.url, s.display]),
+/* Every other way to reach me, under the email: label, what is shown, the address (none for
+   the city). Ten of them, so they make even rows at every width. */
+const reach: [string, string, string?][] = [
+  [tx.phone, PHONE, `tel:${PHONE.replaceAll(" ", "")}`],
+  ["WhatsApp", `wa.me/${PHONE.replace(/\D/g, "")}`, `https://wa.me/${PHONE.replace(/\D/g, "")}`],
+  [tx.basedIn, tx.cityCountry],
+  ["LinkedIn", "in/awab-adam", "https://www.linkedin.com/in/awab-adam"],
+  [tx.studioSite, "awab.design", "https://awab.design"],
+  ...socialLinks.map((s): [string, string, string] => [s.label, s.display, s.url]),
 ];
 
 /* The page opens on three Blender loops from one project, side by side (two on a phone), and
@@ -99,20 +103,23 @@ const loops = LOOPS.map((k) => ({ ...images[k], label: caps.get(k) ?? "" }));
       <WorkGrid />
     </section>
 
-    {/* About: a statement, then the portrait beside the story, one chapter per city. */}
+    {/* About: the portrait on one side; on the other the statement at the top and the story,
+        one chapter per city, at the foot, so the two sides fill the same height. Where the
+        text runs longer than the portrait, the portrait stays in view beside it. A phone
+        takes them one after another. */}
     <section class="wrap section" aria-labelledby="about">
       <h2 id="about" class="head">{tx.nav.about}</h2>
-      <p class="display rise max-w-[32ch]">
-        <Words text={tx.about.title} />{" "}
-        <span class="text-muted"><Words text={tx.about.muted} /></span>
-      </p>
-      <div class="mt-14 sm:mt-24 grid gap-x-6 gap-y-14 md:grid-cols-12">
-        <figure class="md:col-span-5">
+      <div class="grid gap-x-6 gap-y-14 lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-y-20">
+        <p class="display rise lg:col-start-7 lg:col-span-6 lg:row-start-1">
+          <Words text={tx.about.title} />{" "}
+          <span class="text-muted"><Words text={tx.about.muted} /></span>
+        </p>
+        <figure class="lg:col-start-1 lg:col-span-5 lg:row-start-1 lg:row-span-2 lg:self-start lg:sticky lg:top-24">
           <div class="reveal aspect-[4/5] overflow-hidden rounded-img bg-panel isolate">
             <Pic
               src="/images/story/profile-photo-of-awab.jpg"
               alt={tx.name}
-              sizes="(max-width: 768px) 100vw, 40vw"
+              sizes="(max-width: 1024px) 100vw, 40vw"
               class="size-full object-cover object-[45%_50%]"
             />
           </div>
@@ -123,7 +130,7 @@ const loops = LOOPS.map((k) => ({ ...images[k], label: caps.get(k) ?? "" }));
             <span class="text-sm text-muted">{tx.city}</span>
           </figcaption>
         </figure>
-        <ol class="md:col-start-7 md:col-span-6 md:self-end space-y-12">
+        <ol class="lg:col-start-7 lg:col-span-6 lg:row-start-2 lg:self-end space-y-12">
           {
             tx.about.story.map((c, i) => (
               <li class="lift">
@@ -208,43 +215,44 @@ const loops = LOOPS.map((k) => ({ ...images[k], label: caps.get(k) ?? "" }));
       >
         {EMAIL}
       </a>
-      <div class="lift mt-14 sm:mt-20 grid gap-x-6 gap-y-10 border-t border-line pt-6 sm:grid-cols-2 md:grid-cols-12">
-        <div class="md:col-span-3">
-          <p class="label text-muted">{tx.phone}</p>
-          <p class="mt-3 text-[17px]">
-            <a href={`tel:${PHONE.replaceAll(" ", "")}`} class="hover:text-muted" dir="ltr">
-              {PHONE}
-            </a>
-          </p>
-        </div>
-        <div class="md:col-span-3">
-          <p class="label text-muted">{tx.basedIn}</p>
-          <p class="mt-3 text-[17px]">{tx.cityCountry}</p>
-        </div>
-        <div class="sm:col-span-2 md:col-span-6">
-          <p class="label text-muted">{tx.online}</p>
-          <ul class="mt-3 text-[15px]">
-            {
-              links.map(([label, href, handle]) => (
-                <li>
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="group flex items-baseline gap-4 border-b border-line py-2.5 hover:border-fg"
+      {/* A hairline row each on a phone (label, then the value at the far end), two columns
+          of them from a tablet, and on a wide screen five cells a row with the label over the
+          value and the arrow in the corner. */}
+      <ul class="lift mt-14 grid gap-x-6 border-t border-line sm:mt-20 sm:grid-cols-2 lg:grid-cols-5">
+        {
+          reach.map(([label, value, href]) => {
+            const Tag = href ? "a" : "div";
+            const away = href?.startsWith("http");
+            return (
+              <li>
+                <Tag
+                  href={href}
+                  target={away ? "_blank" : undefined}
+                  rel={away ? "noopener noreferrer" : undefined}
+                  class:list={[
+                    "group grid grid-cols-[minmax(0,1fr)_auto_auto] items-baseline gap-x-4 border-b border-line py-3.5 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-y-4 lg:pb-6 lg:pt-4",
+                    href && "hover:border-fg",
+                  ]}
+                >
+                  <span class="label text-muted group-hover:text-fg lg:col-start-1 lg:row-start-1">{label}</span>
+                  <span
+                    class="min-w-0 truncate text-[15px] lg:col-span-2 lg:row-start-2 xl:text-[17px]"
+                    dir={href ? "ltr" : undefined}
                   >
-                    <span class="flex-1 text-muted group-hover:text-fg">{label}</span>
-                    <span dir="ltr">{handle}</span>
-                    <span class="text-muted group-hover:text-fg" aria-hidden="true">
-                      ↗
-                    </span>
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
+                    {value}
+                  </span>
+                  <span
+                    class:list={["text-muted group-hover:text-fg lg:col-start-2 lg:row-start-1", !href && "invisible"]}
+                    aria-hidden="true"
+                  >
+                    ↗
+                  </span>
+                </Tag>
+              </li>
+            );
+          })
+        }
+      </ul>
     </section>
   </main>
 
