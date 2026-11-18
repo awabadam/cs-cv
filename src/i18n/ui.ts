@@ -105,12 +105,12 @@ export const ui: Record<Locale, Strings> = {
         {
           place: "Khartoum",
           years: "2016 – 2020",
-          text: "It started in Khartoum — designing logos and event materials at icare-net, where I first touched web design and felt the pull of the screen. From there: leading teams, building brands, co-founding a production studio with friends on the side. In 2020, everything changed.",
+          text: "Logos, print and my first web pages at icare-net, then leading design teams and co-founding a production studio.",
         },
         {
           place: "Istanbul",
           years: "2020 – Present",
-          text: "New city. New language. New market. I joined a dental company with two brands and no designer. Over five years I built everything — the logos, the identity systems, the social media, the websites — and a team to carry it forward. Then I learned to build the software too: a platform in eight languages, a patient app, a portal, an AI system that listens to sales calls. The design eye never left.",
+          text: "Two brands for a dental company, from logo to social to web, and the team to run them. Then the software: a platform in eight languages, a patient app, an AI that reviews sales calls.",
         },
       ],
     },
@@ -189,12 +189,12 @@ export const ui: Record<Locale, Strings> = {
         {
           place: "الخرطوم",
           years: "2016 – 2020",
-          text: "بدأ كل شيء في الخرطوم — بتصميم الشعارات ومواد الفعاليات في icare-net، حيث لمست تصميم الويب لأول مرة وشعرت بجاذبية الشاشة. ومن هناك: قيادة الفرق، وبناء العلامات التجارية، وتأسيس استوديو إنتاج مع أصدقاء إلى جانب عملي. وفي 2020 تغيّر كل شيء.",
+          text: "شعارات ومطبوعات وأولى صفحاتي على الويب في icare-net، ثم قيادة فرق التصميم والمشاركة في تأسيس استوديو إنتاج.",
         },
         {
           place: "إسطنبول",
           years: "2020 – حتى الآن",
-          text: "مدينة جديدة. لغة جديدة. سوق جديد. انضممت إلى شركة طب أسنان لديها علامتان تجاريتان ولا مصمم لديها. على مدى خمس سنوات بنيت كل شيء — الشعارات، وأنظمة الهوية، ووسائل التواصل الاجتماعي، والمواقع — وفريقًا يواصل المسيرة. ثم تعلمت أن أبني البرمجيات أيضًا: منصة بثماني لغات، وتطبيقًا للمرضى، وبوابة، ونظام ذكاء اصطناعي يستمع إلى مكالمات المبيعات. ولم تغب عين المصمم يومًا.",
+          text: "علامتان تجاريتان لشركة طب أسنان، من الشعار إلى التواصل الاجتماعي والويب، وفريق يديرهما. ثم البرمجيات: منصة بثماني لغات، وتطبيق للمرضى، وذكاء اصطناعي يراجع مكالمات المبيعات.",
         },
       ],
     },
@@ -273,12 +273,12 @@ export const ui: Record<Locale, Strings> = {
         {
           place: "Hartum",
           years: "2016 – 2020",
-          text: "Her şey Hartum'da başladı — icare-net'te logo ve etkinlik materyalleri tasarlarken web tasarımıyla ilk kez tanıştım ve ekranın çekimini hissettim. Sonrası: ekipler yönetmek, markalar kurmak, yan işte arkadaşlarla bir prodüksiyon stüdyosu kurmak. 2020'de her şey değişti.",
+          text: "icare-net'te logolar, basılı işler ve ilk web sayfalarım; ardından tasarım ekiplerini yönetmek ve bir prodüksiyon stüdyosunun kurucu ortağı olmak.",
         },
         {
           place: "İstanbul",
           years: "2020 – Günümüz",
-          text: "Yeni şehir. Yeni dil. Yeni pazar. İki markası olan ama hiç tasarımcısı olmayan bir diş kliniği şirketine katıldım. Beş yılda her şeyi kurdum — logoları, kimlik sistemlerini, sosyal medyayı, web sitelerini — ve bunları ileri taşıyacak bir ekibi. Sonra yazılımı da kurmayı öğrendim: sekiz dilli bir platform, bir hasta uygulaması, bir portal, satış görüşmelerini dinleyen bir yapay zekâ sistemi. Tasarımcı gözü hiç kaybolmadı.",
+          text: "Bir diş kliniği şirketi için iki marka, logodan sosyal medyaya ve web'e, bir de onları yürüten ekip. Sonra yazılım: sekiz dilli bir platform, bir hasta uygulaması, satış görüşmelerini inceleyen bir yapay zekâ.",
         },
       ],
     },
