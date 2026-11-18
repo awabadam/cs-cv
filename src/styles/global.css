@@ -630,7 +630,10 @@ html {
 .cover .zoom > * {
   scale: calc(1 + var(--pull, 0) * 0.12);
 }
-/* The cover's caption keeps to the picture's edge as it narrows (4% a side). */
+/* The caption under it keeps to the picture's edges as it narrows (4% a side). */
+.hero > .label {
+  padding-inline: calc(var(--pull, 0) * 4%);
+}
 .cover .cap {
   padding-inline-start: calc(var(--pull, 0) * 4%);
 }
