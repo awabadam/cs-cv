@@ -52,15 +52,17 @@ const reveal = (signal: AbortSignal) => {
 };
 
 /* The opening picture (the home hero, a project's cover) draws in as the page scrolls past it:
-   --pull runs from 0 at the top to 1 once the picture has gone by. */
+   --pull runs from 0 at the top to 1 once the picture has gone by. A cover's caption moves in
+   with it, so the value goes on the frame around both. */
 const pull = (signal: AbortSignal) => {
   const el = document.querySelector<HTMLElement>(".hero-img, .cover .zoom");
   if (!el) return;
+  const host = el.closest<HTMLElement>(".cover") ?? el;
   let queued = false;
   const update = () => {
     queued = false;
     const p = Math.min(Math.max(scrollY / el.offsetHeight, 0), 1);
-    el.style.setProperty("--pull", p.toFixed(4));
+    host.style.setProperty("--pull", p.toFixed(4));
   };
   addEventListener(
     "scroll",

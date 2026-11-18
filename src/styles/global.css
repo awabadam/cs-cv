@@ -630,6 +630,10 @@ html {
 .cover .zoom > * {
   scale: calc(1 + var(--pull, 0) * 0.12);
 }
+/* The cover's caption keeps to the picture's edge as it narrows (4% a side). */
+.cover .cap {
+  padding-inline-start: calc(var(--pull, 0) * 4%);
+}
 /* Pictures still loading when the page opens fade up as they arrive (Base.astro marks them). */
 img.arriving {
   opacity: 0;
