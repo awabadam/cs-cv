@@ -63,7 +63,6 @@ const COVERED = [
   "taku",
   "early-logos",
   "italy-pizza",
-  "motion",
 ];
 
 /* A motion piece is its poster frame (the webp) plus a clip beside it in public/work. */
