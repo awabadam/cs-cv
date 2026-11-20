@@ -59,6 +59,11 @@ const COVERED = [
   "omega-implants",
   "campaign-system",
   "key-visuals",
+  "waterboy",
+  "taku",
+  "early-logos",
+  "italy-pizza",
+  "motion",
 ];
 
 /* A motion piece is its poster frame (the webp) plus a clip beside it in public/work. */
