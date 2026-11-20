@@ -169,7 +169,7 @@
    "sector": "Istanbul · Clinic main site",
    "disciplines": [
     "Figma → Next.js",
-    "8 languages"
+    "9 languages"
    ],
    "kind": [
     "web"
@@ -191,7 +191,7 @@
      "source": "sampled"
     }
    ],
-   "summary": "The clinic's main site, designed in Figma and carried through build and deployment in eight languages, RTL Arabic included.",
+   "summary": "The clinic's main site, designed in Figma and carried through build and deployment in nine languages, RTL Arabic included.",
    "copy": [
     {
      "lead": "The brief.",
@@ -199,7 +199,7 @@
     },
     {
      "lead": "What I did.",
-     "text": "Designed the site in Figma and carried it through build and deployment. A dark-editorial system with a gold accent, content-driven across eight languages, with right-to-left Arabic treated as a first-class layout rather than a mirror."
+     "text": "Designed the site in Figma and carried it through build and deployment. A dark-editorial system with a gold accent, content-driven across nine languages, with right-to-left Arabic treated as a first-class layout rather than a mirror."
     },
     {
      "lead": "Where it sits.",
@@ -222,7 +222,7 @@
    },
    "cover": {
     "img": "site-saphiredent",
-    "cap": "<a href=\"https://saphiredent.com\">saphiredent.com</a> — the clinic's main site, live and content-driven in eight languages."
+    "cap": "<a href=\"https://saphiredent.com\">saphiredent.com</a> — the clinic's main site, live and content-driven in nine languages."
    },
    "sections": [
     {
@@ -804,7 +804,7 @@
    "id": "omega-implants",
    "client": "Omega",
    "title": "Implants",
-   "year": "2025",
+   "year": "2021–2022",
    "sector": "Dental implants product line",
    "disciplines": [
     "Brand",

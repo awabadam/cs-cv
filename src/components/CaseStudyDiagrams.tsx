@@ -89,7 +89,7 @@ function ArrowDefs({ id }: { id: string }) {
 /* ── I · Saphire Dent: one clinic, five products ── */
 function SaphireDentMap() {
   const nodes: [number, number, string, string][] = [
-    [360, 52, "saphiredent.com", "flagship · 8 languages"],
+    [360, 52, "saphiredent.com", "flagship · 9 languages"],
     [612, 150, "patient app", "Expo · React Native"],
     [585, 348, "patient portal", "BFF over Odoo · TOTP"],
     [135, 348, "Saphire Intelligence", "sales-call coaching"],

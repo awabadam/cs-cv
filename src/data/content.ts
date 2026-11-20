@@ -7,7 +7,7 @@ export const experience = [
     location: "Istanbul, Turkiye",
     period: "2025 – Present",
     description:
-      "Sole builder of the clinic's digital ecosystem — five production systems around one dental tourism practice. The flagship platform runs in eight languages with a custom CMS, an AI chatbot, and Odoo CRM integration, self-hosted on Docker with blue-green deploys.",
+      "Sole builder of the clinic's digital ecosystem — five production systems around one dental tourism practice. The flagship platform runs in nine languages with a custom CMS, an AI chatbot, and Odoo CRM integration, self-hosted on Docker with blue-green deploys.",
   },
   {
     role: "Full-Stack Developer & Designer",

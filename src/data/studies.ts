@@ -36,7 +36,7 @@ export const studies: Record<string, Study> = {
       { label: "Engagement", value: "Design from 2020 · Code from 2025" },
       { label: "Disciplines", value: "Identity, art direction, full-stack" },
       { label: "Platform", value: "Next.js · PostgreSQL · Odoo CRM" },
-      { label: "Languages", value: "Eight, including RTL Arabic" },
+      { label: "Languages", value: "Nine, including RTL Arabic" },
       { label: "Scale", value: "714 commits · five products" },
     ],
     stats: [
@@ -66,11 +66,11 @@ export const studies: Record<string, Study> = {
       },
       {
         heading: "The Flagship Platform",
-        body: "By 2025 I could build what I had been designing. saphiredent.com is now a Next.js and PostgreSQL platform in eight languages including RTL Arabic — with a custom CMS behind five-role access control, an AI chatbot with human takeover and sales analytics, AI-assisted lead management, a geographic map of incoming leads, and Odoo CRM integration. 714 commits over sixteen months. Dedicated landing pages strip the site chrome entirely for a one-to-one match with each ad campaign.",
+        body: "By 2025 I could build what I had been designing. saphiredent.com is now a Next.js and PostgreSQL platform in nine languages including RTL Arabic — with a custom CMS behind five-role access control, an AI chatbot with human takeover and sales analytics, AI-assisted lead management, a geographic map of incoming leads, and Odoo CRM integration. 714 commits over sixteen months. Dedicated landing pages strip the site chrome entirely for a one-to-one match with each ad campaign.",
         plate: {
           src: "/images/case-studies/saphiredent-arabic.jpg",
           alt: "saphiredent.com Arabic edition — the homepage fully mirrored right-to-left",
-          caption: "The Arabic edition — one of eight languages, mirrored right-to-left",
+          caption: "The Arabic edition — one of nine languages, mirrored right-to-left",
           w: 2880,
           h: 1430,
         },
@@ -85,7 +85,7 @@ export const studies: Record<string, Study> = {
       },
       {
         heading: "The Result",
-        body: "One client, design since 2020, development since 2025, five shipped products, still engaged. The business serves international patients in eight languages with a fifteen-year treatment warranty promise, and the website it once lacked is now its primary acquisition channel — measured end to end through Tag Manager, GA4, and Google Ads conversion tracking.",
+        body: "One client, design since 2020, development since 2025, five shipped products, still engaged. The business serves international patients in nine languages with a fifteen-year treatment warranty promise, and the website it once lacked is now its primary acquisition channel — measured end to end through Tag Manager, GA4, and Google Ads conversion tracking.",
       },
     ],
   },

@@ -110,7 +110,7 @@ export const ui: Record<Locale, Strings> = {
         {
           place: "Istanbul",
           years: "2020 – Present",
-          text: "Two brands for a dental company, from logo to social to web, and the team to run them. Then the software: a platform in eight languages, a patient app, an AI that reviews sales calls.",
+          text: "Two brands for a dental company, from logo to social to web, and the team to run them. Then the software: a platform in nine languages, a patient app, an AI that reviews sales calls.",
         },
       ],
     },
@@ -194,7 +194,7 @@ export const ui: Record<Locale, Strings> = {
         {
           place: "إسطنبول",
           years: "2020 – حتى الآن",
-          text: "علامتان تجاريتان لشركة طب أسنان، من الشعار إلى التواصل الاجتماعي والويب، وفريق يديرهما. ثم البرمجيات: منصة بثماني لغات، وتطبيق للمرضى، وذكاء اصطناعي يراجع مكالمات المبيعات.",
+          text: "علامتان تجاريتان لشركة طب أسنان، من الشعار إلى التواصل الاجتماعي والويب، وفريق يديرهما. ثم البرمجيات: منصة بتسع لغات، وتطبيق للمرضى، وذكاء اصطناعي يراجع مكالمات المبيعات.",
         },
       ],
     },
@@ -278,7 +278,7 @@ export const ui: Record<Locale, Strings> = {
         {
           place: "İstanbul",
           years: "2020 – Günümüz",
-          text: "Bir diş kliniği şirketi için iki marka, logodan sosyal medyaya ve web'e, bir de onları yürüten ekip. Sonra yazılım: sekiz dilli bir platform, bir hasta uygulaması, satış görüşmelerini inceleyen bir yapay zekâ.",
+          text: "Bir diş kliniği şirketi için iki marka, logodan sosyal medyaya ve web'e, bir de onları yürüten ekip. Sonra yazılım: dokuz dilli bir platform, bir hasta uygulaması, satış görüşmelerini inceleyen bir yapay zekâ.",
         },
       ],
     },
