@@ -941,5 +941,10 @@
   "A premium medical aesthetics clinic needed a website matching the exclusivity of its service. Trilingual with RTL Arabic, motion-led, built with Next.js — luxury minimalism for an international clientele.": "Premium bir medikal estetik kliniği, hizmetinin ayrıcalığına denk bir web sitesine ihtiyaç duyuyordu. RTL Arapça dahil üç dilli, hareket odaklı, Next.js ile geliştirildi — uluslararası bir müşteri kitlesi için lüks minimalizm.",
   "A performance marketer who spends millions on ads a year needed a site that performs as hard as his campaigns. Three.js visuals, bilingual EN/AR, 95+ Lighthouse.": "Yılda reklamlara milyonlar harcayan bir performans pazarlamacısı, kampanyaları kadar iyi performans gösteren bir siteye ihtiyaç duyuyordu. Three.js görselleri, iki dilli EN/AR, 95+ Lighthouse.",
   "My own studio platform: four locales with RTL Arabic, an interactive quote builder, an admin panel, a journal, and nine documented projects. The hardest client is yourself.": "Kendi stüdyo platformum: RTL Arapça dahil dört dil, etkileşimli bir teklif oluşturucu, bir yönetim paneli, yazılar bölümü ve belgelenmiş dokuz proje. En zor müşteri insanın kendisidir.",
-  "<a href=\"https://vuedent.com\">vuedent.com</a> — the product homepage": "<a href=\"https://vuedent.com\">vuedent.com</a> — ürünün ana sayfası"
+  "<a href=\"https://vuedent.com\">vuedent.com</a> — the product homepage": "<a href=\"https://vuedent.com\">vuedent.com</a> — ürünün ana sayfası",
+  "Typefaces": "Yazı karakterleri",
+  "Geist · Geist Mono · IBM Plex Sans Arabic": "Geist · Geist Mono · IBM Plex Sans Arabic",
+  "Cormorant Garamond · Noto Naskh Arabic": "Cormorant Garamond · Noto Naskh Arabic",
+  "Fraunces · Geist": "Fraunces · Geist",
+  "Raginy · Sakkal Majalla": "Raginy · Sakkal Majalla"
 }

@@ -44,6 +44,23 @@ export type Project = {
 /* The order the filter chips take; their labels are in src/i18n/ui.ts. */
 const KINDS: Kind[] = ["brand", "web", "product", "campaign", "3d", "motion", "print", "photo"];
 
+/* Projects whose index card shows a composed cover (the brand assets arranged, untouched)
+   rather than a single work image. */
+const COVERED = [
+  "ubuntu-taxi",
+  "burger-chefs",
+  "nenzo",
+  "bespoke-clinics",
+  "blue-mesh",
+  "jouvence",
+  "esteexpert",
+  "omar-marketing",
+  "yasmina-beauty",
+  "omega-implants",
+  "campaign-system",
+  "key-visuals",
+];
+
 /* A motion piece is its poster frame (the webp) plus a clip beside it in public/work. */
 export const images: Record<string, { w: number; h: number; src: string; video?: string }> = {
   ...Object.fromEntries(
@@ -53,6 +70,10 @@ export const images: Record<string, { w: number; h: number; src: string; video?:
     ])
   ),
   "cs-vuedent": { w: 2880, h: 1520, src: "/images/case-studies/vuedent.jpg" },
+  /* Card covers, the same arrangements as the Behance covers, cut to the card's 4:3. */
+  ...Object.fromEntries(
+    COVERED.map((id) => [`cover-${id}`, { w: 1616, h: 1212, src: `/work/cover-${id}.webp` }])
+  ),
 };
 
 type Source = Omit<Project, "num">;
@@ -85,7 +106,7 @@ function fromStudy(
   };
 }
 
-const THUMBS: Record<string, string> = {};
+const THUMBS: Record<string, string> = Object.fromEntries(COVERED.map((id) => [id, `cover-${id}`]));
 
 /* Every project in index order, its text in one language. */
 function ordered(l: Locale): Source[] {

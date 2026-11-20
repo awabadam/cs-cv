@@ -515,6 +515,10 @@
      "v": "Stylescapes · monogram and logo suite · palette · stationery · signage, vehicle and apparel mockups · social templates · sales team kit"
     },
     {
+     "k": "Typefaces",
+     "v": "Raginy · Sakkal Majalla"
+    },
+    {
      "k": "Tools",
      "v": "Illustrator · Photoshop · InDesign"
     }
@@ -1293,6 +1297,10 @@
     {
      "k": "Stack",
      "v": "Figma · Next.js · GSAP + Lenis"
+    },
+    {
+     "k": "Typefaces",
+     "v": "Cormorant Garamond · Noto Naskh Arabic"
     }
    ],
    "link": {
@@ -1358,6 +1366,10 @@
     {
      "k": "Built",
      "v": "Graft calculator · doctor trust profiles"
+    },
+    {
+     "k": "Typefaces",
+     "v": "Fraunces · Geist"
     }
    ],
    "link": {
@@ -1426,6 +1438,10 @@
     {
      "k": "Stack",
      "v": "Figma · Three.js · Next.js"
+    },
+    {
+     "k": "Typefaces",
+     "v": "Geist · Geist Mono · IBM Plex Sans Arabic"
     }
    ],
    "link": {
